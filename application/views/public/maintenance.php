@@ -1,10 +1,9 @@
-<!doctype html>
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Site Maintenance</title>
+	<title><?php echo $title;?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
 	body { text-align: center; padding: 150px; }
@@ -17,6 +16,7 @@
   </head>
 <body>
 <article>
+	<center><img src="<?php echo base_url('assets/hamtaro-new.gif');?>" alt=""></center>
     <h1>We&rsquo;ll be back soon!</h1>
     <div>
         <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a href="mailto:#">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>

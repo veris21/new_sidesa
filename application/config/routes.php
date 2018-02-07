@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['default_controller'] = 'office';
+$route['default_controller'] = 'stream/perbaikan';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 /*
