@@ -24,13 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-<<<<<<< HEAD
-// $config['base_url'] = 'https://si-desa.id/';
+// $config['base_url'] = 'https://gantung.si-desa.id/';
 $config['base_url'] = 'http://localhost/SIA-GTG.github/';
-=======
-$config['base_url'] = 'https://gantung.si-desa.id/';
-// $config['base_url'] = 'http://localhost/SIA-GTG.github/';
->>>>>>> eebc91cfb671eae90ced0515dd476844239fe964
 
 /*
 |--------------------------------------------------------------------------

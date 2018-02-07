@@ -6,13 +6,8 @@ $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
-<<<<<<< HEAD
-	'password' => 'verisjuniard1',
-	'database' => 'sidesa_dev',
-=======
 	'password' => 'sidesagantungproject',
-	'database' => 'si-desa-gantung',
->>>>>>> eebc91cfb671eae90ced0515dd476844239fe964
+	'database' => 'sidesa_gantung_databases',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
