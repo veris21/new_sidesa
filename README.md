@@ -10,3 +10,8 @@ sistem ini dibuat oleh : **[Veris Juniardi]** https://twitter.com/veris_juniardi
 
 hint vps setting :
 Setting localtime Server => ln -sf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+<<<<<<< HEAD
+=======
+
+adding New Env
+>>>>>>> eebc91cfb671eae90ced0515dd476844239fe964
