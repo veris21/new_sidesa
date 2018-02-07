@@ -1,8 +1,0 @@
-ERROR - 2018-01-30 19:08:59 --> Severity: Warning --> mysqli::real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
-ERROR - 2018-01-30 19:08:59 --> Unable to connect to the database
-ERROR - 2018-01-30 19:09:00 --> Severity: Warning --> mysqli::real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
-ERROR - 2018-01-30 19:09:00 --> Severity: Error --> session_start(): Failed to initialize storage module: user (path: log_sessions) C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\system\libraries\Session\Session.php 143
-ERROR - 2018-01-30 19:09:03 --> Severity: Warning --> mysqli::real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
-ERROR - 2018-01-30 19:09:03 --> Unable to connect to the database
-ERROR - 2018-01-30 19:09:04 --> Severity: Warning --> mysqli::real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES) C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
-ERROR - 2018-01-30 19:09:04 --> Severity: Error --> session_start(): Failed to initialize storage module: user (path: log_sessions) C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\system\libraries\Session\Session.php 143

@@ -58,19 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array(
-  'database',
-  'email',
-  'session',
-  'parser',
-  'form_validation',
-  'encryption',
-  'upload',
-  'ciqrcode',
-  'pHPExcel',
-  'google_url_api',
-  'pdfGenerator'
-);
+$autoload['libraries'] = array();
 
 /*
 | -------------------------------------------------------------------
@@ -101,16 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array(
-  'url',
-  'file',
-  'form',
-  'date', 
-  'login_helper',
-  'sms_helper',
-  'waktu_helper',
-  'rand_helper'
-);
+$autoload['helper'] = array();
 
 /*
 | -------------------------------------------------------------------
@@ -153,13 +132,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array(
-    'auth_model',
-    'master_model',
-    'option_model',
-    'arsip_model',
-    'disposisi_model',
-    'notifikasi_model',
-    'pertanahan_model',
-    'datapenduduk_model'
-  );
+$autoload['model'] = array();
