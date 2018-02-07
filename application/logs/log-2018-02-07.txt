@@ -8,3 +8,10 @@ ERROR - 2018-02-07 11:18:30 --> Severity: 4096 --> Object of class Maintenance c
 ERROR - 2018-02-07 11:18:30 --> Severity: error --> Exception: Cannot access empty property C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\application\controllers\Maintenance.php 8
 ERROR - 2018-02-07 11:18:37 --> Severity: 4096 --> Object of class Maintenance could not be converted to string C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\application\controllers\Maintenance.php 8
 ERROR - 2018-02-07 11:18:37 --> Severity: error --> Exception: Cannot access empty property C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\application\controllers\Maintenance.php 8
+ERROR - 2018-02-07 11:37:14 --> Severity: Warning --> number_format() expects parameter 1 to be float, string given C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\application\views\pertanahan_layout\view_permohonan.php 64
+ERROR - 2018-02-07 11:37:14 --> 404 Page Not Found: Assets/uploader
+ERROR - 2018-02-07 11:37:14 --> 404 Page Not Found: Assets/uploader
+ERROR - 2018-02-07 11:37:14 --> 404 Page Not Found: Assets/uploader
+ERROR - 2018-02-07 11:37:14 --> 404 Page Not Found: Assets/uploader
+ERROR - 2018-02-07 12:37:36 --> Severity: Warning --> number_format() expects parameter 1 to be float, string given C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\application\views\pertanahan_layout\view_permohonan.php 64
+ERROR - 2018-02-07 12:37:36 --> 404 Page Not Found: Assets/uploader
