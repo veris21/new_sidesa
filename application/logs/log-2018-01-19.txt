@@ -1,0 +1,16 @@
+ERROR - 2018-01-19 06:03:02 --> Severity: Warning --> mysqli::real_connect(): (HY000/1049): Unknown database 'sidesa_dev' D:\wamp\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2018-01-19 06:03:02 --> Unable to connect to the database
+ERROR - 2018-01-19 06:03:03 --> Severity: Warning --> mysqli::real_connect(): (HY000/1049): Unknown database 'sidesa_dev' D:\wamp\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2018-01-19 06:03:03 --> Severity: Error --> session_start(): Failed to initialize storage module: user (path: log_sessions) D:\wamp\apache2\htdocs\SIA-GTG.github\system\libraries\Session\Session.php 143
+ERROR - 2018-01-19 06:03:38 --> Severity: Warning --> mysqli::real_connect(): (HY000/1049): Unknown database 'sidesa_dev' D:\wamp\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2018-01-19 06:03:38 --> Unable to connect to the database
+ERROR - 2018-01-19 06:03:39 --> Severity: Warning --> mysqli::real_connect(): (HY000/1049): Unknown database 'sidesa_dev' D:\wamp\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2018-01-19 06:03:39 --> Severity: Error --> session_start(): Failed to initialize storage module: user (path: log_sessions) D:\wamp\apache2\htdocs\SIA-GTG.github\system\libraries\Session\Session.php 143
+ERROR - 2018-01-19 06:03:45 --> Severity: Warning --> mysqli::real_connect(): (HY000/1049): Unknown database 'sidesa_dev' D:\wamp\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2018-01-19 06:03:45 --> Unable to connect to the database
+ERROR - 2018-01-19 06:03:46 --> Severity: Warning --> mysqli::real_connect(): (HY000/1049): Unknown database 'sidesa_dev' D:\wamp\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2018-01-19 06:03:46 --> Severity: Error --> session_start(): Failed to initialize storage module: user (path: log_sessions) D:\wamp\apache2\htdocs\SIA-GTG.github\system\libraries\Session\Session.php 143
+ERROR - 2018-01-19 06:04:42 --> Severity: Warning --> mysqli::real_connect(): (HY000/1049): Unknown database 'sidesa_dev' D:\wamp\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2018-01-19 06:04:42 --> Unable to connect to the database
+ERROR - 2018-01-19 06:04:43 --> Severity: Warning --> mysqli::real_connect(): (HY000/1049): Unknown database 'sidesa_dev' D:\wamp\apache2\htdocs\SIA-GTG.github\system\database\drivers\mysqli\mysqli_driver.php 201
+ERROR - 2018-01-19 06:04:43 --> Severity: Error --> session_start(): Failed to initialize storage module: user (path: log_sessions) D:\wamp\apache2\htdocs\SIA-GTG.github\system\libraries\Session\Session.php 143
