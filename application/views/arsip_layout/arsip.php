@@ -49,9 +49,14 @@
                             </a>
 
                             <a data-toggle='tooltip' title='Cetak Ulang Arsip' class='btn btn-xs btn-flat btn-default' href='".base_url("arsip/cetak/".$data->time)."'>
-                            <i class='fa fa-print'></i>
-                            </a>
-                            </td>";
+                            <i class='fa fa-print'></i></a> ";
+                            echo " ";
+                            if($this->session->userdata('jabatan')=='ROOT'){
+                            echo " <a data-toggle='tooltip' title='Hapus Arsip' class='btn btn-xs btn-flat btn-danger' href='".base_url("arsip/hapus/".$data->time)."'>
+                            <i class='fa fa-trash'></i>
+                            </a>";
+                            }                            
+                            echo "</td>";
                             echo "</tr>";
                         }
                     ?>
