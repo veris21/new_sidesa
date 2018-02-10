@@ -137,11 +137,16 @@
           </a>
         </li>
         <!-- Data Tanah -->
-        <li>
-          <a href="<?php echo base_url().'pertanahan/data'; ?>">
-          <i class="fa fa-search"></i> 
-          <span>Cek Data Tanah</span>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Layanan Pertanahan</span>
+            <i class="fa fa-angle-left pull-right"></i>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>"><i class="fa fa-circle-o"></i>Permohonan Data Pertanahan</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/data'; ?>"><i class="fa fa-circle-o"></i> Cek Data Pertanahan</a></li>
+          </ul>
         </li>
         <?php
         break;

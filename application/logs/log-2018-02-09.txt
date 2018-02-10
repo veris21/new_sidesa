@@ -1,4 +1,0 @@
-ERROR - 2018-02-09 10:28:59 --> Severity: Notice --> Undefined offset: 6 C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\application\views\dashboard.php 28
-ERROR - 2018-02-09 10:28:59 --> Severity: Notice --> Undefined offset: 8 C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\application\views\dashboard.php 31
-ERROR - 2018-02-09 10:28:59 --> Severity: Notice --> Undefined offset: 9 C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\application\views\dashboard.php 31
-ERROR - 2018-02-09 10:28:59 --> Severity: Notice --> Undefined offset: 10 C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\application\views\dashboard.php 31

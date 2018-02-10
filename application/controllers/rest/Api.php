@@ -4,7 +4,7 @@ require APPPATH . 'libraries/REST_Controller.php';
 /**
  * @author Veris Juniardi <veris.juniardi@gmail.com>
  */
-class Api extends CI_Controller{
+class Api extends REST_Controller{
 
   public function __construct()
   {

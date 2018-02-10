@@ -14,11 +14,14 @@
 
     <div class="nav-tabs-custom">
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#permohonan_list" data-toggle="tab">List Permohonan</a></li>
-          <li><a href="#permohonan_input" data-toggle="tab">Input Permohonan</a></li>          
+
+        <li class="active"><a href="#permohonan_input" data-toggle="tab">Input Permohonan</a></li>  
+<?php //if($this->session->userdata('jabatan') != 'LAYANAN' ){ ?>        
+        <li ><a href="#permohonan_list" data-toggle="tab">List Permohonan</a></li>
+<?php //} ?> 
         </ul>
         <div class="tab-content">
-     <div class="active tab-pane" id="permohonan_list">
+     <div class="tab-pane" id="permohonan_list">
         <table width="100%" class="table table-striped table-responsive" id="list_permohonan">
           <thead>
             <tr>
@@ -59,7 +62,7 @@
           </tbody>
         </table>
      </div>
-     <div class="tab-pane" id="permohonan_input">
+     <div class="active tab-pane" id="permohonan_input">
         <div class="heading-2">
         Masukkan <b>NIK</b> atau <b>Nama Lengkap </b>untuk mencari data pemohon di database
         </div>
