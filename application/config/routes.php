@@ -15,6 +15,7 @@ $route['api/example/users/(:num)(\.)([a-zA-Z0-9_-]+)(.*)'] = 'api/example/users/
 
 $route['api/notifikasi/users/(:num)'] = '';
 
+$route['api/check_user']            = 'rest/api/users_get';
 /*
 | -------------------------------------------------------------------------
 | -------------------------------------------------------------------------
