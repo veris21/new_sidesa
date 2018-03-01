@@ -36,22 +36,40 @@
     top: 0; bottom: 0;
     z-index: -1;
     display: block;
-    background-image: url(<?php echo base_url('assets/Minion2.png'); ?>);
+    background-image: url(<?php echo base_url('assets/lake.jpg'); ?>);
     width: 100%;
     height: 100%;
     background-size: cover;
   }
-
+  .login-over {
+    background-color: rgba(0,0,0,0.6);
+    height :  100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0; 
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    display: block;
+  }
   #overlay {
     display:none;
     margin: auto;
     padding: 0;
   }
 
+  .login-title {
+    color : #ffffff;
+  }
+
 </style>
   </head>
   <body class="hold-transition login-page">
+    <div class="login-over">
     <?php $this->load->view($main_content); ?>
+    </div>
     <!-- jQuery 2.1.4 -->
     <script src="<?php echo base_url().THEME; ?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->

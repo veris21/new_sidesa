@@ -1,9 +1,8 @@
 <?php echo form_open('',array('id'=>'auth')); ?>
 <div class="login-box">
-
   <div class="login-logo">
     <img class="img img-logo" src="<?php echo base_url().'assets/new-logo.png'; ?>" alt="www.si-desa.id" width="120"><br>
-    <a href="<?php echo base_url().'public';?>">Si<b>Desa Gantung</b></a>
+    <a href="<?php echo base_url().'public';?>">Si<b class="login-title">Desa Gantung</b></a>
   </div>
   
   <div class="login-box-body"> 
