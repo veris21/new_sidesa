@@ -679,3 +679,11 @@ ERROR - 2018-05-05 20:26:12 --> 404 Page Not Found: Assets/v2
 ERROR - 2018-05-05 20:30:29 --> 404 Page Not Found: Assets/v2
 ERROR - 2018-05-05 20:31:43 --> 404 Page Not Found: Assets/v2
 ERROR - 2018-05-05 20:32:16 --> 404 Page Not Found: Indexhtml/index
+ERROR - 2018-05-05 20:44:53 --> 404 Page Not Found: Assets/v2
+ERROR - 2018-05-05 20:45:25 --> 404 Page Not Found: Assets/v2
+ERROR - 2018-05-05 20:45:28 --> 404 Page Not Found: Assets/v2
+ERROR - 2018-05-05 20:45:39 --> 404 Page Not Found: Assets/v2
+ERROR - 2018-05-05 20:45:45 --> 404 Page Not Found: Assets/v2
+ERROR - 2018-05-05 20:45:49 --> 404 Page Not Found: Assets/v2
+ERROR - 2018-05-05 20:46:50 --> 404 Page Not Found: Assets/v2
+ERROR - 2018-05-05 20:46:55 --> 404 Page Not Found: Assets/v2

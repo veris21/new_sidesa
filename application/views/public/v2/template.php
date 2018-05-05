@@ -154,7 +154,7 @@
 	<script>
 	//	var base_url = '<?php //echo base_url().V2; ?>'; 
   </script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=weather,geometry,visualization,places,drawing&key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=weather,geometry,visualization,places,drawing&key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY" type="text/javascript"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/tether.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/bootstrap.min.js"></script>
