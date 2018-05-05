@@ -47,7 +47,28 @@
                 </div>
                 <div class="box-body">
                     <!-- <div style="height:480px" id="map-canvas"></div> -->
-                    <img wibh="100%" src="<?php echo base_url().POLYGON.$data['peta'];?>" alt="CANVAS PETA" class="img img-rounded">
+                    <img width="100%" src="<?php echo base_url().POLYGON.$data['peta'];?>" alt="CANVAS PETA" class="img img-rounded">
+                </div>
+                <div class="box-footer">
+                <h5>Lokasi Koordinat Tanah <?php echo " Lat : ".$koordinat['lat'] ." Lng :  ". $koordinat['lng']; ?></h5>
+                <h5>Patok Tanah </h5>
+                <?php
+                    $no = 1;
+                    foreach($patok->result() as $titik){
+                    echo "<ol>".$no." Lat : ".$titik->lat." Lng : ".$titik->lng."</ol>";
+                    $no++;
+                    }
+                 ?>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-body">
+                    <div id="googleMap" style="width:100%;height:800px;"></div>
+                </div>
+                <div class="box-footer">
+                <button class="btn btn-primary" onClick="tunjukkanPeta(<?php echo $koordinat['lat'].','.$koordinat['lng'] ?>)">Tampilkan Data Peta dan Lokasi</button>
                 </div>
             </div>
         </div>

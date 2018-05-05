@@ -9,6 +9,61 @@
   </ol>
 </section>
 <section class="content">
+
+
+  
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-aqua">
+        <div class="inner">
+          <h3><?php echo $pelayanan;?></h3>
+          <p>Pelayanan Hari Ini</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-calendar-times-o"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-green">
+        <div class="inner">
+          <h3><?php echo $surat;?></h3>
+          <p>Total Surat Keluar</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-envelope-square"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-yellow">
+        <div class="inner">
+          <h3><?php echo $arsip;?></h3>
+          <p>Total Arsip Surat</p>
+        </div>
+        <div class="icon">
+          <i class="fa fa-folder-open-o"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box bg-maroon">
+        <div class="inner">
+          <h3><?php echo $tanah;?></h3>
+          <p>Data Surat Tanah Terindeks</p>
+        </div>
+        <div class="icon">
+          <i class="ion ion-pie-graph"></i>
+        </div>
+        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+
 <?php if($this->session->flashdata('status')!=NULL){?>
   <!--  -->
   <div class="alert alert-success alert-dismissable">
@@ -47,7 +102,7 @@
     <div class="box-body">
         <div class="row">
             <center class="col-md-6 hidden-sm hidden-xs">
-            <img width="70%" src="<?php echo base_url('assets/new-logo.png');?>" alt="www.si-desa.id" class="img img-rounded img-responsive">
+            <img width="50%" src="<?php echo base_url('assets/new-logo.png');?>" alt="www.si-desa.id" class="img img-rounded img-responsive">
            </center>
           <div class="col-md-6">
               <dt>Nama Lengkap</dt>
@@ -72,6 +127,8 @@
     </div>
   </div>
   <?php } ?>
+
+
 <!-- ==============SCANNER ============--
 <div class="box box-success">
   <div class="box-header">
@@ -151,56 +208,6 @@
 <?php //if ($this->session->userdata('type') == 1 || $this->session->userdata('type') == 2 ): ?>
 <!--  -->
 
-  <div class="row">
-    <div class="col-lg-3 col-xs-6">
-      <div class="small-box bg-aqua">
-        <div class="inner">
-          <h3><?php echo $pelayanan;?></h3>
-          <p>Pelayanan Hari Ini</p>
-        </div>
-        <div class="icon">
-          <i class="fa fa-calendar-times-o"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-xs-6">
-      <div class="small-box bg-green">
-        <div class="inner">
-          <h3><?php echo $surat;?></h3>
-          <p>Total Surat Keluar</p>
-        </div>
-        <div class="icon">
-          <i class="fa fa-envelope-square"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-xs-6">
-      <div class="small-box bg-yellow">
-        <div class="inner">
-          <h3><?php echo $arsip;?></h3>
-          <p>Total Arsip Surat</p>
-        </div>
-        <div class="icon">
-          <i class="fa fa-folder-open-o"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <div class="col-lg-3 col-xs-6">
-      <div class="small-box bg-maroon">
-        <div class="inner">
-          <h3><?php echo $tanah;?></h3>
-          <p>Data Surat Tanah Terindeks</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-pie-graph"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-  </div>
   <!--  ================== --
 <!-- ====================== --
 

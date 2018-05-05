@@ -143,7 +143,8 @@ function initialize() {
 														'<hr><p> Keterangan : ' + keterangan + '<br>' +
 														'Luas :' + markerLuas[counter] + ' meter<sup>2</sup><br>' +
 														'Lokasi : ' + markerLokasi[counter] + '</p>' +
-														'<a href="'+baseUrl+'tanah/detail/'+markerId[counter]+'" class="btn btn-sm btn-success">Details</a>'+
+														'<a href="'+baseUrl+'tanah/detail/'+markerId[counter]+'" class="btn btn-sm btn-primary">Details Tanah</a>'+
+														' <a href="'+baseUrl+'penduduk/detail/'+markerId[counter]+'" class="btn btn-sm btn-warning">Data Penduduk</a>'+
 														'<div>'
 												});
 												allLatLng.push(myLatLng);

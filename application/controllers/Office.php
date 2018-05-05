@@ -30,7 +30,6 @@ class Office extends CI_Controller{
           sms_notifikasi($sms->hp, $pesan);          
         }
     echo json_encode(array("status" => TRUE));
-     
   }
 
   function sms_kirim(){

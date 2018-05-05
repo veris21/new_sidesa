@@ -32,6 +32,8 @@ $(function() {
 		
 	});
 
+	
+
 });
 
 function buka_dusun() {

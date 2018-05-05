@@ -44,6 +44,8 @@
                             echo "No.".$data->nomor_surat."<br> tanggal ".$data->tanggal_surat."</td>";
                             echo "<td align='left'>Sifat : <b>".$data->sifat."</b><br><br>".$data->perihal."</td>";
                             echo "<td align='center'>
+                            <img src='".base_url(SCAN_ARSIP.$data->scan_link)."' width='120' class='img img-thumbnail' />
+                            <hr/>
                             <a data-toggle='tooltip' title='Lihat Details Arsip' class='btn btn-xs btn-flat btn-success' href='".base_url("arsip/details/".$data->time)."'>
                             <i class='fa fa-eye'></i>
                             </a>

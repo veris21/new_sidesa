@@ -9,13 +9,18 @@ class Stream extends CI_Controller{
     parent::__construct();
   }
 
-
   function index()
   {
       $data['title']          = TITLE . 'Open Data Pertanahan Publik';
       $data['desa']           = $this->master_model->desa()->result();
-      $data['main_content']   = UMUM.'public';
-      $this->load->view(UMUM. 'public_stream', $data);
+      $data['province']       = $this->master_model->_get_provinces()->result();
+      $data['regency']        = $this->master_model->_get_regencies($data['province']['id'])->result();
+      $data['districts']      = $this->master_model->_get_districts($data['regency']['id'])->result();
+      $desa['villages']       = $this->master_model->_get_villages($data['districts']['id'])->result();
+      // $data['main_content']   = UMUM.'public';
+      // $this->load->view(UMUM. 'public_stream', $data);
+      $data['main_content']   = UMUM.'v2/pertanahan';
+      $this->load->view(UMUM. 'v2/template', $data);
   }
 
 // MAINTENANCE TEMPLATE
@@ -32,10 +37,11 @@ function perbaikan()
     $this->load->view(UMUM. 'public_stream', $data);
   }
 
-
   public function cek_validasi($id){
     $data['title']          = TITLE . 'Open Data Pertanahan Publik';
     $data['data']           = $this->pertanahan_model->_get_validasi_skt($id)->row_array();
+    $data['koordinat']      = $this->pertanahan_model->get_koordinat_tengah_id($data['data']['bap_id'])->row_array();
+    $data['patok']          = $this->pertanahan_model->_get_data_patok($data['koordinat']['id']);
     $data['main_content']   = UMUM.'cek_qr_skt';
     $this->load->view(UMUM. 'public_stream', $data);
   }
@@ -104,7 +110,7 @@ function perbaikan()
     $data['results'] = $this->pertanahan_model->cari_aset_tanah_desa($key)->result();
     echo json_encode($data);
   }
-
+ 
   public function cari_data_per_dusun($key){
     echo json_encode($data);
   }

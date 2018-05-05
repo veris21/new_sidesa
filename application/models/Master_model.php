@@ -9,6 +9,30 @@ class Master_model extends CI_Model{
     //Codeigniter : Write Less Do More
   }
 
+  // =================[ Data Administrasi Wilayah ]====================
+
+  public function _get_provinces(){
+    return $this->db->get('provinces');
+  }
+
+  public function _get_regencies($id_prov){
+    return $this->db->get_where('regencies', array('province_id'=>$id_prov));
+  }
+
+  public function _get_districts($regency_id){
+    return $this->db->get_where('districts', array('regency_id'=>$regency_id));
+  }
+
+  public function _get_villages($district_id){
+    return $this->db->get_where('villages', array('district_id'=>$district_id));
+  }
+
+  public function _get_villages_one($id){
+    return $this->db->get_where('villages', array('id'=>$id));
+  }
+
+  // ==================================================================
+
   public function reset_pertanahan(){
     $this->db->truncate('permohonan_pertanahan'); 
     $this->db->truncate('pernyataan_pertanahan'); 

@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * @author Veris Juniardi <veris.juniardi@gmail.com>
  */
-class Auth extends CI_Controller{
 
+class Auth extends CI_Controller{
   public function __construct()
   {
     parent::__construct();
@@ -30,7 +30,7 @@ class Auth extends CI_Controller{
           'desa_id'     => '1',
           'last_login'  => ''
       )
-      );
+    );
       echo json_encode(array("status" => TRUE));
       exit;
     }else {

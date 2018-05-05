@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "title": "SISWADI USMAN",
+        "address": "JL. JEND SUDIRMAN",
+        "area": 1200,
+        "thumbnail": "assets/v2/img/explorer-home-1.png",
+        "verified": false,
+        "status": "SURAT KETERANGAN",
+        "latitude": -2.974305,
+        "longitude": 108.157274
+    },
+    {
+        "id": 2,
+        "title": "RONI RIANSYAH",
+        "address": "JL. JEND SUDIRMAN",
+        "area": 3000,
+        "thumbnail": "assets/v2/img/explorer-home-1.png",
+        "verified": true,
+        "status": "BERSERTIFIKAT",
+        "latitude": -2.970794,
+        "longitude": 108.167295
+    },
+    {
+        "id": 3,
+        "title": "DEDE AGUSTIAN",
+        "address": "JL. JEND SUDIRMAN",
+        "area": 457,
+        "thumbnail": "assets/v2/img/tmp/listing-3.jpg",
+        "verified": false,
+        "status": "SURAT KETERANGAN",
+        "latitude": -2.970066,
+        "longitude": 108.158669
+    }
+]

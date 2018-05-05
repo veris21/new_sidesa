@@ -52,6 +52,8 @@ define('PERTANAHAN',      'pertanahan_layout/');
 define('PENDUDUK',        'penduduk_layout/');
 
 
+define('V2', 'assets/v2/');
+
 /*-------------------------------*/
 /*|
   |This Code Wrote By

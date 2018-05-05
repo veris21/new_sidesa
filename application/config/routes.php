@@ -14,8 +14,12 @@ $route['api/example/users/(:num)(\.)([a-zA-Z0-9_-]+)(.*)'] = 'api/example/users/
 
 
 $route['api/notifikasi/users/(:num)'] = '';
-
 $route['api/check_user']            = 'rest/api/users_get';
+$route['api/get_provinsi_all']                  = 'rest/api/get_provinces';
+$route['api/get_kabupaten_in_provinsi/(:num)']  = 'rest/api/get_regencies/$1';
+$route['api/get_kecamatan_in_kabupaten/(:num)'] = 'rest/api/get_districts/$1';
+$route['api/get_desa_in_kecamatan/(:num)']      = 'rest/api/get_villages/$1';
+$route['api/get_desa/(:num)']                   = 'rest/api/get_villages_one/$1';
 /*
 | -------------------------------------------------------------------------
 | -------------------------------------------------------------------------
