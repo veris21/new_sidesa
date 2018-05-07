@@ -803,6 +803,34 @@ class Pertanahan extends CI_Controller{
     }        
   }
 
+  public function koordinat(){
+    if(isset($_POST['upload'])){
+      if (!empty($_FILES['import_xls'])) {
+          $fileName = time()."-".$_FILES['import_xls']['name'];
+          $config['upload_path'] = './assets/uploader/import/'; //buat folder dengan nama assets di root folder
+          $config['allowed_types'] = 'xls|xlsx';
+          $config['file_name'] = $fileName;
+          $this->load->library('upload');
+          $this->upload->initialize($config);
+          if(! $this->upload->do_upload('import_xls') );
+          $this->pertanahan_model->upload_data($fileName);
+          unlink('./assets/uploader/import/'.$fileName);
+          redirect('koordinat','refresh');
+        }
+  }else{
+      $data['title']                   =   TITLE.'Import Master Data';
+      $data['main_content']            =   PERTANAHAN.'v2/koordinat_tengah_all';
+      $data['dataAll']                    =   $this->pertanahan_model->koordinat_tengah_all()->result();
+      $data['data']                    =   $this->pertanahan_model->koordinat_tengah_nik()->result();
+      $this->load->view('template', $data);
+  }           
+}
+
+  // public function import_koordinat_tengah(){
+
+  // }
+
+
 /* Pertanahan.php || Controller Handler Untuk Modul Pertanahan
 =========================================================
 |    @Author     |      Version     |     Changelog     |

@@ -68,6 +68,13 @@ _________________________________________________
 _________________________________________________
 ================================================*/
 
+$("#master_koordinat_tengah").DataTable({
+  responsive: true
+});
+
+$("#master_koordinat_tengah_all").DataTable({
+  responsive: true
+});
 
 $(".select2").select2();
 $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
@@ -345,7 +352,6 @@ function cari_data_skt(){
               $('#agama').text(obj.agama);
               $('#pekerjaan').text(obj.pekerjaan);
               $('#status').text(obj.status);
-              $('#shdrt').text(obj.shdrt+"  Orang");
               $('#alamat').text(obj.alamat);
               $('#no_rt').text(obj.no_rt);
               $('#dusun').text(obj.dusun);
@@ -574,7 +580,6 @@ function cari_data() {
           $('#agama').text(obj.agama);
           $('#pekerjaan').text(obj.pekerjaan);
           $('#status').text(obj.status);
-          $('#shdrt').text(obj.shdrt+"  Orang");
           $('#alamat').text(obj.alamat);
           $('#no_rt').text(obj.no_rt);
           $('#dusun').text(obj.dusun);
@@ -861,7 +866,6 @@ function edit_penduduk(id) {
         $('[name="agama"]').val(obj.agama);
         $('[name="status"]').val(obj.status);
         $('[name="shdk"]').val(obj.shdk);
-        $('[name="shdrt"]').val(obj.shdrt);
         $('[name="pddk_akhir"]').val(obj.pddk_akhir);
         $('[name="nama_ayah"]').val(obj.nama_ayah);
         $('[name="nama_ibu"]').val(obj.nama_ibu);

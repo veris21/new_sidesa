@@ -23,6 +23,14 @@ class Stream extends CI_Controller{
       $this->load->view(UMUM. 'v2/template', $data);
   }
 
+
+  function get_pendidikan()
+  {
+      $data['title']          = TITLE . 'Open Data Pertanahan Publik';
+      $data['main_content']   = UMUM.'v2/pertanahan';
+      $this->load->view(UMUM. 'v2/template', $data);
+  }
+
 // MAINTENANCE TEMPLATE
 function perbaikan()
   {
@@ -117,6 +125,12 @@ function perbaikan()
 
   public function cari_data_per_nama($key){
     echo json_encode($data);
+  }
+
+  public function v2_koordinat_tanah(){
+    $this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($this->pertanahan_model->koordinat_tengah_nik()->result()));
   }
 
   /*===============================================================================*/

@@ -252,12 +252,12 @@
                </div>
       </div>
 
-      <div class="form-group">
+      <!-- <div class="form-group">
       <label class="control-label col-sm-4" for="">Jumlah Anggota Keluarga</label>
               <div class="col-sm-8">
                   <input type="number" name="shdrt" class="form-control" id="">
                </div>
-      </div>
+      </div> -->
 
       <div class="form-group">
       <label class="control-label col-sm-4" for="">Nama Ayah</label>

@@ -9,6 +9,75 @@ class Datapenduduk_model extends CI_Model{
     //Codeigniter : Write Less Do More
   }
 
+  // ============================================================
+  public function _get_penduduk_belum_sekolah(){
+    $this->db->where('pddk_akhir', 1);
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
+  public function _get_penduduk_tidak_tamat_sd(){
+    $this->db->where('pddk_akhir', 2);
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
+  public function _get_penduduk_tamat_sd(){
+    $this->db->where('pddk_akhir', 3);
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
+  public function _get_penduduk_tamat_smp(){
+    $this->db->where('pddk_akhir', 4);
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
+  public function _get_penduduk_tamat_sma(){
+    $this->db->where('pddk_akhir', 5);
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
+  public function _get_penduduk_diploma(){
+    $this->db->where('pddk_akhir', 6);
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
+  public function _get_penduduk_diplomaIII(){
+    $this->db->where('pddk_akhir', 7);
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
+  public function _get_penduduk_sarjana(){
+    $this->db->where('pddk_akhir', 8);
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
+  public function _get_penduduk_magister(){
+    $this->db->where('pddk_akhir', 9);
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
+  public function _get_penduduk_doktoral(){
+    $this->db->where('pddk_akhir', 10);
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
+
+// =----------------------------------=
+
+
+
+
+
+
   public function _get_data_nik($nik){
     $this->db->select('*')
     ->from('master_data_penduduk_')
@@ -62,23 +131,34 @@ class Datapenduduk_model extends CI_Model{
 
     for ($i=1; $i < ($numRows+1) ; $i++) {
       $ins = array(
-          'no_kk'             => $worksheet[$i]['A'],
-          'no_nik'            => $worksheet[$i]['B'],
-          'nama'              => $worksheet[$i]['C'],
-          'jenis_kelamin'     => $worksheet[$i]['D'],
-          'tempat_lahir'      => $worksheet[$i]['E'],
-          'tanggal_lahir'     => $worksheet[$i]['F'],
-          'agama'             => $worksheet[$i]['G'],
-          'status'            => $worksheet[$i]['H'],
-          'shdk'              => $worksheet[$i]['I'],
-          'shdrt'             => $worksheet[$i]['J'],
-          'pddk_akhir'        => $worksheet[$i]['K'],
-          'pekerjaan'         => $worksheet[$i]['L'],
-          'nama_ibu'          => $worksheet[$i]['M'],
-          'nama_ayah'         => $worksheet[$i]['N'],
-          'alamat'            => $worksheet[$i]['O'],
-          'no_rt'             => $worksheet[$i]['P'],
-          'dusun'             => $worksheet[$i]['Q']
+          'no_kk'                      => $worksheet[$i]['A'],
+          'no_nik'                     => $worksheet[$i]['B'],
+          'no_akta'                    => $worksheet[$i]['C'],
+          'nama'                       => $worksheet[$i]['D'],
+          'jenis_kelamin'              => $worksheet[$i]['E'],
+          'tempat_lahir'               => $worksheet[$i]['F'],
+          'tanggal_lahir'              => $worksheet[$i]['G'],
+          'agama'                      => $worksheet[$i]['H'],
+          'status'                     => $worksheet[$i]['I'],
+          'shdk'                       => $worksheet[$i]['J'],
+          'darah'                      => $worksheet[$i]['K'],
+          'suku'                       => $worksheet[$i]['L'],
+          'nama_ayah'                  => $worksheet[$i]['M'],
+          'nama_ibu'                   => $worksheet[$i]['N'],
+          'pddk_akhir'                 => $worksheet[$i]['O'],
+          'pekerjaan'                  => $worksheet[$i]['P'],
+          'disabilitas'                => $worksheet[$i]['Q'],
+          'akseptor'                   => $worksheet[$i]['R'],
+          'lembaga_pemerintahan'       => $worksheet[$i]['S'],
+          'lembaga_kemasyarakatan'     => $worksheet[$i]['T'],
+          'alamat'                     => $worksheet[$i]['U'],
+          'rt'                         => $worksheet[$i]['V'],
+          'dusun'                      => $worksheet[$i]['W'],
+          'desa'                       => $worksheet[$i]['X'],
+          'kecamatan'                  => $worksheet[$i]['Y'],
+          'kabupaten'                  => $worksheet[$i]['Z'],
+          'provinsi'                   => $worksheet[$i]['AA'],
+          'kewarganegaraan'            => $worksheet[$i]['AB']
            );
 
       $this->db->insert('master_data_penduduk_', $ins);

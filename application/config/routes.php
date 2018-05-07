@@ -153,6 +153,10 @@ $route['notifikasi/baca/(:any)']    = 'office/notifikasi_baca/$1';
  /* -----------------------------------------------------------------------
                         PERTANAHAN SISTEM ROUTE
  ----------------------------------------------------------------------- */
+$route['koordinat']                       = 'pertanahan/koordinat';
+$route['import/koordinat_tengah']         = 'pertanahan/import_koordinat_tengah';
+
+
 $route['pertanahan/data']                 = 'pertanahan/data_view';
 $route['pertanahan/permohonan']           = 'pertanahan/permohonan';
 $route['pertanahan/berita_acara']         = 'pertanahan/berita_acara';
@@ -222,6 +226,9 @@ $route['import/data']               = 'datapenduduk/import';
 $route['koordinat/tengah']                  = 'pertanahan/input_koordinat_tengah';
 $route['get/koordinat/tengah/(:any)']       = 'pertanahan/get_koordinat_tengah/$1';
 $route['update/koordinat/tengah']           = 'pertanahan/update_koordinat_tengah';
+
+
+$route['titik_tengah/json']                 = 'stream/v2_koordinat_tanah';
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
 $route['koordinat/tanah']                   = 'pertanahan/input_koordinat';

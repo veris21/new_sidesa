@@ -624,6 +624,48 @@ class Pertanahan_model extends CI_Model{
      return $this->db->get('data_link');
    }
 
+
+
+  //  ===============================================
+
+  public function koordinat_tengah_all(){
+    return $this->db->get('koordinat_tengah');
+  }
+
+  public function koordinat_tengah_nik(){
+    $this->db->select('koor.*, p.nama nama, p.alamat alamat');
+    $this->db->from('koordinat_tengah koor, master_data_penduduk_ p');
+    $this->db->where('koor.nik=p.no_nik');
+    return $this->db->get();
+
+    // $query = "SELECT p.nama as nama, koor.latitude as latitude, koor.longitude as longitude, koor.nik as nik, koor.dokumentasi as dokumentasi 
+    // FROM koordinat_tengah as koor, master_data_penduduk_ as p WHERE p.no_nik = koor.nik";
+    // $this->db->query($query);
+    // return;
+  }
+
+
+  public function upload_data($fileName){
+    ini_set('memory_limit', '-1');
+    // $inputFileName = './assets/uploader/import/'.$filename;
+    try {
+    $objPHPExcel = PHPExcel_IOFactory::load('./assets/uploader/import/'.$fileName);
+    } catch(Exception $e) {
+    die('Error loading file :' . $e->getMessage());
+    }
+
+    $worksheet = $objPHPExcel->getActiveSheet()->toArray(null,true,true,true);
+    $numRows = count($worksheet);
+    for ($i=1; $i < ($numRows+1) ; $i++) {
+      $ins = array(
+          'nik'                      => $worksheet[$i]['A'],
+          'latitude'                 => $worksheet[$i]['B'],
+          'longitude'                => $worksheet[$i]['C'],
+          'dokumentasi'              => $worksheet[$i]['D']
+           );
+      $this->db->insert('koordinat_tengah', $ins);
+    }
+  }
 }
 
 /* ======================================

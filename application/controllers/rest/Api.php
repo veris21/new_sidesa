@@ -47,5 +47,5 @@ class Api extends CI_Controller{
     $data['results'] = $this->master_model->_get_villages_one($id)->row_array();
     echo json_encode($data);
   }
-
+  
 }

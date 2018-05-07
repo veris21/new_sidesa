@@ -1,10 +1,9 @@
 $(document).ready(function() {
     'use strict';
-
+    var base_url = window.location.origin + '/' + window.location.pathname.split ('/') [1] + '/';
     if ($('#map-object').length !== 0) {
         // var mapCenter = new google.maps.LatLng(47.603138, -122.332302);
         var mapCenter = new google.maps.LatLng(-2.858830, 107.906900);
-
         var map = new google.maps.Map(document.getElementById('map-object'), {
             zoom: 10,
             scrollwheel: false,
@@ -67,7 +66,7 @@ $(document).ready(function() {
         });
 
         $.ajax({
-            'url': 'assets/v2/data/listings.json',
+            'url':  base_url +'titik_tengah/json',
             'success': function (data) {
                 var markers = [];
                 var infobox = new InfoBox({
@@ -90,31 +89,35 @@ $(document).ready(function() {
                         infobox.isOpen = false;
                     });
                 });
-
                 $.each(data, function (index, value) {
+                    // var lat = parseFloat(value.latitude);
+                    // var lng =  parseFloat(value.latitude);
+                    // console.log('Lat '+ lat+ ' Lng '+ lng);
+                    console.log('Lat ' + value.latitude + ' Lng '+ value.longitude);
+                    // var markerCenter = new google.maps.LatLng(lat,lng);
                     var markerCenter = new google.maps.LatLng(value.latitude, value.longitude);
                     var verified = '';
                     var area = '';
 
-                    if (value.verified) {
+                    if (value.verified==1) {
                         verified = '<div class="marker-verified"><i class="fa fa-check"></i></div>';
                     }
 
                     if (value.area && value.area != 'false') {                        
                         area = '<div class="marker-price">' + value.area + '</div>'
                     }
-
+                    // var base_url = ;
                     var markerTemplate = 
-                        '<div id="marker-' + value.id + '" class="marker">' +
+                        '<div id="marker-' + parseFloat(value.id) + '" class="marker">' +
                             '<div class="marker-inner">' + 
-                                '<span class="marker-image" style="background-image: url(' + value.thumbnail + ');"></span>' + 
+                                '<span class="marker-image" style="background-image: url('+  base_url + 'assets/uploader/patok/' + value.dokumentasi + ');"></span>' + 
                             '</div>' +
                             verified + 
-                            area + 
+                            value.nik + 
                         '</div>';
 
                     var marker = new RichMarker({
-                        id: value.id,
+                        id: parseFloat(value.id),
                         data: value,
                         flat: true,
                         position: markerCenter,
@@ -126,12 +129,12 @@ $(document).ready(function() {
 
                     google.maps.event.addListener(marker, "click", function () {
                         var c = '<div class="infobox"><div class="infobox-close"><i class="fa fa-close"></i></div>' +
-                            '<h3 class="infobox-title"><a href="listing.html">' + marker.data.title + '</a></h3>' +
-                            '<h4 class="infobox-address">' + marker.data.address + '</h4>' +
+                            '<h3 class="infobox-title"><a href="#">' + marker.data.nama + '</a></h3>' +
+                            '<h4 class="infobox-address">No. Nik '+ marker.data.nik +' </h4>' +
                             '<div class="infobox-content">' +
-                            '<div class="infobox-image" style="background-image: url(' + marker.data.thumbnail + ');"></div>' +
-                            '<div class="infobox-body"><div class="infobox-body-inner"><div class="infobox-price">'+marker.data.area+' m<sup>2</sup></div><div class="infobox-category tag">'+marker.data.status+'</div><p><strong>Class aptent taciti sociosqu ad litora torquent per conubia nostra.</strong></p><p>Etiam vehicula nisi sem, a volutpat diam lacinia eu. Vivamus lorem est, eleifend et urna sed.</p></div>' +
-                            '<div class="infobox-more"><a href="#">Read More <i class="fa fa-chevron-right"></i></a></div>' +
+                            '<div class="infobox-image" style="background-image: url(' + base_url + '/assets/uploader/patok/'+ marker.data.dokumentasi + ');"></div>' +
+                            '<div class="infobox-body"><div class="infobox-body-inner"><div class="infobox-price">'+marker.data.area+' m<sup>2</sup></div><div class="infobox-category tag">'+marker.data.status+'</div><p><strong>Lokasi : '+ marker.data.alamat  +'.</strong></p><p>Alamat Pemilik:  '+ marker.data.alamat  +' <br>Dusun '+ marker.data.alamat +'.</p></div>' +
+                            '<div class="infobox-more"><a href="'+ base_url +'public/pertanahan/details/'+ marker.data.nik +'">Read More <i class="fa fa-chevron-right"></i></a></div>' +
                             '</div>' +
                             '<div>';
 
@@ -154,6 +157,7 @@ $(document).ready(function() {
                                 infobox.markerId = marker.id;
                             }
                         }
+                        console.log(location + '/assets/uploader/patok/'+ marker.data.dokumentasi);
                     });
                 });
 
