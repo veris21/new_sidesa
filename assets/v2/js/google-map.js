@@ -1,6 +1,7 @@
 $(document).ready(function() {
     'use strict';
     var base_url = window.location.origin + '/' + window.location.pathname.split ('/') [1] + '/';
+    console.log(base_url);
     if ($('#map-object').length !== 0) {
         // var mapCenter = new google.maps.LatLng(47.603138, -122.332302);
         var mapCenter = new google.maps.LatLng(-2.858830, 107.906900);
