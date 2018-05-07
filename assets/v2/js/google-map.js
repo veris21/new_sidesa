@@ -67,9 +67,15 @@ $(document).ready(function() {
                 "stylers": [{"color": "#fefefe"}, {"lightness": 17}, {"weight": 1.2}]
             }]
         });
-
+        var filter_nik = $("[name='nik']").val();
+        if (filter_nik!=''){
+            var url_filter = base_url+ 'titik_berdasar_nik/'+filter_nik;
+        }else{
+            var url_filter = base_url +'titik_tengah/json';
+        }
+        
         $.ajax({
-            'url':  base_url +'titik_tengah/json',
+            'url':  url_filter,
             'success': function (data) {
                 var markers = [];
                 var infobox = new InfoBox({

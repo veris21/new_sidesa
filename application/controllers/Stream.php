@@ -133,6 +133,12 @@ function perbaikan()
         ->set_output(json_encode($this->pertanahan_model->koordinat_tengah_nik()->result()));
   }
 
+  public function v2_koordinat_nik($nik){
+    $this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($this->pertanahan_model->koordinat_tengah_nik_one($nik)->result()));
+  }
+
   /*===============================================================================*/
 
 }

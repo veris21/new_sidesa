@@ -644,6 +644,14 @@ class Pertanahan_model extends CI_Model{
     // return;
   }
 
+  public function koordinat_tengah_nik_one($nik){
+    $this->db->select('koor.*, p.nama nama, p.alamat alamat');
+    $this->db->from('koordinat_tengah koor, master_data_penduduk_ p');
+    $this->db->where('koor.nik=p.no_nik');
+    $this->db->where('koor.nik', $nik);
+    return $this->db->get();
+  }
+
 
   public function upload_data($fileName){
     ini_set('memory_limit', '-1');

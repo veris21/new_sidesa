@@ -154,6 +154,7 @@ $route['notifikasi/baca/(:any)']    = 'office/notifikasi_baca/$1';
                         PERTANAHAN SISTEM ROUTE
  ----------------------------------------------------------------------- */
 $route['koordinat']                       = 'pertanahan/koordinat';
+
 $route['import/koordinat_tengah']         = 'pertanahan/import_koordinat_tengah';
 
 
@@ -229,6 +230,7 @@ $route['update/koordinat/tengah']           = 'pertanahan/update_koordinat_tenga
 
 
 $route['titik_tengah/json']                 = 'stream/v2_koordinat_tanah';
+$route['titik_berdasar_nik/(:any)']         = 'stream/v2_koordinat_nik/$1';
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
 $route['koordinat/tanah']                   = 'pertanahan/input_koordinat';
