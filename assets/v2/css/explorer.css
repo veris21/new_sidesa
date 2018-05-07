@@ -7246,6 +7246,7 @@ input[type=radio]::-ms-expand {
 
 .map-inner {
   height: calc(100vh - 60px);
+  height: 100vh;
   overflow: hidden;
   width: 100%; }
   .fullscreen .map-inner {
@@ -7332,8 +7333,8 @@ input[type=radio]::-ms-expand {
   pointer-events: none;
   position: absolute;
   right: 0;
-  top: 70%;
-  transform: translateY(-30%);
+  top: 65%;
+  transform: translateY(-35%);
   z-index: 2; }
 
 .map-filter, .hero-image-filter {
