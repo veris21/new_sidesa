@@ -27,7 +27,7 @@
                 </div>
                 <!-- /.map-toolbar-group -->
               </div>
-              <!-- /.map-toolbar -->
+              <!-- /.map-toolbar --> 
               <div class="map-filter-wrapper">
                 <div class="container-fluid">
                   <div class="map-filter">
