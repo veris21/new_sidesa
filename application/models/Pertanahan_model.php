@@ -652,6 +652,10 @@ class Pertanahan_model extends CI_Model{
     return $this->db->get();
   }
 
+  public function _post_titik_pemutihan($post){
+    return $this->db->insert('koordinat_tengah', $post);
+  }
+
 
   public function upload_data($fileName){
     ini_set('memory_limit', '-1');

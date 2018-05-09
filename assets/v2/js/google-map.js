@@ -1,9 +1,9 @@
 $(document).ready(function() {
     'use strict';
     // var base_url = window.location.origin + '/' + window.location.pathname.split ('/') [1] + '/';
-    var base_url = 'https://si-desa.id/';
-    // var base_url = 'http://localhost/SIA-GTG.github/';
-    console.log(base_url);
+    // var base_url = 'https://si-desa.id/';
+    var base_url = 'http://localhost/SIA-GTG.github/';
+    // console.log(base_url);
     if ($('#map-object').length !== 0) {
         // var mapCenter = new google.maps.LatLng(47.603138, -122.332302);
         var mapCenter = new google.maps.LatLng(-2.858830, 107.906900);
@@ -67,13 +67,16 @@ $(document).ready(function() {
                 "stylers": [{"color": "#fefefe"}, {"lightness": 17}, {"weight": 1.2}]
             }]
         });
-        var filter_nik = $("[name='nik']").val();
-        if (filter_nik!=''){
-            var url_filter = base_url+ 'titik_berdasar_nik/'+filter_nik;
-        }else{
-            var url_filter = base_url +'titik_tengah/json';
-        }
-        
+
+        var url_filter = base_url +'titik_tengah/json';
+
+        $('#nik').on('keypress', ()=>{
+            var filter_nik = $('[name="nik"]').val();
+            url_filter = base_url+ 'titik_berdasar_nik/'+filter_nik;
+            console.log(filter_nik);
+            console.log(url_filter);
+        });
+
         $.ajax({
             'url':  url_filter,
             'success': function (data) {
@@ -99,11 +102,7 @@ $(document).ready(function() {
                     });
                 });
                 $.each(data, function (index, value) {
-                    // var lat = parseFloat(value.latitude);
-                    // var lng =  parseFloat(value.latitude);
-                    // console.log('Lat '+ lat+ ' Lng '+ lng);
                     console.log('Lat ' + value.latitude + ' Lng '+ value.longitude);
-                    // var markerCenter = new google.maps.LatLng(lat,lng);
                     var markerCenter = new google.maps.LatLng(value.latitude, value.longitude);
                     var verified = '';
                     var area = '';
@@ -166,13 +165,13 @@ $(document).ready(function() {
                                 infobox.markerId = marker.id;
                             }
                         }
-                        console.log(location + '/assets/uploader/patok/'+ marker.data.dokumentasi);
+                        // console.log(location + '/assets/uploader/patok/'+ marker.data.dokumentasi);
                     });
                 });
 
                 var cluster = [
                     {
-                        url: 'assets/v2/img/cluster.png',
+                        url: base_url+'assets/v2/img/cluster.png',
                         textColor: 'white',
                         height: 36,
                         width: 36

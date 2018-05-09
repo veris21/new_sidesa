@@ -45,10 +45,10 @@
                       </div>
                       <!-- /.form-group -->
                       <div class="form-group">
-                        <input type="text" class="form-control" name="nik" placeholder="NIK/Pemilik Surat">
+                        <input type="text" id="nik" class="form-control" name="nik" placeholder="NIK/Pemilik Surat">
                       </div>
                       <!-- /.form-group -->
-                      <button type="button" onclick="filter_data()" class="btn">Filter Data</button>
+                      <button type="button" id="filter_data" class="btn">Filter Data</button>
 
                       <a onclick="refresh()" class="btn btn-warning">Reset</a>
                     </form>

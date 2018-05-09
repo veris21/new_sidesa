@@ -163,6 +163,9 @@ function nonaktifkan_setting_sms(id){
     });
   });
 }
+
+
+
 var api_method = '';
 function add_api(){
   api_method = 'add_api';
@@ -1997,6 +2000,41 @@ function save_setting_one(){
 function validate_setting_pass(){
   
 }
+
+
+
+// PEMUTIHAN DATA================
+function input_tengah_one(){
+  $('#input_master_titik')[0].reset();
+  $('#modal_master_titik').modal('show');
+  // console.log('input tengah one');
+}
+
+function save_tengah_one(){
+  var url = baseUrl + 'pemutihan/titik_tengah';
+  $('#input_master_titik').submit(function (evt) {
+    evt.preventDefault();
+    var formData = new FormData($(this)[0]);
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: formData,
+      async: false,
+      cache: false,
+      contentType: false,
+      enctype: 'multipart/form-data',
+      processData: false,
+      success: function (data) {
+        swal('Selamat !', 'Berhasil Input Data Koordinat Ke Sistem!', 'success');
+        location.reload();
+      }, error: function (jqXHR, textStatus, errorThrown) {
+        swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
+      }
+    });
+  });}
+
+
+// ===============================
 
 /*/================================================/*/
 /*/                                                /*/

@@ -231,6 +231,8 @@ $route['update/koordinat/tengah']           = 'pertanahan/update_koordinat_tenga
 
 $route['titik_tengah/json']                 = 'stream/v2_koordinat_tanah';
 $route['titik_berdasar_nik/(:any)']         = 'stream/v2_koordinat_nik/$1';
+
+$route['pemutihan/titik_tengah']            = 'pemutihan/pemutihan_koordinat_tengah';
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
 $route['koordinat/tanah']                   = 'pertanahan/input_koordinat';

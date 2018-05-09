@@ -486,6 +486,11 @@ class Pertanahan extends CI_Controller{
    /*-------------------------------------------------------------------------*/
   //                           MAPS KOORDINAT                                 //
   /*------------------ Titik Tengah Koordinat / Marker ----------------------*/
+
+  /*------------------------------------------------------------------------*/
+  
+
+  /*------------------------------------------------------------------------*/
   public function input_koordinat_tengah(){
     if(isset($_FILES['patok'])){
       $patok = time()."-".$_FILES['patok']['name'];
