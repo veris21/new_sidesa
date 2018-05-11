@@ -54,13 +54,13 @@
             </ul>
           </li>
         <!-- Data Tanah -->
-        <li>
+        <!-- <li>
           <a href="<?php echo base_url().'pertanahan/data'; ?>">
           <i class="fa fa-search"></i> 
           <span>Cek Data Tanah</span>
           </a>
-        </li>
-        <li class="treeview">
+        </li> -->
+        <!-- <li class="treeview">
         <a href="#">
           <i class="fa fa-laptop"></i>
           <span>Layanan Pertanahan</span>
@@ -72,7 +72,8 @@
           <li><a href="<?php echo base_url().'pertanahan/surat_tanah'; ?>"><i class="fa fa-circle-o"></i> Data SKT Release</a></li>
           <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
         </ul>
-      </li>        <?php
+      </li> -->
+      <?php
           break;
           case "KAUR":
         ?>
@@ -98,7 +99,7 @@
         <?php
           $kasi = $this->notifikasi_model->_get_data_kasi_pemerintahan($this->session->userdata('desa_id'))->row_array();
          if($this->session->userdata('id') == $kasi['id']){ ?>
-        <li class="treeview">
+        <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
             <span>Layanan Pertanahan</span>
@@ -110,7 +111,7 @@
             <li><a href="<?php echo base_url().'pertanahan/surat_tanah'; ?>"><i class="fa fa-circle-o"></i> Data SKT Release</a></li>
             <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
-        </li>
+        </li> -->
         <?php } ?>
         <?php
           break;
@@ -137,7 +138,7 @@
           </a>
         </li>
         <!-- Data Tanah -->
-        <li class="treeview">
+        <!-- <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
             <span>Layanan Pertanahan</span>
@@ -147,7 +148,7 @@
             <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>"><i class="fa fa-circle-o"></i>Permohonan Data Pertanahan</a></li>
             <li><a href="<?php echo base_url().'pertanahan/data'; ?>"><i class="fa fa-circle-o"></i> Cek Data Pertanahan</a></li>
           </ul>
-        </li>
+        </li> -->
         <?php
         break;
         case 'PERTANAHAN':
@@ -159,7 +160,7 @@
         </a>
         </li>
         <!-- Data Tanah -->
-        <li>
+        <!-- <li>
         <a href="<?php echo base_url().'pertanahan/data'; ?>">
         <i class="fa fa-search"></i>
         <span>Cek Data Tanah</span>
@@ -177,7 +178,7 @@
             <li><a href="<?php echo base_url().'pertanahan/surat_tanah'; ?>"><i class="fa fa-circle-o"></i> Data SKT Release</a></li>
             <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
-        </li>
+        </li> -->
         <?php
         break;
         case 'BPD':

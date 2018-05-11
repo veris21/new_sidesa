@@ -32,7 +32,7 @@ class Stream extends CI_Controller{
   }
 
 // MAINTENANCE TEMPLATE
-function perbaikan()
+  function perbaikan()
   {
       $data['title']          = TITLE . 'Open Data Pertanahan Publik';
       $this->load->view(UMUM.'maintenance', $data);
@@ -43,6 +43,13 @@ function perbaikan()
     $data['data']           = array('id'=>$id);
     $data['main_content']   = UMUM.'details';
     $this->load->view(UMUM. 'public_stream', $data);
+  }
+
+  public function details_skt($nik){
+    $data['penduduk'] = [];
+    $data['status'] = TRUE;
+    $data['penduduk'] = $this->datapenduduk_model->get_nik_one($nik)->row_array();
+    $this->output->set_content_type('application/json')->set_output(json_encode($data));
   }
 
   public function cek_validasi($id){

@@ -18,7 +18,7 @@ class Office extends CI_Controller{
       $data['arsip']          = $this->arsip_model->arsip_masuk()->num_rows();
       $data['pelayanan']      = 0;
       $data['surat']          = 0;
-      $data['tanah']          = 0;
+      $data['tanah']          = $this->pertanahan_model->koordinat_tengah_nik()->num_rows();
       $this->load->view('template', $data);
   }
 

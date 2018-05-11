@@ -70,6 +70,12 @@ class Datapenduduk_model extends CI_Model{
     return;
   }
 
+  public function get_nik_one($nik){
+    $this->db->where('no_nik', $nik);
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
 
 // =----------------------------------=
 

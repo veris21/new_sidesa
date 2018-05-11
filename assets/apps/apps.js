@@ -223,6 +223,32 @@ function save_data_api(){
 }
 // ==========================
 // Pertanahan
+var v2_input_tengah = '';
+
+function v2_input_koordinat_tengah(){
+  $('#input_master_titik')[0].reset();
+  $('#modal_master_titik').modal('show');
+  $('.modal-title').text('Input Data Koordinat');
+}
+
+function v2_edit_koordinat_tengah(){
+  $('#input_master_titik')[0].reset();
+  $('#modal_master_titik').modal('show');
+  $('.modal-title').text('Edit Data Koordinat');
+}
+
+
+function v2_hapus_koordinat_tengah(){
+
+}
+
+function v2_save_koordinat_tengah(){
+  
+  
+}
+
+
+
 $("#list_permohonan").DataTable({
   responsive: true,
 });

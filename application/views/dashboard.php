@@ -53,12 +53,12 @@
       <div class="small-box bg-maroon">
         <div class="inner">
           <h3><?php echo $tanah;?></h3>
-          <p>Data Surat Tanah Terindeks</p>
+          <p>Data Koordinat Tanah Terindeks</p>
         </div>
         <div class="icon">
           <i class="ion ion-pie-graph"></i>
         </div>
-        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="<?php echo base_url('koordinat');?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
   </div>

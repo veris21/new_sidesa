@@ -33,8 +33,8 @@
         break;
     default:
         ?> 
-    <h3 class="box-title">Apa Anda ingin menginput Data Penduduk Baru ?</h3>       
-    <button class="btn btn-sm btn-flat btn-success" onclick="input_koordinat_tengah()" >Iya, Input Data <i class="fa fa-plus"></i></button>
+    <h3 class="box-title">Apa Anda ingin menginput Data Koordinat Baru ?</h3>       
+        <button class="btn btn-sm btn-flat btn-success" onclick="v2_input_koordinat_tengah()" >Iya, Input Data <i class="fa fa-plus"></i></button>
         <?php
         break;
         
@@ -57,11 +57,11 @@
             // if($data!= '' || $data !=null){
             foreach ($data as $koor) {
             echo "<tr>";
-            echo "<td>a/n. : ".$koor->nama." /No NIK.".$koor->nik."</td>";
+            echo "<td>a/n. : ".$koor->nama." <br> No NIK.".$koor->nik."</td>";
             echo "<td>".$koor->latitude."</td>";
             echo "<td>".$koor->longitude."</td>";
             echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$koor->dokumentasi."' /></td>";
-            echo "<td></td>";
+            echo "<td align='center'> <button onclick='v2_edit_koordinat_tengah()' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> <button onclick='v2_hapus_koordinat_tengah()' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> </td>";
             echo "</tr>";
             } 
             // }else{
@@ -76,7 +76,10 @@
 </div>
 
 <hr>
-
+<?php 
+        switch ($this->session->userdata('jabatan')) {
+        case 'ROOT':
+?>
 <div class="box">
     <div class="box-header">
         <h3 class="box-title">Data Semua Koordinat Tersimpan</h3>
@@ -96,26 +99,30 @@
         </thead>
         <tbody>
             <?php             
-            // if($data!= '' || $data !=null){
+            if($dataAll!= '' || $dataAll !=null){
             foreach ($dataAll as $data) {
             echo "<tr>";
             echo "<td>No NIK.".$data->nik."</td>";
             echo "<td>".$data->latitude."</td>";
             echo "<td>".$data->longitude."</td>";
             echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$data->dokumentasi."' /></td>";
-            echo "<td></td>";
+            echo "<td align='center'> <a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a> <a href='".base_url('koordinat')."' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></a> </td>";
             echo "</tr>";
             } 
-            // }else{
-            //     echo "<tr>";
-            //     echo "<td colspan='6' align='center'><h3>Data Yang Matching Kosong !!</h3></td>";
-            //     echo "</tr>";
-            // }
+            }else{
+                echo "<tr>";
+                echo "<td colspan='6' align='center'><h3>Data Yang Matching Kosong !!</h3></td>";
+                echo "</tr>";
+            }
              ?>
         </tbody>
         </table>
     </div>
 </div>
+
+<?php 
+    }
+?>
 </section>
 
 
