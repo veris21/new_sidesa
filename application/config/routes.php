@@ -58,11 +58,11 @@ $route['disposisi/validasi/(:any)']          = 'stream/cek_validasi_disposisi/$1
 /* -----------------------------------------------------------------------
                         RESET DATABASE ROUTE
  ----------------------------------------------------------------------- */
-$route['reset/database']            = 'master/reset';
-$route['reset/pertanahan']          = 'master/reset_pertanahan';
-$route['reset/arsip']               = 'master/reset_arsip';
-$route['reset/notifikasi']          = 'master/reset_notifikasi';
-$route['reset/session']             = 'master/reset_session';
+// $route['reset/database']            = 'master/reset';
+// $route['reset/pertanahan']          = 'master/reset_pertanahan';
+// $route['reset/arsip']               = 'master/reset_arsip';
+// $route['reset/notifikasi']          = 'master/reset_notifikasi';
+// $route['reset/session']             = 'master/reset_session';
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
 

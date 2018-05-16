@@ -10,13 +10,19 @@ class Auth_model extends CI_Model{
   }
 
   public function auth($uid, $pass){
-      $this->db->select('u.*, j.jabatan, d.nama_desa');
+      $this->db->select('u.*, j.jabatan, d.nama_desa, d.kode_desa');
       $this->db->from('users u, jabatan j, desa d');
       $this->db->where('u.uid', $uid);
       $this->db->where('u.pass', $pass);
       $this->db->where('u.jabatan_id=j.id');
       return $this->db->get();
   }
+
+  public function auth_desa($kode_desa){
+    $this->db->where('kode_desa', $kode_desa);
+    $this->db->from('desa');
+    return $this->db->get();
+ }
 
   public function get_user_id($id){
     return $this->db->get_where('users', array('id'=>$id));

@@ -1,8 +1,11 @@
 /*==============================================
       AUTH UID VALIDATE
 ===============================================*/
+$("[data-mask]").inputmask();
+
 function validate(){
     event.preventDefault();
+    var kode_desa = $('[name="kode_desa"]').val();
     var uid = $('[name="uid"]').val();
     var pass = $('[name="pass"]').val();
     $('#overlay').show();

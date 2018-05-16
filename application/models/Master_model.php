@@ -34,17 +34,17 @@ class Master_model extends CI_Model{
   // ==================================================================
 
   public function reset_pertanahan(){
-    $this->db->truncate('permohonan_pertanahan'); 
-    $this->db->truncate('pernyataan_pertanahan'); 
-    $this->db->truncate('berita_acara_pertanahan'); 
-    $this->db->truncate('data_link');
-    $this->db->truncate('data_koordinat');
+    // $this->db->truncate('permohonan_pertanahan'); 
+    // $this->db->truncate('pernyataan_pertanahan'); 
+    // $this->db->truncate('berita_acara_pertanahan'); 
+    // $this->db->truncate('data_link');
+    // $this->db->truncate('data_koordinat');
     return;  
   }
 
  public function reset_arsip(){
-    $this->db->truncate('arsip_masuk'); 
-    $this->db->truncate('disposisi'); 
+    // $this->db->truncate('arsip_masuk'); 
+    // $this->db->truncate('disposisi'); 
     return;  
   }
    
@@ -53,11 +53,11 @@ class Master_model extends CI_Model{
   }
 
   public function reset_session(){
-    return $this->db->truncate('log_sessions');
+    // return $this->db->truncate('log_sessions');
   }
 
   public function reset_notifikasi(){
-    return $this->db->truncate('notifikasi');
+    // return $this->db->truncate('notifikasi');
   }
   // // ============ FAST SEARCH
   // public function get_proses($id)
@@ -148,7 +148,7 @@ class Master_model extends CI_Model{
 
   public function _get_desa_details($id){
     $query = "SELECT 
-    d.id as id, d.nama_desa as nama_desa, d.alamat_desa as alamat_desa,
+    d.id as id, d.nama_desa as nama_desa, d.alamat_desa as alamat_desa, d.kode_desa as kode_desa,
 
     kades.id as kades_id,
     kades.fullname as fullname_kades, 

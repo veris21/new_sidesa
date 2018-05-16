@@ -60,7 +60,7 @@ public function arsip_input(){
           $kepada_id = $hp_kades['id'];
           $jabatan = $hp_kades['jabatan'];
           $nama_desa = $hp_kades['nama_desa'];
-          $message = 'NOTIFIKASI ARSIP : Yth. '.$jabatan.' '.$nama_desa.' SUrat dari '.$pengirim.', Sifat Surat : '.$sifat.', Perihal : '.$perihal.' (SiDesa Sistem)';
+          $message = 'ARSIP MASUK: Yth. '.$jabatan.' '.$nama_desa.' Surat dari '.$pengirim.', Sifat Surat : '.$sifat.', Perihal : '.$perihal.' (Si-Desa ID)';
           $to = $hp_kades['hp'];
           sms_notifikasi($to, $message); 
           $link = "arsip/".$sekarang;
@@ -134,7 +134,17 @@ public function balasan_setujui($id){
     if($check){                           
       echo json_encode(array("status" => TRUE));             
     }
+} 
+
+public function balasan_revisi($id){
+  $insert = array('status'=>99);
+  // $memo_revisi = $this->input->post('memo');
+  $check = $this->arsip_model->_post_arsip_balasan($id, $insert);
+    if($check){                           
+      echo json_encode(array("status" => TRUE));             
+    }
 }
+
 
 public function arsip_cari(){
   $data['title']          = TITLE . 'Arsip Data';

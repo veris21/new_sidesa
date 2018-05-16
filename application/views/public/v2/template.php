@@ -134,6 +134,10 @@
           <h3>Welcome To Our System</h3>
           <?php echo form_open('',array('id'=>'auth','class'=>'form-dark')); ?>
             <div class="form-group">
+            <!-- <input type="text" class="form-control" id="kode_desa" name="kode_desa"  data-inputmask="'mask': ['999.99-99.999', '999.99-99.999']" data-mask> -->
+            <input type="text" class="form-control" id="kode_desa" name="kode_desa"  >
+            </div>
+            <div class="form-group">
               <input type="text" class="form-control" name="uid" placeholder="Username">
             </div>
             <!-- /.form-group -->
@@ -174,6 +178,13 @@
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/particles.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/explorer.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/explorer-map-search.js"></script>
+<!--      -->
+<script src="<?php echo base_url().THEME; ?>plugins/input-mask/jquery.inputmask.js"></script>
+<script src="<?php echo base_url().THEME; ?>plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="<?php echo base_url().THEME; ?>plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<!--      -->
+
+
     <script type="text/javascript" >/*/ Base Setting /*/ var baseUrl = '<?php echo base_url();?>';</script>
     <script type="text/javascript" src="<?php echo base_url().APPS.'auth.js';?>"></script>
   </body>

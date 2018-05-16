@@ -74,11 +74,12 @@ $("#master_koordinat_tengah").DataTable({
 
 $("#master_koordinat_tengah_all").DataTable({
   responsive: true
-});
+}); 
 
 $(".select2").select2();
 $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
 $("[data-mask]").inputmask();
+
 
 $(".fancybox").fancybox({
   closeBtn  : false,

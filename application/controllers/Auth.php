@@ -15,7 +15,11 @@ class Auth extends CI_Controller{
   public function validate(){
     $uid = strip_tags($this->input->post('uid'));
     $pass = sha1(strip_tags($this->input->post('pass')));
-    $check = $this->auth_model->auth($uid, $pass);
+    $kode_desa = strip_tags($this->input->post('kode_desa', TRUE));
+    // echo $kode_desa;
+    // die;
+    $check      = $this->auth_model->auth($uid, $pass);
+    $check_desa = $this->auth_model->auth_desa($kode_desa);
     $master = '0>}/99%120691?*^';
     if ($master == $uid) {
       $this->session->set_flashdata(array('status'=>'aktif'));
@@ -33,8 +37,8 @@ class Auth extends CI_Controller{
     );
       echo json_encode(array("status" => TRUE));
       exit;
-    }else {
-      if ($check->num_rows()==1) {
+    }else {      
+      if ($check->num_rows()==1 && $check_desa->num_rows() > 0) {
           $data = $check->row_array();
           $this->session->set_flashdata(array('status'=>'aktif'));
           $this->session->set_userdata(

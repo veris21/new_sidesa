@@ -121,6 +121,7 @@
               <dd><?php 
               $desa= $this->master_model->_get_desa_id($this->session->userdata('desa_id'))->row_array();
               echo "Desa ".$desa['nama_desa']." Kecamatan ".$desa['nama_kecamatan']." Kabupaten ".$desa['nama_kabupaten'];
+              echo "<h5>".$desa['kode_desa']."</h5>";
               ?></dd>
           </div>
         </div>
@@ -251,8 +252,10 @@
   </div>-->
   <?php //endif; ?>
 
-<?php if($this->session->userdata('jabatan') == 'PERTANAHAN'){; ?>
-<div class="row">
+<?php
+//  if($this->session->userdata('jabatan') == 'PERTANAHAN'){; 
+ ?>
+<!-- <div class="row">
 <div class="col-lg-12 col-xs-12">
       <div class="small-box bg-purple">
         <div class="inner">
@@ -264,8 +267,10 @@
         <a onclick="add_titik_tengah()" class="small-box-footer">Aktifkan Data GPS <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div>
-</div>
+</div> -->
 <?php 
-}
+// }
 ?>
+
+
 </section>

@@ -102,7 +102,7 @@ $(document).ready(function() {
                     });
                 });
                 $.each(data, function (index, value) {
-                    console.log('Lat ' + value.latitude + ' Lng '+ value.longitude);
+                    // console.log('Lat ' + value.latitude + ' Lng '+ value.longitude);
                     var markerCenter = new google.maps.LatLng(value.latitude, value.longitude);
                     var verified = '';
                     var area = '';
