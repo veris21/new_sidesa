@@ -34,7 +34,7 @@ class Office extends CI_Controller{
 
   function sms_kirim(){
     $pilihan = strip_tags($this->input->post('pilihan_type'));    
-    $message = strip_tags($this->input->post('message'))."(SMS dari Sistem SiDesa Gantung)";
+    $message = strip_tags($this->input->post('message'))."(No-replay SMS dari Si-DesaID Gantung)";
     $desa_id = $this->session->userdata('desa_id');
     switch ($pilihan) {
       case 0:
