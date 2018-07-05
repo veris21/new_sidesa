@@ -150,8 +150,8 @@ class Stream extends CI_Controller{
 
   public function grafik_public(){
     $data['title']          = TITLE . 'Open Data Pertanahan Publik';
-    // $data['main_content']   = UMUM.'v2/belum_tersedia';
-    $data['main_content']   = UMUM.'v2/grafik_publik';
+    $data['main_content']   = UMUM.'v2/belum_tersedia';
+    // $data['main_content']   = UMUM.'v2/grafik_publik';
     $this->load->view(UMUM. 'v2/template', $data);
 }
 
