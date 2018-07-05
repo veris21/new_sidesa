@@ -34,8 +34,12 @@ $route['auth']                      = 'auth/validate';
 /* -----------------------------------------------------------------------
                        PUBLIC ROUTE
  ----------------------------------------------------------------------- */
+ $route['public']                           = 'stream';
 
-$route['public']                            = 'stream';
+ $route['public/grafik']                    = 'stream/grafik_public';
+ $route['public/kelompok/umur']             = 'stream/kelompok_umur';
+ $route['public/kelompok/pekerjaan']        = 'stream/kelompok_pekerjaan'; 
+ 
 $route['public/pertanahan/details/(:any)']  = 'stream/details_skt/$1';
 $route['api/stream/desa/(:any)']            = 'stream/cari_data_per_desa/$1';
 $route['api/stream/dusun/(:any)']           = 'stream/cari_data_per_dusun/$1';

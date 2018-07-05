@@ -1,6 +1,7 @@
 /*==============================================
       AUTH UID VALIDATE
 ===============================================*/
+// var baseUrl = 'http://localhost/SIA-GTG.github/';
 $("[data-mask]").inputmask();
 
 function validate(){

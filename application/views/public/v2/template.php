@@ -1,3 +1,4 @@
+<?php $active_link = $this->uri->segment(4);?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,12 +42,16 @@
                 <div class="primary-nav-wrapper">
                   <ul class="nav">
                     <li class="nav-item">
-                      <a href="#" class="nav-link active">Home</a>
+                      <a href="<?php echo base_url();?>" class="nav-link <?php  echo ($active_link == '' ? 'active' : ''); ?>">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="<?php echo base_url().'public/grafik'; ?>" class="nav-link <?php echo ($active_link == 'grafik' ? 'active' : ''); ?>">Grafik Data Penduduk</a>
                     </li>
                     
                      
                     <li class="nav-item has-sub-menu has-mega-menu">
-                      <a href="#" class="nav-link ">Kependudukan</a>
+                      <a href="#" class="nav-link <?php echo ($active_link == 'kelompok' ? 'active' : ''); ?>">Grafik Data Kependudukan</a>
                       <div class="sub-menu mega-menu">
                         <ul>
                           <li>
@@ -94,7 +99,7 @@
                     </li>
 
                     <li class="nav-item has-sub-menu">
-                      <a href="#" class="nav-link ">Pertanahan &amp; Aset Desa</a>
+                      <a href="#" class="nav-link <?php echo ($active_link == 'data_pertanahan' ? 'active' : ''); ?>">Pertanahan &amp; Aset Desa</a>
                       <ul class="sub-menu">
                         <li><a href="#">Fasilitas Umum</a></li>
                         <li><a href="#">Pertanian &amp; Perkebunan</a></li>
@@ -179,13 +184,21 @@
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/explorer.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/explorer-map-search.js"></script>
 <!--      -->
-<script src="<?php echo base_url().THEME; ?>plugins/input-mask/jquery.inputmask.js"></script>
-<script src="<?php echo base_url().THEME; ?>plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="<?php echo base_url().THEME; ?>plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!--      -->
+
+    <!--  -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script> -->
+    <!--  -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+  </script>
+
+    <script src="<?php echo base_url().THEME; ?>plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="<?php echo base_url().THEME; ?>plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="<?php echo base_url().THEME; ?>plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <!--      -->
 
 
     <script type="text/javascript" >/*/ Base Setting /*/ var baseUrl = '<?php echo base_url();?>';</script>
     <script type="text/javascript" src="<?php echo base_url().APPS.'auth.js';?>"></script>
+    <script type="text/javascript" src="<?php echo base_url().APPS.'chart_data.js';?>"></script>
   </body>
 </html>
