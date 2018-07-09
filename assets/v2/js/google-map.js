@@ -1,8 +1,8 @@
 $(document).ready(function() {
     'use strict';
     // var base_url = window.location.origin + '/' + window.location.pathname.split ('/') [1] + '/';
-    var base_url = 'https://si-desa.id/';
-    // var base_url = 'http://localhost/SIA-GTG.github/';
+    // var base_url = 'https://si-desa.id/';
+    var base_url = 'http://localhost/SIA-GTG.github/';
     // console.log(base_url);
     if ($('#map-object').length !== 0) {
         // var mapCenter = new google.maps.LatLng(47.603138, -122.332302);

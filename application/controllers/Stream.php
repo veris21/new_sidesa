@@ -44,14 +44,14 @@ class Stream extends CI_Controller{
     $data['main_content']   = UMUM.'details';
     $this->load->view(UMUM. 'public_stream', $data);
   }
-
+// 
   public function details_skt($nik){
     $data['penduduk'] = [];
     $data['status'] = TRUE;
     $data['penduduk'] = $this->datapenduduk_model->get_nik_one($nik)->row_array();
     $this->output->set_content_type('application/json')->set_output(json_encode($data));
   }
-
+// 
   public function cek_validasi($id){
     $data['title']          = TITLE . 'Open Data Pertanahan Publik';
     $data['data']           = $this->pertanahan_model->_get_validasi_skt($id)->row_array();

@@ -20,3 +20,4 @@ ERROR - 2018-07-05 20:09:06 --> 404 Page Not Found: Public/grafik_public
 ERROR - 2018-07-05 20:09:07 --> 404 Page Not Found: Public/grafik_public
 ERROR - 2018-07-05 20:09:09 --> 404 Page Not Found: Public/grafik_public
 ERROR - 2018-07-05 21:40:58 --> 404 Page Not Found: Assets/v2
+ERROR - 2018-07-05 22:38:16 --> Severity: error --> Exception: Call to a member function row_array() on null C:\Bitnami\wampstack-7.0.23-0\apache2\htdocs\SIA-GTG.github\application\controllers\Stream.php 51
