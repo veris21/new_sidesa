@@ -28,6 +28,22 @@ public function arsip_detail($id){
   $this->load->view('template', $data);
 }
 
+// ARSIP DETAILS API
+
+public function arsip_detail_api($id){
+  $desa_id = $this->session->userdata('desa_id');
+  $data['title']          = TITLE . 'Arsip Data';
+  $data['status']         = ($this->arsip_model->get_arsip_one($id)->row_array() !=null ? 200 : 404);
+  $data['data']           = $this->arsip_model->get_arsip_one($id)->row_array();
+  // $data['kepada']         = $this->arsip_model->_get_user_same_desa($desa_id)->result();
+  // $data['main_content']   = ARSIP . 'arsip_details';
+  // $this->load->view('template', $data);
+  // echo json_encode($data);
+  return $this->output->set_content_type('application/json')->set_status_header($data['status'])->set_output(json_encode($data));
+  
+}
+
+
 public function arsip_input(){
   if(isset($_FILES['scan_link'])){
         $fileName = time()."-".$_FILES['scan_link']['name'];

@@ -66,6 +66,7 @@
         <div class="box-footer">
             <div class="pull-right">
                 <button type="reset" class="btn btn-flat btn-warning">Reset <i class="fa fa-ban"></i></button>
+                <!-- <a href="<?php //echo base_url('cek_sms');?>" class="btn btn-flat btn-warning"></a> -->
                 <button onclick="kirim_sms()" type="submit" class="btn btn-flat btn-success">Kirim SMS <i class="fa fa-paper-plane"></i></button>
                 
             </div>

@@ -8,7 +8,7 @@ class Sms extends CI_Controller{
     parent::__construct();
     cek_login();
   }
-
+ 
   function cek_sms()
   {
 

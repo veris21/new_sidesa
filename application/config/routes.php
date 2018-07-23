@@ -141,6 +141,11 @@ $route['arsip/balasan/setujui/(:any)']  = 'arsip/balasan_setujui/$1';
 $route['disposisi/tandai/baca/(:any)']  = 'disposisi/tandai_baca/$1';
 $route['disposisi/post']                = 'disposisi/input';
 $route['disposisi/cetak/']              = 'disposisi/cetak/$1';
+
+$route['api/arsip/details/(:any)']          = 'arsip/arsip_detail_api/$1';
+
+// API ARSIP
+
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
 
@@ -148,7 +153,7 @@ $route['disposisi/cetak/']              = 'disposisi/cetak/$1';
 /* -----------------------------------------------------------------------
                        NOTIFIKASI ROUTE
  ----------------------------------------------------------------------- */
-
+$route['cek_sms']                   = 'sms/notifikasi_cek';
 $route['notifikasi/list']           = 'office/notifikasi_list';
 $route['notifikasi/baca/(:any)']    = 'office/notifikasi_baca/$1';
 /* -----------------------------------------------------------------------

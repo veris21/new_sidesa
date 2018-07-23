@@ -21,6 +21,27 @@ var sisa;
 var koordinat_method = '';
 var bap_method = '';
 
+// SMS API SWIFT
+// uses JQuery library
+// var postUrl = "http://smsgateway.ca/services/message.svc/"
+//   + accountKey + "/" + destinationNumber
+// var body = JSON.stringify({
+//   MessageBody: "Message Body"
+// });
+// $.ajax({
+//     url: postUrl,
+//     method: "POST",
+//     contentType: "application/json;charset=UTF-8",
+//     data: body
+// }).done(function(response) {
+//   alert(response);
+// }).error(function (xhr, textStatus, errorThrown) {
+//   alert (xhr.responseText);
+// });
+
+
+
+
 
 $(function () {
   $('.main-img').imgPreload();
