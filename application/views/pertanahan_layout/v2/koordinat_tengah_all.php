@@ -49,7 +49,7 @@
             <td>Latitude</td>
             <td>Longitude</td>
             <td>Dokumentasi</td>
-            <td>Action</td>
+            <!-- <td>Action</td> -->
         </tr>
         </thead>
         <tbody>
@@ -61,7 +61,7 @@
             echo "<td>".$koor->latitude."</td>";
             echo "<td>".$koor->longitude."</td>";
             echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$koor->dokumentasi."' /></td>";
-            echo "<td align='center'> <button onclick='v2_edit_koordinat_tengah()' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> <button onclick='v2_hapus_koordinat_tengah()' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> </td>";
+            // echo "<td align='center'> <button onclick='v2_edit_koordinat_tengah()' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> <button onclick='v2_hapus_koordinat_tengah()' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> </td>";
             echo "</tr>";
             } 
             // }else{
