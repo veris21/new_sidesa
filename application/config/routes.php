@@ -163,6 +163,7 @@ $route['notifikasi/baca/(:any)']    = 'office/notifikasi_baca/$1';
                         PERTANAHAN SISTEM ROUTE
  ----------------------------------------------------------------------- */
 $route['koordinat']                       = 'pertanahan/koordinat';
+$route['delete/titik_tengah/(:num)']      = 'pertanahan/delete_master_tengah/$1';
 
 $route['import/koordinat_tengah']         = 'pertanahan/import_koordinat_tengah';
 

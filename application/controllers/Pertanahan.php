@@ -829,6 +829,13 @@ class Pertanahan extends CI_Controller{
       $data['data']                    =   $this->pertanahan_model->koordinat_tengah_nik()->result();
       $this->load->view('template', $data);
   }           
+} 
+
+public function delete_master_tengah($id){
+  $check = $this->pertanahan_model->delete_koordinat_tengah_one($id);
+    if($check){
+      echo json_encode(array("status" => TRUE));         
+    }
 }
 
   // public function import_koordinat_tengah(){

@@ -106,7 +106,11 @@
             echo "<td>".$data->latitude."</td>";
             echo "<td>".$data->longitude."</td>";
             echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$data->dokumentasi."' /></td>";
-            echo "<td align='center'> <a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a> <a href='".base_url('koordinat')."' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></a> </td>";
+            echo "<td align='center'> <a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
+            ?>
+            <button onclick="delete_tengah_one(<?php echo $data->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
+            <?php 
+            echo "</td>";
             echo "</tr>";
             } 
             }else{
