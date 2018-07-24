@@ -26,7 +26,7 @@
         <center id="loader-icon" style="display:none;">
             <img width="50%" class="img img-responsive" src="<?php echo base_url('assets/nyapu.gif');?>" />
         </center>
-        <button type="submit" name="upload" class="btn btn-sm btn-flat btn-warning btn-block">Import Excel <i class="fa fa-excel-o"></i> </button>
+        <button type="submit" name="upload" class="btn btn-sm btn-flat btn-warning">Import Excel <i class="fa fa-excel-o"></i> </button>
       </div>
     <?php 
     echo form_close();
