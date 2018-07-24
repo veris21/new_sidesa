@@ -26,7 +26,7 @@ class Office extends CI_Controller{
     $desa_id = $this->session->userdata('desa_id');
     $sms = $this->master_model->get_user_on($desa_id)->result();
     foreach ($sms as $sms) {
-          $pesan = "Kepada Yth.".$sms->fullname."(".$sms->keterangan_jabatan.") Akun SiDesa anda telah diaktifkan dengan username/UID: ".$sms->uid." dan Password Default : 123456 . silahkan login menggunakan akun tersebut ke Sistem dengan alamat ".base_url('login')." (--no replay SMS SiDesa Server)";
+          $pesan = "Kepada Yth.".$sms->fullname."(".$sms->keterangan_jabatan.") Akun SiDesa anda telah diaktifkan dengan username/UID: ".$sms->uid." dan Password : 123456 . silahkan login menggunakan akun tersebut ke Sistem dengan alamat ".base_url('login')." (--no replay Server)";
           sms_notifikasi($sms->hp, $pesan);          
         }
     echo json_encode(array("status" => TRUE));
@@ -34,13 +34,13 @@ class Office extends CI_Controller{
 
   function sms_kirim(){
     $pilihan = strip_tags($this->input->post('pilihan_type'));    
-    $message = strip_tags($this->input->post('message'))."(No-replay SMS dari Si-DesaID Gantung)";
+    $message = strip_tags($this->input->post('message'))."--No-replay SiDesa ID Gantung";
     $desa_id = $this->session->userdata('desa_id');
     switch ($pilihan) {
       case 0:
         $perDesa = $this->master_model->get_user_on($desa_id);
         foreach ($perDesa->result() as $perDesa) {
-          $pesan = "Kepada Yth.".$perDesa->keterangan_jabatan.": ".$message;
+          $pesan = "Yth.".$perDesa->keterangan_jabatan.": ".$message;
           sms_notifikasi($perDesa->hp, $pesan);
         }
         echo json_encode(array("status" => TRUE));
@@ -50,11 +50,11 @@ class Office extends CI_Controller{
         $dusun = $this->master_model->get_rt_dusun($dusun_id);
         $uidKadus = $dusun->row_array();
         $kadus = $this->master_model->_get_user_id($uidKadus['uid'])->row_array();
-        $pesan = "Kepada Yth.".$kadus['keterangan_jabatan'].": ".$message;
+        $pesan = "Yth.".$kadus['keterangan_jabatan'].": ".$message;
         sms_notifikasi($kadus['hp'], $pesan);
         foreach ($dusun->result() as $perDusun) {
           $rt = $this->master_model->_get_user_id($perDusun->uid)->row_array();
-          $pesan = "Kepada Yth.".$rt['keterangan_jabatan'].": ".$message;
+          $pesan = "Yth.".$rt['keterangan_jabatan'].": ".$message;
           sms_notifikasi($rt['hp'], $pesan);
         }        
         echo json_encode(array("status" => TRUE));
@@ -62,7 +62,7 @@ class Office extends CI_Controller{
       case 2:
       $pilihan_user = strip_tags($this->input->post('pilihan_user'));
       $perUser = $this->master_model->_get_user_id($pilihan_user)->row_array();
-      $pesan = "Kepada Yth.".$perUser['keterangan_jabatan'].": ".$message;
+      $pesan = "Yth.".$perUser['keterangan_jabatan'].": ".$message;
       sms_notifikasi($perUser['hp'],$pesan);
       echo json_encode(array("status" => TRUE));
         break;

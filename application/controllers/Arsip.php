@@ -76,7 +76,7 @@ public function arsip_input(){
           $kepada_id = $hp_kades['id'];
           $jabatan = $hp_kades['jabatan'];
           $nama_desa = $hp_kades['nama_desa'];
-          $message = 'ARSIP MASUK: Yth. '.$jabatan.' '.$nama_desa.' Surat dari '.$pengirim.', Sifat Surat : '.$sifat.', Perihal : '.$perihal.' (Si-Desa ID)';
+          $message = 'SIDESA ARSIP: Yth. '.$jabatan.' '.$nama_desa.' Pengirim : '.$pengirim.', Sifat : '.$sifat.', Prihal : '.$perihal.'--No-Replay';
           $to = $hp_kades['hp'];
           sms_notifikasi($to, $message); 
           $link = "arsip/".$sekarang;
@@ -121,7 +121,7 @@ public function balasan_arsip(){
           $nama_desa = $hp_sekdes['nama_desa'];
           $keterangan_jab = $this->session->userdata('keterangan_jabatan');
           $penginput = $this->session->userdata('fullname');
-          $message = 'NOTIFIKASI ARSIP BALASAN : Yth. '.$jabatan.' '.$nama_desa.' Konsep Balasan Arsip yg dibuat dari '.$penginput.'/'.$keterangan_jab.' masuk ke Notifikasi anda menunggu persetujuan (SiDesa Sistem)';
+          $message = 'SIDESA - ARSIP BALASAN : Yth. '.$jabatan.' '.$nama_desa.' Draft Balasan Arsip yg dibuat dari '.$penginput.'/'.$keterangan_jab.' masuk ke Notifikasi anda menunggu persetujuan (SiDesa ID)';
           $to = $hp_sekdes['hp'];
           sms_notifikasi($to, $message); 
           $link = "arsip/".$arsip_time;
