@@ -42,7 +42,7 @@ public function arsip_detail_api($id){
 public function arsip_list_api(){
   // $desa_id = $this->session->userdata('desa_id');
   $data['title']          = TITLE . 'Arsip List';
-  $data['status']         = ($this->arsip_model->arsip_masuk() !=null ? 200 : 404);
+  $data['status']         = ($this->arsip_model->arsip_masuk()->result() !=null ? 200 : 404);
   $data['arsip_masuk']    = $this->arsip_model->arsip_masuk()->result();
   return $this->output->set_content_type('application/json')->set_status_header($data['status'])->set_output(json_encode($data));
   // echo json_decode($data);
