@@ -142,7 +142,8 @@ $route['disposisi/tandai/baca/(:any)']  = 'disposisi/tandai_baca/$1';
 $route['disposisi/post']                = 'disposisi/input';
 $route['disposisi/cetak/']              = 'disposisi/cetak/$1';
 
-$route['api/arsip/details/(:any)']          = 'arsip/arsip_detail_api/$1';
+$route['api/arsip/details/(:any)']      = 'arsip/arsip_detail_api/$1';
+$route['api/arsip/list']                = 'arsip/arsip_list_api';
 
 // API ARSIP
 
