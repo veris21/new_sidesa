@@ -240,8 +240,11 @@ $route['get/koordinat/tengah/(:any)']       = 'pertanahan/get_koordinat_tengah/$
 $route['update/koordinat/tengah']           = 'pertanahan/update_koordinat_tengah';
 
 
-$route['titik_tengah/json']                 = 'stream/v2_koordinat_tanah';
 $route['titik_berdasar_nik/(:any)']         = 'stream/v2_koordinat_nik/$1';
+
+// =========================== API =============================================
+$route['api/titik_tengah/json']             = 'pertanahan/api_koordinat_tanah';
+
 
 $route['pemutihan/titik_tengah']            = 'pemutihan/pemutihan_koordinat_tengah';
 /* -----------------------------------------------------------------------

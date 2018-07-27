@@ -134,11 +134,11 @@ class Stream extends CI_Controller{
     echo json_encode($data);
   }
 
-  public function v2_koordinat_tanah(){
-    $this->output
-        ->set_content_type('application/json')
-        ->set_output(json_encode($this->pertanahan_model->koordinat_tengah_nik()->result()));
-  }
+  // public function v2_koordinat_tanah(){
+  //   $this->output
+  //       ->set_content_type('application/json')
+  //       ->set_output(json_encode($this->pertanahan_model->koordinat_tengah_nik()->result()));
+  // }
 
   public function v2_koordinat_nik($nik){
     $this->output

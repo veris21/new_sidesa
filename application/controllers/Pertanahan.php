@@ -838,6 +838,16 @@ public function delete_master_tengah($id){
     }
 }
 
+// API Controller
+
+public function api_koordinat_tanah(){
+  $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode($this->pertanahan_model->koordinat_tengah_nik()->result()));
+}
+
+
+
   // public function import_koordinat_tengah(){
 
   // }

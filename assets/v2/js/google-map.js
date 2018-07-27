@@ -68,7 +68,7 @@ $(document).ready(function() {
             }]
         });
 
-        var url_filter = base_url +'titik_tengah/json';
+        var url_filter = base_url +'api/titik_tengah/json';
 
         $('#nik').on('keypress', ()=>{
             var filter_nik = $('[name="nik"]').val();
