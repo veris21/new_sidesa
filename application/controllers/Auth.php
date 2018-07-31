@@ -40,24 +40,24 @@ class Auth extends CI_Controller{
     }else {      
       if ($check->num_rows()==1 && $check_desa->num_rows() > 0) {
           $data = $check->row_array();
-          $this->session->set_flashdata(array('status'=>'aktif'));
-          $this->session->set_userdata(
-            array(
-              'status_login'=>'oke',
-              'id'          =>$data['id'],
-              'fullname'    =>$data['fullname'],
-              'jabatan'     =>$data['jabatan'],
-              'desa_id'     =>$data['desa_id'],
-              'keterangan_jabatan' => $data['keterangan_jabatan'],
-              'avatar'      =>$data['avatar'],
-              'hp'          =>$data['hp'],
-              'last_login'  =>$data['time']
-          )
+          $set = array(
+            'status' => TRUE,
+            'status_login'=>'oke',
+            'id'          =>$data['id'],
+            'fullname'    =>$data['fullname'],
+            'jabatan'     =>$data['jabatan'],
+            'desa_id'     =>$data['desa_id'],
+            'keterangan_jabatan' => $data['keterangan_jabatan'],
+            'avatar'      =>$data['avatar'],
+            'hp'          =>$data['hp'],
+            'last_login'  =>$data['time']
           );
+          $this->session->set_flashdata(array('status'=>'aktif'));
+          $this->session->set_userdata($set);
           $sekarang = time();
           $this->db->where('id', $data['id']);
           $this->db->update('users', array('time'=>$sekarang));
-          echo json_encode(array("status" => TRUE));
+          echo json_encode($set);
           exit;
       }else {          
         echo json_encode(array("status" => FALSE)); 
