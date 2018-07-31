@@ -172,7 +172,7 @@
                 case 1:
                 $id = $data['id'];
                 $pernyataan = $this->pertanahan_model->_get_pernyataan($id)->row_array();
-                if($pernyataan!=''||$pernyataan!=null){
+                if($pernyataan!=''|| $pernyataan!=null){
                 ?>
                 <div class="box box-info">
                     <div class="box-body">

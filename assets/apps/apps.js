@@ -1251,7 +1251,7 @@ swal({
           ,error: function (jqXHR, textStatus, errorThrown)
             {
               swal('Astagapeer','Ade Nok Salah Mudel e...!','error');
-              // location.reload();
+              location.reload();
             }
         });
 });
