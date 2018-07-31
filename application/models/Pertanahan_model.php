@@ -88,9 +88,8 @@ class Pertanahan_model extends CI_Model{
   }
 
   public function _post_berita_acara($insert){
-    $this->db->insert('berita_acara_pertanahan', $insert);
-    // return $this->db->insert_id();
-    return;
+    return $this->db->insert('berita_acara_pertanahan', $insert);
+    // return $this->db->insert_id();    
   }
 
   public function get_bap_list(){

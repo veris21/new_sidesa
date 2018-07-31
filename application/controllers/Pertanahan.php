@@ -461,9 +461,10 @@ class Pertanahan extends CI_Controller{
       'kasi_pemerintahan'=>$kasi_pemerintahan['id'],
       'status_bap'=> 0
     );
-    $this->notifikasi_model->posting_notifikasi($posting);
+    // $this->notifikasi_model->posting_notifikasi($posting);
     $check = $this->pertanahan_model->_post_berita_acara($insert);
     if($check){
+      $this->notifikasi_model->posting_notifikasi($posting);
       echo json_encode(array("status" => TRUE));
     }
     
