@@ -36,7 +36,7 @@ class Auth extends CI_Controller{
       $this->session->set_flashdata(array('status'=>'aktif'));
       $this->session->set_userdata($data['userdata']);
       
-      echo json_encode($data);
+      echo json_encode(array($data['userdata']));
       exit;
     }else {      
       if ($check->num_rows()==1 && $check_desa->num_rows() > 0) {
