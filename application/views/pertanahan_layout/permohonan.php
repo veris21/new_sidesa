@@ -287,11 +287,12 @@
       <div class="form-group">
       <label class="control-label col-sm-4" for="">Kabupaten</label>
             <div class="col-sm-8">
-              <select name="kabupaten" class="form-control select2" style="width:100%;" id="">
-                <option value="">-- Pilih Kabupaten --</option>
+              <select name="provinsi" class="form-control select2" style="width:100%;" id="">
+                <option value="">-- Pilih provinsi --</option>
                 <?php 
-                foreach ($kabupaten as $kabupaten) {
-                  echo "<option value='".$kabupaten->id."'>".$kabupaten->nama_kabupaten."</option>";
+                foreach ($provinsi as $provinsi) {
+                  // echo "<option value='".$kabupaten->id."'>".$kabupaten->nama_kabupaten."</option>";
+                  echo "<option value='".$provinsi->id."'>".$provinsi->name."</option>";
                 }
                 ?>
               </select>
@@ -299,30 +300,43 @@
       </div>
 
       <div class="form-group">
+      <label class="control-label col-sm-4" for="">Kabupaten</label>
+            <div class="col-sm-8">
+              <select name="kabupaten" class="form-control select2" style="width:100%;" id="">
+                
+              </select>
+            </div>
+      </div>
+
+      <div class="form-group">
       <label class="control-label col-sm-4" for="">Kecamatan</label>
             <div class="col-sm-8"  id="kecamatan">
-                <select name='kecamatan' class='form-control select2' style='width:100%'></select>
+                <select name='kecamatan' class='form-control select2' style='width:100%'>
+                </select>
             </div>
       </div>
 
       <div class="form-group">
       <label class="control-label col-sm-4" for="">Desa</label>
             <div class="col-sm-8" id="desa">
-            <select name='desa' class='form-control select2' style='width:100%' ></select>
+            <select name='desa' class='form-control select2' style='width:100%' >
+            </select>
             </div>
       </div>
 
       <div class="form-group">
       <label class="control-label col-sm-4" for="">Dusun</label>
             <div class="col-sm-8" id="dsn">
-            <select name='dusun' class='form-control select2' style='width:100%' ></select>      
+            <input type="text" name="dusun" class="form-control" >
+            <!-- <select name='dusun' class='form-control select2' style='width:100%' ></select>       -->
             </div>
       </div>
 
       <div class="form-group" >
       <label class="control-label col-sm-4" for="">RT</label>
             <div class="col-sm-8" id="rt">
-                <select name='rt' class='form-control  select2' style='width:100%' ></select>
+            <input type="text" name="rt" class="form-control" >
+                <!-- <select name='rt' class='form-control  select2' style='width:100%' ></select> -->
             </div>
       </div>
 

@@ -29,12 +29,19 @@ class Pertanahan extends CI_Controller{
     $desa_id = $this->session->userdata('desa_id');
     $data['title']    = TITLE.'Data Permohonan Tanah';
     $data['main_content'] = PERTANAHAN.'permohonan';
-    $data['kabupaten']    = $this->master_model->_kabupaten_all()->result();
+    $data['provinsi']    = $this->master_model->_get_provinces()->result();
+    // $data['kabupaten']    = $this->master_model->_get_regencies_all()->result();
+    // $data['kecamatan']    = $this->master_model->_get_distric_all()->result();
+    // $data['desa']         = $this->master_model->_get_villages_all()->result();
+
     $data['dusun']        = $this->master_model->dusun_on($desa_id)->result();
+    $data['data']         = $this->pertanahan_model->_get_permohonan()->result();
+    // $data['kabupaten']    = $this->master_model->_kabupaten_all()->result();
+    // $data['dusun']        = $this->master_model->dusun_on($desa_id)->result();
     $data['data']         = $this->pertanahan_model->_get_permohonan()->result();
     $this->load->view('template', $data);
   }
-
+ 
   public function permohonan_view($id){
     $data['title']    = TITLE.'Data Permohonan Tanah';
     $data['main_content'] = PERTANAHAN.'view_permohonan';

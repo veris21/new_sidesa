@@ -800,12 +800,36 @@ $('#dsn').hide();
 $('#rt').hide();
 $('#null').hide();
 
+$('[name="provinsi"]').change(function () {
+  var provinsi = $('[name="provinsi"]').val();
+  $('#kecamatan').hide();
+  $('#desa').hide();
+  // $('#dsn').hide();
+  // $('#rt').hide();
+
+  $.ajax({
+    url: baseUrl + 'get/kabupaten/' + provinsi,
+    type: "GET",
+    dataType: "JSON",
+    success: function (data) {
+      $('#kabupaten').show();
+      if (data.status == true) {
+        $('[name="kabupaten"]').html(data.hasil);
+        console.log(data.hasil);
+      } else {
+        console.log(data);
+      }
+    }
+  });
+});
+
+
 $('[name="kabupaten"]').change(function () {
   var kabupaten = $('[name="kabupaten"]').val();
   $('#kecamatan').hide();
   $('#desa').hide();
-  $('#dsn').hide();
-  $('#rt').hide();
+  // $('#dsn').hide();
+  // $('#rt').hide();
 
   $.ajax({
     url: baseUrl + 'get/kecamatan/' + kabupaten,
@@ -827,8 +851,9 @@ $('[name="kabupaten"]').change(function () {
 $('[name="kecamatan"]').change(function () {
   var kecamatan = $('[name="kecamatan"]').val();
   $('#desa').hide();
-  $('#dsn').hide();
-  $('#rt').hide();  $.ajax({
+  // $('#dsn').hide();
+  // $('#rt').hide();  
+  $.ajax({
     url: baseUrl + 'get/desa/' + kecamatan,
     type: "GET",
     dataType: "JSON",
@@ -846,41 +871,43 @@ $('[name="kecamatan"]').change(function () {
 
 $('[name="desa"]').change(function () {
   var desa = $('[name="desa"]').val();
-  $('#dsn').hide();
-  $('#rt').hide();
-    $.ajax({
-    url: baseUrl + 'get/dusun/' + desa,
-    type: "GET",
-    dataType: "JSON",
-    success: function (desa) {
-      if (desa.status == true) {
-        $('#dsn').show();
-        $('[name="dusun"]').html(desa.hasil);
-        console.log(desa.hasil);
-      } else {
-        console.log(desa);
-      }
-    }
-  });
+  // $('#dsn').hide();
+  // $('#rt').hide();
+    // $.ajax({
+    // url: baseUrl + 'get/dusun/' + desa,
+    // type: "GET",
+    // dataType: "JSON",
+    // success: function (desa) {
+    //   if (desa.status == true) {
+  $('#dsn').show();
+  //       $('[name="dusun"]').html(desa.hasil);
+  //       console.log(desa.hasil);
+  //     } else {
+  //       console.log(desa);
+  //     }
+  //   }
+  // });
 });
+
 
 $('[name="dusun"]').change(function () {
   var dusun = $('[name="dusun"]').val();
-  $('#rt').hide();
-  $.ajax({
-    url: baseUrl + 'get/rt/' + dusun,
-    type: "GET",
-    dataType: "JSON",
-    success: function (dusun) {
-      if (dusun.status == true) {
+
+//   $('#rt').hide();
+//   $.ajax({
+//     url: baseUrl + 'get/rt/' + dusun,
+//     type: "GET",
+//     dataType: "JSON",
+//     success: function (dusun) {
+//       if (dusun.status == true) {
         $('#rt').show();
-        $('[name="rt"]').html(dusun.hasil);
-        console.log(dusun.hasil);
-      } else {
-        console.log(dusun);
-      }
-    }
-  });
+//         $('[name="rt"]').html(dusun.hasil);
+//         console.log(dusun.hasil);
+//       } else {
+//         console.log(dusun);
+//       }
+//     }
+//   });
 });
 
 /* ======================= PENDUDUK MASTER CONTROL SYSTEM ========== */

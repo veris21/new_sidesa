@@ -213,11 +213,12 @@ $route['lampiran/cetak/(:any)']           = 'pertanahan/cetak_lampiran_skt/$1';
  ----------------------------------------------------------------------- */
 $route['cari/nik/(:any)']           = 'datapenduduk/cari_nik/$1';
 $route['cari/skt/(:any)']           = 'pertanahan/cari_skt/$1';
+$route['get/kabupaten/(:any)']      = 'datapenduduk/get_kabupaten/$1';
 $route['get/kecamatan/(:any)']      = 'datapenduduk/get_kecamatan/$1';
 $route['get/desa/(:any)']           = 'datapenduduk/get_desa/$1';
 $route['get/dusun/(:any)']          = 'datapenduduk/get_dusun/$1';
 $route['get/rt/(:any)']             = 'datapenduduk/get_rt/$1';
-/* -----------------------------------------------------------------------
+/* ---------------------------------------------------- -------------------
                        ADMINISTRASI PENDUDUK ROUTE
  ----------------------------------------------------------------------- */
 $route['data_penduduk']             = 'datapenduduk/data_penduduk';

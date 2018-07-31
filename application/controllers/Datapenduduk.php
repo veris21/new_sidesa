@@ -10,12 +10,13 @@ class Datapenduduk extends CI_Controller {
         //Do your magic here
     }
 
-    public function get_kecamatan($id){
-        $kec = $this->master_model->_kecamatan_on($id);
-        $data['hasil'] = "<option value=''>-- Pilih Kecamatan --</option>";
+    public function get_kabupaten($prov_id){
+        $kec = $this->master_model->_get_regencies($prov_id);
+        $data['hasil'] = [];
+        // $data['hasil'] = "<option value=''>-- Pilih kabupaten --</option>";
         if($kec->num_rows() != 0){    
             foreach ($kec->result() as $k) {
-                  $data['hasil'] .= "<option value='".$k->id."'>".$k->nama_kecamatan."</option>";
+                  $data['hasil'] .= "<option value='".$k->id."'>".$k->name."</option>";
             }
             $data['status'] = TRUE;
         }else{
@@ -24,12 +25,28 @@ class Datapenduduk extends CI_Controller {
         echo json_encode($data);
     }
 
-    public function get_desa($id){
-       $kec = $this->master_model->_desa_on($id);
-        $data['hasil'] = "<option value=''>-- Pilih desa --</option>";
+    public function get_kecamatan($regency_id){
+        $kec = $this->master_model->_get_districts($regency_id);
+        $data['hasil'] = [];
+        // $data['hasil'] = "<option value=''>-- Pilih Kecamatan --</option>";
         if($kec->num_rows() != 0){    
             foreach ($kec->result() as $k) {
-                  $data['hasil'] .= "<option value='".$k->id."'>".$k->nama_desa."</option>";
+                  $data['hasil'] .= "<option value='".$k->id."'>".$k->name."</option>";
+            }
+            $data['status'] = TRUE;
+        }else{
+            $data['status'] = FALSE;
+        }  
+        echo json_encode($data);
+    }
+
+    public function get_desa($district_id){
+       $kec = $this->master_model->_get_villages($district_id);
+    //    $data['hasil'] = "<option value=''>-- Pilih desa --</option>";
+       $data['hasil'] = [];
+       if($kec->num_rows() != 0){    
+            foreach ($kec->result() as $k) {
+                  $data['hasil'] .= "<option value='".$k->id."'>".$k->name."</option>";
             }
             $data['status'] = TRUE;
         }else{
@@ -115,11 +132,11 @@ class Datapenduduk extends CI_Controller {
             'shdrt'=>$shdrt,
             'status'=>$status,
             'agama'=>$agama,
-            'id_kabupaten'=>$kabupaten,
-            'id_kecamatan'=>$kecamatan,
-            'id_desa'=>$desa,
-            'id_dusun'=>$dusun,
-            'no_rt'=>$no_rt['nama_rt'],
+            'kabupaten'=>$kabupaten,
+            'kecamatan'=>$kecamatan,
+            'desa'=>$desa,
+            'dusun'=>$dusun,
+            'rt'=>$no_rt['nama_rt'],
             'pddk_akhir'=>$pddk_akhir,
             'alamat'=>$alamat,
             'nama_ayah'=>$nama_ayah,
@@ -190,11 +207,11 @@ class Datapenduduk extends CI_Controller {
             'shdrt'=>$shdrt,
             'status'=>$status,
             'agama'=>$agama,
-            'id_kabupaten'=>$kabupaten,
-            'id_kecamatan'=>$kecamatan,
-            'id_desa'=>$desa,
-            'id_dusun'=>$dusun,
-            'no_rt'=>$no_rt['nama_rt'],
+            'kabupaten'=>$kabupaten,
+            'kecamatan'=>$kecamatan,
+            'desa'=>$desa,
+            'dusun'=>$dusun,
+            'rt'=>$no_rt['nama_rt'],
             'pddk_akhir'=>$pddk_akhir,
             'alamat'=>$alamat,
             'nama_ayah'=>$nama_ayah,
