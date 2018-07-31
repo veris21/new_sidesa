@@ -10,6 +10,26 @@ class Master extends CI_Controller{
     parent::__construct();
   }
 
+  public function user_get_otp($id){
+    $otp = rand(111111,999999);
+    $update = array('otp' => $otp);
+    $check = $this->auth_model->_generate_otp($id, $update);
+    $hp = $this->session->userdata('hp');
+    $pesan = "Ini Adalah Kode OTP (One Time Password) anda adalah  ".$otp."  (SiDesa ID) -- kode ini hanya berlaku 1 (satu kali)";
+    sms_notifikasi($hp, $pesan);
+    if($check){
+      $data = $this->master_model->_get_user_id($id)->row_array();
+      echo json_encode($data);
+    }
+  }
+
+
+
+  public function otp_check($uid){
+    
+  }
+
+
   public function sms_setting()
   {
     $data['title']    = TITLE.'SMS API Master';

@@ -92,5 +92,59 @@ class Auth extends CI_Controller{
       $this->load->view('template', $data);
   }
 
+  function update_user(){
+    $hpLama = $this->session->userdata['hp'];
+    $id = strip_tags($this->input->post('id'));
+    $uid = strip_tags($this->input->post('uid'));
+    $fullname = strip_tags($this->input->post('fullname'));
+    $keterangan_jabatan = strip_tags($this->input->post('keterangan_jabatan'));
+    $hp = strip_tags($this->input->post('hp'));
+    $otp = strip_tags($this->input->post('otp'));
+    $checkOtp = $this->master_model->_get_user_id($id)->row_array();
+    $data = array(
+      'uid'=> $uid,
+      'fullname'=>$fullname,
+      'keterangan_jabatan'=> $keterangan_jabatan,
+      'hp'=> $hp,
+      'otp'=> ''
+    );
+    $pesan = "Kontak Anda diganti menjadi ".$hp." , jika anda merasa tidak melakukan perubahan data kontak HP silahkan menghubungi administrator sistem (SiDesa ID)";
+    if ($otp != $checkOtp['otp']) {
+      echo json_encode(array('status'=> FALSE));
+    }else{
+      $update = $this->master_model->_update_user($id, $data);
+      if($update){
+        if ($hp != $hpLama) {
+          sms_notifikasi($hpLama, $pesan);
+        }  
+        echo json_encode(array('status'=> TRUE));
+      }      
+    }        
+  }
+
+
+  function update_password(){
+    $id = strip_tags($this->input->post('id'));
+    $pass = sha1(strip_tags($this->input->post('pass')));
+    $otp = strip_tags($this->input->post('otp'));
+    $checkOtp = $this->master_model->_get_user_id($id)->row_array();
+    $data2 = array(
+      'pass'=> $pass,
+      'otp'=> ''
+    );
+    $pesan_pass = "Password Masuk Sistem SiDesa ID anda telah DIGANTI, jika anda merasa tidak melakukan perubahan data kontak HP silahkan menghubungi administrator sistem (SiDesa ID)";
+    if ($otp != $checkOtp['otp']) {
+      echo json_encode(array('status'=> FALSE));
+    }else{
+      $update = $this->master_model->_update_user($id, $data2);
+      if($update){
+        if ($pass != $checkOtp['pass']) {
+          sms_notifikasi($checkOtp['hp'], $pesan_pass);
+        }  
+        echo json_encode(array('status'=> TRUE));
+      }      
+    }
+
+  }
 
 }

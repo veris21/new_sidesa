@@ -35,4 +35,10 @@ class Auth_model extends CI_Model{
     return $this->db->get();
   }
 
+
+  public function _generate_otp($id, $update){
+    $this->db->where('id', $id);
+    return $this->db->update('users', $update);
+  }
+
 }

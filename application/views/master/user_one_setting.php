@@ -50,7 +50,9 @@
                </div>
                <div class="col-md-4">
                     <div class="well">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum vitae cum corrupti ratione eos fugit. Modi reprehenderit dolorum repellendus beatae delectus veniam voluptate quasi est. Nam dolore cum quo officia.</p>
+                        <h3>Perhatian !!!</h3>
+                        <hr>
+                        <p>Halaman ini berfungsi untuk memperbaharui data pribadi pengguna terkait Nama Lengkap, dan Nomor HP yang akan digunakan serta password. lingdungi data diri anda demi kenyamanan Data, <i><b>Jangan Pernah memberikan Kode Otentifikasi yang diberikan Sistem Melalui SMS kepada siapapun, karena itu merupakan Otorisasi terringgi terhadap perubahan data pribadi pengguna didalam sistem SiDesa ID</b></i></p>
                     </div>
                </div>
            </div>
@@ -72,8 +74,7 @@
       </div>
       <div class="modal-body form">
         <?php echo form_open('#',array('class'=>'form-horizontal', 'id'=>'setting_user'));?>
-          <input type="hidden" name="id" value="">
-
+          <input type="hidden" name="id" value="<?php echo $this->session->userdata('id');?>">
           <div class="form-body">
 
             <div class="form-group" id="set_uid">
@@ -86,7 +87,7 @@
             <div class="form-group" id="set_nama">
               <label class="control-label col-md-3">Nama Lengkap</label>
               <div class="col-md-9">              
-                <input type="text" class="form-control" >
+                <input type="text" class="form-control" name="fullname">
               </div>
             </div>
             

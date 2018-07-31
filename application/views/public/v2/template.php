@@ -48,7 +48,7 @@
                     <li class="nav-item">
                       <a href="<?php echo base_url().'public/grafik'; ?>" class="nav-link <?php echo ($active_link == 'grafik' ? 'active' : ''); ?>">Grafik Data Penduduk</a>
                     </li>
-                    
+                    <!--  --
                      
                     <li class="nav-item has-sub-menu has-mega-menu">
                       <a href="#" class="nav-link <?php echo ($active_link == 'kelompok' ? 'active' : ''); ?>">Grafik Data Kependudukan</a>
@@ -57,7 +57,7 @@
                           <li>
                             <strong>Kelompok Umur</strong>
                           </li>
-                          <li><a href="#">Balita /Bawah 5 (lima) Tahun)</a></li>
+                          <li><a href="#">Balita /Bawah 5 (lima) Tahun</a></li>
                           <li><a href="#">Remaja</a></li>
                           <li><a href="#">Dewasa</a></li>
                           <li><a href="#">Lansia ( >60 Tahun )</a></li>
@@ -95,9 +95,8 @@
                           <li><a href="#">Lain - Lain</a></li>
                         </ul>
                       </div>
-                      <!-- /.mega-menu -->
                     </li>
-
+                    <!--  -->
                     <li class="nav-item has-sub-menu">
                       <a href="#" class="nav-link <?php echo ($active_link == 'data_pertanahan' ? 'active' : ''); ?>">Pertanahan &amp; Aset Desa</a>
                       <ul class="sub-menu">
