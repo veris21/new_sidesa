@@ -101,13 +101,13 @@
         <td valign="top" colspan="2" width="50%"><p>
         Nomor :<b><?php echo "181/".$data['id']."-PER/".strtoupper($data['nama_desa'])."/".romawi(mdate("%m", $data['time']))."/".mdate("%Y", $data['time']);?></b></p>
         <center>
-            <img width="90" src="<?php echo base_url().QRCODE.$data['qr_link'];?>" alt="logo"><br>
+            <img width="90" src="<?php echo base_url().QRCODE.$data['qr_link'];?>" alt="logo"><br><br>
             <i style="font-size:9px;font-family: Consolas, Monaco, Courier New, Courier, monospace;">(Dokumen ini di generate otomatis melalui sistem SiDesa)</i>
         </center>
         </td>
         <td colspan="2" align="center" width="50%">
             <p><?php echo $data['nama_desa'].", ".mdate("%d", $data['time'])." ".bulan(mdate("%m", $data['time']))." ".mdate("%Y", $data['time']);?>
-            <br>Yang membuat pernyataan,<br><br><br><br><br><i style="font-size:9px;text-align:left;opacity:0.5;">materai 6000</i><br><br><br><br><br><br>
+            <br>Yang membuat pernyataan,<br><br><br><br><i style="font-size:9px;text-align:left;opacity:0.5;">materai 6000</i><br><br><br><br><br><br>
             <b><?php echo $data['nama'];?></b></p>
         </td>
         </tr>
@@ -152,7 +152,7 @@
             <td valign="bottom" colspan="4" width="100%">
                 <p align="center">Mengetahui, <br>
                     KEPALA DESA <?php echo strtoupper($data['nama_desa']);?>
-                    <br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br>
                     <b><?php echo $data['fullname'];?></b>
                 </p>
             </td>
