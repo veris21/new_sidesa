@@ -116,7 +116,7 @@
         </td>
         <td colspan="2" width="40%"></td>
         <td align="center" width="40%">
-            <p>Hormat Saya,<br><br>&nbsp;<br><br><br><br><br>
+            <p>Hormat Saya,<br><br>&nbsp;<br><br><br><br><br><br><br>
             <b><?php echo $data['nama'];?></b></p>
         </td>
         </tr>
