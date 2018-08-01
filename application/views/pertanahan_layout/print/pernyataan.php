@@ -107,7 +107,7 @@
         </td>
         <td colspan="2" align="center" width="50%">
             <p><?php echo $data['nama_desa'].", ".mdate("%d", $data['time'])." ".bulan(mdate("%m", $data['time']))." ".mdate("%Y", $data['time']);?>
-            <br>Yang membuat pernyataan,<br><br><br><br><i style="font-size:9px;text-align:left;opacity:0.5;">materai 6000</i><br><br><br><br><br><br>
+            <br>Yang membuat pernyataan,<br><br><br><br><i style="font-size:9px;text-align:left;opacity:0.5;">materai 6000</i><br><br><br><br>
             <b><?php echo $data['nama'];?></b></p>
         </td>
         </tr>
