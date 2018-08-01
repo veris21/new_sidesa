@@ -275,6 +275,16 @@ class Datapenduduk extends CI_Controller {
             $this->load->view('template', $data);
     }
 
+
+    public function details_penduduk($id){
+        $data['title']                   =   TITLE.'Data Penduduk';
+        $data['main_content']            =   PENDUDUK.'details_penduduk';
+        $data['data']                    =   $this->datapenduduk_model->_get_id_nik($id)->row_array();
+        $this->load->view('template', $data);
+}
+
+
+
 }
 /* End of file DataPenduduk.php */
 

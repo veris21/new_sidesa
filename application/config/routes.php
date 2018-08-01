@@ -227,7 +227,12 @@ $route['data_mutasi']               = 'datapenduduk/mutasi_penduduk';
 
 $route['data_penduduk/input']       = 'datapenduduk/input_penduduk';
 $route['data_penduduk/update']      = 'datapenduduk/update_penduduk';
+// =============  API DATA PENDUDUK =================
 $route['data_penduduk/get/(:any)']  = 'datapenduduk/get_penduduk/$1';
+// ==================================================
+$route['data_penduduk/details/(:num)']    = 'datapenduduk/details_penduduk/$1';
+
+
 $route['import/data']               = 'datapenduduk/import';
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
