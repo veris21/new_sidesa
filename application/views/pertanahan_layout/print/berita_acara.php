@@ -11,7 +11,7 @@
 <div id="container">
   <table>
     <tr>
-      <td align="center"  style="padding-bottom:0;margin-bottom:0;">
+      <td align="center" style="padding-bottom:0;margin-bottom:0;">
 				<img src="<?php echo base_url().'assets/logo-beltim.png'; ?>" alt="Logo" width="80" >
 			</td>
       <td colspan="7" align="center" class="header-surat"  style="padding-bottom:0;margin-bottom:0;">
