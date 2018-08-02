@@ -160,7 +160,7 @@
               break;
             case 'berita_acara':
               $idNotif = $this->pertanahan_model->_get_bap_details($linkHistory[1])->row_array();
-              $link = 'berita_acara/view/'.$idNotif['time'];
+              $link = 'berita_acara/view/'.$idNotif["time_input"];
             break;
             default:
               # code...
