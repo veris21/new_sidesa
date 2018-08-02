@@ -138,13 +138,37 @@
         <?php 
         foreach ($history_notifikasi as $value) {
           $isNotif = explode(" ", $value->message);
+          $linkHistory = explode("/", $value->link);      
           $tipe_notif = ($isNotif[0]!='NOTIFIKASI' ? '<button class="btn btn-warning">'.$isNotif[0].'</button>' : '<button class="btn btn-primary">NOTIFIKASI</button>');
           echo "<tr>";
           echo "<td>".$tipe_notif."</td>";
           echo "<td>".mdate("%d/%m/%Y - %H:%i %a", $value->time)."</td>";
           echo "<td>".mdate("%d/%m/%Y - %H:%i %a", $value->time_read)."</td>";
           echo "<td width='250'>".$value->message."</td>";
-          echo "<td width='70'>".anchor('notif/details/'.$value->id,'<i class="fa fa-eye"></i>', array('class'=>'btn btn-xs btn-success'))." ".anchor('notif/print/'.$value->id,'<i class="fa fa-print"></i>', array('class'=>'btn btn-xs btn-default'))."</td>";
+          echo "<td width='70' align='center'>";
+          switch ($linkHistory[0]) {
+            case 'arsip':
+              $idNotif = $this->arsip_model->get_arsip_one($linkHistory[1])->row_array();
+              $link = 'arsip/details/'.$idNotif['time'];
+              break;
+            case 'permohonan':
+              $idNotif = $this->pertanahan_model->_get_details_one($linkHistory[1])->row_array();
+              $link = 'permohonan/view/'.$idNotif['time'];
+            break;
+            case 'pernyataan':
+              # code...
+              break;
+            case 'berita_acara':
+              $idNotif = $this->pertanahan_model->_get_bap_details($linkHistory[1])->row_array();
+              $link = 'berita_acara/view/'.$idNotif['time'];
+            break;
+            default:
+              # code...
+              break;
+          }
+          echo anchor($link,'<i class="fa fa-eye"></i>', array('class'=>'btn btn-xs btn-success'));
+          
+          echo "</td>";
           echo "</tr>";
 
         }

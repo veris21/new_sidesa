@@ -266,7 +266,8 @@
       <?php echo form_open_multipart('', array('id'=>'data_koordinat','class'=>'form-horizontal'));?>
       <div class="modal-body form">
           
-          <input type="hidden" name="id" value="<?php echo $data['id'];?>">  
+      <input type="hidden" name="id" value="<?php echo $data['id'];?>">  
+      <input type="hidden" name="nik" value="<?php echo $data['no_nik'];?>">  
 
             <div class="box box-warning">
                 <div class="box-body"> 

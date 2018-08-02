@@ -641,11 +641,6 @@ class Pertanahan_model extends CI_Model{
     $this->db->from('koordinat_tengah koor, master_data_penduduk_ p');
     $this->db->where('koor.nik=p.no_nik');
     return $this->db->get();
-
-    // $query = "SELECT p.nama as nama, koor.latitude as latitude, koor.longitude as longitude, koor.nik as nik, koor.dokumentasi as dokumentasi 
-    // FROM koordinat_tengah as koor, master_data_penduduk_ as p WHERE p.no_nik = koor.nik";
-    // $this->db->query($query);
-    // return;
   }
 
   public function koordinat_tengah_nik_one($nik){

@@ -99,6 +99,13 @@ class Office extends CI_Controller{
     }
   }
 
+  public function notifikasi_details($id){
+    $data['title']              = TITLE . 'Notifikasi List';
+    $data['main_content'] = DISPOSISI . 'notifikasi_details';
+    $this->load->view('template', $data);
+
+  }
+
   
 
 }

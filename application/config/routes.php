@@ -157,6 +157,8 @@ $route['api/arsip/list']                = 'arsip/arsip_list_api';
 $route['cek_sms']                   = 'sms/notifikasi_cek';
 $route['notifikasi/list']           = 'office/notifikasi_list';
 $route['notifikasi/baca/(:any)']    = 'office/notifikasi_baca/$1';
+$route['notifikasi/details/(:any)'] = 'office/notifikasi_details/$1';
+
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
 

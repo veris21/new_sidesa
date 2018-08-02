@@ -30,14 +30,9 @@ class Pertanahan extends CI_Controller{
     $data['title']    = TITLE.'Data Permohonan Tanah';
     $data['main_content'] = PERTANAHAN.'permohonan';
     $data['provinsi']    = $this->master_model->_get_provinces()->result();
-    // $data['kabupaten']    = $this->master_model->_get_regencies_all()->result();
-    // $data['kecamatan']    = $this->master_model->_get_distric_all()->result();
-    // $data['desa']         = $this->master_model->_get_villages_all()->result();
 
     $data['dusun']        = $this->master_model->dusun_on($desa_id)->result();
     $data['data']         = $this->pertanahan_model->_get_permohonan()->result();
-    // $data['kabupaten']    = $this->master_model->_kabupaten_all()->result();
-    // $data['dusun']        = $this->master_model->dusun_on($desa_id)->result();
     $data['data']         = $this->pertanahan_model->_get_permohonan()->result();
     $this->load->view('template', $data);
   }
@@ -515,10 +510,28 @@ class Pertanahan extends CI_Controller{
       $keterangan = strip_tags($this->input->post('keterangan'));
       $tanah_id = strip_tags($this->input->post('tanah_id'));
       $status = strip_tags($this->input->post('status'));
+      $nik = strip_tags($this->input->post('nik'));
 
-      $post = array('lat'=>$lat,'lng'=>$lng,'keterangan'=>$keterangan, 'tanah_id'=>$tanah_id,'foto_tanah'=>$patok, 'status'=>$status);
+      $post = array(
+        'lat'=>$lat,
+        'lng'=>$lng,
+        'keterangan'=>$keterangan, 
+        'tanah_id'=>$tanah_id,
+        'foto_tanah'=>$patok, 
+        'status'=>$status
+      );
+      $postingKePublic = array(
+        'nik'=>$nik,
+        'latitude'=>$lat,
+        'longitude'=> $lng,
+        'dokumentasi' => $patok,
+        'verified'=>$status,
+        'status'=>'SURAT KETERANGAN TANAH'
+      );
+      
       $check = $this->pertanahan_model->_post_titik_marker($post);
       if($check){
+        $this->pertanahan_model->_post_titik_pemutihan($postingKePublic);
         echo json_encode(array("status" => TRUE));
       }
     }
