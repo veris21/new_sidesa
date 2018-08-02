@@ -1801,7 +1801,7 @@ function add_koordinat_tengah() {
   };
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
   $('#data_koordinat')[0].reset();
-  $('#patok').hide();
+  // $('#patok').show();
   $('#foto-patok').hide();
   $('#utara').hide();
   $('#selatan').hide();

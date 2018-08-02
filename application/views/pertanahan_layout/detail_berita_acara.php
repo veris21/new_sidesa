@@ -1,3 +1,8 @@
+<?php 
+$lock = ($data['status_bap']==1 ? 'hidden' : '');
+$hiddenAuth = $this->session->userdata['jabatan']; 
+?>
+
 <section class="content-header">
   <h1>
     Details Berita Acara Pemeriksaan Pertanahan
@@ -8,7 +13,6 @@
     <li class="active">Details Berita Acara</li>
   </ol>
 </section>
-<?php $lock = ($data['status_bap']==1 ? 'hidden' : '');?>
 <section class="content">
     <div class="row">
         <div class="col-md-9">
@@ -35,14 +39,18 @@
                     </h3>
                     <p>Silahkan Lihat Keterangan SKT/ Rekomendasi di Halaman Finalisasi SKT/ Surat rekomendasi Penggunaan Tanah</p>
                     <a target="__blank" class="btn btn-block btn-success" href="<?php echo base_url('berita_acara/cetak/'.$data['id']); ?>">Cetak Berita Acara <i class="fa fa-print"></i></a>
-                    <?php
-                    }else{ ?>
+                    
+                    <?php  }else{ ?>
+
                     <p>Dengan menekan tombol dibawah ini, Data Akan disetujui dan di input langsung ke Database Finalisasi SKT / Surat Rekomendasi, dan akan muncul setelah mendapat persetujuan dari sistem dan pejabat terkait untuk print out akhir <b>Surat Keterangan Tanah (SKT) / Surat Rekomendasi Pengelolaan Tanah</b> beserta lampiran</p>
+                    
                     <?php } ?>
                 </div>
+                <?php if($hiddenAuth==='KASI' || $hiddenAuth==='KADES' || $hiddenAuth=='SEKDES'){?>
                 <div class="box-footer">
                 <button onclick="push_data(<?php echo $data['id']; ?>)" class="btn btn-lg btn-success btn-block  <?php echo $lock;?>" >Kunci Data Final <i class="fa fa-lock"></i></button>
                 </div>
+                <?php } ?>
             </div>
         </div>
         </div> 

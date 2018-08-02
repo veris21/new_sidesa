@@ -312,13 +312,16 @@
         <div class="box-body">
             <div class="well">
                 <center><i class="fa fa-lock fa-5x"></i></center>
+                <p>Form Cetak Masih Dikunci. Hanya Bisa di Aktifkan oleh Akun Ototrisasi yang berwenang !!!</p>
             </div>            
         </div>
+        <?php ?>
         <div class="box-footer">
             <button onclick="aktifasi_download()" class="btn btn-warning btn-block">
                 Validasi Data &amp; Buka Kunci
             </button>
         </div>
+        <?php ?>
     </div>
 <?php } ?>
 </section>
