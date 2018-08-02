@@ -315,13 +315,13 @@
                 <p>Form Cetak Masih Dikunci. Hanya Bisa di Aktifkan oleh Akun Ototrisasi yang berwenang !!!</p>
             </div>            
         </div>
-        <?php ?>
+        <?php if($hiddenAuth==='KADES' || $hiddenAuth=='SEKDES'){?>
         <div class="box-footer">
             <button onclick="aktifasi_download()" class="btn btn-warning btn-block">
                 Validasi Data &amp; Buka Kunci
             </button>
         </div>
-        <?php ?>
+        <?php } ?>
     </div>
 <?php } ?>
 </section>
