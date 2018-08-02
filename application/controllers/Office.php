@@ -21,12 +21,13 @@ class Office extends CI_Controller{
       $data['tanah']          = $this->pertanahan_model->koordinat_tengah_nik()->num_rows();
       $this->load->view('template', $data);
   }
-
+ 
   function sms_blast(){
     $desa_id = $this->session->userdata('desa_id');
+    $kode_desa = $this->session->userdata('kode_desa');
     $sms = $this->master_model->get_user_on($desa_id)->result();
     foreach ($sms as $sms) {
-          $pesan = "Kepada Yth.".$sms->fullname."(".$sms->keterangan_jabatan.") Akun SiDesa anda telah diaktifkan dengan username/UID: ".$sms->uid." dan Password : 123456 . silahkan login menggunakan akun tersebut ke Sistem dengan alamat ".base_url('login')." (--no replay Server)";
+          $pesan = "Yth.".$sms->fullname."(".$sms->keterangan_jabatan.") Akun anda telah diaktifkan dengan ID Desa : ".$kode_desa." username: ".$sms->uid." dan Password : 123456 . silahkan login ke Sistem dengan alamat ".base_url('login')." (--SiDesa ID)";
           sms_notifikasi($sms->hp, $pesan);          
         }
     echo json_encode(array("status" => TRUE));
