@@ -43,6 +43,16 @@ class Master_model extends CI_Model{
   public function _get_villages_one($id){
     return $this->db->get_where('villages', array('id'=>$id));
   }
+  public function _get_districts_one($id){
+    return $this->db->get_where('districts', array('id'=>$id));
+  }
+  public function _get_regencies_one($id){
+    return $this->db->get_where('regencies', array('id'=>$id));
+  }
+  public function _get_provinces_one($id){
+    return $this->db->get_where('provinces', array('id'=>$id));
+  }
+
 
   // ==================================================================
 

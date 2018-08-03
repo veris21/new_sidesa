@@ -760,12 +760,25 @@ class Pertanahan extends CI_Controller{
   }
 
   public function cetak_skt($id){
-    $data['title'] = TITLE.'Cetak Berita Acara';
-    $data['data']  = $this->pertanahan_model->_get_skt_one($id)->row_array();
+    $data['title']      = TITLE.'Cetak Berita Acara';
+    $data['data']       = $this->pertanahan_model->_get_skt_one($id)->row_array();
+    $data['desa']       = $this->master_model->_get_villages_one($data['data']['desa_penduduk_id'])->row_array();
+    $data['kecamatan']  = $this->master_model->_get_districts_one($data['data']['kecamatan_penduduk_id'])->row_array();
+    $data['kabupaten']  = $this->master_model->_get_regencies_one($data['data']['kabupaten_penduduk_id'])->row_array();
+    $data['provinsi']   = $this->master_model->_get_provinces_one($data['data']['provinsi_penduduk_id'])->row_array();
     // $this->load->view(PERTANAHAN.'print/surat_tanah', $data);
     $html = $this->load->view(PERTANAHAN.'print/surat_tanah', $data, TRUE);
     $this->pdfgenerator->generate($html, $data['data']['nama']." - SURAT KETERANGAN TANAH (".date('d - M - Y').")");
   }
+
+  public function cetak_cover($id){
+    $data['title'] = TITLE.'Cetak Cover';
+    $data['data']  = $this->pertanahan_model->_get_skt_one($id)->row_array();
+    // $this->load->view(PERTANAHAN.'print/surat_tanah', $data);
+    $html = $this->load->view(PERTANAHAN.'print/surat_tanah', $data, TRUE);
+    $this->pdfgenerator->generate($html, $data['data']['nama']." - COVER SURAT KETERANGAN (".date('d - M - Y').")");
+  }
+
 
   public function cetak_denah_skt($id){
     $data['title'] = TITLE.'Lampiran I - Denah - ';

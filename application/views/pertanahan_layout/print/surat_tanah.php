@@ -70,7 +70,7 @@
         
         <tr>
             <td>Alamat</td>
-            <td colspan="3" align="left">: <?php echo $data['alamat'].",".$data['nama_dusun'].", ".$data['nama_desa'].", ".$data['nama_kecamatan'].", ".$data['nama_kabupaten'];?></td>
+            <td colspan="3" align="left">: <?php echo $data['alamat'].", ".$desa['name'].", ".$kecamatan['name'].", ".$kabupaten['name'].", ".$provinsi['name'];?></td>
         </tr>
         <tr>
             <td colspan="4"></td>
