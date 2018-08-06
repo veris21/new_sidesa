@@ -9,7 +9,7 @@
    
 </head>
 <body id="logo-back">
-<div id="container" class="cover">
+<div id="cover">
   <table>
     <tr>
       <td align="center"  style="padding-bottom:0;margin-bottom:0;">
