@@ -7480,7 +7480,7 @@ input[type=radio]::-ms-expand {
     display: block;
     position: absolute;
     right: -10px;
-    top: 50%;
+    top: 50%; 
     transform: translateY(-50%); }
 
 .marker-verified {

@@ -121,7 +121,7 @@ $(document).ready(function() {
                                 '<span class="marker-image" style="background-image: url('+  base_url + 'assets/uploader/patok/' + value.dokumentasi + ');"></span>' + 
                             '</div>' +
                             verified + 
-                            value.nama + 
+                            '<div class="marker-price">'+value.nama +'</div>' + 
                         '</div>';
 
                     var marker = new RichMarker({
@@ -139,6 +139,7 @@ $(document).ready(function() {
                         var c = '<div class="infobox"><div class="infobox-close"><i class="fa fa-close"></i></div>' +
                             '<h3 class="infobox-title"><a href="#">' + marker.data.nama + '</a></h3>' +
                             // '<h4 class="infobox-address">No. Nik '+ marker.data.nik +' </h4>' +
+                            '<h4 class="infobox-address">===========================</h4>' +
                             '<div class="infobox-content">' +
                             '<div class="infobox-image" style="background-image: url(' + base_url + '/assets/uploader/patok/'+ marker.data.dokumentasi + ');"></div>' +
                             '<div class="infobox-body"><div class="infobox-body-inner"><div class="infobox-price">'+marker.data.area+' m<sup>2</sup></div><div class="infobox-category tag">'+marker.data.status+'</div><p><strong>Lokasi : '+ marker.data.alamat  +'.</strong></p><p>Alamat Pemilik:  '+ marker.data.alamat  +' <br>Dusun '+ marker.data.alamat +'.</p></div>' +

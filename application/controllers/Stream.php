@@ -46,9 +46,10 @@ class Stream extends CI_Controller{
   }
 // 
   public function details_skt($nik){
-    $data['penduduk'] = [];
     $data['status'] = TRUE;
-    $data['penduduk'] = $this->datapenduduk_model->get_nik_one($nik)->row_array();
+    $data['penduduk'] = [];
+    $penduduk = $this->datapenduduk_model->get_nik_one($nik)->row_array();
+    $data['penduduk'] = $penduduk;
     $this->output->set_content_type('application/json')->set_output(json_encode($data));
   }
 // 
