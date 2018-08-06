@@ -62,17 +62,20 @@ class Stream extends CI_Controller{
         break;
     }
     $array = array(
-      "id"=>$penduduk['no_nik'],
-      "tanah_id"=>$tanah['id'],
+      "id"=>floatval($penduduk['no_nik']),
+      "tanah_id"=>floatval($tanah['id']),
       "nama"=>$penduduk['nama'],
       // "kk"=>substr_replace($penduduk['no_kk'], '********', 8),
       "tempat_tanggal_lahir"=>$penduduk['tempat_lahir'].",".$penduduk['tanggal_lahir'],
       "jenis_kelamin"=> $jenis_kelamin,
       "alamat"=>$penduduk['alamat'],
+      "lokasi"=> $tanah['alamat'],
+      "luas"=>$tanah['area'],
+      "status_tanah"=> $tanah['status'],
+      "link_thumbnails"=> base_url('assets/uploader/patok/'.$tanah['dokumentasi']),
       "koordinat" => array(
-        "latitude"=> $tanah['latitude'],
-        "longitude"=>$tanah['longitude'],
-        "link_thumbnails"=> base_url('assets/uploader/patok/'.$tanah['dokumentasi']),
+        "latitude"=> floatval($tanah['latitude']),
+        "longitude"=>floatval($tanah['longitude']),
       ),
 
     );
