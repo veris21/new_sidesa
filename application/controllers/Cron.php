@@ -13,14 +13,14 @@ class Cron extends CI_Controller{
   function index()
   {
     // if($this->input->is_cli_request()){
-      $server = BASE_URL;
-      $datestring = '%d %M %Y - %h:%i %a';
-      $time = time();
-      $sekarang = mdate($datestring, $time);
-      // $to = '082281469926';
-      $to = '082269200372';
-      $message = 'Ini Pesan Dari '.$server.' Cron Sistem Pada : '.$sekarang;
-      sms_notifikasi($to, $message);
+      // $server = BASE_URL;
+      // $datestring = '%d %M %Y - %h:%i %a';
+      // $time = time();
+      // $sekarang = mdate($datestring, $time);
+      // // $to = '082281469926';
+      // $to = '082269200372';
+      // $message = 'Ini Pesan Dari '.$server.' Cron Sistem Pada : '.$sekarang;
+      // sms_notifikasi($to, $message);
     // }else {
     //   echo "This script can only be accessed via the command line" . PHP_EOL;
     //   return;
