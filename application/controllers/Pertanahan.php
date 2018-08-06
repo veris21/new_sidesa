@@ -778,7 +778,7 @@ class Pertanahan extends CI_Controller{
     $data['kecamatan']  = $this->master_model->_get_districts_one($data['data']['kecamatan_penduduk_id'])->row_array();
     $data['kabupaten']  = $this->master_model->_get_regencies_one($data['data']['kabupaten_penduduk_id'])->row_array();
     $data['provinsi']   = $this->master_model->_get_provinces_one($data['data']['provinsi_penduduk_id'])->row_array();
-    $html = $this->load->view(PERTANAHAN.'print/surat_tanah', $data, TRUE);
+    $html = $this->load->view(PERTANAHAN.'print/cover', $data, TRUE);
     $this->pdfgenerator->generate($html, $data['data']['nama']." - COVER SURAT KETERANGAN (".date('d - M - Y').")");
   }
 
