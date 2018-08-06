@@ -29,7 +29,7 @@
 		</tr>
 
   </table>
-  <table style="padding-top:250px ;margin-top:250px; padding-bottom:250px;margin-bottom:250px;">
+  <table style="padding-top:200px;padding-bottom:200px;">
   </table>
 
 
@@ -41,9 +41,8 @@
             </td>
         </tr>
 </table> 
-<table height="360px">
+<table style="padding-top:250px;padding-bottom:250px;">
 </table>
-
 <table>
         <tr>
         <td> Nama
