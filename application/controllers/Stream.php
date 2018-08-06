@@ -69,7 +69,6 @@ class Stream extends CI_Controller{
       "tempat_tanggal_lahir"=>$penduduk['tempat_lahir'].",".$penduduk['tanggal_lahir'],
       "jenis_kelamin"=> $jenis_kelamin,
       "alamat"=>$penduduk['alamat'],
-      "lokasi_tanah"=> $tanah['alamat'],
       "luas"=>$tanah['area'],
       "status_tanah"=> $tanah['status'],
       "link_thumbnails"=> base_url('assets/uploader/patok/'.$tanah['dokumentasi']),
