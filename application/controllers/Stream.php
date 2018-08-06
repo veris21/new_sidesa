@@ -49,12 +49,23 @@ class Stream extends CI_Controller{
     $data['status'] = TRUE;
     $data['penduduk'] = [];
     $penduduk = $this->datapenduduk_model->get_nik_one($nik)->row_array();
+    switch ($penduduk['jenis_kelamin']) {
+      case 1:
+      $jenis_kelamin = 'Laki-Laki';
+        break;
+      case 2:
+      $jenis_kelamin = 'Perempuan';
+          break;
+      default:
+      $jenis_kelamin = $penduduk['jenis_kelamin'];
+        break;
+    }
     $array = array(
       "id"=>$penduduk['no_nik'],
       "nama"=>$penduduk['nama'],
       // "kk"=>substr_replace($penduduk['no_kk'], '********', 8),
       "tempat_tanggal_lahir"=>$penduduk['tempat_lahir'].",".$penduduk['tanggal_lahir'],
-      "jenis_kelamin"=> $penduduk['jenis_kelamin'],
+      "jenis_kelamin"=> $jenis_kelamin,
       "alamat"=>$penduduk['alamat'],
 
     );
