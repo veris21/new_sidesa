@@ -28,6 +28,10 @@
 		</tr>
 
   </table>
+  <table height="360px">
+</table>
+
+
   <table height="40%">
         <tr rowspan="8" valign="center">
             <td colspan="4"  align="center">
@@ -36,8 +40,7 @@
             </td>
         </tr>
 </table> 
-<table height="70%">
-
+<table height="360px">
 </table>
 
 <table>
