@@ -29,8 +29,7 @@
 		</tr>
 
   </table>
-
-  <table height="480px" border="1">
+  <table style="padding-top:250px ;margin-top:250px; padding-bottom:250px;margin-bottom:250px;">
   </table>
 
 
