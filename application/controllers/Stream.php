@@ -63,6 +63,7 @@ class Stream extends CI_Controller{
     }
     $array = array(
       "id"=>$penduduk['no_nik'],
+      "tanah_id"=>$tanah['id'],
       "nama"=>$penduduk['nama'],
       // "kk"=>substr_replace($penduduk['no_kk'], '********', 8),
       "tempat_tanggal_lahir"=>$penduduk['tempat_lahir'].",".$penduduk['tanggal_lahir'],
@@ -71,6 +72,7 @@ class Stream extends CI_Controller{
       "koordinat" => array(
         "latitude"=> $tanah['latitude'],
         "longitude"=>$tanah['longitude'],
+        "link_thumbnails"=> base_url('assets/uploader/patok/'.$tanah['dokumentasi']),
       ),
 
     );
