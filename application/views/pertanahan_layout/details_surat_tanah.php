@@ -260,7 +260,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
             <a target="__blank" href="<?php echo base_url('cover/cetak/'.$data['id']); ?>"> 
               <div class="info-box">
-                <span class="info-box-icon bg-blue"><i class="fa fa-books"></i></span>
+                <span class="info-box-icon bg-blue"><i class="fa fa-bookmark-o"></i></span>
                 <div class="info-box-content">
                   <span class="info-box-text">Cover Surat Keterangan</span>
                   <span class="info-box-number">Download</span>
