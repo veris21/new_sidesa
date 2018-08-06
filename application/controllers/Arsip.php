@@ -211,6 +211,12 @@ public function arsip_cari_data(){
 }
 
 
+
+public function surat_keluar(){
+  
+}
+
+
 }
 /* Arsip.php || Controller Handler Untuk Modul Arsip */ 
 /*==============================================================

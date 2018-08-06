@@ -18,6 +18,20 @@ class Disposisi extends CI_Controller{
     $this->load->view('template', $data);
   }
 
+  public function perintah_langsung(){
+
+  }
+
+
+  public function keluar(){
+
+  }
+
+  public function masuk(){
+    
+  }
+
+
   public function input()
   {
     $id = $this->input->post('kepada_id');

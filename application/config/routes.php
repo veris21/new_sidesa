@@ -69,7 +69,15 @@ $route['disposisi/validasi/(:any)']          = 'stream/cek_validasi_disposisi/$1
 // $route['reset/session']             = 'master/reset_session';
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
+/* -----------------------------------------------------------------------
+                        DISPOSISI SISTEM ROUTE
+ ----------------------------------------------------------------------- */
+ $route['disposisi/list']                 = 'disposisi/list';
+ $route['disposisi/keluar']               = 'disposisi/keluar';
+ $route['disposisi/masuk']                = 'disposisi/masuk';
 
+/* -----------------------------------------------------------------------
+ ----------------------------------------------------------------------- */
 
 /* -----------------------------------------------------------------------
                         SMS SISTEM ROUTE
@@ -134,6 +142,8 @@ $route['arsip']                         = 'arsip/arsip';
 $route['arsip/cari']                    = 'arsip/arsip_cari';
 $route['arsip/cari_data']               = 'arsip/arsip_cari_data';
 $route['arsip/input']                   = 'arsip/arsip_input';
+$route['arsip/keluar']                  = 'arsip/surat_keluar';
+
 $route['arsip/details/(:any)']          = 'arsip/arsip_detail/$1';
 $route['arsip/balasan']                 = 'arsip/balasan_arsip';
 $route['arsip/balasan/setujui/(:any)']  = 'arsip/balasan_setujui/$1'; 
