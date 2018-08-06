@@ -43,7 +43,7 @@
 </table> 
 <table style="padding-top:250px;padding-bottom:250px;">
 </table>
-<table style="font-size: 14px;">
+<table style="font-size: 14px; font-weight:bold;">
         <tr>
         <td> Nama
         </td>      
