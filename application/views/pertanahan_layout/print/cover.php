@@ -36,7 +36,10 @@
             </td>
         </tr>
 </table> 
-<br><br>
+<table height="70%">
+
+</table>
+
 <table>
         <tr>
         <td> Nama
