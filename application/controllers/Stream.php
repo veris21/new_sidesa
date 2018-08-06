@@ -61,7 +61,7 @@ class Stream extends CI_Controller{
       $jenis_kelamin = $penduduk['jenis_kelamin'];
         break;
     }
-    $array = array(
+    $data['penduduk'] = array(
       "id"=>floatval($penduduk['no_nik']),
       "tanah_id"=>floatval($tanah['id']),
       "nama"=>$penduduk['nama'],
@@ -69,7 +69,7 @@ class Stream extends CI_Controller{
       "tempat_tanggal_lahir"=>$penduduk['tempat_lahir'].",".$penduduk['tanggal_lahir'],
       "jenis_kelamin"=> $jenis_kelamin,
       "alamat"=>$penduduk['alamat'],
-      "lokasi"=> $tanah['alamat'],
+      "lokasi_tanah"=> $tanah['alamat'],
       "luas"=>$tanah['area'],
       "status_tanah"=> $tanah['status'],
       "link_thumbnails"=> base_url('assets/uploader/patok/'.$tanah['dokumentasi']),
@@ -79,7 +79,6 @@ class Stream extends CI_Controller{
       ),
 
     );
-    $data['penduduk'] = $array;
     $this->output->set_content_type('application/json')->set_output(json_encode($data));
   }
 // 
