@@ -8,7 +8,7 @@
 	<!-- -->
    
 </head>
-<body id="logo-back" style="border-style:double; background-color: #80ffbf; ">
+<body id="logo-back" style="border-style:double; ">
 <div id="cover">
   <table>
     <tr>
