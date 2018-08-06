@@ -28,11 +28,12 @@
 		</tr>
 
   </table>
+
   <table height="360px">
-</table>
+  </table>
 
 
-  <table height="40%">
+  <table>
         <tr rowspan="8" valign="center">
             <td colspan="4"  align="center">
         <h3 style="padding-bottom:0;margin-bottom:0;"><u>SURAT KETERANGAN <?php echo $type = ($data['type']==1 ? 'TANAH' : 'REKOMENDASI'); ?> </u><br>
