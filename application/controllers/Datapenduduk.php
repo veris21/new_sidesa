@@ -45,8 +45,8 @@ class Datapenduduk extends CI_Controller {
     //    $data['hasil'] = "<option value=''>-- Pilih desa --</option>";
        $data['hasil'] = [];
        if($kec->num_rows() != 0){    
-            foreach ($kec->result() as $k) {
-                  $data['hasil'] .= "<option value='".$k->id."'>".$k->name."</option>";
+            foreach ($kec->result() as $desa) {
+                  $data['hasil'] .= "<option value='".$desa->id."'>".$desa->name."</option>";
             }
             $data['status'] = TRUE;
         }else{
@@ -134,8 +134,8 @@ class Datapenduduk extends CI_Controller {
             'agama'=>$agama,
             'kabupaten'=>$kabupaten,
             'kecamatan'=>$kecamatan,
-            'desa'=>$desa,
-            'dusun'=>$dusun,
+            'desa'=> $desa,
+            'dusun'=> $dusun,
             'rt'=>$no_rt['nama_rt'],
             'pddk_akhir'=>$pddk_akhir,
             'alamat'=>$alamat,

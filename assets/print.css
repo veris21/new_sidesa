@@ -7,6 +7,10 @@ body {
   color: #000000;
 }
 
+.cover{
+  border-style: dotted solid double dashed;
+}
+
 .backed {
   background-color: #f9f9f9;
   border: 1px solid #D0D0D0;

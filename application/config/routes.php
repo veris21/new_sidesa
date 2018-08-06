@@ -207,6 +207,7 @@ $route['final/cetak/(:any)']              = 'pertanahan/cetak_skt/$1';
 $route['denah/cetak/(:any)']              = 'pertanahan/cetak_denah_skt/$1';
 $route['patok/cetak/(:any)']              = 'pertanahan/cetak_patok_skt/$1';
 $route['lampiran/cetak/(:any)']           = 'pertanahan/cetak_lampiran_skt/$1';
+$route['cover/cetak/(:any)']              = 'pertanahan/cetak_cover/$1';
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
 

@@ -257,6 +257,20 @@
 ?>
 
 <div class="row">
+<div class="col-md-12 col-sm-12 col-xs-12">
+            <a target="__blank" href="<?php echo base_url('cover/cetak/'.$data['id']); ?>"> 
+              <div class="info-box">
+                <span class="info-box-icon bg-blue"><i class="fa fa-books"></i></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Cover Surat Keterangan</span>
+                  <span class="info-box-number">Download</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+            </a>
+            </div><!-- /.col -->
+
+</div>
+<div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
             <a target="__blank" href="<?php echo base_url('final/cetak/'.$data['id']); ?>"> 
               <div class="info-box">
