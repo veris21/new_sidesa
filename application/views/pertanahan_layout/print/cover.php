@@ -6,11 +6,7 @@
 	<!-- -->
 	<link rel="stylesheet" href="<?php echo base_url().'assets/print.css' ?>">
 	<!-- -->
-    <style>
-        table{
-            width: 100%;
-        }
-    </style>
+   
 </head>
 <body id="logo-back">
 <div id="container" class="cover">
@@ -34,10 +30,7 @@
 
   </table>
 
-  <table height="360px" border="1" align="center">
-    <tr>
-        <td></td>
-    </tr>
+  <table height="480px" border="1">
   </table>
 
 
