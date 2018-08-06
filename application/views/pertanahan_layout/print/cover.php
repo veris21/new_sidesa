@@ -29,7 +29,10 @@
 
   </table>
 
-  <table height="360px">
+  <table height="360px" border="1" align="center">
+    <tr>
+        <td></td>
+    </tr>
   </table>
 
 
