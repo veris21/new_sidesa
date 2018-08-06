@@ -62,8 +62,8 @@ class Stream extends CI_Controller{
         break;
     }
     $data['penduduk'] = array(
-      "id"=> (float)($tanah['nik']),
-      "tanah_id"=> (float)($tanah['id']),
+      "id"=> (int)($tanah['nik']),
+      "tanah_id"=> (int)($tanah['id']),
       "nama"=>$penduduk['nama'],
       // "kk"=>substr_replace($penduduk['no_kk'], '********', 8),
       "tempat_tanggal_lahir"=>$penduduk['tempat_lahir'].",".$penduduk['tanggal_lahir'],
