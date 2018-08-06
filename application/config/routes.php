@@ -163,6 +163,8 @@ $route['api/arsip/list']                = 'arsip/arsip_list_api';
                        CRON ROUTE
  ----------------------------------------------------------------------- */
  $route['cron/test']                = 'cron';
+ $route['cron/peringatan/mingguan'] = 'cron/peringatan';
+ $route['cron/peringatan/jadwal']   = 'cron/pengingat_jadwal';
 
 
 

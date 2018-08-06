@@ -27,6 +27,11 @@ class Cron extends CI_Controller{
     // }
   }
 
+
+  public function peringatan(){
+    
+  }
+
   function reminder()
   {
     $datestring = '%d %M %Y - %h:%i %a';
