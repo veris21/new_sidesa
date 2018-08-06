@@ -330,6 +330,73 @@
         </li>
         <?php
           break;
+        case 'MASTER':
+        ?>
+        <!-- LAPORAN -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Laporan</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Tabel Surat Keluar</a></li>
+            <li><a href="<?php echo base_url().'disposisi'; ?>"><i class="fa fa-circle-o"></i> History Disposisi</a></li>
+            <li>
+              <a href="#"><i class="fa fa-circle-o"></i>Penerima Bantuan <i class="fa fa-angle-left pull-right"></i></a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Penerima Raskin</a></li>
+                <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Penerima Minyak</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <!-- ===== -->
+        <!-- DATA KEPENDUDUKAN -->
+         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i> <span>Data Penduduk</span>
+             <!-- <small class="label pull-right bg-green">new</small> -->
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+            <ul class="treeview-menu">
+                <li><a href="<?php echo base_url().'data_penduduk'; ?>"><i class="fa fa-circle-o"></i> Data Kependudukan</a></li>
+                <li><a href="<?php echo base_url().'data_mutasi'; ?>"><i class="fa fa-circle-o"></i> Mutasi Kependudukan</a></li>
+            </ul>
+          </li>
+        <!-- ARSIP -->
+        <li>
+          <a href="<?php echo base_url().'arsip'; ?>">
+          <i class="fa fa-book"></i>
+          <span>Arsip Surat</span>
+          <!-- <small class="label pull-right bg-green">new</small> -->
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-map-o"></i> <span>Data Koordinat</span>
+             <!-- <small class="label pull-right bg-green">new</small> -->
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
+            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Layanan Pertanahan</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>"><i class="fa fa-circle-o"></i> Data Permohonan</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/berita_acara'; ?>"><i class="fa fa-circle-o"></i> Data BAP</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/surat_tanah'; ?>"><i class="fa fa-circle-o"></i> Data SKT Release</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
+          </ul>
+        </li>
+        <?php
+          break;
         default:
           redirect(base_url('logout'));
         break;
