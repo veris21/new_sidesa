@@ -143,7 +143,7 @@ $(document).ready(function() {
                             '<div class="infobox-content">' +
                             '<div class="infobox-image" style="background-image: url(' + base_url + '/assets/uploader/patok/'+ marker.data.dokumentasi + ');"></div>' +
                             '<div class="infobox-body"><div class="infobox-body-inner"><div class="infobox-price">'+marker.data.area+' m<sup>2</sup></div><div class="infobox-category tag">'+marker.data.status+'</div><p><strong>Lokasi : '+ marker.data.alamat  +'.</strong></p><p>Alamat Pemilik:  '+ marker.data.alamat  +' <br>Dusun '+ marker.data.alamat +'.</p></div>' +
-                            '<div class="infobox-more"><a href="'+ base_url +'public/pertanahan/details/'+ marker.data.nik +'">Read More <i class="fa fa-chevron-right"></i></a></div>' +
+                            '<div class="infobox-more"><a href="'+ base_url +'public/pertanahan/details/'+ marker.data.nik +'/'+ marker.data.id +'">Read More <i class="fa fa-chevron-right"></i></a></div>' +
                             '</div>' +
                             '<div>';
 

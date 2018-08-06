@@ -45,9 +45,10 @@ class Stream extends CI_Controller{
     $this->load->view(UMUM. 'public_stream', $data);
   }
 // 
-  public function details_skt($nik){
+  public function details_skt($nik, $id){
     $data['status'] = TRUE;
     $data['penduduk'] = [];
+    $tanah = $this->pertanahan_model->koordinat_tengah_nik_one($nik)->row_array();
     $penduduk = $this->datapenduduk_model->get_nik_one($nik)->row_array();
     switch ($penduduk['jenis_kelamin']) {
       case 1:
@@ -67,6 +68,10 @@ class Stream extends CI_Controller{
       "tempat_tanggal_lahir"=>$penduduk['tempat_lahir'].",".$penduduk['tanggal_lahir'],
       "jenis_kelamin"=> $jenis_kelamin,
       "alamat"=>$penduduk['alamat'],
+      "koordinat" => array(
+        "latitude"=> $tanah['latitude'],
+        "longitude"=>$tanah['longitude'],
+      ),
 
     );
     $data['penduduk'] = $array;
