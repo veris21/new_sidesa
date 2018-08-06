@@ -49,7 +49,16 @@ class Stream extends CI_Controller{
     $data['status'] = TRUE;
     $data['penduduk'] = [];
     $penduduk = $this->datapenduduk_model->get_nik_one($nik)->row_array();
-    $data['penduduk'] = $penduduk;
+    $array = array(
+      "id"=>$penduduk['id'],
+      "nama"=>$penduduk['nama'],
+      "nik"=>$penduduk['no_nik'],
+      "kk"=>substr_replace($penduduk['no_kk'], '********', 8),
+      "tempat_tanggal_lahir"=>$penduduk['tempat_lahir'].",".$penduduk['tanggal_lahir'],
+      "alamat"=>$penduduk['alamat'],
+
+    );
+    $data['penduduk'] = $array;
     $this->output->set_content_type('application/json')->set_output(json_encode($data));
   }
 // 
