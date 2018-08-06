@@ -50,9 +50,8 @@ class Stream extends CI_Controller{
     $data['penduduk'] = [];
     $penduduk = $this->datapenduduk_model->get_nik_one($nik)->row_array();
     $array = array(
-      "id"=>$penduduk['id'],
+      "id"=>$penduduk['no_nik'],
       "nama"=>$penduduk['nama'],
-      "nik"=>$penduduk['no_nik'],
       "kk"=>substr_replace($penduduk['no_kk'], '********', 8),
       "tempat_tanggal_lahir"=>$penduduk['tempat_lahir'].",".$penduduk['tanggal_lahir'],
       "alamat"=>$penduduk['alamat'],
