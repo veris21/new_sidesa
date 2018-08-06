@@ -47,14 +47,16 @@
         <tr>
         <td> Nama
         </td>      
-        <td colspan="7"> : 
+        <td>:</td>
+        <td colspan="6">
             <?php echo $data['nama'];?>
         </td>          
         </tr>
         <tr>
         <td> Lokasi
-        </td>      
-        <td colspan="7"> : 
+        </td>   
+        <td>:</td>   
+        <td colspan="6"> : 
         <?php echo $data['lokasi'];?> <?php echo "Dusun ".$data['nama_dusun']." Desa ".$data['nama_desa']." Kecamatan ".$data['nama_kecamatan']." Kabupaten ".$data['nama_kabupaten'];?>
         </td>          
         </tr>
