@@ -89,6 +89,10 @@ _________________________________________________
 _________________________________________________
 ================================================*/
 
+$('#master_koordinat_verifikasi').DataTable({
+  responsive: true
+});
+
 $("#master_koordinat_tengah").DataTable({
   responsive: true
 });

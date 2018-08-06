@@ -5,7 +5,7 @@
 </h1>
 <ol class="breadcrumb">
   <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-  <li class="active">Input Data Koordinat Tanah</li>
+  <li class="active">Data Koordinat Tanah</li>
 </ol>
 </section>
 <section class="content">
@@ -33,8 +33,11 @@
         break;
     default:
         ?> 
-    <h3 class="box-title">Apa Anda ingin menginput Data Koordinat Baru ?</h3>       
+        <!--  --
+        <h3 class="box-title">Apa Anda ingin menginput Data Koordinat Baru ?</h3>       
         <button class="btn btn-sm btn-flat btn-success" onclick="v2_input_koordinat_tengah()" >Iya, Input Data <i class="fa fa-plus"></i></button>
+        <!--  -->
+        <h3 class="box-title"> DATA KOORDINAT Yang Memiliki NIK PEMILIK</h3>
         <?php
         break;
         
@@ -72,21 +75,29 @@
              ?>
         </tbody>
         </table>
-    </div>
+    </div> 
 </div>
 
 <hr>
 <?php 
-        switch ($this->session->userdata('jabatan')) {
-        case 'ROOT':
+    switch ($this->session->userdata('jabatan')) {
+    case 'ROOT' || 'MASTER' || 'PERTANAHAN' :
 ?>
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title">Data Semua Koordinat Tersimpan</h3>
-        <hr>
-        <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
-    </div>
+<div class="box box-success">
     <div class="box-body">
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#list_koordinat_all" data-toggle="tab">Koordinat Terinput</a></li>
+                <li ><a href="#list_koordinat_publik" data-toggle="tab">koordinat tampil publik</a></li> 
+            </ul>
+
+            <div class="tab-content">
+                <!-- START TAB Pertama -->
+                <div class="tab-pane active" id="list_koordinat_all">
+
+        <hr/>
+        <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
+        <hr/>
         <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_tengah_all">
         <thead>
         <tr valign="center" align="center" style="font-weight:bolder;">
@@ -121,8 +132,26 @@
              ?>
         </tbody>
         </table>
+
+                </div>
+                <!-- END -->
+                <!-- START TAB Kedua -->
+                <div class="tab-pane" id="list_koordinat_publik">
+
+                            <hr>
+                            <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
+                            <hr>
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_verifikasi">
+                            </table>
+                        
+                    
+                </div>
+                 <!-- END -->
+            </div>
+        </div>
     </div>
 </div>
+
 
 <?php 
     }

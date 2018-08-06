@@ -29,8 +29,13 @@ class Cron extends CI_Controller{
 
 
   public function peringatan(){
+
+  }
+
+  public function peringatan_jadwal(){
     
   }
+
 
   function reminder()
   {

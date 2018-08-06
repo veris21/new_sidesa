@@ -8,7 +8,7 @@
     <li class="active">Dashboard</li>
   </ol>
 </section>
-<section class="content">
+<section class="content"> 
   <div class="box box-warning">
     <div class="box-body">
 
