@@ -412,7 +412,7 @@ function initialize() {
     });
 
     // polygon.setMap(map);
-    marker.setMap(map);
+    // marker.setMap(map);
     infoWindow = new google.maps.InfoWindow();
     google.maps.event.addListener(marker, 'click', function(e) {
     infoWindow.setContent(this.html);
