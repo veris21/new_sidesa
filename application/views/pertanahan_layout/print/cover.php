@@ -48,13 +48,13 @@
             </td>
         </tr>
 </table> 
-<table style="padding-top:220px;padding-bottom:220px;">
+<table style="padding-top:220px;padding-bottom:200px;">
 </table>
 <table style="font-size: 14px; font-weight:bold; padding:8px;">
         <tr>
         <td valign="top"> Nama
         </td>      
-        <td>:</td>
+        <td valign="top">:</td>
         <td colspan="6" valign="top">
             <?php echo $data['nama'];?>
         </td>          
@@ -65,7 +65,7 @@
         <tr>
         <td valign="top"> Lokasi
         </td>   
-        <td>:</td>   
+        <td valign="top">:</td>   
         <td colspan="6" valign="top">
         <?php echo $data['lokasi'];?> <?php echo "Dusun ".$data['nama_dusun']." Desa ".$data['nama_desa']." Kecamatan ".$data['nama_kecamatan']." Kabupaten ".$data['nama_kabupaten'];?>
         </td>          
@@ -80,7 +80,7 @@
             </td>
         </tr>
 </table>
-<table style="padding-top:14px;padding-bottom:14px;">
+<table style="padding-top:24px;padding-bottom:14px;">
 </table>
 </div>
 </body>
