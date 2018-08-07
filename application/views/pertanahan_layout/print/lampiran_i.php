@@ -77,7 +77,7 @@
             <td valign="middle" colspan="4">
                 <center>
 								<h5>BUKTI PEMBAYARAN PBB</h5>
-<?php if(file_exists($data['ktp']!='')){ ?>
+<?php if(file_exists($data['ktp'])){ ?>
                 <img style="padding:4px;" width="240" src="<?php echo base_url().PBB.$data['pbb']; ?>" alt="PEMBAYARAN PBB SCAN">
 <?php }else{ ?>
 <h5><i>Data Bukti Bayar Pajak Bumi dan Bangunan Kosong</i></h5>
