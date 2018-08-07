@@ -410,10 +410,10 @@ function initialize() {
         html: contentString
     });
 
-    polygon.setMap(map);
+    // polygon.setMap(map);
     marker.setMap(map);
     infoWindow = new google.maps.InfoWindow();
-    google.maps.event.addListener(polygon, 'click', function(e) {
+    google.maps.event.addListener(marker, 'click', function(e) {
     infoWindow.setContent(this.html);
     infoWindow.setPosition(e.latLng);
     infoWindow.open(map);
