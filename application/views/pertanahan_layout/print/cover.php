@@ -48,29 +48,31 @@
             </td>
         </tr>
 </table> 
-<table style="padding-top:250px;padding-bottom:250px;">
+<table style="padding-top:220px;padding-bottom:220px;">
 </table>
 <table style="font-size: 14px; font-weight:bold; padding:8px;">
         <tr>
-        <td> Nama
+        <td valign="top"> Nama
         </td>      
         <td>:</td>
-        <td colspan="6">
+        <td colspan="6" valign="top">
             <?php echo $data['nama'];?>
+        </td>          
+        </tr>
+        <tr>
+        <td colspan="8"><br></td>
+        </tr>
+        <tr>
+        <td valign="top"> Lokasi
+        </td>   
+        <td>:</td>   
+        <td colspan="6" valign="top">
+        <?php echo $data['lokasi'];?> <?php echo "Dusun ".$data['nama_dusun']." Desa ".$data['nama_desa']." Kecamatan ".$data['nama_kecamatan']." Kabupaten ".$data['nama_kabupaten'];?>
         </td>          
         </tr>
         <tr>
         <td colspan="7"><br></td>
         </tr>
-        <tr>
-        <td> Lokasi
-        </td>   
-        <td>:</td>   
-        <td colspan="6">
-        <?php echo $data['lokasi'];?> <?php echo "Dusun ".$data['nama_dusun']." Desa ".$data['nama_desa']." Kecamatan ".$data['nama_kecamatan']." Kabupaten ".$data['nama_kabupaten'];?>
-        </td>          
-        </tr>
-
         <tr>
             <td colspan="8">
                 <hr style="padding-top:0;margin-top:0;padding-bottom:0;margin-bottom:0;">
