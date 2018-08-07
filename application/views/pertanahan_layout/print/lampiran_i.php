@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="<?php echo BASE_URL.'assets/print.css' ?>">
 	<!-- -->
 </head>
-<body  style="border-style:double; ">
+<body>
 <div id="container">
   <table width="100%">
         <tr>
