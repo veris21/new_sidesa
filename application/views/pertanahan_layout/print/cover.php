@@ -13,7 +13,9 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
-    opacity: 0.4;
+    background-size: 50% 50%;
+    opacity: 0.2;
+    filter: alpha(opacity=20); 
      ">
 <div id="cover">
   <table>
