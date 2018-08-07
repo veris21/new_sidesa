@@ -377,11 +377,19 @@ function initialize() {
   var jarak = [];
   var labels = '123456789';
   var labelIndex = 0;
+  var marker =[];
   <?php 
+  $nom = 1;
   foreach ($data_patok as $patok){
       ?> 
-     patok.push(new google.maps.LatLng(parseFloat(<?php echo $patok->lat;?>), parseFloat(<?php echo $patok->lng;?>)));
+    patok.push(new google.maps.LatLng(parseFloat(<?php echo $patok->lat;?>), parseFloat(<?php echo $patok->lng;?>)));
+
+      marker = new google.maps.marker({
+        position: new google.maps.LatLng(parseFloat(<?php echo $patok->lat;?>), parseFloat(<?php echo $patok->lng;?>)),
+        title : <?php echo "patok".$nom;  ?>
+    });
      <?php
+     $nom++;
   }
   ?>
     
