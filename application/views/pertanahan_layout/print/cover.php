@@ -50,7 +50,7 @@
 </table> 
 <table style="padding-top:250px;padding-bottom:250px;">
 </table>
-<table style="font-size: 14px; font-weight:bold;">
+<table style="font-size: 14px; font-weight:bold; padding:8px;">
         <tr>
         <td> Nama
         </td>      
