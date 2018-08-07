@@ -8,7 +8,8 @@
 	<!-- -->
    
 </head>
-<body id="logo-back" style="border-style:double;
+<body id="logo-back" style="border-style:double;">
+<div id="cover" style="
     background-image: url('<?php echo base_url().'assets/logo-beltim.png'; ?>');
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -16,8 +17,7 @@
     background-size: 25% 25%;
     opacity: 0.1;
     filter: alpha(opacity=10); 
-     ">
-<div id="cover">
+">
   <table>
     <tr>
       <td align="center"  style="padding-bottom:0;margin-bottom:0;">
