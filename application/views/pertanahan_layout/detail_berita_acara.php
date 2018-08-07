@@ -388,7 +388,6 @@ function initialize() {
     marker = new google.maps.Marker({
             position: new google.maps.LatLng(parseFloat(<?php echo $patok->lat;?>), parseFloat(<?php echo $patok->lng;?>)),
             label: labels[labelIndex++ % labels.length],
-            icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
             map: map
     });
      
