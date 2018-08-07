@@ -403,7 +403,8 @@ function initialize() {
     
     var marker = new google.maps.marker({
         position: [patok],
-        title: llabels[labelIndex++ % labels.length],
+        label: labels[labelIndex++ % labels.length],
+        map: map
     });
 
     polygon.setMap(map);
