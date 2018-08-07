@@ -78,7 +78,7 @@
             </td>
         </tr>
 </table>
-<table style="padding-top:25px;padding-bottom:25px;">
+<table style="padding-top:14px;padding-bottom:14px;">
 </table>
 </div>
 </body>
