@@ -46,9 +46,9 @@ $hiddenAuth = $this->session->userdata['jabatan'];
                     
                     <?php } ?>
                 </div>
-                <?php if($hiddenAuth==='KASI' || $hiddenAuth==='KADES' || $hiddenAuth=='SEKDES'){?>
+                <?php if($hiddenAuth==='KASI' || $hiddenAuth==='KADES' || $hiddenAuth=='SEKDES' || $hiddenAuth=='MASTER' || $hiddenAuth=='ROOT' ){?>
                 <div class="box-footer">
-                <button onclick="push_data(<?php echo $data['id']; ?>)" class="btn btn-lg btn-success btn-block  <?php echo $lock;?>" >Kunci Data Final <i class="fa fa-lock"></i></button>
+                <button onclick="push_data(<?php echo $data['id'].','.$data['no_nik']; ?>)" class="btn btn-lg btn-success btn-block  <?php echo $lock;?>" >Kunci Data Final <i class="fa fa-lock"></i></button>
                 </div>
                 <?php } ?>
             </div>

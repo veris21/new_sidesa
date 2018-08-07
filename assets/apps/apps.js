@@ -1643,7 +1643,7 @@ function lihat_notif(id) {
 /*/                Peta Handler System             /*/
 /*/================================================/*/
 
-function push_data(id, luas) {
+function push_data(id, nik) {
   event.preventDefault();
   swal({
     title: 'Apa Anda Yakin?',
@@ -1665,7 +1665,8 @@ function push_data(id, luas) {
           type: "POST",
           data: {
             img_data: imgdata,
-            bap_id: id
+            bap_id: id,
+            nik : nik
           },
           success: function (data) {
             // console.log(data);

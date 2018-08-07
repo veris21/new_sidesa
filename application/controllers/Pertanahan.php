@@ -520,18 +520,18 @@ class Pertanahan extends CI_Controller{
         'foto_tanah'=>$patok, 
         'status'=>$status
       );
-      $postingKePublic = array(
-        'nik'=>$nik,
-        'latitude'=>$lat,
-        'longitude'=> $lng,
-        'dokumentasi' => $patok,
-        'verified'=>$status,
-        'status'=>'SURAT KETERANGAN TANAH'
-      );
+      // $postingKePublic = array(
+      //   'nik'=>$nik,
+      //   'latitude'=>$lat,
+      //   'longitude'=> $lng,
+      //   'dokumentasi' => $patok,
+      //   'verified'=>$status,
+      //   'status'=>'SURAT KETERANGAN TANAH'
+      // );
       
       $check = $this->pertanahan_model->_post_titik_marker($post);
       if($check){
-        $this->pertanahan_model->_post_titik_pemutihan($postingKePublic);
+        // $this->pertanahan_model->_post_titik_pemutihan($postingKePublic);
         echo json_encode(array("status" => TRUE));
       }
     }
@@ -697,6 +697,7 @@ class Pertanahan extends CI_Controller{
       $kades = $this->notifikasi_model->_get_data_kades($desa_id)->row_array();
       // ===========================
       $id = strip_tags($this->input->post('bap_id'));
+      $nik = strip_tags($this->input->post('nik'));
       $par['data'] = base_url('berita_acara/validasi/').$time;
       $par['level'] = 'M';
       $par['size'] = 10;
@@ -720,8 +721,18 @@ class Pertanahan extends CI_Controller{
       'time'=>$time,
       'kades'=>$kades['id'],
       'status'=>0);
+      $getKoordinat = $this->pertanahan_model->_get_data_link($id)->row_array();
+      $postingKePublic = array(
+        'nik'=> $nik,
+        'latitude'=> $getKoordinat['lat'],
+        'longitude'=> $getKoordinat['lng'],
+        'dokumentasi' => $getKoordinat['foto_tanah'],
+        'verified'=>1,
+        'status'=>'SURAT KETERANGAN TANAH'
+      );
       $check = $this->pertanahan_model->_push_skt($push);
       if ($check) {
+        $this->pertanahan_model->_post_titik_pemutihan($postingKePublic);
         echo json_encode(array("status" => TRUE));
       }     
   }
