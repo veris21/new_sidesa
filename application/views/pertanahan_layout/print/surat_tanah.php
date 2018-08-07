@@ -29,7 +29,14 @@
     <tr>
       <td colspan="8" align="center">
         <h3 style="padding-bottom:0;margin-bottom:0;"><u>SURAT KETERANGAN <?php echo $type = ($data['type']==1 ? 'TANAH' : 'REKOMENDASI'); ?> </u><br>
-        Nomor :<i style="font-weight: lighter;font-family: Consolas, Monaco, Courier New, Courier, monospace;"> <?php echo "181/".$data['id']."-".$type."/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);?></i></h3>
+        Nomor :
+        <i style="font-weight: lighter;font-family: Consolas, Monaco, Courier New, Courier, monospace;"> 
+        <?php 
+        // echo "181/".$data['id']."-".$type."/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
+        echo $data['id']."-".$typeSurat = ($data['type']==1 ? 'SKT' : 'REKOMENDASI')."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
+        ?>
+        </i>
+        </h3>
       </td>
     </tr>
   </table>
@@ -141,7 +148,7 @@
             <i style="font-size:9px;font-family: Consolas, Monaco, Courier New, Courier, monospace;">(Dokumen ini di generate otomatis melalui sistem SiDesa.id)</i>
         </td>
         <td width="40%">
-        <table style="padding-top:0;font-family: Consolas, Monaco, Courier New, Courier, monospace;">
+        <table style="font-size:11px;padding-top:0;font-family: Consolas, Monaco, Courier New, Courier, monospace;">
             <tr>
                 <td width="40%">Dikeluarkan di</td>
                 <td width="60%">: <?php echo $data['nama_desa'];?></td>

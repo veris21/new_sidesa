@@ -37,7 +37,14 @@
         <tr rowspan="8" valign="center">
             <td colspan="4"  align="center">
         <h2 style="padding-bottom:0;margin-bottom:0;"><u>SURAT KETERANGAN <?php echo $type = ($data['type']==1 ? 'TANAH' : 'REKOMENDASI'); ?> </u><br>
-        Nomor :<i style="font-weight: lighter;font-family: Consolas, Monaco, Courier New, Courier, monospace;"> <?php echo "181/".$data['id']."-".$type."/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);?></i></h2>
+        Nomor :
+        <i style="font-weight: lighter;font-family: Consolas, Monaco, Courier New, Courier, monospace;"> 
+        <?php 
+        // echo "181/".$data['id']."-".$type."/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
+        echo $data['id']."-".$typeSurat = ($data['type']==1 ? 'SKT' : 'REKOMENDASI')."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
+        ?>
+        </i>
+        </h2>
             </td>
         </tr>
 </table> 
