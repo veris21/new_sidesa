@@ -388,6 +388,7 @@ function initialize() {
     marker = new google.maps.Marker({
             position: new google.maps.LatLng(parseFloat(<?php echo $patok->lat;?>), parseFloat(<?php echo $patok->lng;?>)),
             label: labels[labelIndex++ % labels.length],
+            icon:'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
             map: map
     });
      
@@ -413,7 +414,7 @@ function initialize() {
     polygon.setMap(map);
     // marker.setMap(map);
     infoWindow = new google.maps.InfoWindow();
-    google.maps.event.addListener(marker, 'click', function(e) {
+    google.maps.event.addListener(polygon, 'click', function(e) {
     infoWindow.setContent(this.html);
     infoWindow.setPosition(e.latLng);
     infoWindow.open(map);
