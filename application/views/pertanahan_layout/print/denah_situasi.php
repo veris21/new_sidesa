@@ -46,10 +46,13 @@
         <tr>
             <td colspan="4"><h4 style="text-align:center;">DENAH / SITUASI TANAH</h4></td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td width="20%"><b>LUAS</b></td>
-            <td colspan="3" width="80%">: <?php echo $data['luas']; ?> M<sup>2</sup></td>
-        </tr>
+            <td colspan="3" width="80%">: 
+            <?php //echo $data['luas']; ?>
+             M<sup>2</sup>
+             </td>
+        </tr> -->
         <tr>
             <td width="20%"><b>LOKASI</b></td>
             <td colspan="3" width="80%">: <?php echo $data['lokasi']." Dusun ".$data['nama_dusun']." Desa ".$data['nama_desa']." Kecamatan".$data['nama_kecamatan']; ?></td>

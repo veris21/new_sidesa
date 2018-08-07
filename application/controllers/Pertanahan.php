@@ -697,7 +697,7 @@ class Pertanahan extends CI_Controller{
       $kades = $this->notifikasi_model->_get_data_kades($desa_id)->row_array();
       // ===========================
       $id = strip_tags($this->input->post('bap_id'));
-      $nik = strip_tags($this->input->post('nik'));
+      $nik = $this->input->post('no_nik');
       $par['data'] = base_url('berita_acara/validasi/').$time;
       $par['level'] = 'M';
       $par['size'] = 10;

@@ -1666,7 +1666,7 @@ function push_data(id, nik) {
           data: {
             img_data: imgdata,
             bap_id: id,
-            nik : nik
+            no_nik : nik
           },
           success: function (data) {
             // console.log(data);

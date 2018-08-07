@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="<?php echo BASE_URL.'assets/print.css' ?>">
 	<!-- -->
 </head>
-<body>
+<body  style="border-style:double; ">
 <div id="container">
   <table width="100%">
         <tr>
@@ -20,7 +20,12 @@
             <tr>
                 <td width="30%"><b style="font-size:11px;">Nomor </b></td>
                 <td width="70%"> : 
-                <b style="font-size:11px;font-family: Consolas, Monaco, Courier New, Courier, monospace;"><?php echo "181/".$data['id']."-".$type."/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);?></b>
+                <b style="font-size:11px;font-family: Consolas, Monaco, Courier New, Courier, monospace;">
+                <?php 
+                // echo "181/".$data['id']."-".$type."/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
+                echo $data['id']."/".$typeSurat = ($data['type']==1 ? 'SKT' : 'REKOMENDASI')."/".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
+                ?>
+                </b>
                 </td>
             </tr>
             <tr>
