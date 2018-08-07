@@ -59,7 +59,9 @@
             <?php echo $data['nama'];?>
         </td>          
         </tr>
-        <tr></tr>
+        <tr>
+        <td colspan="7"><br></td>
+        </tr>
         <tr>
         <td> Lokasi
         </td>   
