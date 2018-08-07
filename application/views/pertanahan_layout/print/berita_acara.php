@@ -29,7 +29,13 @@
     <tr>
       <td colspan="8" align="center">
         <h3 style="padding-bottom:0;margin-bottom:0;"><u>BERITA ACARA PEMERIKSAAN LAHAN/ LOKASI</u><br>
-        Nomor :<i style="font-weight: lighter;font-family: Consolas, Monaco, Courier New, Courier, monospace;"> <?php echo "181/".$data['id']."-BAP/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);?></i></h3>
+        Nomor :<i style="font-weight: lighter;font-family: Consolas, Monaco, Courier New, Courier, monospace;"> 
+        <?php 
+        // echo "181/".$data['id']."-BAP/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
+        echo $data['id']."/BA/D.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
+        ?>
+        </i>
+        </h3>
       </td>
     </tr>
   </table>
