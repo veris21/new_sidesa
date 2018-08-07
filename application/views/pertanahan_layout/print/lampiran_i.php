@@ -53,7 +53,7 @@
             <td valign="middle" colspan="4">
                 <center>
 								<h5>KTP PEMOHON</h5>
-<?php if(file_exists($data['ktp'])){ ?>
+<?php if(file_exists(KTP.$data['ktp'])){ ?>
                 <img style="padding:4px;" width="240" src="<?php echo base_url().KTP.$data['ktp']; ?>" alt="KTP">
 <?php }else{ ?>
 <h5><i>Data KTP Kosong</i></h5>
