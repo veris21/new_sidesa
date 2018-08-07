@@ -13,6 +13,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
+    background-size: 25% 25%;
     opacity: 0.1;
     filter: alpha(opacity=10); 
      ">
