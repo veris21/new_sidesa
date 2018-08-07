@@ -377,14 +377,18 @@ function initialize() {
   var jarak = [];
   var labels = '123456789';
   var labelIndex = 0;
-  var mark = [];
+  var marker;
   <?php 
   $nom = 1;
   foreach ($data_patok as $patok){
       ?> 
 
     patok.push(new google.maps.LatLng(parseFloat(<?php echo $patok->lat;?>), parseFloat(<?php echo $patok->lng;?>)));
-    mark.push(new google.maps.LatLng(parseFloat(<?php echo $patok->lat;?>), parseFloat(<?php echo $patok->lng;?>)));
+
+    marker = new google.maps.Marker({
+            position: new google.maps.LatLng(parseFloat(<?php echo $patok->lat;?>), parseFloat(<?php echo $patok->lng;?>)),
+            map: map
+    });
      
      <?php
   }
@@ -405,22 +409,6 @@ function initialize() {
         fillOpacity: 0.3,
         html: contentString
     });
-        var locations = patok;
-        var marker, i;
-
-        for (i = 0; i < locations.length; i++) { 
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][0], locations[i][1]),
-            map: map
-        });
-
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-            infowindow.setContent(locations[i][0]);
-            infowindow.open(map, marker);
-            }
-        })(marker, i));
-    }
 
     polygon.setMap(map);
     marker.setMap(map);
