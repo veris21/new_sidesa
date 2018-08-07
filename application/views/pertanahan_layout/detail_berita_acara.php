@@ -375,6 +375,8 @@ function initialize() {
 
   var patok = [];
   var jarak = [];
+  var labels = '123456789';
+  var labelIndex = 0;
   <?php 
   foreach ($data_patok as $patok){
       ?> 
@@ -399,7 +401,13 @@ function initialize() {
         html: contentString
     });
     
+    var marker = new google.maps.marker({
+        position: [patok],
+        title: llabels[labelIndex++ % labels.length],
+    });
+
     polygon.setMap(map);
+    marker.setMap(map);
     infoWindow = new google.maps.InfoWindow();
     google.maps.event.addListener(polygon, 'click', function(e) {
     infoWindow.setContent(this.html);
