@@ -53,7 +53,7 @@
             <td valign="middle" colspan="4">
                 <center>
 								<h5>KTP PEMOHON</h5>
-<?php if($data['ktp']!=''){ ?>
+<?php if(file_exists($data['ktp'])){ ?>
                 <img style="padding:4px;" width="240" src="<?php echo base_url().KTP.$data['ktp']; ?>" alt="KTP">
 <?php }else{ ?>
 <h5><i>Data KTP Kosong</i></h5>
@@ -65,7 +65,7 @@
             <td valign="middle" colspan="4">
                 <center>
 								<h5>SURAT PENGANTAR KEPALA DUSUN</h5>
-<?php if($data['surat_kadus']!=''){ ?>
+<?php if(file_exists($data['surat_kadus'])){ ?>
                 <img style="padding:4px;" width="240" src="<?php echo base_url().SURATKADUS.$data['surat_kadus']; ?>" alt="SURAT KADUS">
 <?php }else{ ?>
 <h5><i>Data Surat Pengantar Kosong</i></h5>
@@ -77,7 +77,7 @@
             <td valign="middle" colspan="4">
                 <center>
 								<h5>BUKTI PEMBAYARAN PBB</h5>
-<?php if($data['ktp']!=''){ ?>
+<?php if(file_exists($data['ktp']!='')){ ?>
                 <img style="padding:4px;" width="240" src="<?php echo base_url().PBB.$data['pbb']; ?>" alt="PEMBAYARAN PBB SCAN">
 <?php }else{ ?>
 <h5><i>Data Bukti Bayar Pajak Bumi dan Bangunan Kosong</i></h5>
