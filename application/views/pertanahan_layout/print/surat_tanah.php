@@ -33,7 +33,7 @@
         <i style="font-weight: lighter;font-family: Consolas, Monaco, Courier New, Courier, monospace;"> 
         <?php 
         // echo "181/".$data['id']."-".$type."/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
-        echo $data['id']."-".$typeSurat = ($data['type']==1 ? 'SKT' : 'REKOMENDASI')."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
+        echo $data['id']."/".$typeSurat = ($data['type']==1 ? 'SKT' : 'REKOMENDASI')."/".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
         ?>
         </i>
         </h3>

@@ -23,7 +23,7 @@
                 <b style="font-size:10px;font-family: Consolas, Monaco, Courier New, Courier, monospace;">
                 <?php 
                 // echo "181/".$data['id']."-".$type."/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
-                echo $data['id']."-".$typeSurat = ($data['type']==1 ? 'SKT' : 'REKOMENDASI')."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
+                echo $data['id']."/".$typeSurat = ($data['type']==1 ? 'SKT' : 'REKOMENDASI')."/".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);
                 ?>
                 </b>
                 </td>
