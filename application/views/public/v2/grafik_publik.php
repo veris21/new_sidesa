@@ -17,7 +17,7 @@ google.load('visualization', '1', {packages: ['corechart']});
 
 <?php $result = $penduduk;
     //get number of rows returned
-    $num_results = $result->num_rows;
+    $num_results = $result->num_rows();
     if( $num_results > 0){ ?>
         <script type="text/javascript">
             function drawVisualization() {
@@ -25,7 +25,7 @@ google.load('visualization', '1', {packages: ['corechart']});
                 var data = google.visualization.arrayToDataTable([
                     ['Gender', 'Jumlah'],
                     <?php
-                    foreach ($result->result_array() as $row) {
+                    foreach ($result->result() as $row) {
                         extract($row);
                         echo "['{$jenis_kelamin}', {$total}],";
                     } ?>
