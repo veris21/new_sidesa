@@ -43,7 +43,9 @@ google.load('visualization', '1', {packages: ['corechart']});
         echo "Tidak ada data di database.";
     } ?>
     </script>
+<div class="container">
 <hr/>
+
 <div class="row">
 	<div class="col-md-4">
 		<div id="visualization"></div>
@@ -52,9 +54,11 @@ google.load('visualization', '1', {packages: ['corechart']});
 	<div class="col-md-4">
 		<div id="visualization"></div>
 	</div>
-	
+
 	<div class="col-md-4">
 		<div id="visualization"></div>
 	</div>
 </div>
     
+
+</div>
