@@ -194,6 +194,6 @@
 
     <script type="text/javascript" >/*/ Base Setting /*/ var baseUrl = '<?php echo base_url();?>';</script>
     <script type="text/javascript" src="<?php echo base_url().APPS.'auth.js';?>"></script>
-    <script type="text/javascript" src="<?php echo base_url().APPS.'chart_data.js';?>"></script>
+    <script type="text/javascript" src="<?php //echo base_url().APPS.'chart_data.js';?>"></script>
   </body>
 </html>
