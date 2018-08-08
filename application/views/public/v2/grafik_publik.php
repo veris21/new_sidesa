@@ -25,9 +25,9 @@ google.load('visualization', '1', {packages: ['corechart']});
                 var data = google.visualization.arrayToDataTable([
                     ['Gender', 'Jumlah'],
                     <?php
-                    foreach ($result->result() as $row) {
+                    foreach ($result->result_array() as $row) {
                         extract($row);
-                        echo "['{$row->jenis_kelamin}', {$row->total}],";
+                        echo "['{$jenis_kelamin}', {$total}],";
                     } ?>
                 ]);
                 // Create and draw the visualization.
