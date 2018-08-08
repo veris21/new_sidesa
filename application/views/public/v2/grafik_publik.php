@@ -26,7 +26,7 @@ google.load('visualization', '1', {packages: ['corechart']});
                     ['Gender', 'Jumlah'],
                     <?php
                     foreach ($result->result() as $row) {
-                        // extract($row);
+                        extract($row);
                         echo "['{$row->jenis_kelamin}', {$row->total}],";
                     } ?>
                 ]);
