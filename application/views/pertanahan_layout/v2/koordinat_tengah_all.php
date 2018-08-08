@@ -9,8 +9,19 @@
 </ol>
 </section>
 <section class="content">
-<div class="box box-info">
+
+<div class="box">
     <div class="box-header">
+        <h3 class="box-title">
+            Titik Peta Terekam Sistem
+        </h3>
+    </div>
+    <div class="box-body">
+        <div style="height: 480px;" id="map-canvas"></div>
+    </div>
+</div>
+
+<div class="box box-info">
     <?php 
         switch ($this->session->userdata('jabatan')) {
         case 'ROOT':
@@ -27,56 +38,20 @@
             <img width="50%" class="img img-responsive" src="<?php echo base_url('assets/nyapu.gif');?>" />
         </center>
         <button type="submit" name="upload" class="btn btn-sm btn-flat btn-warning">Import Excel <i class="fa fa-excel-o"></i> </button>
-      </div>
+    </div>
     <?php 
     echo form_close();
         break;
     default:
         ?> 
-        <!--  --
-        <h3 class="box-title">Apa Anda ingin menginput Data Koordinat Baru ?</h3>       
-        <button class="btn btn-sm btn-flat btn-success" onclick="v2_input_koordinat_tengah()" >Iya, Input Data <i class="fa fa-plus"></i></button>
-        <!--  -->
         <h3 class="box-title"> DATA KOORDINAT Yang Memiliki NIK PEMILIK</h3>
         <?php
         break;
         
     }
-    ?>
-    </div>
-    <div class="box-body">
-        <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_tengah">
-        <thead>
-        <tr valign="center" align="center" style="font-weight:bolder;">
-            <td>Nama/ NIK</td>
-            <td>Latitude</td>
-            <td>Longitude</td>
-            <td>Dokumentasi</td>
-            <!-- <td>Action</td> -->
-        </tr>
-        </thead>
-        <tbody>
-            <?php             
-            // if($data!= '' || $data !=null){
-            foreach ($data as $koor) {
-            echo "<tr>";
-            echo "<td>a/n. : ".$koor->nama." <br> No NIK.".$koor->nik."</td>";
-            echo "<td>".$koor->latitude."</td>";
-            echo "<td>".$koor->longitude."</td>";
-            echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$koor->dokumentasi."' /></td>";
-            // echo "<td align='center'> <button onclick='v2_edit_koordinat_tengah()' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> <button onclick='v2_hapus_koordinat_tengah()' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> </td>";
-            echo "</tr>";
-            } 
-            // }else{
-            //     echo "<tr>";
-            //     echo "<td colspan='6' align='center'><h3>Data Yang Matching Kosong !!</h3></td>";
-            //     echo "</tr>";
-            // }
-             ?>
-        </tbody>
-        </table>
-    </div> 
+    ?>    
 </div>
+
 
 <hr>
 <?php 
@@ -94,9 +69,18 @@
             <div class="tab-content">
                 <!-- START TAB Pertama -->
                 <div class="tab-pane active" id="list_koordinat_all">
-
+        <?php 
+        switch ($this->session->userdata('jabatan')) {
+            case 'ROOT' || 'MASTER' || 'PERTANAHAN' :
+        ?>
         <hr/>
         <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
+        <?php 
+         break;
+         default:
+         break;
+        }
+        ?>
         <hr/>
         <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_tengah_all">
         <thead>
@@ -111,16 +95,25 @@
         <tbody>
             <?php             
             if($dataAll!= '' || $dataAll !=null){
-            foreach ($dataAll as $data) {
+            foreach ($dataAll as $semua) {
             echo "<tr>";
-            echo "<td>No NIK.".$data->nik."</td>";
-            echo "<td>".$data->latitude."</td>";
-            echo "<td>".$data->longitude."</td>";
-            echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$data->dokumentasi."' /></td>";
+            echo "<td>No NIK.".$semua->nik."</td>";
+            echo "<td>".$semua->latitude."</td>";
+            echo "<td>".$semua->longitude."</td>";
+            echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$semua->dokumentasi."' /></td>";
+            switch ($this->session->userdata('jabatan')) {
+                case 'ROOT' || 'MASTER' || 'PERTANAHAN' :
+            
             echo "<td align='center'> <a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
+            
             ?>
-            <button onclick="delete_tengah_one(<?php echo $data->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
+            <button onclick="delete_tengah_one(<?php echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
             <?php 
+            break;
+                default:
+                echo "<td align='center'> <button class='btn btn-block btn-danger disabled'> Tidak Memilik Akses </button> </td>";
+                break;
+            }
             echo "</td>";
             echo "</tr>";
             } 
@@ -141,9 +134,41 @@
                             <hr>
                             <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
                             <hr>
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_verifikasi">
-                            </table>
-                        
+                           <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_tengah">
+        <thead>
+        <tr valign="center" align="center" style="font-weight:bolder;">
+            <td>Nama/ NIK</td>
+            <td>Latitude</td>
+            <td>Longitude</td>
+            <td>Dokumentasi</td>
+
+            <!-- <td>Action</td> -->
+
+        </tr>
+        </thead>
+        <tbody>
+        <?php             
+            if($data!= '' || $data !=null){
+
+            foreach ($data as $koor) {
+            echo "<tr>";
+            echo "<td>a/n. : ".$koor->nama." <br> No NIK.".$koor->nik."</td>";
+            echo "<td>".$koor->latitude."</td>";
+            echo "<td>".$koor->longitude."</td>";
+            echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$koor->dokumentasi."' /></td>";
+            // echo "<td align='center'> <button onclick='v2_edit_koordinat_tengah()' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> <button onclick='v2_hapus_koordinat_tengah()' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> </td>";
+            echo "</tr>";
+            } 
+
+
+            }else{
+                echo "<tr>";
+                echo "<td colspan='6' align='center'><h3>Data Yang Matching Kosong !!</h3></td>";
+                echo "</tr>";
+            }
+             ?>
+        </tbody>
+        </table>                        
                     
                 </div>
                  <!-- END -->
@@ -228,3 +253,76 @@
    </div> 
  </div>
  
+
+
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY"></script>
+
+<script>
+var map;
+var url = '<?php echo base_url(); ?>semua/koordinat';
+function initialize() {
+
+map = new google.maps.Map(document.getElementById('map-canvas'), {
+    zoom: 10,
+    center: new google.maps.LatLng(-2.858830, 107.906900),
+    mapTypeId: 'terrain',
+    // mapTypeControl: false,
+    // disableDefaultUI: true
+  });
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $.ajax({
+            'url': url,
+            'success': function (data) {
+                var markers = [];
+                // console.log(data);
+                for (let i = 0; i < data.length; i++) {
+                    const latLng = new google.maps.LatLng(
+                        data[i]['latitude'],
+                        data[i]['longitude']
+                    );
+                    const title = data[i]['nik'];
+                    const contentString = '<div id="content">'+
+                    '<div id="siteNotice">'+
+                    '</div>'+
+                    '<h5 id="firstHeading" class="firstHeading">'+ data[i]['status']+'</h5>'+
+                    '<div id="bodyContent">'+
+                    '<p> No NIK. <b>'+ data[i]['nik'] +'</b>' +
+                    '.</p>'+ 
+                    '<p> Latitude : '+ data[i]['latitude'] +' Longitude: '+ data[i]['longitude'] +' <br> Area : &plusmn; '+ data[i]['area'] +' m<sup>2</sup><br> Status Verifikasi Kelengkapan Data : '+ data[i]['verified'] +'</p>'+           
+                    '</div>'+
+                    '</div>';
+                    var infowindow = new google.maps.InfoWindow({
+                                        content: contentString
+                                        });
+
+                    const marker = new google.maps.Marker({
+                            position: latLng,
+                            title: title 
+                        });
+                    marker.addListener('click', function() {
+                            infowindow.open(map, marker);
+                        });
+                    markers.push(marker);
+                    
+                }       
+                var markerCluster = new MarkerClusterer(map, markers,
+                    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+                );
+        
+            }
+        });
+       
+        
+
+
+
+// locations.push(new google.maps.LatLng(floatval(<?php echo $data->latitude;?>), floatval(<?php echo $data->longitude;?>)));
+
+
+
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+

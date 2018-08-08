@@ -212,6 +212,9 @@ $route['permohonan/get/(:any)']           = 'pertanahan/get_permohonan/$1';
 $route['permohonan/delete/(:any)']        = 'pertanahan/delete_permohonan/$1';
 
 $route['permohonan/update']               = 'pertanahan/update_permohonan';
+
+
+$route['semua/koordinat']                 = 'pertanahan/semua_koordinat';
 /* -----------------------------------------------------------------------
                        PRINT / CETAK PDF ROUTE
  ----------------------------------------------------------------------- */

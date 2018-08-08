@@ -30,6 +30,29 @@
           <span>Cek Data Tanah</span>
           </a>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-map-o"></i> <span>Data Koordinat</span>
+             <!-- <small class="label pull-right bg-green">new</small> -->
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
+            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+        <a href="#">
+          <i class="fa fa-laptop"></i>
+          <span>Layanan Pertanahan</span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="<?php echo base_url().'pertanahan/berita_acara'; ?>"><i class="fa fa-circle-o"></i> Data BAP</a></li>
+          <li><a href="<?php echo base_url().'pertanahan/surat_tanah'; ?>"><i class="fa fa-circle-o"></i> Data SKT Release</a></li>
+          <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
+        </ul>
+      </li>
         <?php
           break;
           case "SEKDES":
@@ -59,6 +82,17 @@
           <i class="fa fa-search"></i> 
           <span>Cek Data Tanah</span>
           </a>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-map-o"></i> <span>Data Koordinat</span>
+             <!-- <small class="label pull-right bg-green">new</small> -->
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
+            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
+          </ul>
         </li>
         <li class="treeview">
         <a href="#">
@@ -112,6 +146,17 @@
             <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-map-o"></i> <span>Data Koordinat</span>
+             <!-- <small class="label pull-right bg-green">new</small> -->
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
+            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
+          </ul>
+        </li>
         <?php } ?>
         <?php
           break;
@@ -160,12 +205,17 @@
         </a>
         </li>
         <!-- Data Tanah -->
-        <!-- <li>
-        <a href="<?php echo base_url().'pertanahan/data'; ?>">
-        <i class="fa fa-search"></i>
-        <span>Cek Data Tanah</span>
-        </a>
-        </li> -->
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-map-o"></i> <span>Data Koordinat</span>
+             <!-- <small class="label pull-right bg-green">new</small> -->
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
+            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
+          </ul>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
@@ -198,6 +248,17 @@
         <span>Cek Data Tanah</span>
         </a>
       </li>
+      <li class="treeview">
+          <a href="#">
+            <i class="fa fa-map-o"></i> <span>Data Koordinat</span>
+             <!-- <small class="label pull-right bg-green">new</small> -->
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
+            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
+          </ul>
+        </li>
         <?php
         break;
         case 'KADUS':
@@ -209,12 +270,23 @@
         <span>Cek Data Tanah</span>
         </a>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-map-o"></i> <span>Data Koordinat</span>
+             <!-- <small class="label pull-right bg-green">new</small> -->
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
+            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
+          </ul>
+        </li>
         <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>">
         <i class="fa fa-map"></i> 
         <span>Permohonan Tanah</span>
         </a>
         </li>
-
+          
         <?php
         break;
         case 'RT':
