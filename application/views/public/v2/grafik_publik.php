@@ -43,13 +43,18 @@ google.load('visualization', '1', {packages: ['corechart']});
         echo "Tidak ada data di database.";
     } ?>
     </script>
-
+<hr/>
 <div class="row">
-<div class="col-md-6">
-<div id="visualization"></div>
-</div>
-<div class="col-md-6">
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui aliquid omnis ut laboriosam vero quod autem repellendus quas optio voluptatum consequatur, rem facere itaque quibusdam impedit eos incidunt nihil ullam.</p>
-</div>
+	<div class="col-md-4">
+		<div id="visualization"></div>
+	</div>
+
+	<div class="col-md-4">
+		<div id="visualization"></div>
+	</div>
+	
+	<div class="col-md-4">
+		<div id="visualization"></div>
+	</div>
 </div>
     
