@@ -183,7 +183,7 @@ class Stream extends CI_Controller{
     $data['penduduk'] = $this->datapenduduk_model->_get_penduduk_group_sex();
     $data['laki'] = $this->datapenduduk_model->_get_penduduk_laki();
     $data['perempuan'] = $this->datapenduduk_model->_get_penduduk_perempuan();
-    $data['main_content']   = UMUM.'v2/grafik_publik';
+    $data['main_content']   = UMUM.'v2/grafik';
     $this->load->view(UMUM. 'v2/template', $data);
 }
 
