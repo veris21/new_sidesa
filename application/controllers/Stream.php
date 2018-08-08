@@ -179,8 +179,11 @@ class Stream extends CI_Controller{
 
   public function grafik_public(){
     $data['title']          = TITLE . 'Open Data Pertanahan Publik';
-    $data['main_content']   = UMUM.'v2/Belum_tersedia';
-    // $data['main_content']   = UMUM.'v2/grafik_publik';
+    // $data['main_content']   = UMUM.'v2/Belum_tersedia';
+    $data['penduduk'] = $this->datapenduduk_model->_get_penduduk_group_sex();
+    $data['laki'] = $this->datapenduduk_model->_get_penduduk_laki();
+    $data['perempuan'] = $this->datapenduduk_model->_get_penduduk_perempuan();
+    $data['main_content']   = UMUM.'v2/grafik_publik';
     $this->load->view(UMUM. 'v2/template', $data);
 }
 

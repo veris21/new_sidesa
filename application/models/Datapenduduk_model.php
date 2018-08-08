@@ -9,6 +9,28 @@ class Datapenduduk_model extends CI_Model{
     //Codeigniter : Write Less Do More
   }
 
+  public function _get_penduduk_all(){
+    $this->db->get('master_data_penduduk_');
+    return;
+  }
+
+  public function _get_penduduk_group_sex()
+  {
+    $this->db->select('jenis_kelamin, COUNT(jenis_kelamin) as total');
+    $this->db->group_by('jenis_kelamin'); 
+    $this->db->order_by('total', 'desc'); 
+    return $this->db->get('master_data_penduduk_');
+  }
+
+  public function _get_penduduk_laki(){
+    return $this->db->get_where('master_data_penduduk_', array('jenis_kelamin'=>'Laki-Laki'));
+  }
+
+  public function _get_penduduk_perempuan(){
+    return $this->db->get_where('master_data_penduduk_', array('jenis_kelamin'=>'Perempuan'));
+  }
+
+
   // ============================================================
   public function _get_penduduk_belum_sekolah(){
     $this->db->where('pddk_akhir', 1);
@@ -100,6 +122,8 @@ class Datapenduduk_model extends CI_Model{
   public function _post_timeline($post){
     return $this->db->insert('timeline_data_penduduk_', $post);
   }
+
+
 
   public function _get_data()
   {
