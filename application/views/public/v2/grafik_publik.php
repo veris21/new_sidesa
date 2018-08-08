@@ -1,4 +1,6 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+
 <script type="text/javascript">
        //load package
 google.load('visualization', '1', {packages: ['corechart']});

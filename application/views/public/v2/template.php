@@ -185,7 +185,6 @@
 <!--      -->
 
     <!--  -->
-    <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  -->
 
     <script src="<?php echo base_url().THEME; ?>plugins/input-mask/jquery.inputmask.js"></script>
     <script src="<?php echo base_url().THEME; ?>plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
