@@ -9,10 +9,10 @@ google.load('visualization', '1', {packages: ['corechart']});
 		$jml = json_encode($penduduk->result());		
 		// $lk = $laki->num_rows();		
 		// $pr = $perempuan->num_rows();		
-		// foreach ($penduduk->result() as $x) {
-		// 	$label[] = $x->jenis_kelamin;
-		// 	$nilai[] = $x->total;
-		// }
+		foreach ($penduduk->result() as $x) {
+			$label[] = $x->jenis_kelamin;
+			$nilai[] = $x->total;
+		}
 		?>
 
 <?php $result = $penduduk;
@@ -25,7 +25,7 @@ google.load('visualization', '1', {packages: ['corechart']});
                 var data = google.visualization.arrayToDataTable([
                     ['Gender', 'Jumlah'],
 					<?php
-					echo [$jml];
+					echo $label.','.$nilai;
                     // foreach ($result->result_array() as $row) {
                     //     extract($row);
                     //     echo "['{$jenis_kelamin}', {$total}],";
