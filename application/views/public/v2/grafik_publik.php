@@ -6,7 +6,7 @@
 google.load('visualization', '1', {packages: ['corechart']});
  </script>
 		<?php 
-		// $jml = json_encode($penduduk->result());		
+		$jml = json_encode($penduduk->result());		
 		// $lk = $laki->num_rows();		
 		// $pr = $perempuan->num_rows();		
 		// foreach ($penduduk->result() as $x) {
@@ -24,11 +24,13 @@ google.load('visualization', '1', {packages: ['corechart']});
                 // Create and populate the data table.
                 var data = google.visualization.arrayToDataTable([
                     ['Gender', 'Jumlah'],
-                    <?php
-                    foreach ($result->result_array() as $row) {
-                        extract($row);
-                        echo "['{$jenis_kelamin}', {$total}],";
-                    } ?>
+					<?php
+					echo $jml;
+                    // foreach ($result->result_array() as $row) {
+                    //     extract($row);
+                    //     echo "['{$jenis_kelamin}', {$total}],";
+					// } 
+					?>
                 ]);
                 // Create and draw the visualization.
                 new google.visualization.PieChart(document.getElementById('visualization')).
