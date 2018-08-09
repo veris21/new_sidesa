@@ -387,7 +387,7 @@ document.querySelector('#save').addEventListener("click", function(event) {
 
 //prepare conatct object's HTML
 function chatHtmlFromObject(chat) {
-  console.log(chat);
+//   console.log(chat);
    var bubble = (chat.name == document.querySelector('#name').value ? "bubble-right" : "bubble-left");
 //   var html = 
 //   '<div class="' 
