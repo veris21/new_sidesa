@@ -1,4 +1,4 @@
-<?php $active_link = $this->uri->segment(4);?>
+<?php $active_link = $this->uri->segment(3);?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,7 +17,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url().V2;?>img/favicon.png">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url().THEME; ?>sweetalert.css">
     <script src="<?php echo base_url().THEME; ?>sweetalert.min.js"></script>
-    <title>Sistem Informasi Dokumentasi Data Desa - Si-DESA ID</title>
+    <title><?php echo $title; ?></title>
   </head>
   <body class="">
     <div class="page-wrapper">
@@ -47,63 +47,14 @@
 
                     <li class="nav-item">
                       <a href="<?php echo base_url().'public/grafik'; ?>" class="nav-link <?php echo ($active_link == 'grafik' ? 'active' : ''); ?>">Grafik Data Penduduk</a>
-                    </li>
-                    <!--  --
-                     
-                    <li class="nav-item has-sub-menu has-mega-menu">
-                      <a href="#" class="nav-link <?php echo ($active_link == 'kelompok' ? 'active' : ''); ?>">Grafik Data Kependudukan</a>
-                      <div class="sub-menu mega-menu">
-                        <ul>
-                          <li>
-                            <strong>Kelompok Umur</strong>
-                          </li>
-                          <li><a href="#">Balita /Bawah 5 (lima) Tahun</a></li>
-                          <li><a href="#">Remaja</a></li>
-                          <li><a href="#">Dewasa</a></li>
-                          <li><a href="#">Lansia ( >60 Tahun )</a></li>
-                        </ul>
-                        <ul>
-                          <li>
-                            <strong>Kelompok Pekerjaan</strong>
-                          </li>
-                          <li><a href="#">Pertanian &amp; Perkebunan</a></li>
-                          <li><a href="#">Pertambangan</a></li>
-                          <li><a href="#">Pegawai Pemerintah/Honorer</a></li>
-                          <li><a href="#">Pengusaha / Swasta</a></li>
-                          <li><a href="#">Belum Bekerja/ Pengangguran</a></li>
-                        </ul>
-                        <ul>
-                          <li>
-                            <strong>Kelompok Pendidikan</strong>
-                          </li>
-                          <li><a href="#">Belum/ Tidak Tamat SD</a></li>
-                          <li><a href="#">Tamat SD/Sederajat</a></li>
-                          <li><a href="#">Tamat SMP/Sederajat</a></li>
-                          <li><a href="#">Tamat SMA/Sederajat</a></li>
-                          <li><a href="#">Tamat Perguruan Tinggi/Sederajat</a></li>
-                        </ul>
-                        <ul>
-                          <li>
-                            <strong>Kelompok Penerima Bantuan</strong>
-                          </li>
-                          <li><a href="#">Bantuan Raskin/ Ranstra</a></li>
-                          <li><a href="#">Bantuan PKP/PKH</a></li>
-                          <li><a href="#">Bantuan KIS/KIP</a></li>
-                          <li><a href="#">Bantuan Jamkesda/Setara</a></li>
-                          <li><a href="#">Bantuan RTRH/ Perumahan</a></li>
-                          <li><a href="#">Bantuan CSR</a></li>
-                          <li><a href="#">Lain - Lain</a></li>
-                        </ul>
-                      </div>
-                    </li>
-                    <!--  -->
+                    </li>                    
                     <li class="nav-item has-sub-menu">
-                      <a href="#" class="nav-link <?php echo ($active_link == 'data_pertanahan' ? 'active' : ''); ?>">Pertanahan &amp; Aset Desa</a>
+                      <a href="#" class="nav-link <?php echo ($active_link == 'data' ? 'active' : ''); ?>">Pertanahan &amp; Aset Desa</a>
                       <ul class="sub-menu">
-                        <li><a href="#">Fasilitas Umum</a></li>
-                        <li><a href="#">Pertanian &amp; Perkebunan</a></li>
-                        <li><a href="#">Kelompok Usaha</a></li>
-                        <li><a href="#">Pertanahan Masyarakat</a></li>
+                        <li><a href="<?php echo base_url('public/data/fasilitas_umum');?>">Fasilitas Umum</a></li>
+                        <li><a href="<?php echo base_url('public/data/pertanian');?>">Pertanian &amp; Perkebunan</a></li>
+                        <li><a href="<?php echo base_url('public/data/kelompok_usaha');?>">Kelompok Usaha</a></li>
+                        <li><a href="<?php echo base_url('public/data/grafik_pertanahan');?>">Pertanahan Masyarakat</a></li>
                       </ul>
                     </li>
                   </ul>
@@ -163,7 +114,7 @@
 	//	var base_url = '<?php //echo base_url().V2; ?>'; 
   </script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=weather,geometry,visualization,places,drawing&key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY" type="text/javascript"></script>
-    <script type="text/javascript" src="<?php echo base_url().V2;?>js/jquery.js"></script>
+    <!-- <script type="text/javascript" src="<?php echo base_url().V2;?>js/jquery.js"></script> -->
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/tether.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/chartist.min.js"></script>

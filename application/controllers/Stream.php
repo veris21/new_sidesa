@@ -178,7 +178,7 @@ class Stream extends CI_Controller{
 
 
   public function grafik_public(){
-    $data['title']          = TITLE . 'Open Data Pertanahan Publik';
+    $data['title']          = TITLE . 'Grafik Kependudukan';
     // $data['main_content']   = UMUM.'v2/Belum_tersedia';
     $data['penduduk'] = $this->datapenduduk_model->_get_penduduk_group_sex();
     $data['laki'] = $this->datapenduduk_model->_get_penduduk_laki();
@@ -187,10 +187,57 @@ class Stream extends CI_Controller{
     $this->load->view(UMUM. 'v2/template', $data);
 }
 
+public function data_fasilitas_umum()
+{
+  $data['title']          = TITLE . 'Open Data Fasilitas Umum Desa';
+  $data['main_content']   = UMUM.'v2/Belum_tersedia';
+  $this->load->view(UMUM. 'v2/template', $data);
+}
 
+public function data_pertanian()
+{
+  $data['title']          = TITLE . 'Open Data Pertanian Desa';
+  $data['main_content']   = UMUM.'v2/Belum_tersedia';
+  $this->load->view(UMUM. 'v2/template', $data);
+}
+
+public function data_kelompok_usaha()
+{
+  $data['title']          = TITLE . 'Open Data Kelompok Usaha Desa';
+  $data['main_content']   = UMUM.'v2/Belum_tersedia';
+  $this->load->view(UMUM. 'v2/template', $data);
+}
+
+public function data_grafik_pertanian()
+{
+  $data['title']          = TITLE . 'Open Data Pertanian Desa';
+  $data['main_content']   = UMUM.'v2/Belum_tersedia';
+  $this->load->view(UMUM. 'v2/template', $data);
+}
 
 
   /*===============================================================================*/
+
+
+  public function api_jenis_kelamin_penduduk()
+  {
+    $data = $this->datapenduduk_model->_get_penduduk_group_sex()->result();
+
+    $this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($data));
+  }
+
+  
+  public function api_pendidikan_penduduk()
+  {
+    $data = $this->datapenduduk_model->_get_penduduk_pendidikan()->result();
+
+    $this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($data));
+  }
+
 
 }
 

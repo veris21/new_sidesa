@@ -39,11 +39,21 @@ $route['auth']                      = 'auth/validate';
  $route['public/grafik']                    = 'stream/grafik_public';
  $route['public/kelompok/umur']             = 'stream/kelompok_umur';
  $route['public/kelompok/pekerjaan']        = 'stream/kelompok_pekerjaan'; 
+
+ $route['public/data/fasilitas_umum']       = 'stream/data_fasilitas_umum';
+ $route['public/data/pertanian']            = 'stream/data_pertanian';
+ $route['public/data/kelompok_usaha']       = 'stream/data_kelompok_usaha';
+ $route['public/data/grafik_pertanahan']    = 'stream/data_grafik_pertanian';
+
+
  
 $route['public/pertanahan/details/(:any)/(:any)']  = 'stream/details_skt/$1/$2';
 $route['api/stream/desa/(:any)']            = 'stream/cari_data_per_desa/$1';
 $route['api/stream/dusun/(:any)']           = 'stream/cari_data_per_dusun/$1';
 $route['api/stream/nama/(:any)']            = 'stream/cari_data_per_nama/$1';
+
+$route['api/stream/penduduk/jenis_kelamin'] = 'stream/api_jenis_kelamin_penduduk';
+$route['api/stream/penduduk/pendidikan']    = 'stream/api_pendidikan_penduduk';
 
 $route['api/stream/marker']                 = 'stream/get_marker_all';
 $route['api/stream/marker/one/(:any)']      = 'stream/get_one_marker/$1';
