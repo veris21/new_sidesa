@@ -81,7 +81,7 @@ $.ajax({
       dataType: "JSON",
       success: function (data) {
         for (const i in data) {
-            pddkData.push({"name":data[i]['pddk'],"y": parseFloat(data[i]['total']) });
+            pddkData.push({"name":data[i]['pddk_akhir'],"y": parseFloat(data[i]['total']) });
         }
         console.log(pddkData);
         showChartpddk(pddkData);
