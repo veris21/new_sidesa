@@ -356,7 +356,7 @@ $disposisiKosong = $disposisi->num_rows();
 
 // var chatsRef = dbRef.child('chats');
 
-var chatsRef = firebase.database().ref('gantung').child('chats');
+var chatsRef = firebase.database().ref().child('chats');
 //load older conatcts as well as any newly added one...
 chatsRef.on("child_added", function(snap) {
   console.log("added", snap.key(), snap.val());
