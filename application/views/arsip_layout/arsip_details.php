@@ -355,11 +355,11 @@ $disposisiKosong = $disposisi->num_rows();
 // var dbRef = new Firebase("https://desa-gantung-1509443702722.firebaseio.com/");
 
 // var chatsRef = dbRef.child('chats');
-
-var chatsRef = firebase.database().ref().child('chats');
+var children = '<?php echo $data['time']."-telaah-arsip-".$data['id']; ?>';
+var chatsRef = firebase.database().ref('chats').child(children);
 //load older conatcts as well as any newly added one...
 chatsRef.on("child_added", function(snap) {
-  console.log("added", snap.key(), snap.val());
+//   console.log("added", snap.key(), snap.val());
   document.querySelector('#chat-box').innerHTML += (chatHtmlFromObject(snap.val()));
 });
 
@@ -402,7 +402,13 @@ function chatHtmlFromObject(chat) {
     var logo = '<?php echo base_url().'assets/new-logo.png'; ?>';
     var html = "<div class='item'><img src='"
     +logo+
-    "' alt='user image' class='offline'><p class='message'><a href='#' class='name'><small class='text-muted pull-right'><i class='fa fa-clock-o'></i> 5:30</small>Susan Doe</a>I would like to meet you to discuss the latest news about the arrival of the new theme. They say it is going to be one the best themes on the market</p></div>";
+    "' alt='user image' class='offline'><p class='message'><a href='#' class='name'><small class='text-muted pull-right'><i class='fa fa-clock-o'></i>"
+    + chat.date + 
+     "</small>"
+    + chat.name +
+    "</a>"
+    + chat.message +
+    "</p></div>";
   return html;
 }
 </script>
