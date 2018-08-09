@@ -295,10 +295,11 @@ map = new google.maps.Map(document.getElementById('map-canvas'), {
                     var infowindow = new google.maps.InfoWindow({
                                         content: contentString
                                         });
-
+                    const mapIcon = 'https://si-desa.id/assets/mapicon.png';
                     const marker = new google.maps.Marker({
                             position: latLng,
-                            title: title 
+                            title: title,
+                            icon: mapIcon
                         });
                     marker.addListener('click', function() {
                             infowindow.open(map, marker);
