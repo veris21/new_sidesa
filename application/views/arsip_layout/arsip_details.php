@@ -357,7 +357,7 @@ $disposisiKosong = $disposisi->num_rows();
 // var chatsRef = dbRef.child('chats');
 var children = '<?php echo $data['time']."-arsip-".$data['id']; ?>';
 var root = '<?php echo base_url();?>';
-if (root=='https://si-desa.id') {
+if (root=='https://si-desa.id/') {
     var rootRef = 'server';
 } else {
     var rootRef = 'dev-local';
