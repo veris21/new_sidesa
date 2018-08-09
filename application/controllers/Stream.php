@@ -238,6 +238,25 @@ public function data_grafik_pertanian()
         ->set_output(json_encode($data));
   }
 
+  public function api_pekerjaan_penduduk()
+  {
+    $data = $this->datapenduduk_model->_get_penduduk_pekerjaan()->result();
+
+    $this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($data));
+  }
+
+
+  public function api_kelompok_umur_penduduk()
+  {
+    $data = $this->datapenduduk_model->_get_penduduk_pendidikan()->result();
+
+    $this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($data));
+  }
+
 
 }
 

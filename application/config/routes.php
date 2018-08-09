@@ -54,6 +54,8 @@ $route['api/stream/nama/(:any)']            = 'stream/cari_data_per_nama/$1';
 
 $route['api/stream/penduduk/jenis_kelamin'] = 'stream/api_jenis_kelamin_penduduk';
 $route['api/stream/penduduk/pendidikan']    = 'stream/api_pendidikan_penduduk';
+$route['api/stream/penduduk/pekerjaan']     = 'stream/api_pekerjaan_penduduk';
+$route['api/stream/penduduk/kelompok_umur'] = 'stream/api_kelompok_umur_penduduk';
 
 $route['api/stream/marker']                 = 'stream/get_marker_all';
 $route['api/stream/marker/one/(:any)']      = 'stream/get_one_marker/$1';

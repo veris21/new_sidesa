@@ -30,6 +30,27 @@ class Datapenduduk_model extends CI_Model{
     return $this->db->get('master_data_penduduk_');
   }
 
+  public function _get_penduduk_kelompok_umur()
+  {
+    $this->db->select('pddk_akhir, COUNT(pddk_akhir) as total');
+    $this->db->group_by('pddk_akhir'); 
+    $this->db->order_by('total', 'desc'); 
+    return $this->db->get('master_data_penduduk_');
+  }
+
+
+  public function _get_penduduk_pekerjaan()
+  {
+    $this->db->select('pekerjaan, COUNT(pekerjaan) as total');
+    $this->db->group_by('pekerjaan'); 
+    $this->db->order_by('total', 'desc'); 
+    return $this->db->get('master_data_penduduk_');
+  }
+
+
+// ===========================
+
+
   public function _get_penduduk_laki(){
     return $this->db->get_where('master_data_penduduk_', array('jenis_kelamin'=>'Laki-Laki'));
   }
