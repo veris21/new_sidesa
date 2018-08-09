@@ -154,6 +154,12 @@ $disposisiKosong = $disposisi->num_rows();
             // $disposisi = $this->disposisi_model->_get_all_on_arsip_id($id);
             if($disposisiKosong != 0){
             ?>
+
+
+            <div class="row">
+                <div class="col-md-8">
+                    
+
             <div class="box box warning">
                 <div class="box-body">
                 <div class="table-responsive">
@@ -191,6 +197,59 @@ $disposisiKosong = $disposisi->num_rows();
                     </div>
                 </div>
             </div>
+
+
+                </div>
+
+                <div class="col-md-4">
+                
+<!-- Chat box -->
+              <div class="box box-success">
+
+                <div class="box-header">
+                  <i class="fa fa-comments-o"></i>
+                  <h3 class="box-title">Diskusi Arsip</h3>
+                </div>
+
+                <div class="box-body chat" id="chat-box">
+                <hr>
+                  <!-- chat item -->
+                  <!-- <div class="item">
+                    <img src="<?php //echo base_url().'assets/new-logo.png'; ?>" alt="user image" class="offline">
+                    <p class="message">
+                      <a href="#" class="name">
+                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 5:30</small>
+                        Susan Doe
+                      </a>
+                      I would like to meet you to discuss the latest news about
+                      the arrival of the new theme. They say it is going to be one the
+                      best themes on the market
+                    </p>
+                  </div> -->
+
+
+                </div><!-- /.chat -->
+                <form id="msg_form">
+                <div class="box-footer">
+                  <div class="input-group">
+                  
+                    <input type="hidden" id="name" name="name" value="<?php echo $this->session->userdata('fullname');?>">
+                    <input id="message" class="form-control" placeholder="Type message...">
+                    <div class="input-group-btn">
+                      <button type="submit" id="save" class="btn btn-success"><i class="fa fa-plus"></i></button>
+                    </div>
+                
+                  </div>                  
+                </div>
+                </form>
+              </div><!-- /.box (chat box) -->
+
+
+
+                </div>
+            </div>
+
+
             <?php }else{ ?>
                 <div class="well text-center">Belum Didisposisikan</div>
             <?php } ?>
@@ -267,3 +326,77 @@ $disposisiKosong = $disposisi->num_rows();
 </div> 
 </div>
 <!--  -->
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+<!-- <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script> -->
+
+<script>
+//   Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCAoPoAkirxUsDWNmHl9dYyP9bIFYJ1HZA",
+    authDomain: "desa-gantung-1509443702722.firebaseapp.com",
+    databaseURL: "https://desa-gantung-1509443702722.firebaseio.com",
+    projectId: "desa-gantung-1509443702722",
+    storageBucket: "desa-gantung-1509443702722.appspot.com",
+    messagingSenderId: "901048933580"
+  };
+  firebase.initializeApp(config);
+</script>
+<script>
+//create firebase reference
+// var dbRef = new Firebase("https://desa-gantung-1509443702722.firebaseio.com/");
+
+// var chatsRef = dbRef.child('chats');
+
+var chatsRef = firebase.database().ref().child('chats');
+//load older conatcts as well as any newly added one...
+chatsRef.on("child_added", function(snap) {
+  console.log("added", snap.key(), snap.val());
+  document.querySelector('#chat-box').innerHTML += (chatHtmlFromObject(snap.val()));
+});
+
+//save chat
+document.querySelector('#save').addEventListener("click", function(event) {
+  var a = new Date(),
+  b = a.getDate(),
+  c = a.getMonth(),
+  d = a.getFullYear(),
+  date = b + '/' + c + '/' + d,
+     chatForm = document.querySelector('#msg_form');
+  event.preventDefault();
+  if (document.querySelector('#name').value != '' && document.querySelector('#message').value != '') {
+  chatsRef
+  .push({
+  name: document.querySelector('#name').value,
+  message: document.querySelector('#message').value,
+  date: date
+  })
+  chatForm.reset();
+  } else {
+  alert('Please fill atlease name or message!');
+  }
+}, false);
+
+//prepare conatct object's HTML
+function chatHtmlFromObject(chat) {
+  console.log(chat);
+   var bubble = (chat.name == document.querySelector('#name').value ? "bubble-right" : "bubble-left");
+//   var html = 
+//   '<div class="' 
+//   + bubble + 
+//   '"><p><span class="name">'
+//    + chat.name + 
+//    '</span><span class="msgc">' 
+//    + chat.message +
+//     '</span><span class="date">' 
+//     + chat.date + 
+//     '</span></p></div>';
+    var logo = '<?php echo base_url().'assets/new-logo.png'; ?>';
+    var html = "<div class='item'><img src='"
+    +logo+
+    "' alt='user image' class='offline'><p class='message'><a href='#' class='name'><small class='text-muted pull-right'><i class='fa fa-clock-o'></i> 5:30</small>Susan Doe</a>I would like to meet you to discuss the latest news about the arrival of the new theme. They say it is going to be one the best themes on the market</p></div>";
+  return html;
+}
+</script>
