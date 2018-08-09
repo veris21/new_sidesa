@@ -356,8 +356,13 @@ $disposisiKosong = $disposisi->num_rows();
 
 // var chatsRef = dbRef.child('chats');
 var children = '<?php echo $data['time']."-arsip-".$data['id']; ?>';
-var root = '<?php echo "DATA:".base_url()."Chats";?>';
-var chatsRef = firebase.database().ref(root).child(children);
+var root = '<?php echo base_url();?>';
+if (root=='https://si-desa.id') {
+    var rootRef = 'server';
+} else {
+    var rootRef = 'dev-local';
+}
+var chatsRef = firebase.database().ref(rootRef).child(children);
 //load older conatcts as well as any newly added one...
 chatsRef.on("child_added", function(snap) {
 //   console.log("added", snap.key(), snap.val());
