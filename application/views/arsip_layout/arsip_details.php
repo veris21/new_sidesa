@@ -335,12 +335,18 @@ $disposisiKosong = $disposisi->num_rows();
 <script>
 //   Initialize Firebase
   var config = {
-    apiKey: "AIzaSyCAoPoAkirxUsDWNmHl9dYyP9bIFYJ1HZA",
-    authDomain: "desa-gantung-1509443702722.firebaseapp.com",
-    databaseURL: "https://desa-gantung-1509443702722.firebaseio.com",
-    projectId: "desa-gantung-1509443702722",
-    storageBucket: "desa-gantung-1509443702722.appspot.com",
-    messagingSenderId: "901048933580"
+    apiKey: "AIzaSyAMU8JUv1PJ4k0CiZP_JO3au3ZzJ8NXgoM",
+    authDomain: "sidesaku-1519497624516.firebaseapp.com",
+    databaseURL: "https://sidesaku-1519497624516.firebaseio.com",
+    projectId: "sidesaku-1519497624516",
+    storageBucket: "",
+    messagingSenderId: "742200587877"
+    // apiKey: "AIzaSyCAoPoAkirxUsDWNmHl9dYyP9bIFYJ1HZA",
+    // authDomain: "desa-gantung-1509443702722.firebaseapp.com",
+    // databaseURL: "https://desa-gantung-1509443702722.firebaseio.com",
+    // projectId: "desa-gantung-1509443702722",
+    // storageBucket: "desa-gantung-1509443702722.appspot.com",
+    // messagingSenderId: "901048933580"
   };
   firebase.initializeApp(config);
 </script>
