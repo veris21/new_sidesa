@@ -355,10 +355,10 @@ $disposisiKosong = $disposisi->num_rows();
 // var dbRef = new Firebase("https://desa-gantung-1509443702722.firebaseio.com/");
 
 // var chatsRef = dbRef.child('chats');
-var children = '<?php echo $data['time']."-arsip-".$data['id']; ?>';
+var children = '<?php echo "telaah-arsip-".$data['time']."--".$data['id']; ?>';
 var root = '<?php echo base_url();?>';
 if (root=='https://si-desa.id/') {
-    var rootRef = 'server';
+    var rootRef = 'server-chats-data';
 } else {
     var rootRef = 'dev-local';
 }
