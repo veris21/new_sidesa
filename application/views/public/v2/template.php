@@ -17,6 +17,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url().V2;?>img/favicon.png">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url().THEME; ?>sweetalert.css">
     <script src="<?php echo base_url().THEME; ?>sweetalert.min.js"></script>
+
+
     <title><?php echo $title; ?></title>
   </head>
   <body class="">
@@ -114,7 +116,7 @@
 	//	var base_url = '<?php //echo base_url().V2; ?>'; 
   </script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=weather,geometry,visualization,places,drawing&key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY" type="text/javascript"></script>
-    <!-- <script type="text/javascript" src="<?php echo base_url().V2;?>js/jquery.js"></script> -->
+    <script type="text/javascript" src="<?php echo base_url().V2;?>js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/tether.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/chartist.min.js"></script>
@@ -133,6 +135,7 @@
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/particles.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/explorer.js"></script>
     <script type="text/javascript" src="<?php echo base_url().V2;?>js/explorer-map-search.js"></script>
+
 <!--      -->
 
     <!--  -->
@@ -146,5 +149,172 @@
     <script type="text/javascript" >/*/ Base Setting /*/ var baseUrl = '<?php echo base_url();?>';</script>
     <script type="text/javascript" src="<?php echo base_url().APPS.'auth.js';?>"></script>
     <script type="text/javascript" src="<?php //echo base_url().APPS.'chart_data.js';?>"></script>
+
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+
+
+<script>
+var urlSex       = '<?php echo base_url(); ?>api/stream/penduduk/jenis_kelamin';
+var urlPddk      = '<?php echo base_url(); ?>api/stream/penduduk/pendidikan';
+var urlPekerjaan = '<?php echo base_url(); ?>api/stream/penduduk/pekerjaan';
+var urlUmur      = '<?php echo base_url(); ?>api/stream/penduduk/kelompok_umur';
+
+var sexData         = [];
+var pddkData        = [];
+var kelompokUmur    = [];
+var pekerjaanData   = [];
+
+$.ajax({
+      url: urlSex,
+      type: "GET",
+      dataType: "JSON",
+      success: function (data) {
+        for (const i in data) {
+            sexData.push({"name":data[i]['jenis_kelamin'],"y": parseFloat(data[i]['total']) });
+        }
+        console.log(sexData);
+        showChartSex(sexData);
+    }
+});
+
+$.ajax({
+      url: urlPddk,
+      type: "GET",
+      dataType: "JSON",
+      success: function (data) {
+        for (const i in data) {
+            pddkData.push({"name":data[i]['pddk_akhir'],"y": parseFloat(data[i]['total']) });
+        }
+        console.log(pddkData);
+        showChartpddk(pddkData);
+    }
+});
+
+$.ajax({
+      url: urlPekerjaan,
+      type: "GET",
+      dataType: "JSON",
+      success: function (data) {
+        for (const i in data) {
+            pekerjaanData.push({"name":data[i]['pekerjaan'],"y": parseFloat(data[i]['total']) });
+        }
+        console.log(pekerjaanData);
+        showChartPekerjaan(pekerjaanData);
+    }
+});
+
+function showChartPekerjaan(pekerjaanData) {
+    Highcharts.chart('pekerjaan', {
+                chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Penduduk berdasarkan Jenis Pekerjaan'
+            },
+            tooltip: {
+                pointFormat: '<b> {point.y} orang ( {point.percentage:.1f}% )</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b> <br>  {point.y} orang ( {point.percentage:.1f} % )',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Jenis Pekerjaan',
+                colorByPoint: true,
+                data: pekerjaanData                
+            }]
+        });
+}
+
+
+function showChartSex(sexData){
+Highcharts.chart('jenisKelamin', {
+                chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Penduduk berdasarkan Jenis Kelamin'
+            },
+            tooltip: {
+                pointFormat: '<b> {point.y} orang ( {point.percentage:.1f}% )</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b> <br>  {point.y} orang ( {point.percentage:.1f} % )',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Jenis Kelamin',
+                colorByPoint: true,
+                data: sexData                
+            }]
+        });
+}
+
+
+function showChartpddk(pddkData) {
+    Highcharts.chart('pendidikan', {
+                chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Penduduk berdasarkan Tingkat Pendidikan'
+            },
+            tooltip: {
+                pointFormat: '<b> {point.y} orang ( {point.percentage:.1f}% )</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b> <br>  {point.y} orang ( {point.percentage:.1f} % )',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Klasifikasi Pendidikan',
+                colorByPoint: true,
+                data: pddkData                
+            }]
+        });
+}
+
+</script>
   </body>
 </html>
