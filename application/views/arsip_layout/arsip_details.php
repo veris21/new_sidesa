@@ -356,7 +356,7 @@ $disposisiKosong = $disposisi->num_rows();
 
 // var chatsRef = dbRef.child('chats');
 var children = '<?php echo $data['time']."-arsip-".$data['id']; ?>';
-var root = '<?php echo base_url()."Chats";?>';
+var root = '<?php echo "DATA:".base_url()."Chats";?>';
 var chatsRef = firebase.database().ref(root).child(children);
 //load older conatcts as well as any newly added one...
 chatsRef.on("child_added", function(snap) {
