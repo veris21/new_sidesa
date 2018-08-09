@@ -89,7 +89,38 @@ $.ajax({
 });
 
 function showChartpddk(pddkData) {
-    console.log(pddkData);
+    Highcharts.chart('pendidikan', {
+                chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Grafik Kependudukan Berdasarkan Tingkat Pendidikan'
+            },
+            tooltip: {
+                pointFormat: '<b> {point.y} orang ( {point.percentage:.1f}% )</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b> <br>  {point.y} orang ( {point.percentage:.1f} % )',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Klasifikasi Pendidikan',
+                colorByPoint: true,
+                data: pddkData                
+            }]
+        });
 }
 
 </script>
