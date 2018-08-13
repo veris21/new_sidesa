@@ -2218,6 +2218,21 @@ function delete_tengah_one(id) {
   });
 }
 
+function verifikasi_tengah_one(){
+  swal({
+    title: 'Apa Anda Yakin?',
+    text: "Melengkapi Pemutihan Data Pertanahan!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Iya, Buka Form!'
+  }, function isConfirm() {
+      location.href = baseUrl+'verifikasi/pemutihan';
+  });
+}
+
+
 
 // ===============================
 

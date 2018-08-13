@@ -583,6 +583,13 @@ class Pertanahan_model extends CI_Model{
     return $this->db->get_where('data_koordinat', array('id_data_link'=>$id));
   }
 
+  public function all_patok_group()
+  {
+    $query = "SELECT id_data_link, lat, lng FROM data_koordinat";
+    return $this->db->query($query);
+    // return $this->db->get('data_koordinat');
+  }
+
   public function _get_data_link($id){
     return $this->db->get_where('data_link', array('tanah_id'=>$id));
   }

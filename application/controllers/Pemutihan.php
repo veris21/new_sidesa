@@ -51,4 +51,12 @@ class Pemutihan extends CI_Controller{
     }
   }
 
+
+  public function verifikasi_pemutihan()
+  {
+      $data['title']                   =   TITLE.'Pemutihan Data Pertanahan';
+      $data['main_content']            =   PERTANAHAN.'v2/pemutihan_tengah_all';
+      $this->load->view('template', $data);
+  }
+
 }

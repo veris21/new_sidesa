@@ -745,7 +745,7 @@ class Pertanahan extends CI_Controller{
     $data['main_content'] = PERTANAHAN.'details_surat_tanah';
     $this->load->view('template', $data);
   }
-
+ 
   public function skt_update(){
     $id = strip_tags($this->input->post('id'));
     $type = strip_tags($this->input->post('type'));
@@ -873,7 +873,8 @@ class Pertanahan extends CI_Controller{
   }else{
       $data['title']                   =   TITLE.'Import Master Data';
       $data['main_content']            =   PERTANAHAN.'v2/koordinat_tengah_all';
-      $data['dataAll']                    =   $this->pertanahan_model->koordinat_tengah_all()->result();
+      $data['dataAll']                 =   $this->pertanahan_model->koordinat_tengah_all()->result();
+      $data['patok_all']               = $this->pertanahan_model->all_patok_group()->result();
       $data['data']                    =   $this->pertanahan_model->koordinat_tengah_nik()->result();
       $this->load->view('template', $data);
   }           
@@ -900,6 +901,14 @@ public function semua_koordinat(){
       ->set_output(json_encode($this->pertanahan_model->koordinat_tengah_all()->result()));
 }
 
+
+public function all_polygon_json()
+{
+  $data = $this->pertanahan_model->all_patok_group()->result();
+  $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode($data));
+}
 
   // public function import_koordinat_tengah(){
 

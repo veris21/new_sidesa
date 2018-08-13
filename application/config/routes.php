@@ -62,6 +62,8 @@ $route['api/stream/marker/one/(:any)']      = 'stream/get_one_marker/$1';
 $route['api/stream/marker/get_one/(:any)']  = 'stream/get_one_marker_id/$1';
 $route['api/stream/marker/asset/(:any)']    = 'stream/get_asset_desa/$1';
 
+
+$route['api/tanah_all/polygon/json']            = 'pertanahan/all_polygon_json';
 /* -----------------------------------------------------------------------
                        Validasi Check ROUTE
  ----------------------------------------------------------------------- */
@@ -286,8 +288,10 @@ $route['titik_berdasar_nik/(:any)']         = 'stream/v2_koordinat_nik/$1';
 // =========================== API =============================================
 $route['api/titik_tengah/json']             = 'pertanahan/api_koordinat_tanah';
 
-
+ 
 $route['pemutihan/titik_tengah']            = 'pemutihan/pemutihan_koordinat_tengah';
+$route['verifikasi/pemutihan']              = 'pemutihan/verifikasi_pemutihan';
+
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
 $route['koordinat/tanah']                   = 'pertanahan/input_koordinat';
