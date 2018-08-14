@@ -562,6 +562,8 @@ var nik;
 var idRef;
 var link;
 
+var table;
+
 
 function view_data_pemutihan_one(id) {
     event.preventDefault();
@@ -571,7 +573,7 @@ function view_data_pemutihan_one(id) {
     $.ajax({
         'url' : url+id,
         'success' : function(x){
-            console.log(x);
+            // console.log(x);
             // var obj = JSON.parse(x);
             $('#loader').hide();
             if (x != null) {
@@ -598,7 +600,7 @@ function validasi_data(nik){
     $.ajax({
         url: url+nik,
         success : function(y){            
-            console.log(y);
+            // console.log(y);
             if(y == null || y ==''){
                 $("#nik").text('');
                 $("#nama").text('');
@@ -639,32 +641,39 @@ function view_data_pemutihan_status(idRef) {
         'success' : function(z){
             console.log(z);
             if (z == null || z == '') {
+                table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
+                table += "<tr><td colspan='3' align='center'>Data Patok Belum Ada</td></tr>";
+                table += '</tbody></table>';
+                $("div#tb").html(table);
                 $("#data-link-input").show();
                 $("#patok-input").hide();
             }else{
                 $("#data-link-input").hide();
                 $("#patok-input").show();
+                // LOGIKA DATA PEMUTIHAN ATAU DATA NORMAL
+
                 link = z.id;
                 datapatok(link);
+                
             }
         }
     });
 }
-
-
 
 function datapatok(link) {
     var url = '<?php echo base_url("get/patok/pemutihan/"); ?>';
     $.ajax({
         url: url + link,
         success : function (data) {
-            console.log("===================================");
-            console.log(data);
+            // console.log("===================================");
+            // console.log(data);
             if(data==null || data==''){
-                
+                table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
+                table += "<tr><td colspan='3' align='center'>Data Patok Belum Ada</td></tr>";
+                table += '</tbody></table>';
             }else{
                 var no = 1;
-                var table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
+                table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
                for (let i = 0; i < data.length; i++) {
                    const lat = data[i]['lat'];
                    const lng = data[i]['lng'];
@@ -672,10 +681,10 @@ function datapatok(link) {
                    table += "<tr><td>"+no+"</td><td>"+lat+"</td><td>"+lng+"</td></tr>";                  
                    no++;
                }   
-               table += '</tbody></table>';
-            $("div#tb").html(table);
+               table += '</tbody></table>';            
             initialize();            
             }
+            $("div#tb").html(table);
         }
     });
 }
