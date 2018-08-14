@@ -294,6 +294,8 @@ $route['verifikasi/pemutihan']              = 'pemutihan/verifikasi_pemutihan';
 
 $route['pemutihan/one/(:any)']              = 'pemutihan/get_one/$1';
 $route['pemutihan/validate_nik/(:any)']     = 'pemutihan/validate_koordinat_nik/$1';
+$route['get/patok/pemutihan/(:any)']        = 'pemutihan/get_patok_one/$1';
+$route['push/pemutihan']                    = 'pemutihan/push_pemutihan_ke_data_utama';
 
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */

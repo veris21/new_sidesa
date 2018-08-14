@@ -401,7 +401,97 @@
       <div class="form-group">
       <label class="control-label col-sm-4" for="">Pekerjaan</label>
               <div class="col-sm-8">
-                  <input type="text" name="pekerjaan" class="form-control" id="">
+              <select name="pekerjaan" class="form-control select2" style='width:100%'>
+                <option value="">-- Pekerjaan --</option>
+                <option value="Belum/ Tidak Bekerja">Belum/ Tidak Bekerja</option>
+                <option value="Mengurus Rumah Tangga">Mengurus Rumah Tangga</option>
+                <option value="Pelajar/Mahasiswa">Pelajar/Mahasiswa</option>
+                <option value="Pensiunan">Pensiunan</option>
+                <option value="Pegawai Negeri Sipil">Pegawai Negeri Sipil</option>
+                <option value="Tentara Nasional Indonesia">Tentara Nasional Indonesia</option>
+                <option value="Kepolisian RI">Kepolisian RI</option>
+                <option value="Perdaganagn">Perdaganagn</option>
+                <option value="Petani/Pekebun">Petani/Pekebun</option>
+                <option value="Peternak">Peternak</option>
+                <option value="Nelayan/Perikanan">Nelayan/Perikanan</option>
+                <option value="Industri">Industri</option>
+                <option value="Kontruksi/Tukang Bangunan">Kontruksi/Tukang Bangunan</option>
+                <option value="Transportasi">Transportasi</option>
+                <option value="Karyawan Swasta">Karyawan Swasta</option>
+                <option value="Karyawan BUMN">Karyawan BUMN</option>
+                <option value="Karyawan BUMD">Karyawan BUMD</option>
+                <option value="Karyawan Honorer">Karyawan Honorer</option>
+                <option value="Buruh Harian Lepas">Buruh Harian Lepas</option>
+                <option value="Buruh Tani/Perkebunan">Buruh Tani/Perkebunan</option>
+                <option value="Buruh Nelayan/Perikanan">Buruh Nelayan/Perikanan</option>
+                <option value="Buruh Peternakan">Buruh Peternakan</option>
+                <option value="Pembantu Rumah Tangga">Pembantu Rumah Tangga</option>
+                <option value="Tukang Cukur">Tukang Cukur</option>
+                <option value="Tukang Listrik">Tukang Listrik</option>
+                <option value="Tukang Batu">Tukang Batu</option>
+                <option value="Tukang Kayu">Tukang Kayu</option>
+                <option value="Tukang Sol Sepatu">Tukang Sol Sepatu</option>
+                <option value="Tukang Las/Pandai Besi">Tukang Las/Pandai Besi</option>
+                <option value="Tukang Jahit">Tukang Jahit</option>
+                <option value="Penata Rambut">Penata Rambut</option>
+                <option value="Penata Rias">Penata Rias</option>
+                <option value="Penata Busana">Penata Busana</option>
+                <option value="Mekanik">Mekanik</option>
+                <option value="Tukang Gigi">Tukang Gigi</option>
+                <option value="Seniman">Seniman</option>
+                <option value="Tabib">Tabib</option>
+                <option value="Paraji">Paraji</option>
+                <option value="Perancang Busana">Perancang Busana</option>
+                <option value="Penterjemah">Penterjemah</option>
+                <option value="Imam Masjid">Imam Masjid</option>
+                <option value="Pendeta">Pendeta</option>
+                <option value="Pastur">Pastur</option>
+                <option value="Wartawan">Wartawan</option>
+                <option value="Ustadz/Mubaligh">Ustadz/Mubaligh</option>
+                <option value="Juru Masak">Juru Masak</option>
+                <option value="Promotor Acara">Promotor Acara</option>
+                <option value="Anggota DPR-RI">Anggota DPR-RI</option>
+                <option value="Anggota DPD">Anggota DPD</option>
+                <option value="Anggota BPK">Anggota BPK</option>
+                <option value="Presiden">Presiden</option>
+                <option value="Wakil Presiden">Wakil Presiden</option>
+                <option value="Anggota Mahkamah">Anggota Mahkamah</option>
+                <option value="Konstitusi">Konstitusi</option>
+                <option value="Anggota Kabinet/Kementrian">Anggota Kabinet/Kementrian</option>
+                <option value="Duta Besar">Duta Besar</option>
+                <option value="Gubernur">Gubernur</option>
+                <option value="Wakil Gubernur">Wakil Gubernur</option>
+                <option value="Bupati">Bupati</option>
+                <option value="Wakil Bupati">Wakil Bupati</option>
+                <option value="Walikota">Walikota</option>
+                <option value="Wakil Walikota">Wakil Walikota</option>
+                <option value="Anggota DPRD Prov/Kabupaten">Anggota DPRD Prov/Kabupaten</option>
+                <option value="Dosen">Dosen</option>
+                <option value="Guru">Guru</option>
+                <option value="Pilot">Pilot</option>
+                <option value="Pengacara">Pengacara</option>
+                <option value="Notaris">Notaris</option>
+                <option value="Arsitek">Arsitek</option>
+                <option value="Akuntan">Akuntan</option>
+                <option value="Konsultan">Konsultan</option>
+                <option value="Dokter">Dokter</option>
+                <option value="Bidan">Bidan</option>
+                <option value="Perawat">Perawat</option>
+                <option value="Apoteker">Apoteker</option>
+                <option value="Psikiater/Psikolog">Psikiater/Psikolog</option>
+                <option value="Penyiar Televisi">Penyiar Televisi</option>
+                <option value="Penyiar Radio">Penyiar Radio</option>
+                <option value="Pelaut">Pelaut</option>
+                <option value="Peneliti">Peneliti</option>
+                <option value="Pialang">Pialang</option>
+                <option value="Paranormal">Paranormal</option>
+                <option value="Pedagang">Pedagang</option>
+                <option value="Perangkat Desa">Perangkat Desa</option>
+                <option value="Kepala Desa">Kepala Desa</option>
+                <option value="Biarawati">Biarawati</option>
+                <option value="Wiraswasta">Wiraswasta</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
                </div>
       </div>
       
@@ -423,13 +513,18 @@
       <div class="form-group">
       <label class="control-label col-sm-4" for="">Pendidikan Terakhir</label>
               <div class="col-sm-8">
-                  <select name="pddk_akhir" class="form-control" id="">
+              <select name="pddk_akhir" class="form-control" id="">
                   <option value="">-- Pendidikan Terakhir --</option>
                   <option value="TIDAK/BELUM SEKOLAH">TIDAK/BELUM SEKOLAH</option>
+                  <option value="TIDAK TAMAT SD/SEDERAJAT">TIDAK TAMAT SD/SEDERAJAT</option>
                   <option value="TAMAT SD/SEDERAJAT">TAMAT SD/SEDERAJAT</option>
                   <option value="SLTP/SEDERAJAT">SLTP/SEDERAJAT</option>
                   <option value="SLTA/SEDERAJAT">SLTA/SEDERAJAT</option>
-                  <option value="PERGURUAN TINGGI/SEDERAJAT">PERGURUAN TINGGI/SEDERAJAT</option>
+                  <option value="DIPLOMA I/II">DIPLOMA I/II</option>
+                  <option value="AKADEMI/DIPLOMA III/S.Muda">AKADEMI/DIPLOMA III/S.Muda</option>
+                  <option value="DIPLOMA IV/ STRATA I">DIPLOMA IV/ STRATA I</option>
+                  <option value="STRATA II">STRATA II</option>
+                  <option value="STRATA III">STRATA III</option>
                 </select>
                </div>
       </div>

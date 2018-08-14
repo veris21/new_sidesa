@@ -407,7 +407,7 @@ function cari_data_skt() {
         $('#loader-icon').hide();
         if (data != 'null') {
           var obj = JSON.parse(data);
-          console.log(data);
+          // console.log(data);
           $('#no_nik').text("NIK " + obj.no_nik);
           $('#no_kk').text("No. KK " + obj.no_kk);
           $('#nama').text(obj.nama);
@@ -593,7 +593,7 @@ function get_koordinat_gps() {
     swal('Buka Kunci GPS', 'Lat : ' + startPos.coords.latitude + ' Lng : ' + startPos.coords.longitude, 'success');
   };
   var geoError = function (error) {
-    console.log('Error occurred. Error code: ' + error.code);
+    // console.log('Error occurred. Error code: ' + error.code);
   };
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
 }
@@ -608,7 +608,7 @@ function add_titik_tengah() {
     swal('Buka Kunci GPS', 'Lat : ' + startPos.coords.latitude + ' Lng : ' + startPos.coords.longitude, 'success');
   };
   var geoError = function (error) {
-    console.log('Error occurred. Error code: ' + error.code);
+    // console.log('Error occurred. Error code: ' + error.code);
     // error.code can be:
     //   0: unknown error
     //   1: permission denied
@@ -635,7 +635,7 @@ function cari_data() {
         $('#loader-icon').hide();
         if (data != 'null') {
           var obj = JSON.parse(data);
-          console.log(data);
+          // console.log(data);
           $('#no_nik').text("NIK " + obj.no_nik);
           $('#no_kk').text("No. KK " + obj.no_kk);
           $('#nama').text(obj.nama);
@@ -826,9 +826,9 @@ $('[name="provinsi"]').change(function () {
       $('#kabupaten').show();
       if (data.status == true) {
         $('[name="kabupaten"]').html(data.hasil);
-        console.log(data.hasil);
+        // console.log(data.hasil);
       } else {
-        console.log(data);
+        // console.log(data);
       }
     }
   });
@@ -850,9 +850,9 @@ $('[name="kabupaten"]').change(function () {
       $('#kecamatan').show();
       if (data.status == true) {
         $('[name="kecamatan"]').html(data.hasil);
-        console.log(data.hasil);
+        // console.log(data.hasil);
       } else {
-        console.log(data);
+        // console.log(data);
       }
     }
   });
@@ -872,9 +872,9 @@ $('[name="kecamatan"]').change(function () {
       if (kec.status == true) {
         $('#desa').show();
         $('[name="desa"]').html(kec.hasil);
-        console.log(kec.hasil);
+        // console.log(kec.hasil);
       } else {
-        console.log(kec);
+        // console.log(kec);
       }
     }
   });
@@ -942,7 +942,7 @@ function edit_penduduk(id) {
       success: function (data) {
         var obj = data.results;
         penduduk_method = 'update_penduduk';
-        console.log(obj);
+        // console.log(obj);
         $('[name="id"]').val(obj.id);
         $('[name="alamat"]').val(obj.alamat);
         $('[name="no_kk"]').val(obj.no_kk);
@@ -1804,10 +1804,10 @@ function add_koordinat_tengah() {
     data_koor = position;
     $('[name="lat"]').val(data_koor.coords.latitude);
     $('[name="lng"]').val(data_koor.coords.longitude);
-    console.log('Lat: ' + data_koor.coords.latitude + ', Lng : ' + data_koor.coords.longitude);
+    // console.log('Lat: ' + data_koor.coords.latitude + ', Lng : ' + data_koor.coords.longitude);
   };
   var geoError = function (error) {
-    console.log('Error occurred. Error code: ' + error.code);
+    // console.log('Error occurred. Error code: ' + error.code);
   };
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
   $('#data_koordinat')[0].reset();
@@ -1832,10 +1832,10 @@ function add_koordinat() {
     data_koor = position;
     $('[name="lat"]').val(data_koor.coords.latitude);
     $('[name="lng"]').val(data_koor.coords.longitude);
-    console.log('Lat: ' + data_koor.coords.latitude + ', Lng : ' + data_koor.coords.longitude);
+    // console.log('Lat: ' + data_koor.coords.latitude + ', Lng : ' + data_koor.coords.longitude);
   };
   var geoError = function (error) {
-    console.log('Error occurred. Error code: ' + error.code);
+    // console.log('Error occurred. Error code: ' + error.code);
   };
   navigator.geolocation.getCurrentPosition(geoSuccess, geoError, geoOptions);
   $('#data_koordinat')[0].reset();
