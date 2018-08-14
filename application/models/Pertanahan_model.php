@@ -642,6 +642,11 @@ class Pertanahan_model extends CI_Model{
     return $this->db->get('koordinat_tengah');
   }
 
+  public function koordinat_tengah_one($id){
+    return $this->db->get_where('koordinat_tengah', array('id'=>$id));
+  }
+
+
   public function delete_koordinat_tengah_one($id){
     $this->db->where('id', $id);
     return $this->db->delete('koordinat_tengah');

@@ -97,6 +97,11 @@ $("#master_koordinat_tengah").DataTable({
   responsive: true
 });
 
+
+$("#koordinat_tengah_all").DataTable({
+  responsive: true
+});
+
 $("#master_koordinat_tengah_all").DataTable({
   responsive: true
 });

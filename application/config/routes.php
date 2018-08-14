@@ -292,6 +292,8 @@ $route['api/titik_tengah/json']             = 'pertanahan/api_koordinat_tanah';
 $route['pemutihan/titik_tengah']            = 'pemutihan/pemutihan_koordinat_tengah';
 $route['verifikasi/pemutihan']              = 'pemutihan/verifikasi_pemutihan';
 
+$route['pemutihan/one/(:any)']              = 'pemutihan/get_one/$1';
+
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
 $route['koordinat/tanah']                   = 'pertanahan/input_koordinat';

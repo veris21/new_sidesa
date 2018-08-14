@@ -53,10 +53,19 @@ class Pemutihan extends CI_Controller{
 
 
   public function verifikasi_pemutihan()
-  {
+  { 
       $data['title']                   =   TITLE.'Pemutihan Data Pertanahan';
+      $data['list']                    =   $this->pertanahan_model->koordinat_tengah_all()->result();
       $data['main_content']            =   PERTANAHAN.'v2/pemutihan_tengah_all';
       $this->load->view('template', $data);
+  }
+
+  public function get_one($id)
+  {
+    $data = $this->pertanahan_model->koordinat_tengah_one($id)->row_array();
+    $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode($data));
   }
 
 }
