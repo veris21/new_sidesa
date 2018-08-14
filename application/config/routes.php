@@ -293,6 +293,7 @@ $route['pemutihan/titik_tengah']            = 'pemutihan/pemutihan_koordinat_ten
 $route['verifikasi/pemutihan']              = 'pemutihan/verifikasi_pemutihan';
 
 $route['pemutihan/one/(:any)']              = 'pemutihan/get_one/$1';
+$route['pemutihan/validate_nik/(:any)']     = 'pemutihan/validate_koordinat_nik/$1';
 
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */

@@ -68,4 +68,11 @@ class Pemutihan extends CI_Controller{
       ->set_output(json_encode($data));
   }
 
+  public function validate_koordinat_nik($nik){
+    $this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($this->pertanahan_model->koordinat_tengah_nik_one($nik)->row_array()));
+  }
+
+
 }
