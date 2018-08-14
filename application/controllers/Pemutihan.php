@@ -62,10 +62,13 @@ class Pemutihan extends CI_Controller{
       $this->load->view('template', $data);
   }
 
-  public function get_patok_one($id)
+  
+
+  public function get_patok_status($id)
   {
+    $tanah_id = "P-".$id;
     // $id_pemutihan = 'pemutihan-'.$id;
-    $patok = $this->pertanahan_model->_get_data_patok($id)->result();
+    $patok = $this->pertanahan_model->_get_data_link($tanah_id)->row_array();
     $this->output->set_content_type('application/json')->set_output(json_encode($patok));    
   }
 
@@ -108,6 +111,11 @@ class Pemutihan extends CI_Controller{
       echo json_encode(array("status" => TRUE));
     }
   }
-
+  
+  public function get_patok_one($id)
+  {
+    $patok = $this->pertanahan_model->_get_data_patok($id)->result();
+    $this->output->set_content_type('application/json')->set_output(json_encode($patok));    
+  }
 
 }

@@ -80,27 +80,72 @@
                             </table>
                         </div>
                         <div class="col-md-6">
-                            <table width="100%" class="table table-striped table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <td>No.</td>
-                                    <td>Latitude</td>
-                                    <td>Longitude</td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div id="tb">                            
+                            </div>
+                            <hr>
+            <!--  -->
+            <div id="input_patok_form" style="display:none;">
+                <?php  echo form_open_multipart('', array('id'=>'input_data_patok','class'=>'form-horizontal'));?>
+                    <div class="form">
+                        <div class="form-group">
+                        <label class="control-label col-sm-4" for="">Latitude</label>
+                        <div class="col-sm-8" id="latitude">
+                            <input type="text" name="latitude" class="form-control" >
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="control-label col-sm-4" for="">Longitude</label>
+                        <div class="col-sm-8" id="longitude">
+                            <input type="text" name="longitude" class="form-control" >
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="control-label col-sm-4" for="">Batas Utara</label>
+                        <div class="col-sm-8" id="utara">
+                            <input type="text" name="utara" class="form-control" >
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="control-label col-sm-4" for="">Batas Selatan</label>
+                        <div class="col-sm-8" id="selatan">
+                            <input type="text" name="selatan" class="form-control" >
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="control-label col-sm-4" for="">Batas Timur</label>
+                        <div class="col-sm-8" id="timur">
+                            <input type="text" name="timur" class="form-control" >
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="control-label col-sm-4" for="">Batas Barat</label>
+                        <div class="col-sm-8" id="barat">
+                            <input type="text" name="barat" class="form-control" >
+                        </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="control-label col-sm-4" for="">Foto Patok</label>
+                        <div class="col-sm-8" id="foto_patok">
+                            <input type="file" name="foto_patok" class="form-control" >
+                        </div>
+                        </div>
+                        <hr>
+                        <div class="form-group">
+                        <label class="control-label col-sm-4" for=""></label>
+                        <div class="col-sm-8" id="foto_patok">
+                            <button class="btn btn-primary">Update Patok <i class="fa fa-upload"></i></button>
+                        </div>
+                        </div>
+                    </div>
+                </form>
+             </div>  
+            <!--  -->
+                            <hr>
                             <div id="data-link-input" hidden>
                             <button class="btn btn-warning btn-block" onclick="buka_push_form()">Push Data Link <i class="fa fa-input"></i></button>
                             </div>
                             <div id="patok-input" hidden>
-                                <button class="btn btn-success btn-block">Input Data Patok Batas <i class="fa fa-input"></i></button>
+                                <button class="btn btn-success btn-block" onclick="buka_input_patok_form()">Input Data Patok Batas <i class="fa fa-input"></i></button>
                             </div>
                         </div>
                     </div>
@@ -468,21 +513,27 @@
             </div>
             <div class="modal-body form">
                    <div id="dokumentasi" class="form-group">
+                        <label  class="control-label col-sm-4" for="">ID PEMUTIHAN</label>
+                        <div class="col-sm-8">
+                           <input type="text" name="tanah_id" class="form-control" >                        
+                        </div>                        
+                    </div>
+                    <div id="dokumentasi" class="form-group">
                         <label  class="control-label col-sm-4" for="">Dokumentasi Link</label>
                         <div class="col-sm-8">
-                           <input type="text" name="dokumentasi" class="form-control" id="" disabled>                        
+                           <input type="text" name="dokumentasi" class="form-control" >                        
                         </div>                        
                     </div>
                    <div id="lat" class="form-group">
                         <label  class="control-label col-sm-4" for="">Latitude</label>
                         <div class="col-sm-8">
-                           <input type="text" name="lat" class="form-control" id="" disabled>                        
+                           <input type="text" name="lat" class="form-control" >                        
                         </div>                        
                     </div>
                     <div id="lng" class="form-group">
                         <label  class="control-label col-sm-4" for="">Longitude</label>
                         <div class="col-sm-8">
-                           <input type="text" name="lng" class="form-control" id="" disabled>                        
+                           <input type="text" name="lng" class="form-control" >                        
                         </div>                        
                     </div>
 
@@ -490,7 +541,7 @@
             </div>        
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Push Data <i class="fa fa-upload"></i></button>
+                <button type="button" class="btn btn-primary" onclick="save_push()">Push Data <i class="fa fa-upload"></i></button>
             </div>
             </form>
         </div>
@@ -505,32 +556,33 @@
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry"></script>
 <script>
 var titik_tengah;
-var nik;
 var patok = [];
 var id;
+var nik;
+var idRef;
+var link;
+
 
 function view_data_pemutihan_one(id) {
     event.preventDefault();
-    // $("#data-show")[0].reset();
     $('#data-show').hide();
     $('#loader').show();    
     var url = "<?php echo base_url('pemutihan/one/');?>";
     $.ajax({
         'url' : url+id,
-        'success' : function(data){
-            console.log(data);
-            // var obj = JSON.parse(data);
+        'success' : function(x){
+            console.log(x);
+            // var obj = JSON.parse(x);
             $('#loader').hide();
-            if (data != null) {
-                titik_tengah = new google.maps.LatLng(parseFloat(data.latitude), parseFloat(data.longitude));
-                nik = data.nik;                
+            if (x != null) {
+                titik_tengah = new google.maps.LatLng(parseFloat(x.latitude), parseFloat(x.longitude));
+                nik = x.nik;                
                 initialize();
-                validasi_data(nik);
-                
+                validasi_data(nik);         
+                // view_data_pemutihan_status(id)
                 $('#data-show').show();
             }
             
-
         }
     });
 }
@@ -545,22 +597,28 @@ function validasi_data(nik){
     
     $.ajax({
         url: url+nik,
-        success : function(x){
-            if(x == null || x ==''){
-            $("#kelengkapan").hide();
-            $("#warning").show();
-            }else{
-            id = x.id;
-            datapatok(id);
-            $("#nik").text(x.nik);
-            $("#nama").text(x.nama);
-            $("#alamat").text(x.alamat);
-            $("#status").text(x.status);
-            $("#kelengkapan").show();
-            $("#warning").hide();
-            $('[name="lat"]').val(x.latitude);
-            $('[name="lng"]').val(x.longitude);
-            $('[name="dokumentasi"]').val(x.dokumentasi);
+        success : function(y){            
+            console.log(y);
+            if(y == null || y ==''){
+                $("#nik").text('');
+                $("#nama").text('');
+                $("#alamat").text('');
+                $("#status").text('');
+                $("#kelengkapan").hide();
+                $("#warning").show();
+            }else{            
+                $("#kelengkapan").show();
+                $("#warning").hide();
+                $("#nik").text(y.nik);
+                $("#nama").text(y.nama);
+                $("#alamat").text(y.alamat);
+                $("#status").text(y.status);
+                $('[name="lat"]').val(y.latitude);
+                $('[name="lng"]').val(y.longitude);
+                $('[name="dokumentasi"]').val(y.dokumentasi);
+                $('[name="tanah_id"]').val("P-"+y.id);
+                idRef = y.id;
+                view_data_pemutihan_status(idRef);
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -571,32 +629,82 @@ function validasi_data(nik){
     });
 }
 
-function datapatok(id) {
-    // $("#push_form")[0].reset();
-    $("#data-link-input").show();
-    $("#patok-input").hide();
-    var url = '<?php echo base_url("get/patok/pemutihan/"); ?>';
+
+
+function view_data_pemutihan_status(idRef) {
+    event.preventDefault();    
+    var url = "<?php echo base_url('get/status/pemutihan/');?>";
     $.ajax({
-        url: url + id,
-        success : function (data) {
-            if(data==null || data==''){
+        'url' : url+idRef,
+        'success' : function(z){
+            console.log(z);
+            if (z == null || z == '') {
                 $("#data-link-input").show();
                 $("#patok-input").hide();
             }else{
                 $("#data-link-input").hide();
                 $("#patok-input").show();
+                link = z.id;
+                datapatok(link);
             }
-            console.log(data);
         }
     });
-    console.log("panggil Data PAtok" + id);
+}
+
+
+
+function datapatok(link) {
+    var url = '<?php echo base_url("get/patok/pemutihan/"); ?>';
+    $.ajax({
+        url: url + link,
+        success : function (data) {
+            console.log("===================================");
+            console.log(data);
+            if(data==null || data==''){
+                
+            }else{
+                var no = 1;
+                var table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
+               for (let i = 0; i < data.length; i++) {
+                   const lat = data[i]['lat'];
+                   const lng = data[i]['lng'];
+                   patok.push(new google.maps.LatLng(parseFloat(lat),parseFloat(lng)));
+                   table += "<tr><td>"+no+"</td><td>"+lat+"</td><td>"+lng+"</td></tr>";                  
+                   no++;
+               }   
+               table += '</tbody></table>';
+            $("div#tb").html(table);
+            initialize();            
+            }
+        }
+    });
+}
+
+function buka_input_patok_form(){
+    $("#patok-input").hide();
+    $("#input_patok_form").show();
 }
 
 
 function buka_push_form()
 {
-
    $('#push_data').modal('show');    
+}
+
+function save_push() {
+    event.preventDefault();
+    var url = "<?php echo base_url('push/pemutihan'); ?>";
+    $.ajax({
+        url:url,
+        type: "POST",
+        dataType: "JSON",
+        data: $('#push_form').serialize(),
+        success:function (params) {
+            console.log(params);
+            location.reload();
+        }
+    });
+    
 }
 
 
@@ -630,10 +738,10 @@ function initialize() {
     });
 
     var polygon = new google.maps.Polygon({
-        paths: [patok],
+        paths: patok,
         strokeColor:'#000000',
         strokeOpacity: 1,
-        strokeWeight: 2,
+        strokeWeight: 3,
         fillColor:'#DDD000',
         fillOpacity: 0.3,
     });
