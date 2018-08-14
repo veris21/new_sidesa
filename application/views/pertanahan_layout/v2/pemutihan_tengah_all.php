@@ -573,7 +573,7 @@ function view_data_pemutihan_one(id) {
     $.ajax({
         'url' : url+id,
         'success' : function(x){
-            // console.log(x);
+            console.log(x);
             // var obj = JSON.parse(x);
             $('#loader').hide();
             if (x != null) {
@@ -639,7 +639,7 @@ function view_data_pemutihan_status(idRef) {
     $.ajax({
         'url' : url+idRef,
         'success' : function(z){
-            console.log(z);
+            // console.log(z);
             if (z == null || z == '') {
                 table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
                 table += "<tr><td colspan='3' align='center'>Data Patok Belum Ada</td></tr>";
