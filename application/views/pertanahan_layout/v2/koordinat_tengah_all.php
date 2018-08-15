@@ -365,30 +365,31 @@ $.ajax({
                     data[i]['longitude']
                 );
                 const title = data[i]['nik'];
-                const contentString = '<div id="content">'+
-                '<div id="siteNotice">'+
-                '<p> No NIK. <b>'+ data[i]['nik'] +'</b>' +
-                '</div>'+
-                '<h5 id="firstHeading" class="firstHeading">'+ data[i]['status']+'</h5>'+
-                '<div id="bodyContent">'+
-                '<img class="img img-thumbnail" width="90" src="<?php echo base_url().PATOK;?>'+data[i]['dokumentasi']+ '" />'+
+                // const contentString = '<div id="content">'+
+                // '<div id="siteNotice">'+
+                // '<p> No NIK. <b>'+ data[i]['nik'] +'</b>' +
+                // '</div>'+
+                // '<h5 id="firstHeading" class="firstHeading">'+ data[i]['status']+'</h5>'+
+                // '<div id="bodyContent">'+
+                // '<img class="img img-thumbnail" width="90" src="<?php echo base_url().PATOK;?>'+data[i]['dokumentasi']+ '" />'+
                 
-                '.</p>'+ 
-                '<p> Latitude : '+ data[i]['latitude'] +' Longitude: '+ data[i]['longitude'] +' <br> Area : &plusmn; '+ data[i]['area'] +' m<sup>2</sup><br> Status Data : '+ data[i]['verified'] +'</p>'+           
-                '</div>'+
-                '</div>';
-                var infowindow = new google.maps.InfoWindow({
-                                    content: contentString
-                                    });
+                // '.</p>'+ 
+                // '<p> Latitude : '+ data[i]['latitude'] +' Longitude: '+ data[i]['longitude'] +' <br> Area : &plusmn; '+ data[i]['area'] +' m<sup>2</sup><br> Status Data : '+ data[i]['verified'] +'</p>'+           
+                // '</div>'+
+                // '</div>';
+                // var infowindow = new google.maps.InfoWindow({
+                //                     content: contentString
+                //                     });
                 const mapIcon = 'https://si-desa.id/assets/house-icon.png';
                 const marker = new google.maps.Marker({
                         position: latLng,
                         title: title,
                         icon: mapIcon
-                    });
-                marker.addListener('click', function() {
-                        infowindow.open(map, marker);
-                    });
+
+                });
+                // marker.addListener('click', function() {
+                //         infowindow.open(map, marker);
+                //     });
                 markers.push(marker);
                 
             }       
