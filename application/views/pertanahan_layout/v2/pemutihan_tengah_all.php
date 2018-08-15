@@ -25,16 +25,25 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($list as $k) {
+                    <?php 
+                    foreach ($list as $k) {
                          $verified = $k->verified;
                      ?>
                         <tr>
                             <td align='left'><?php echo $k->nik; ?></td>
                             <td align='center'> 
-                            <?php $status_lengkap = ($verified == 1 ? 
-                            "<button disabled='disabled' class='btn btn-sm btn-flat btn-success'>Data Lengkap</button> " : 
-                            "<button disabled='disabled' class='btn btn-sm btn-flat btn-warning'>Belum Lengkap</button> ");
-                            echo $status_lengkap;
+                            <?php   
+                            $check = $this->datapenduduk_model->_get_data_nik($k->nik)->row_array();
+                            if($check['no_nik'] != $k->nik){
+                                $statusDDK = "<button class='btn btn-sm btn-flat btn-danger'>Nik tidak Terdaftar</button> ";
+                                echo $statusDDK;
+                            }else{
+                                $status_lengkap = ($verified == 1 ? 
+                                "<button class='btn btn-sm btn-flat btn-success'>Data Lengkap</button> " : 
+                                "<button class='btn btn-sm btn-flat btn-warning'>Belum Lengkap</button> ");
+                                echo $status_lengkap;   
+                            }              
+                                                    
                             ?>
                             </td>
                             <td align='center'>
@@ -48,7 +57,9 @@
                             </td>
 
                         </tr>
-                    <?php } ?>
+                    <?php 
+                }
+             ?>
                     </tbody> 
                 </table>
                 </div>
@@ -88,15 +99,21 @@
                 <?php  echo form_open_multipart('', array('id'=>'input_data_patok','class'=>'form-horizontal'));?>
                     <div class="form">
                         <div class="form-group">
+                        <label class="control-label col-sm-4" for="">ID Data Link</label>
+                        <div class="col-sm-8" id="latitude">
+                            <input type="text" name="data_link_id" class="form-control" >
+                        </div>
+                        </div>
+                        <div class="form-group">
                         <label class="control-label col-sm-4" for="">Latitude</label>
                         <div class="col-sm-8" id="latitude">
-                            <input type="text" name="latitude" class="form-control" >
+                            <input type="text" name="lat" class="form-control" >
                         </div>
                         </div>
                         <div class="form-group">
                         <label class="control-label col-sm-4" for="">Longitude</label>
                         <div class="col-sm-8" id="longitude">
-                            <input type="text" name="longitude" class="form-control" >
+                            <input type="text" name="lng" class="form-control" >
                         </div>
                         </div>
                         <div class="form-group">
@@ -126,14 +143,14 @@
                         <div class="form-group">
                         <label class="control-label col-sm-4" for="">Foto Patok</label>
                         <div class="col-sm-8" id="foto_patok">
-                            <input type="file" name="foto_patok" class="form-control" >
+                            <input type="file" name="patok" class="form-control" >
                         </div>
                         </div>
                         <hr>
                         <div class="form-group">
                         <label class="control-label col-sm-4" for=""></label>
-                        <div class="col-sm-8" id="foto_patok">
-                            <button class="btn btn-primary">Update Patok <i class="fa fa-upload"></i></button>
+                        <div class="col-sm-8" id="button">
+                            <button  type="submit" class="btn btn-primary" onclick="input_patok_pemutihan()">Update Patok <i class="fa fa-upload"></i></button>
                         </div>
                         </div>
                     </div>
@@ -527,13 +544,13 @@
                    <div id="lat" class="form-group">
                         <label  class="control-label col-sm-4" for="">Latitude</label>
                         <div class="col-sm-8">
-                           <input type="text" name="lat" class="form-control" >                        
+                           <input type="text" name="latitude" class="form-control" >                        
                         </div>                        
                     </div>
                     <div id="lng" class="form-group">
                         <label  class="control-label col-sm-4" for="">Longitude</label>
                         <div class="col-sm-8">
-                           <input type="text" name="lng" class="form-control" >                        
+                           <input type="text" name="longitude" class="form-control" >                        
                         </div>                        
                     </div>
 
@@ -562,6 +579,9 @@ var nik;
 var idRef;
 var link;
 
+var verified;
+var is_pemutihan;
+
 var table;
 
 
@@ -573,12 +593,14 @@ function view_data_pemutihan_one(id) {
     $.ajax({
         'url' : url+id,
         'success' : function(x){
-            console.log(x);
+            // console.log(x);
             // var obj = JSON.parse(x);
             $('#loader').hide();
             if (x != null) {
                 titik_tengah = new google.maps.LatLng(parseFloat(x.latitude), parseFloat(x.longitude));
-                nik = x.nik;                
+                nik = x.nik;        
+                verified = x.verified;        
+                is_pemutihan = x.is_pemutihan;
                 initialize();
                 validasi_data(nik);         
                 // view_data_pemutihan_status(id)
@@ -615,12 +637,17 @@ function validasi_data(nik){
                 $("#nama").text(y.nama);
                 $("#alamat").text(y.alamat);
                 $("#status").text(y.status);
-                $('[name="lat"]').val(y.latitude);
-                $('[name="lng"]').val(y.longitude);
+                $('[name="latitude"]').val(y.latitude);
+                $('[name="longitude"]').val(y.longitude);
                 $('[name="dokumentasi"]').val(y.dokumentasi);
                 $('[name="tanah_id"]').val("P-"+y.id);
-                idRef = y.id;
-                view_data_pemutihan_status(idRef);
+                if(is_pemutihan == 0 ){ 
+                    idRef = y.id;
+                    view_data_pemutihan_status(idRef);
+                 }else{ 
+                     idRef = "P-"+y.id ;
+                     view_data_pemutihan_status(idRef);
+                 }
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -634,12 +661,13 @@ function validasi_data(nik){
 
 
 function view_data_pemutihan_status(idRef) {
-    event.preventDefault();    
+    event.preventDefault();
     var url = "<?php echo base_url('get/status/pemutihan/');?>";
+    
     $.ajax({
         'url' : url+idRef,
-        'success' : function(z){
-            // console.log(z);
+        'success' : function(z){       
+            console.log(z);
             if (z == null || z == '') {
                 table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
                 table += "<tr><td colspan='3' align='center'>Data Patok Belum Ada</td></tr>";
@@ -649,24 +677,27 @@ function view_data_pemutihan_status(idRef) {
                 $("#patok-input").hide();
             }else{
                 $("#data-link-input").hide();
-                $("#patok-input").show();
+                if(is_pemutihan==0){
+                    $("#patok-input").hide();
+                }else{
+                    $("#patok-input").show();
+                }
                 // LOGIKA DATA PEMUTIHAN ATAU DATA NORMAL
-
+                $('[name="data_link_id"]').val(z.id);
                 link = z.id;
                 datapatok(link);
-                
+
             }
         }
     });
 }
 
 function datapatok(link) {
+    
     var url = '<?php echo base_url("get/patok/pemutihan/"); ?>';
     $.ajax({
         url: url + link,
         success : function (data) {
-            // console.log("===================================");
-            // console.log(data);
             if(data==null || data==''){
                 table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
                 table += "<tr><td colspan='3' align='center'>Data Patok Belum Ada</td></tr>";
@@ -709,11 +740,43 @@ function save_push() {
         dataType: "JSON",
         data: $('#push_form').serialize(),
         success:function (params) {
-            console.log(params);
+            // console.log(params);
             location.reload();
         }
     });
     
+}
+
+function input_patok_pemutihan() {
+    $('#input_data_patok').submit(function (evt) {    
+    evt.preventDefault();
+    var formData = new FormData($(this)[0]);
+    var url = "<?php echo base_url('koordinat/tanah'); ?>";
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: formData,
+      async: false,
+      cache: false,
+      contentType: false,
+      enctype: 'multipart/form-data',
+      processData: false,
+      success: function (data) {        
+        swal('Selamat !', 'Berhasil Input Data Koordinat Ke Sistem!', 'success');
+        $('[name="lat"]').val('');
+        $('[name="lng"]').val('');
+        $('[name="patok"]').val('');
+        $('[name="utara"]').val('');
+        $('[name="selatan"]').val('');
+        $('[name="timur"]').val('');
+        $('[name="barat"]').val('');
+        location.reload();
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
+      }
+    });
+  });
 }
 
 
