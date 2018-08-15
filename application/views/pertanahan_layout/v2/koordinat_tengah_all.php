@@ -43,16 +43,10 @@
     echo form_close();
         break;
     default:
-        ?> 
-        <h3 class="box-title"> DATA KOORDINAT Yang Memiliki NIK PEMILIK</h3>
-        <?php
-        break;
-        
+        break;        
     }
     ?>    
 </div>
-
-
 <hr>
 <?php 
     switch ($this->session->userdata('jabatan')) {
@@ -373,12 +367,14 @@ $.ajax({
                 const title = data[i]['nik'];
                 const contentString = '<div id="content">'+
                 '<div id="siteNotice">'+
+                '<p> No NIK. <b>'+ data[i]['nik'] +'</b>' +
                 '</div>'+
                 '<h5 id="firstHeading" class="firstHeading">'+ data[i]['status']+'</h5>'+
                 '<div id="bodyContent">'+
-                '<p> No NIK. <b>'+ data[i]['nik'] +'</b>' +
+                '<img class="img img-thumbnail" width="90" src="<?php echo base_url().PATOK;?>'+data[i]['dokumentasi']+ '" />'+
+                
                 '.</p>'+ 
-                '<p> Latitude : '+ data[i]['latitude'] +' Longitude: '+ data[i]['longitude'] +' <br> Area : &plusmn; '+ data[i]['area'] +' m<sup>2</sup><br> Status Verifikasi Kelengkapan Data : '+ data[i]['verified'] +'</p>'+           
+                '<p> Latitude : '+ data[i]['latitude'] +' Longitude: '+ data[i]['longitude'] +' <br> Area : &plusmn; '+ data[i]['area'] +' m<sup>2</sup><br> Status Data : '+ data[i]['verified'] +'</p>'+           
                 '</div>'+
                 '</div>';
                 var infowindow = new google.maps.InfoWindow({

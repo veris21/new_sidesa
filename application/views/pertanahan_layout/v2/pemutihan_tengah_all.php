@@ -643,7 +643,7 @@ function validasi_data(nik){
                 if(is_pemutihan == 0 ){ 
                     idRef = bap_id;
                     view_data_pemutihan_status(idRef);
-                    console.log("BAP id : " + bap_id);
+                    // console.log("BAP id : " + bap_id);
                  }else{ 
                      idRef = "P-"+y.id ;
                      view_data_pemutihan_status(idRef);
@@ -660,9 +660,9 @@ function view_data_pemutihan_status(idRef) {
     $.ajax({
         'url' : url+idRef,
         'success' : function(z){       
-            console.log(z);
-            console.log("BAP ID :" + bap_id);
-            console.log("PEMUTIHAN : " + is_pemutihan);
+            // console.log(z);
+            // console.log("BAP ID :" + bap_id);
+            // console.log("PEMUTIHAN : " + is_pemutihan);
             if (z == null || z == '') {
                 table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
                 table += "<tr><td colspan='3' align='center'>Data Patok Belum Ada</td></tr>";
@@ -675,13 +675,12 @@ function view_data_pemutihan_status(idRef) {
                 if(is_pemutihan == 0){
                     $("#patok-input").hide();                                   
                 }else{
-                    $("#patok-input").show();      
-                                 
+                    $("#patok-input").show();
                 }
                 $('[name="data_link_id"]').val(z.id); 
                 link = z.id;                
                 datapatok(link);
-                console.log("LINK : " + link);
+                // console.log("LINK : " + link);
             }
         }
     });
