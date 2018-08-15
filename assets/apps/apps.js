@@ -624,6 +624,7 @@ function add_titik_tengah() {
 function cari_data() {
   event.preventDefault();
   var nik = $('[name="cari_tanah_nik"]').val();
+  console.log("KEYUP : " + nik);
   if (nik != '') {
     $('#loader-icon').show();
     $('#result_cari_data').hide();
@@ -635,7 +636,7 @@ function cari_data() {
         $('#loader-icon').hide();
         if (data != 'null') {
           var obj = JSON.parse(data);
-          // console.log(data);
+          console.log(data);
           $('#no_nik').text("NIK " + obj.no_nik);
           $('#no_kk').text("No. KK " + obj.no_kk);
           $('#nama').text(obj.nama);
@@ -1652,7 +1653,7 @@ function push_data(id, nik) {
   event.preventDefault();
   swal({
     title: 'Apa Anda Yakin?',
-    text: "Data Akan di Funalisasi database Utama tabel SKT/Rekomendasi !",
+    text: "Data Akan di Funalisasi database Utama tabel SKT/Rekomendasi !" + id +" NIK " + nik,
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',

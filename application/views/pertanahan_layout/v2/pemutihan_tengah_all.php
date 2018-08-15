@@ -573,7 +573,7 @@
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry"></script>
 <script>
 var titik_tengah;
-var patok = [];
+var patok;
 var id;
 var nik;
 var idRef;
@@ -581,11 +581,13 @@ var link;
 
 var verified;
 var is_pemutihan;
+var bap_id;
 
 var table;
 
 
 function view_data_pemutihan_one(id) {
+    patok = [];
     event.preventDefault();
     $('#data-show').hide();
     $('#loader').show();    
@@ -593,17 +595,15 @@ function view_data_pemutihan_one(id) {
     $.ajax({
         'url' : url+id,
         'success' : function(x){
-            // console.log(x);
-            // var obj = JSON.parse(x);
             $('#loader').hide();
             if (x != null) {
                 titik_tengah = new google.maps.LatLng(parseFloat(x.latitude), parseFloat(x.longitude));
                 nik = x.nik;        
                 verified = x.verified;        
                 is_pemutihan = x.is_pemutihan;
+                bap_id = x.bap_id;
                 initialize();
                 validasi_data(nik);         
-                // view_data_pemutihan_status(id)
                 $('#data-show').show();
             }
             
@@ -621,8 +621,7 @@ function validasi_data(nik){
     
     $.ajax({
         url: url+nik,
-        success : function(y){            
-            // console.log(y);
+        success : function(y){
             if(y == null || y ==''){
                 $("#nik").text('');
                 $("#nama").text('');
@@ -642,32 +641,28 @@ function validasi_data(nik){
                 $('[name="dokumentasi"]').val(y.dokumentasi);
                 $('[name="tanah_id"]').val("P-"+y.id);
                 if(is_pemutihan == 0 ){ 
-                    idRef = y.id;
+                    idRef = bap_id;
                     view_data_pemutihan_status(idRef);
+                    console.log("BAP id : " + bap_id);
                  }else{ 
                      idRef = "P-"+y.id ;
                      view_data_pemutihan_status(idRef);
                  }
             }
         },
-        error: function (jqXHR, textStatus, errorThrown) {
-            
-           
-        }
-        
+        error: function (jqXHR, textStatus, errorThrown) {}        
     });
 }
 
-
-
 function view_data_pemutihan_status(idRef) {
     event.preventDefault();
-    var url = "<?php echo base_url('get/status/pemutihan/');?>";
-    
+    var url = "<?php echo base_url('get/status/pemutihan/');?>";    
     $.ajax({
         'url' : url+idRef,
         'success' : function(z){       
             console.log(z);
+            console.log("BAP ID :" + bap_id);
+            console.log("PEMUTIHAN : " + is_pemutihan);
             if (z == null || z == '') {
                 table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
                 table += "<tr><td colspan='3' align='center'>Data Patok Belum Ada</td></tr>";
@@ -677,23 +672,22 @@ function view_data_pemutihan_status(idRef) {
                 $("#patok-input").hide();
             }else{
                 $("#data-link-input").hide();
-                if(is_pemutihan==0){
-                    $("#patok-input").hide();
+                if(is_pemutihan == 0){
+                    $("#patok-input").hide();                                   
                 }else{
-                    $("#patok-input").show();
+                    $("#patok-input").show();      
+                                 
                 }
-                // LOGIKA DATA PEMUTIHAN ATAU DATA NORMAL
-                $('[name="data_link_id"]').val(z.id);
-                link = z.id;
+                $('[name="data_link_id"]').val(z.id); 
+                link = z.id;                
                 datapatok(link);
-
+                console.log("LINK : " + link);
             }
         }
     });
 }
 
-function datapatok(link) {
-    
+function datapatok(link) {    
     var url = '<?php echo base_url("get/patok/pemutihan/"); ?>';
     $.ajax({
         url: url + link,
@@ -740,7 +734,6 @@ function save_push() {
         dataType: "JSON",
         data: $('#push_form').serialize(),
         success:function (params) {
-            // console.log(params);
             location.reload();
         }
     });
@@ -817,9 +810,6 @@ function initialize() {
         fillColor:'#DDD000',
         fillOpacity: 0.3,
     });
-
     polygon.setMap(map);
-               
-
 }
 </script>

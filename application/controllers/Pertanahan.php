@@ -728,7 +728,9 @@ class Pertanahan extends CI_Controller{
         'longitude'=> $getKoordinat['lng'],
         'dokumentasi' => $getKoordinat['foto_tanah'],
         'verified'=>1,
-        'status'=>'SURAT KETERANGAN TANAH'
+        'status'=>'SURAT KETERANGAN TANAH',
+        'is_pemutihan'=>0,
+        'bap_id'=>$id
       );
       $check = $this->pertanahan_model->_push_skt($push);
       if ($check) {

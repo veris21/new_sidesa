@@ -225,7 +225,7 @@ class Datapenduduk extends CI_Controller {
     }
 
     public function cari_nik($nik){
-        $data = $this->datapenduduk_model->_get_data_nik($nik)->row_array();
+        $data = $this->datapenduduk_model->_get_data_nik($nik)->row_array(); 
         echo json_encode($data);
     }
     
