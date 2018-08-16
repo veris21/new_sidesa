@@ -9,7 +9,17 @@
   </ol>
 </section>
 <section class="content">
+   
     <div class="box box-info">
+        <div class="header">
+            <h5 class="box-title">            
+            <?php 
+              $sms = explode(' ', check_sisa_sms());
+              echo $sms[6];
+            ?>
+            </h5> 
+            <p class="box-subtitle"><?php  echo "Quota Sms Server Aktif s/d ".$sms[8]." ".$sms[9]." ".$sms[10]; ?></p>
+        </div>
         <div class="box-body">
         <table width="100%" class="table table-striped table-bordered table-hover" id="sms_set">
                 <thead>
