@@ -11,11 +11,11 @@
 <section class="content">
    
     <div class="box box-info">
-        <div class="box-header">
+        <div class="box-header well">
             <h3 class="box-title">            
             <?php 
               $sms = explode(' ', check_sisa_sms());
-              echo "SISA QUOTA SMS : ". $sms[6] ." sms/160 karakter";
+              echo "SISA QUOTA SMS : ". $sms[6] ." sms";
             ?>
             </h3> 
             <p class="box-subtitle"><?php  echo "Quota Sms Server Aktif s/d ".$sms[8]." ".$sms[9]." ".$sms[10]; ?></p>
