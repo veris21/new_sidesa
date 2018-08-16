@@ -11,7 +11,7 @@
 <section class="content">
    
     <div class="box box-info">
-        <div class="box-header well">
+        <div class="box-header">
             <h3 class="box-title">            
             <?php 
               $sms = explode(' ', check_sisa_sms());
