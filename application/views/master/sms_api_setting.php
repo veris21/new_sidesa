@@ -11,13 +11,13 @@
 <section class="content">
    
     <div class="box box-info">
-        <div class="header">
-            <h5 class="box-title">            
+        <div class="box-header">
+            <h3 class="box-title">            
             <?php 
               $sms = explode(' ', check_sisa_sms());
-              echo $sms[6];
+              echo "SISA SMS : ". $sms[6];
             ?>
-            </h5> 
+            </h3> 
             <p class="box-subtitle"><?php  echo "Quota Sms Server Aktif s/d ".$sms[8]." ".$sms[9]." ".$sms[10]; ?></p>
         </div>
         <div class="box-body">
