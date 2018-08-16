@@ -15,7 +15,7 @@
             <h3 class="box-title">            
             <?php 
               $sms = explode(' ', check_sisa_sms());
-              echo "SISA QUOTA SMS : ". $sms[6] ." sms";
+              echo "SISA QUOTA SMS : <b>". $sms[6] ."</b> sms";
             ?>
             </h3> 
             <p class="box-subtitle"><?php  echo "Quota Sms Server Aktif s/d ".$sms[8]." ".$sms[9]." ".$sms[10]; ?></p>
