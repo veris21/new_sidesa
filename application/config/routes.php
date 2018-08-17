@@ -308,6 +308,8 @@ $route['delete/koordinat/(:any)']           = 'pertanahan/delete_koordinat/$1';
  ----------------------------------------------------------------------- */
 // DATA KOORDINAT DIPUSH ke SKT
 $route['polygon/push']                      = 'pertanahan/skt_input';
+// Laporkan Permasalahan Data BAP PERTANAHAN 
+$route['berita_acara/laporkan_masalah']     = 'pertanahan/masalah_bap_lapor';
 $route['aktivasi/download']                 = 'pertanahan/skt_update';
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */

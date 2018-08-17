@@ -49,6 +49,8 @@ $hiddenAuth = $this->session->userdata['jabatan'];
                 <?php if($hiddenAuth==='KASI' || $hiddenAuth==='KADES' || $hiddenAuth=='SEKDES' || $hiddenAuth=='MASTER' || $hiddenAuth=='ROOT' ){?>
                 <div class="box-footer">
                 <button onclick="push_data(<?php echo $data['id'].','.$data['no_nik']; ?>)" class="btn btn-lg btn-success btn-block  <?php echo $lock;?>" >Kunci Data Final <i class="fa fa-lock"></i></button>
+                    <hr/>
+                <button onclick="tolak_bap(<?php echo $data['id'].','.$data['no_nik']; ?>)" class="btn btn-lg btn-success btn-block  <?php echo $lock;?>" >Laporkan Masalah Data <i class="fa fa-ban"></i></button>
                 </div>
                 <?php } ?>
             </div>

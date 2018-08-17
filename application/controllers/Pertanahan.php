@@ -465,6 +465,12 @@ class Pertanahan extends CI_Controller{
     
   }
 
+  // Permasalahan Berita Acara Pemeriksaan Tanah
+  public function masalah_bap_lapor()
+  {
+    echo json_encode(array("status" => TRUE));
+  }
+
   public function input_petugas_pemeriksa(){
     $desa_id = strip_tags($this->input->post('desa_id'));
     $ketua_pemeriksa = strip_tags($this->input->post('ketua_pemeriksa'));
