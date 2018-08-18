@@ -112,6 +112,13 @@ $("#datemask").inputmask("dd/mm/yyyy", {
 });
 $("[data-mask]").inputmask();
 
+$('#reminder_date').datepicker(
+  {
+    format: 'dd/mm/yyyy',
+    startDate: '-3d'
+  }
+);
+
 
 $(".fancybox").fancybox({
   closeBtn: false,

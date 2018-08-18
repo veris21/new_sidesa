@@ -111,21 +111,21 @@
             <div class="form-group">
             <label class="control-label col-md-3">Ingatkan tanggal</label>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" name="waktu_ingat" id="" placeholder="<?php echo time();?>" required>
+                  <input type="text" class="form-control" name="waktu_ingat" id="reminder_date" onchange="check_date()" required>
                 </div>
             </div>
 
             <div class="form-group">
             <label class="control-label col-md-3">Tentang</label>
               <div class="col-md-9">
-                <textarea name="pesan" id="" cols="10" rows="4" class="form-control" required></textarea>
+                <textarea name="pesan" id="" cols="10" rows="4" class="form-control" id="pesan" required></textarea>
               </div>
             </div>        
 
             <div class="form-group">
             <label class="control-label col-md-3">Type Pengingat</label>
                 <div class="col-md-9">
-                  <select name="tipe_pengingat" class="form-control" id="">
+                  <select name="tipe_pengingat" class="form-control" id="tipe">
                   <option value="">-- Pilih Tipe Pengingat --</option>
                     <option value="1">Pemberitahuan</option>
                     <option value="2">Penting</option>
@@ -244,6 +244,11 @@
     $('#reminder').show();
   }
 
+
+  function check_date() {
+    var date = $('[name="waktu_ingat"]').val();
+    console.log(date);
+  }
 
   function posting_reminder(){
     event.preventDefault();

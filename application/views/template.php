@@ -45,6 +45,9 @@ folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="<?php echo base_url().THEME; ?>plugins/fancybox/helpers/jquery.fancybox-buttons.css">
 <link rel="stylesheet" href="<?php echo base_url().THEME; ?>plugins/fancybox/helpers/jquery.fancybox-thumbs.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+
+
 <link rel="stylesheet" href="<?php echo base_url().THEME;?>sidesa.css">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -127,6 +130,10 @@ $.widget.bridge('uibutton', $.ui.button);
 <script src="<?php echo base_url().THEME; ?>plugins/fancybox/helpers/jquery.fancybox-media.js"></script>
 <script src="<?php echo base_url().THEME; ?>plugins/fancybox/helpers/jquery.fancybox-buttons.js" ></script>
 <script src="<?php echo base_url().THEME; ?>plugins/fancybox/helpers/jquery.fancybox-thumbs.js" ></script>
+
+<!-- -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.id.min.js"></script>
 <!-- <script type="text/javascript" src="<?php echo base_url().THEME; ?>plugins/webcamReader/js/qrcodelib.js"></script>
 <script type="text/javascript" src="<?php echo base_url().THEME; ?>plugins/webcamReader/js/webcodecamjquery.js"></script>
 
