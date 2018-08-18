@@ -81,12 +81,12 @@
               </thead>
               <tbody>
               <?php foreach ($reminder as $reminder) {
-                $timeFormat = "%d/%m/%Y";
+                // $timeFormat = "%d/%m/%Y";
               ?>
               <tr>
-                <td align="center"><?php echo mdate($timeFormat, $reminder->timestamp_start); ?></td>
+                <td align="center"><?php echo$reminder->timestamp_start; ?></td>
                 <td align="center"><?php echo $reminder->pesan; ?></td>
-                <td align="center"><?php echo mdate($timeFormat, $reminder->deadline); ?></td>
+                <td align="center"><?php echo$reminder->deadline; ?></td>
                 <td align="center"><?php echo ($reminder->status == 1 ? '<button class="btn btn-success">Success</button>' : '<button class="btn btn-warning">On Process</button>'); ?></td>
               </tr>
               <?php  } ?>
@@ -97,8 +97,8 @@
       </div>
       <div class="col-md-4">
         <div class="box box-primary">
-          <?php echo 
-          form_open('#', array('class'=>'form-horizontal', 'id'=>'form_reminder'));
+          <?php 
+          echo form_open('#', array('class'=>'form-horizontal', 'id'=>'form_reminder'));
           ?>
           <div class="box-header">
             <h3 class="box-title">
@@ -262,7 +262,13 @@
     confirmButtonText: 'Iya, Posting Reminder!'
     }, function isConfirm() {
         $.ajax({
-
+          url : '<?php echo base_url('posting/reminder'); ?>',
+          type: "POST",
+          dataType: "JSON",
+          data: $('#form_reminder').serialize(),
+          success: function (data) {
+            location.reload();
+          }
         });
     });
    

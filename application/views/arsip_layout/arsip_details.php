@@ -287,6 +287,15 @@ $disposisiKosong = $disposisi->num_rows();
               <label for="">Isi Disposisi</label>
               <textarea  class="form-control" name="isi" id="" cols="10" rows="3"></textarea>
           </div>
+
+          <div class="form-group">
+                <select name="tipe_pengingat" class="form-control" id="tipe">
+                        <option value="">-- Pilih Tipe Pengingat --</option>
+                            <option value="1">Pemberitahuan</option>
+                            <option value="2">Penting</option>
+                            <option value="3">Segera</option>
+                </select>
+          </div>
       </div>
       <input type="hidden" name="arsip_time" value="<?php echo $data['time'];?>">
       <input type="hidden" name="arsip_id" value="<?php echo $data['id'];?>">

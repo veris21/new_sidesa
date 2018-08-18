@@ -180,6 +180,8 @@ $route['api/arsip/list']                = 'arsip/arsip_list_api';
  $route['cron/peringatan/mingguan'] = 'cron/peringatan';
  $route['cron/peringatan/jadwal']   = 'cron/pengingat_jadwal';
 
+ $route['posting/reminder']         = 'cron/reminder_input';
+
 
 
 /* -----------------------------------------------------------------------

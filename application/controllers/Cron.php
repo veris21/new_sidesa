@@ -43,7 +43,7 @@ class Cron extends CI_Controller{
     $kepada =  $this->input->post('kepada');
     $type = $this->input->post('tipe_pengingat');
     $pesan =  $this->input->post('pesan');
-    $datestring = '%d %M %Y - %h:%i %a';
+    $datestring = '%d/%m/%Y';
     $time = time();
     $sekarang = mdate($datestring, $time); 
 
