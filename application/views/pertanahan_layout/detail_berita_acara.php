@@ -31,15 +31,15 @@ $hiddenAuth = $this->session->userdata['jabatan'];
                     <h4 class="box-title"><i class="fa fa-gear"></i>Finalisasi Data Peta</h4>
                 </div>
                 <div class="box-body">
-                    <?php if ($lock=='hidden') {
+                    <?php if ($lock == 'hidden') {
                     ?>
                     <center><i class="fa fa-lock fa-5x"></i></center>
                     <h3 class="well text-center">
                         Data Telah di Kunci
                     </h3>
                     <p>Silahkan Lihat Keterangan SKT/ Rekomendasi di Halaman Finalisasi SKT/ Surat rekomendasi Penggunaan Tanah</p>
+                    <button class="btn btn-block btn-warning" onclick="buka_kunci_bap(<?php echo $data['id']; ?>)">Buka Kunci Data B.A.P <i class="fa fa-lock"></i></button>
                     <a target="__blank" class="btn btn-block btn-success" href="<?php echo base_url('berita_acara/cetak/'.$data['id']); ?>">Cetak Berita Acara <i class="fa fa-print"></i></a>
-                    
                     <?php  }else{ ?>
 
                     <p>Dengan menekan tombol dibawah ini, Data Akan disetujui dan di input langsung ke Database Finalisasi SKT / Surat Rekomendasi, dan akan muncul setelah mendapat persetujuan dari sistem dan pejabat terkait untuk print out akhir <b>Surat Keterangan Tanah (SKT) / Surat Rekomendasi Pengelolaan Tanah</b> beserta lampiran</p>
@@ -49,8 +49,10 @@ $hiddenAuth = $this->session->userdata['jabatan'];
                 <?php if($hiddenAuth==='KASI' || $hiddenAuth==='KADES' || $hiddenAuth=='SEKDES' || $hiddenAuth=='MASTER' || $hiddenAuth=='ROOT' ){?>
                 <div class="box-footer">
                 <button onclick="push_data(<?php echo $data['id'].','.$data['no_nik']; ?>)" class="btn btn-lg btn-success btn-block  <?php echo $lock;?>" >Kunci Data Final <i class="fa fa-lock"></i></button>
-                    <hr/>
-                <button onclick="tolak_bap(<?php echo $data['id'].','.$data['no_nik']; ?>)" class="btn btn-lg btn-success btn-block  <?php echo $lock;?>" >Laporkan Masalah Data <i class="fa fa-ban"></i></button>
+                <hr/>
+                <?php ?>
+                <button onclick="tolak_bap(<?php echo $data['id'].','.$data['no_nik']; ?>)" class="btn btn-lg btn-danger btn-block  <?php echo $lock;?>" >Laporkan Masalah Data <i class="fa fa-ban"></i></button>
+                <?php ?>
                 </div>
                 <?php } ?>
             </div>
@@ -360,9 +362,89 @@ $hiddenAuth = $this->session->userdata['jabatan'];
   </div> 
 </div>
 
+
+<div class="modal fade" id="kunci_bap">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <?php echo form_open_multipart('', array('id'=>'kunci_berita_acara','class'=>'form-horizontal'));?>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Buka Kunci Data Berita Acara</h4>
+            </div>
+            <div class="modal-body form">
+            <div class="well">
+            <center><i class="fa fa-lock fa-5x"></i></center>
+            <p>Pembaruan Data dan Koordinat Pertanahan dengan Keterangan <br>  
+            <table width="100%" class="table table-striped table-bordered table-hover">
+                <tr>
+                    <td>Nomor</td>
+                    <td> <b><?php 
+                            echo $data['id']."/BA/D.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']); 
+                            ?> </b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>A/n.</td>
+                    <td> <?php echo $data['nama'];?> /NIK. <b><?php echo $data['no_nik'];?></b></td>
+                </tr>
+            </table>
+           
+            Silahkan masukkan Kode Otentifikasi untuk memverifikasi izin membuka kunci Berita Acara yang dikirimkan kepada pejabat berwenang yang terkait</p>
+            </div>
+                <div id="kunci" class="form-group">
+                    <label  class="control-label col-sm-3" for="">Kode Kunci</label>
+                    <div class="col-sm-4">
+                        <input type="text" name="kode_buka" id="" class="form-control" onkeyup="validasi_otp()">
+                    </div>
+                    <div class="col-sm-5" id="loader">
+                    </div>
+            </div>
+
+            <input type="hidden" name="id_buka" value="<?php echo $data['id'];?>">
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" onclick="buka_kunci()">Buka Kunci <i class="fa fa-lock"></i></button>
+            </div>
+            <?php echo form_close();?>
+        </div>
+    </div>
+</div>
+
+
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry"></script>
 <!-- <script type="text/javascript" src="<?php echo base_url().APPS.'maps.js';?>"></script> -->
 <script>
+
+function buka_kunci_bap(params) {
+    swal({
+    title: 'Apa Anda Yakin?',
+    text: "Kode Kunci untuk membuka Data BAP akan dikirm ke Kepala Desa dan/atau Sekretaris Desa Terkait!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Iya, Buka Kunci!'
+  }, function isConfirm() {
+    $("#kunci_bap").modal('show');
+  });    
+}
+
+var loader = 'Kunci Salah...';
+
+function validasi_otp() {
+    var otp = $('[name="kode_buka"]').val();
+    if(otp==123456){
+        $('#loader').html('<button class="btn btn-sm btn-flat btn-success">Kunci ditemukan  <i class="fa fa-check"></i></button>');
+    }else{
+        $('#loader').html('<button class="btn btn-sm btn-flat btn-danger">Kunci tidak ditemukan  <i class="fa fa-ban"></i></button>');
+    }
+    
+}
+
+function buka_kunci() {
+    alert("BUKA KUNCI SISTEM");
+}
+
 var map;
 function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'), {

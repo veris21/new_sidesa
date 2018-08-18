@@ -91,6 +91,7 @@ class Auth extends CI_Controller{
   public function setting()
   {
       $data['title']          = TITLE . 'SETTING';
+      $data['reminder']       = $this->notifikasi_model->get_reminder_personal($this->session->userdata('id'))->result();
       $data['main_content']   = MASTER. 'user_one_setting';
       $this->load->view('template', $data);
   }

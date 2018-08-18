@@ -137,6 +137,13 @@ $("#list-user").DataTable({
   ]
 });
 
+
+// REMINDER
+
+$("#list-reminder").DataTable({
+  responsive: true,
+});
+
 // ==========================
 // SMS SETTING
 $("#sms_set").DataTable({
@@ -2277,7 +2284,9 @@ function verifikasi_tengah_one(){
   });
 }
 
-
+// function reminder_open(){
+//   $('#reminder').show();
+// }
 
 // ===============================
 

@@ -59,9 +59,99 @@
         </div>
         <div class="box-footer">
             <div class="pull-right">
-                <!-- <button class="btn-success"></button> -->
+                <button onclick="reminder_open()" class=" btn btn-success">Buka Sistem Reminder (Pengingat) <i class="fa fa-clock-o"></i></button>
             </div>
         </div>
+    </div>
+    <div class="row" id="reminder" hidden>
+      <div class="col-md-8">
+          <div class="box box-warning" >
+            <div class="box-header">
+              <h3 class="box-title">History Sistem Pengingat Jadwal</h3>
+            </div>
+            <div class="box-body">
+            <table width="100%" class="table table-striped table-bordered table-hover" id="list-reminder">
+              <thead>
+                <tr valign="center" align="center">
+                  <td>Waktu Input</td>
+                  <td>Keterangan</td>
+                  <td>Waktu di ingatkan</td>
+                  <td>Status</td>
+                </tr>
+              </thead>
+              <tbody>
+              <?php foreach ($reminder as $reminder) {
+                $timeFormat = "%d/%m/%Y";
+              ?>
+              <tr>
+                <td align="center"><?php echo mdate($timeFormat, $reminder->timestamp_start); ?></td>
+                <td align="center"><?php echo $reminder->pesan; ?></td>
+                <td align="center"><?php echo mdate($timeFormat, $reminder->deadline); ?></td>
+                <td align="center"><?php echo ($reminder->status == 1 ? '<button class="btn btn-success">Success</button>' : '<button class="btn btn-warning">On Process</button>'); ?></td>
+              </tr>
+              <?php  } ?>
+              </tbody>            
+                </table>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="box box-primary">
+          <?php echo 
+          form_open('#', array('class'=>'form-horizontal', 'id'=>'form_reminder'));
+          ?>
+          <div class="box-header">
+            <h3 class="box-title">
+              Input Pengingat Jadwal
+            </h3>
+          </div>
+
+          <div class="box-body form">          
+
+            <div class="form-group">
+            <label class="control-label col-md-3">Ingatkan tanggal</label>
+                <div class="col-md-9">
+                  <input type="text" class="form-control" name="waktu_ingat" id="" placeholder="<?php echo time();?>" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+            <label class="control-label col-md-3">Tentang</label>
+              <div class="col-md-9">
+                <textarea name="pesan" id="" cols="10" rows="4" class="form-control" required></textarea>
+              </div>
+            </div>        
+
+            <div class="form-group">
+            <label class="control-label col-md-3">Type Pengingat</label>
+                <div class="col-md-9">
+                  <select name="tipe_pengingat" class="form-control" id="">
+                  <option value="">-- Pilih Tipe Pengingat --</option>
+                    <option value="1">Pemberitahuan</option>
+                    <option value="2">Penting</option>
+                    <option value="3">Segera</option>
+                  </select>
+                </div>
+            </div> 
+                  
+          </div>
+
+          <input type="hidden" name="dari" value="<?php echo $this->session->userdata('id'); ?>" />
+          <input type="hidden" name="kepada" value="<?php echo $this->session->userdata('id'); ?>" />
+          
+          <div class="box-footer">
+            <div class="pull-right">
+                  <button type="reset" class="btn btn-danger">Reset <i class="fa fa-ban"> </i></button>
+                  <button class="btn btn-warning" onclick="posting_reminder()">Posting <i class="fa fa-save"></i></button>
+            </div> 
+          </div>
+
+          <?php echo 
+          form_close();
+          ?>
+        </div>
+        
+      </div>
     </div>
 </section>
   <!-- Bootstrap modal -->
@@ -148,3 +238,28 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
   <!-- End Bootstrap modal -->
+
+  <script>
+  function reminder_open(){
+    $('#reminder').show();
+  }
+
+
+  function posting_reminder(){
+    event.preventDefault();
+    swal({
+    title: 'Apa Anda ingin Menginput Reminder?',
+    text: "Input Data Ke Sistem Reminder !",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Iya, Posting Reminder!'
+    }, function isConfirm() {
+        $.ajax({
+
+        });
+    });
+   
+  }
+  </script>

@@ -272,7 +272,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title">Setujui Pernyataan &amp; Proses Pertanahan</h3>
+        <h3 class="modal-title">Setujui Pernyataan & Proses Pertanahan</h3>
       </div>
       <?php echo form_open_multipart('', array('id'=>'bap_input','class'=>'form-horizontal'));?>
       <div class="modal-body form">
@@ -285,7 +285,7 @@
 
             <div class="box box-warning">
                 <div class="box-header">
-                    <h3>Input Pemeriksa &amp; Petugas Verifikasi Tanah</h3>
+                    <h3>Input Pemeriksa & Petugas Verifikasi Tanah</h3>
                 </div>
                 <div class="box-body"> 
                 <div id="pesan">
@@ -514,7 +514,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title">Setujui Pernyataan &amp; Proses Pertanahan</h3>
+        <h3 class="modal-title">Setujui Pernyataan & Proses Pertanahan</h3>
       </div>
       <?php echo form_open_multipart('', array('id'=>'setuju_input','class'=>'form-horizontal'));?>
       <div class="modal-body form">

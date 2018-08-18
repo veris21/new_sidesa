@@ -95,4 +95,35 @@ class Notifikasi_model extends CI_Model{
     WHERE u.id = d.kasi_pemerintahan AND j.id = u.jabatan_id AND d.id = $desa_id";
     return $this->db->query($query);
   }
+
+
+  // ============== REMINDER SYSTEM ==================
+
+  public function posting_reminder($post)
+  {
+    return $this->db->insert('reminder', $post);  
+  }
+
+  public function get_reminder_all()
+  {
+    return $this->db->get('reminder');  
+  }
+  
+  public function get_reminder_one($id)
+  {
+    return $this->db->get_where('reminder', array('id'=>$id));  
+  }
+
+  public function get_reminder_personal($id)
+  {
+    return $this->db->get_where('reminder', array('kepada'=>$id));  
+  }
+
+  public function update_reminder_one($id, $update)
+  {
+    $this->db->where('id', $id);  
+    return $this->db->update('reminder', $update);    
+  }
+
+
 }

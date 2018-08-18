@@ -37,6 +37,34 @@ class Cron extends CI_Controller{
   }
 
 
+  function reminder_input(){
+    $deadline = $this->input->post('waktu_ingat');
+    $dari =  $this->input->post('dari');
+    $kepada =  $this->input->post('kepada');
+    $type = $this->input->post('tipe_pengingat');
+    $pesan =  $this->input->post('pesan');
+    $datestring = '%d %M %Y - %h:%i %a';
+    $time = time();
+    $sekarang = mdate($datestring, $time); 
+
+    $post = array(
+      'dari'=>$dari,
+      'kepada'=>$kepada,
+      'pesan'=>$pesan,
+      'deadline'=>$deadline,
+      'timestamp_start'=>$sekarang,
+      'timestamp_end'=>null,
+      'type'=>$type,
+      'status'=>0
+    );
+
+    $check = $this->notifikasi_model->posting_reminder($post);
+    if($check){
+      echo json_encode(array('status'=>TRUE));
+    }
+  }
+
+
   function reminder()
   {
     $datestring = '%d %M %Y - %h:%i %a';
@@ -45,7 +73,7 @@ class Cron extends CI_Controller{
     $reminder = $this->notifikasi_model->reminder_get()->result();
     foreach ($reminder as $reminder) {
       $init = explode(" ", $reminder->message);
-      if ($init[0]=='REMINDER') {
+      if ($init[0] == 'REMINDER') {
         $to = $reminder->hp;
         $pesan = $reminder->message;
         $message = "$pesan (##--$sekarang--SiDesa System##)";
