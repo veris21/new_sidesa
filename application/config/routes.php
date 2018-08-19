@@ -85,7 +85,7 @@ $route['disposisi/validasi/(:any)']          = 'stream/cek_validasi_disposisi/$1
  ----------------------------------------------------------------------- */
 /* -----------------------------------------------------------------------
                         DISPOSISI SISTEM ROUTE
- ----------------------------------------------------------------------- */
+ --------------------------- -------------------------------------------- */
  $route['disposisi/list']                 = 'disposisi/list';
  $route['disposisi/keluar']               = 'disposisi/keluar';
  $route['disposisi/masuk']                = 'disposisi/masuk';

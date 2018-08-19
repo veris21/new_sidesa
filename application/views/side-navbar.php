@@ -196,12 +196,12 @@
         break;
         case 'PERTANAHAN':
         ?>  
-        <li>
-        <a href="<?php echo base_url().'sms/undangan'; ?>">
+        <!-- <li>
+        <a href="<?php //echo base_url().'sms/undangan'; ?>">
         <i class="fa fa-comments"></i>
         <span>SMS Undangan</span>
         </a>
-        </li>
+        </li> -->
         <!-- Data Tanah -->
         <li class="treeview">
           <a href="#">
@@ -311,7 +311,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Tabel Surat Keluar</a></li>
-            <li><a href="<?php echo base_url().'disposisi'; ?>"><i class="fa fa-circle-o"></i> History Disposisi</a></li>
+            <li><a href="<?php echo base_url('disposisi/list'); ?>"><i class="fa fa-circle-o"></i> History Disposisi</a></li>
             <li>
               <a href="#"><i class="fa fa-circle-o"></i>Penerima Bantuan <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
@@ -376,12 +376,12 @@
           </ul>
         </li>
         <!-- MASTER SISTEM -->
-        <li>
-        <a href="<?php echo base_url().'sms/undangan'; ?>">
+        <!-- <li>
+        <a href="<?php //echo base_url().'sms/undangan'; ?>">
         <i class="fa fa-comments"></i>
         <span>SMS Undangan</span>
         </a>
-        </li>
+        </li> -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-gear"></i> <span>Master System</span>
@@ -410,7 +410,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Tabel Surat Keluar</a></li>
-            <li><a href="<?php echo base_url().'disposisi'; ?>"><i class="fa fa-circle-o"></i> History Disposisi</a></li>
+            <li><a href="<?php echo base_url('disposisi/list'); ?>"><i class="fa fa-circle-o"></i> History Disposisi</a></li>
             <li>
               <a href="#"><i class="fa fa-circle-o"></i>Penerima Bantuan <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">

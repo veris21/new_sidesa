@@ -10,11 +10,11 @@ class Disposisi extends CI_Controller{
     parent::__construct();
   }
 
-  public function list($id)
+  public function list()
   {
     $data['title']        = TITLE.'Disposisi System';
     $data['main_content'] = DISPOSISI.'list';
-    // $data['data']         = ;
+    $data['list']         = $this->disposisi_model->_get_all()->result();
     $this->load->view('template', $data);
   }
 

@@ -38,10 +38,12 @@ class Disposisi_model extends CI_Model{
   public function _post_disposisi($post){
     return $this->db->insert('disposisi', $post);
   }
-  public function _get_all($desa)
+
+  public function _get_all()
   {
-    # code...
+    return $this->db->get('disposisi');
   }
+  
   public function _get_all_one($id)
   {
     # code...
