@@ -38,7 +38,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
+
           </ul>
         </li>
         <li class="treeview">
@@ -91,7 +91,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -154,7 +153,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
           </ul>
         </li>
         <?php } ?>
@@ -213,7 +211,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -256,7 +253,6 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
           </ul>
         </li>
         <?php
@@ -278,7 +274,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
+
           </ul>
         </li>
         <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>">
@@ -302,15 +298,15 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Chars &amp; Grafik</a></li>
-            <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i>Laporan Pelayanan</a></li>
-            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i>List Record Koordinat</a></li>
+            <li><a href="<?php echo base_url('grafik_sistem'); ?>"><i class="fa fa-circle-o"></i> Chars &amp; Grafik</a></li>
+            <li><a href="<?php echo base_url('laporan_layanan'); ?>"><i class="fa fa-circle-o"></i>Laporan Pelayanan</a></li>
+            <li><a href="<?php echo base_url('grafik'); ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
           </ul>
         </li>
         <!-- LAPORAN -->
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-table"></i> <span>Laporan</span>
+            <i class="fa fa-table"></i> <span>Tabel Laporan</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
@@ -320,7 +316,7 @@
               <a href="#"><i class="fa fa-circle-o"></i>Penerima Bantuan <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Penerima Raskin</a></li>
-                <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Penerima Minyak</a></li>
+                <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Penerima Minyak Bersubsidi</a></li>
               </ul>
             </li>
           </ul>
@@ -355,7 +351,9 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
+
+
+
           </ul>
         </li>
         <li>
@@ -394,7 +392,7 @@
             <li><a href="<?php echo base_url('user/list'); ?>"><i class="fa fa-circle-o"></i> Master User</a></li>
             <li><a href="<?php echo base_url('user/administrasi'); ?>"><i class="fa fa-circle-o"></i> Master Wilayah</a></li>
             <li><a href="<?php echo base_url('arsip/klasifikasi'); ?>"><i class="fa fa-circle-o"></i> Klasifikasi Arsip</a></li>
-            <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Akses History</a></li>
+            <li><a href="<?php echo base_url('history/akses_sistem'); ?>"><i class="fa fa-circle-o"></i> Akses History</a></li>
             <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Cron Jobs</a></li>
             <li><a href="<?php echo base_url('sms/setting'); ?>"><i class="fa fa-circle-o"></i> SMS API Option</a></li>
             <li><a href="<?php echo base_url('reset/database'); ?>"><i class="fa fa-circle-o"></i> Reset Database </a></li>
@@ -407,7 +405,7 @@
         <!-- LAPORAN -->
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-table"></i> <span>Laporan</span>
+            <i class="fa fa-table"></i> <span>Tabel Laporan</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
@@ -417,7 +415,7 @@
               <a href="#"><i class="fa fa-circle-o"></i>Penerima Bantuan <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
                 <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Penerima Raskin</a></li>
-                <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Penerima Minyak</a></li>
+                <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Penerima Minyak Bersubsidi</a></li>
               </ul>
             </li>
           </ul>
@@ -451,7 +449,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-            <li><a href="<?php echo base_url().'grafik'; ?>"><i class="fa fa-circle-o"></i> Grafik Kinerja</a></li>
+
           </ul>
         </li>
         <li class="treeview">

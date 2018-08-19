@@ -436,6 +436,12 @@ class Master_model extends CI_Model{
     $this->db->where('dusun_id', $id);
     return $this->db->get('rt');
   }
+
+
+  public function akses_history()
+  {
+    return $this->db->get('log_sessions');    
+  }
   // =========================================
   // =========================================
 }

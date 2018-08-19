@@ -320,6 +320,10 @@ $("#list_skt").DataTable({
   responsive: true,
 });
 
+$('#list_history_system').DataTable({
+  responsive: true,
+});
+
 $("#list_aset").DataTable({
   responsive: true,
 });

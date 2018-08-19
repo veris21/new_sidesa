@@ -399,10 +399,19 @@ class Master extends CI_Controller{
   }
   function klasifikasi_arsip(){
      
-      $data['title']          =  TITLE.'administrasi_data';
+      $data['title']          =  TITLE.'Administrasi data';
       $data['main_content']   =  MASTER.'klasifikasi_surat';
       $data['data']           = $this->master_model->_get_klasifikasi_surat()->result();
       $this->load->view('template',$data);
+  }
+
+  // HISTORY AKSES 
+  public function history_akses()
+  {
+    $data['title']          =  TITLE.'History Akses';
+    $data['main_content']   =  MASTER.'history_akses';
+    $data['data']           = $this->master_model->akses_history()->result();
+    $this->load->view('template',$data);
   }
 
 
