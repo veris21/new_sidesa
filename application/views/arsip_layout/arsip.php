@@ -33,6 +33,15 @@
                     <td width='80'>Pilihan</td>
                 </tr>
                 </thead>
+                <tfoot>
+                <tr valign="center" align="center">
+                    <td>Tanggal Terima</td>
+                    <td>Kode Klasifikasi</td>
+                    <td>Detail</td>          
+                    <td>Perihal </td>
+                    <td width='80'>Pilihan</td>
+                </tr>
+                </tfoot>
                 <tbody>
                     <?php 
                         foreach ($arsip_masuk as $data) {
