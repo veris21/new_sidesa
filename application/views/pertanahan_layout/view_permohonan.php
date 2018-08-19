@@ -85,28 +85,34 @@
         </div>
         <div class="col-md-5">
             <!-- Foto Pemohon -->
-            <?php if($data['ktp']!=''||$data['ktp']!=null){ ?>
+            <?php if(file_exists(KTP.$data['ktp'])){ ?>
             <a class="fancybox" rel="fancybox" href="<?php echo base_url().KTP.$data['ktp'];?>" title="Lampiran FC KTP Pemohon <?php echo $data['nama']; ?>">   
                 <img class="img img-responsive img-rounded" src="<?php echo base_url().KTP.$data['ktp'];?>" alt="KTP SCAN">
             </a>
             <br>
-            <?php } ?>
+            <?php }else{
+                echo "<button class='btn btn-default btn-block'>Data Lampiran SCAN KTP Tidak Ada</button><br>";
+             } ?>
             <!--  -->
             <!-- Scan Lampiran / Fotocopy KTP atau Pengantar -->
-            <?php if($data['scan_link']!=''||$data['scan_link']!=null){ ?>
+            <?php if(file_exists(SURATKADUS.$data['scan_link'])){ ?>
              <a class="fancybox" rel="fancybox" href="<?php echo base_url().SURATKADUS.$data['scan_link'];?>" title="Lampiran dari Pengantar Kadus <?php echo $data['nama']; ?>">
                 <img class="img img-responsive img-rounded" src="<?php echo base_url().SURATKADUS.$data['scan_link'];?>" alt="PENGANTAR KADUS">
              </a>
              <br>
-            <?php } ?>
+             <?php }else{
+                echo "<button class='btn btn-default btn-block'>Lampiran SCAN SURAT PENGANTAR KADUS Tidak Ada</button><br>";
+             } ?>
             <!--  -->
              <!-- Scan Bukti PBB -->
-             <?php if($data['pbb']!=''||$data['pbb']!=null){ ?>
+             <?php if(file_exists(UPLOADER.'pbb_pemohon/'.$data['pbb'])){ ?>
              <a class="fancybox" rel="fancybox" href="<?php echo base_url().UPLOADER.'pbb_pemohon/'.$data['pbb'];?>" title="Lampiran Bukti PBB <?php echo $data['nama']; ?>">
                 <img class="img img-responsive img-rounded" src="<?php echo base_url().UPLOADER.'pbb_pemohon/'.$data['pbb'];?>" alt="SCAN BUKTI BAYAR PBB">
              </a>
              <br>
-            <?php } ?>
+            <?php }else{
+                echo "<button class='btn btn-default btn-block'>Lampiran SCAN Bukti Bayar PBB Tidak Ada</button><br>";
+            } ?>
             <!--  -->
             
         </div>    
