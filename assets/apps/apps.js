@@ -142,6 +142,11 @@ $("#table_arsip_masuk").DataTable({
   }
 });
 
+
+$('#table_arsip_keluar').DataTable({
+  responsive: true
+});
+
 $("#list-user").DataTable({
   responsive: true,
   order: [

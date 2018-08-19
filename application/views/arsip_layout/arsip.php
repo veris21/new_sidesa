@@ -66,6 +66,41 @@
             </table>
             </div>
             <div class="tab-pane" id="arsip_keluar">
+                        
+            <table width="100%" class="table table-striped table-bordered table-hover" id="table_arsip_keluar">
+                <thead>
+                <tr>
+                    <td>Tanggal Surat</td>
+                    <td>Klasifikasi Surat Keluar</td>
+                    <td>Tujuan Surat</td>
+                    <td>Keterangan</td>
+                    <td>Penginput/Penanda Tangan</td>
+                    <td>Status</td>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <td>Tanggal Surat</td>
+                    <td>Klasifikasi Surat Keluar</td>
+                    <td>Tujuan Surat</td>
+                    <td>Keterangan</td>
+                    <td>Penginput/Penanda Tangan</td>
+                    <td>Status</td>
+                </tr>
+                </tfoot>
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                
+                </tbody>                
+                </table>
+
             </div>            
         </div> 
         </div>
