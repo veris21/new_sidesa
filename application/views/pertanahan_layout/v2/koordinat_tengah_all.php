@@ -269,7 +269,7 @@ map = new google.maps.Map(document.getElementById('map-canvas'), {
 var destination = [];
 <?php //$id = 1; $koor = $this->tanah_model->get_data_koordinat_all()->result(); ?>
 <?php //foreach ($koor as $koor) { ?>
-//     var datalist = '<?php echo $koor->koordinat;?>';
+//     var datalist = '<?php //echo $koor->koordinat;?>';
 //     var dataSplit = datalist.split(/\s/);
 //     var text = [];
 //     for (var i = 0; i < dataSplit.length; i++) {
@@ -393,10 +393,10 @@ $.ajax({
                 markers.push(marker);
                 
             }       
-            // var markerCluster = new MarkerClusterer(map, markers,
-            //     {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
-            // );
-            var markerCluster = new MarkerClusterer(map, markers);
+            var markerCluster = new MarkerClusterer(map, markers,
+                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+            );
+            // var markerCluster = new MarkerClusterer(map, markers);
     
         }
     });
