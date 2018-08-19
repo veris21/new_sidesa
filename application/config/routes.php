@@ -161,6 +161,8 @@ $route['arsip/cari_data']               = 'arsip/arsip_cari_data';
 $route['arsip/input']                   = 'arsip/arsip_input';
 $route['arsip/keluar']                  = 'arsip/surat_keluar';
 
+$route['arsip/hapus/(:any)']            = 'arsip/hapus_arsip/$1';
+
 $route['arsip/details/(:any)']          = 'arsip/arsip_detail/$1';
 $route['arsip/balasan']                 = 'arsip/balasan_arsip';
 $route['arsip/balasan/setujui/(:any)']  = 'arsip/balasan_setujui/$1'; 

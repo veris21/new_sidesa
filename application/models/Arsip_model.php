@@ -21,6 +21,12 @@ class Arsip_model extends CI_Model{
     $this->db->insert('arsip_masuk', $insert);
     return;
   }
+
+  public function _delete_arsip($id)
+  {
+    $this->db->where('time', $id);
+    return $this->db->delete('arsip_masuk');
+  }
   
   public function _get_sekdes_same_desa($desa_id){
     $this->db->select('u.*, j.jabatan');

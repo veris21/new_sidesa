@@ -1648,6 +1648,36 @@ function baca_arsip(id) {
   });
 }
 
+// HAPUS ARSIP 
+
+function hapus_arsip(id) {
+  event.preventDefault();
+  var url = baseUrl + 'arsip/hapus/' + id;
+  swal({
+    title: 'Apa Anda Yakin?',
+    text: "Data Akan dihapus Secara Permanen!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Iya, Hapus Data!'
+  }, function isConfirm() {
+    $.ajax({
+      url: url,
+      type: "POST",
+      dataType: "JSON",
+      success: function (data) {
+        swal('Selamat !', 'Berhasil Menghapus data!', 'success');
+        location.reload();
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
+      }
+    });
+  });
+}
+
+
 function lihat_notif(id) {
   $.ajax({
     url: baseUrl + 'notifikasi/baca/' + id,

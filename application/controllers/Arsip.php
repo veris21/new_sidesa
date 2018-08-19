@@ -150,6 +150,16 @@ public function balasan_arsip(){
   }
 }
 
+
+// HAPUS ARSIP VIA Root
+public function hapus_arsip($id)
+{
+  $check = $this->arsip_model->_delete_arsip($id);
+    if($check){                           
+      echo json_encode(array("status" => TRUE));             
+    }
+}
+
 public function balasan_setujui($id){
   $insert = array('status'=>1);
   $check = $this->arsip_model->_post_arsip_balasan($id, $insert);
