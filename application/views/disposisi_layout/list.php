@@ -12,12 +12,35 @@
     <div class="box box-info">
 
        <div class="box-body">
-       <?php 
-        $no=1;
+       <table width="100%" class="table table-striped table-bordered table-hover" id="list_disposisi">
+        <thead>
+        <tr valign="center" align="center" style="font-weight:bolder;">
+          <td>Dari</td>
+          <td>Kepada</td>
+          <td>ARSIP Link</td>
+          <td>Isi Disposisi</td>
+          <td>Status</td>
+        </tr>
+        </thead>
+        <tbody>
+        <?php 
+        
         foreach ($list as $el) {
-            echo "<li>".$no."</li>";
-            $no++;
-        }?>
+            
+        ?>
+          <tr>
+          <td><?php echo $el->dari_id;?></td>
+          <td><?php echo $el->kepada_id;?></td>
+          <td><?php echo $el->arsip_id;?></td>
+          <td><?php echo $el->isi_disposisi;?></td>
+          <td><?php echo $el->status;?></td>
+          </tr>
+          <?php 
+          $no++;
+          }?>
+        </tbody>       
+       </table>
+      
        </div>
 
     </div>
