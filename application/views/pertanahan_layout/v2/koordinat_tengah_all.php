@@ -371,7 +371,7 @@ $.ajax({
                 // '</div>'+
                 // '<h5 id="firstHeading" class="firstHeading">'+ data[i]['status']+'</h5>'+
                 // '<div id="bodyContent">'+
-                // '<img class="img img-thumbnail" width="90" src="<?php echo base_url().PATOK;?>'+data[i]['dokumentasi']+ '" />'+
+                // '<img class="img img-thumbnail" width="90" src="<?php //echo base_url().PATOK;?>'+data[i]['dokumentasi']+ '" />'+
                 
                 // '.</p>'+ 
                 // '<p> Latitude : '+ data[i]['latitude'] +' Longitude: '+ data[i]['longitude'] +' <br> Area : &plusmn; '+ data[i]['area'] +' m<sup>2</sup><br> Status Data : '+ data[i]['verified'] +'</p>'+           
@@ -393,9 +393,10 @@ $.ajax({
                 markers.push(marker);
                 
             }       
-            var markerCluster = new MarkerClusterer(map, markers,
-                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
-            );
+            // var markerCluster = new MarkerClusterer(map, markers,
+            //     {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+            // );
+            var markerCluster = new MarkerClusterer(map, markers);
     
         }
     });
