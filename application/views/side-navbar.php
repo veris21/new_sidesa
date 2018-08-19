@@ -310,7 +310,6 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Tabel Surat Keluar</a></li>
             <li><a href="<?php echo base_url('disposisi/list'); ?>"><i class="fa fa-circle-o"></i> History Disposisi</a></li>
             <li>
               <a href="#"><i class="fa fa-circle-o"></i>Penerima Bantuan <i class="fa fa-angle-left pull-right"></i></a>
@@ -409,7 +408,6 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url(); ?>"><i class="fa fa-circle-o"></i> Tabel Surat Keluar</a></li>
             <li><a href="<?php echo base_url('disposisi/list'); ?>"><i class="fa fa-circle-o"></i> History Disposisi</a></li>
             <li>
               <a href="#"><i class="fa fa-circle-o"></i>Penerima Bantuan <i class="fa fa-angle-left pull-right"></i></a>
