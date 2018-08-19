@@ -32,9 +32,12 @@ $disposisiKosong = $disposisi->num_rows();
                     Data Arsip Balasan</button>
                     </div>
                     <div class="box-body">
-                    <a class="fancybox" rel="fancybox" href="<?php echo base_url(SCAN_ARSIP.$data['scan_balasan']); ?>" title="Surat balasan dari <?php echo $data['id_pembalas']; ?>">
-                        <img src="<?php echo base_url(SCAN_ARSIP.$data['scan_balasan']); ?>" width="100%" class="img img-rounded" alt="Arsip Balasan">
-                    </a>
+                    <!-- <a class="fancybox" rel="fancybox" href="<?php //echo base_url(SCAN_ARSIP.$data['scan_balasan']); ?>" title="Surat balasan dari <?php //echo $data['id_pembalas']; ?>">
+                        <img src="<?php //echo base_url(SCAN_ARSIP.$data['scan_balasan']); ?>" width="100%" class="img img-rounded" alt="Arsip Balasan">
+                    </a> -->
+
+                    Download Lampiran Konsep Balasan Arsip <a target="__blank" href="<?php echo base_url(SCAN_ARSIP.$data['scan_balasan']); ?>">(klik disini untuk mengunduh file : <?php echo $data['id_pembalas']; ?>)</a>
+                    
                     </div>
                  </div>
                     <?php }elseif($status==0 && $this->session->userdata('jabatan')=='SEKDES'){
@@ -45,9 +48,14 @@ $disposisiKosong = $disposisi->num_rows();
                     Konsep Balasan Arsip </button>
                     </div>
                     <div class="box-body">
-                    <a class="fancybox" rel="fancybox" href="<?php echo base_url(SCAN_ARSIP.$data['scan_balasan']); ?>" title="Surat balasan dari <?php echo $data['id_pembalas']; ?>">
-                        <img src="<?php echo base_url(SCAN_ARSIP.$data['scan_balasan']); ?>" width="100%" class="img img-rounded" alt="Arsip Balasan">
-                    </a>
+                    <!-- <a class="fancybox" rel="fancybox" href="<?php //echo base_url(SCAN_ARSIP.$data['scan_balasan']); ?>" title="Surat balasan dari <?php //echo $data['id_pembalas']; ?>">
+                        <img src="<?php //echo //base_url(SCAN_ARSIP.$data['scan_balasan']); ?>" width="100%" class="img img-rounded" alt="Arsip Balasan">
+                    </a> -->
+                    <?php if(file_exists(base_url().SCAN_ARSIP.$data['scan_balasan'])){ ?>
+                    Download Lampiran Konsep Balasan Arsip <a target="__blank" href="<?php echo base_url(SCAN_ARSIP.$data['scan_balasan']); ?>">(klik disini untuk mengunduh file : <?php echo $data['id_pembalas']; ?>)</a>
+                    <?php }else{ ?>
+                    <h4 class="well">Arsip Belum Memiliki File Konsep Balasan</h4>
+                    <?php }?>
                     </div>
                     <div class="box-footer">
                         <button onclick="setujui_balasan_arsip(<?php echo $data['id']; ?>)" class="btn btn-primary btn-flat">Setujui Konsep Balasan Arsip <i class="fa fa-check"></i></button>
@@ -56,9 +64,18 @@ $disposisiKosong = $disposisi->num_rows();
                     <?php
                     }else{ ?>
                     <div class="box box-danger">
+                    <div class="box-header">
+                        <button class="btn btn-lg btn-warning btn-block btn-flat">
+                        Konsep Balasan Arsip </button>
+                    </div>
                         <div class="box-body">
-                            <button class="btn btn-lg btn-danger btn-block btn-flat">
-                            Data Arsip Belum Memiliki Balasan</button>
+                            <!-- <button class="btn btn-lg btn-danger btn-block btn-flat">
+                            Data Arsip Belum Memiliki Balasan</button> -->
+                            <?php if(file_exists(SCAN_ARSIP.$data['scan_balasan'])){ ?>
+                                Download Lampiran Konsep Balasan Arsip <a target="__blank" href="<?php echo base_url(SCAN_ARSIP.$data['scan_balasan']); ?>">(klik disini untuk mengunduh file : <?php echo $data['scan_balasan']; ?>)</a>
+                                <?php }else{ ?>
+                                <h4 class="well">Arsip Belum Memiliki File Konsep Balasan</h4>
+                            <?php }?>
                         </div>
                         <div class="box-footer">
                              <div class="pull-right">
@@ -96,6 +113,9 @@ $disposisiKosong = $disposisi->num_rows();
                     <br>
                     <dt>Perihal</dt>
                     <dd><?php echo $data['perihal']; ?>.</dd>
+                    <br>
+                    <dt>Download File Arsip</dt>
+                    <dd><a target="__blank" href="<?php echo base_url(SCAN_ARSIP.$data['scan_link']); ?>"><?php echo $data['scan_link']; ?></a></dd>
                     <br>
                   </dl>
                 </div>
@@ -287,6 +307,16 @@ $disposisiKosong = $disposisi->num_rows();
               <label for="">Isi Disposisi</label>
               <textarea  class="form-control" name="isi" id="" cols="10" rows="3"></textarea>
           </div>
+          
+          <div class="form-group">
+              <label for="">Masukkan Ke Sistem Peringatan Tanggap</label>
+              <button  class="btn btn-warning" onclick="tampilkan_form_reminder()">Buka Form Pengingat <i class="fa fa-clock"></i> </button>
+          </div>
+          <div id="disposisi_ingat" hidden>
+          <div class="form-group">
+              <label for="">Pengingat</label>
+              <textarea  class="form-control" name="pesan_reminder" id="" cols="5" rows="3"></textarea>
+          </div>
 
           <div class="form-group">
                 <select name="tipe_pengingat" class="form-control" id="tipe">
@@ -295,6 +325,7 @@ $disposisiKosong = $disposisi->num_rows();
                             <option value="2">Penting</option>
                             <option value="3">Segera</option>
                 </select>
+          </div>
           </div>
       </div>
       <input type="hidden" name="arsip_time" value="<?php echo $data['time'];?>">
@@ -322,7 +353,8 @@ $disposisiKosong = $disposisi->num_rows();
     </div>
     <?php echo form_open_multipart('', array('id'=>'balas_arsip_form'));?>
     <div class="modal-body form">
-        <input type="file" name="arsip_balasan" class="form-control" accept="image/*" id="">
+        <!-- <input type="file" name="arsip_balasan" class="form-control" accept="image/*" id=""> -->
+        <input type="file" name="arsip_balasan" class="form-control" >
     </div>
     <input type="hidden" name="arsip_id" value="<?php echo $data['id'];?>">
     <input type="hidden" name="arsip_time" value="<?php echo $data['time'];?>">
@@ -342,6 +374,10 @@ $disposisiKosong = $disposisi->num_rows();
 <!-- <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script> -->
 
 <script>
+
+function tampilkan_form_reminder() {
+    $('#disposisi_ingat').show();
+}
 //   Initialize Firebase
   var config = {
     apiKey: "AIzaSyAMU8JUv1PJ4k0CiZP_JO3au3ZzJ8NXgoM",

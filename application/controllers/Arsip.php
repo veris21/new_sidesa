@@ -108,7 +108,7 @@ public function balasan_arsip(){
   if(isset($_FILES['arsip_balasan'])){
     $fileName = time()."-".$_FILES['arsip_balasan']['name'];
     $config['upload_path'] = './assets/uploader/arsip/'; //buat folder dengan nama assets di root folder
-    $config['allowed_types'] = 'png|jpg|jpeg';
+    $config['allowed_types'] = 'png|jpg|jpeg|doc|docx|xls|xlsx|pdf';
     $config['max_size'] = 10000;
     $config['file_name'] = $fileName;
     $this->load->library('upload');

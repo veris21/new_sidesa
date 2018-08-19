@@ -50,7 +50,7 @@
                             <i class='fa fa-eye'></i>
                             </a>
 
-                            <a data-toggle='tooltip' title='Cetak Ulang Arsip' class='btn btn-xs btn-flat btn-default' href='".base_url("arsip/cetak/".$data->time)."'>
+                            <a data-toggle='tooltip' title='Cetak Ulang Arsip' class='btn btn-xs btn-flat btn-default' target='__blank' href='".base_url(SCAN_ARSIP.$data->scan_link)."'>
                             <i class='fa fa-print'></i></a> ";
                             echo " ";
                             if($this->session->userdata('jabatan')=='ROOT'){
