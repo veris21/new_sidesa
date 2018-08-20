@@ -96,16 +96,17 @@
             echo "<td>".$semua->longitude."</td>";
             echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$semua->dokumentasi."' /></td>";
             switch ($this->session->userdata('jabatan')) {
-                case 'ROOT' || 'MASTER' || 'PERTANAHAN' :
+                case 'ROOT' || 'MASTER' || 'PERTANAHAN' :            
+            echo "<td align='center'>";
             
-            echo "<td align='center'> <a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
+            // echo "<a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
             
             ?>
             <button onclick="delete_tengah_one(<?php echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
             <?php 
             break;
                 default:
-                echo "<td align='center'> <button class='btn btn-block btn-danger disabled'> Tidak Memilik Akses </button> </td>";
+                echo "<td align='center'> <button class='btn btn-block btn-danger disabled'> Tidak Memilik Hak Akses </button> </td>";
                 break;
             }
             echo "</td>";
