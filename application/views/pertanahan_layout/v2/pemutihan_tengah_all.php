@@ -47,13 +47,12 @@
                             ?>
                             </td>
                             <td align='center'>
-                            <?php if ($verified == 1) {  ?>
+                            
                             <button onclick="view_data_pemutihan_one(<?php echo $k->id;?>)" class='btn btn-xs btn-success'><i class='fa fa-eye'></i></button> 
+                          
+                            <?php if($check['no_nik'] != $k->nik){ ?>
                             <button onclick="edit_data_pemutihan_one(<?php echo $k->id;?>)" class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> 
-                           <?php } else { ?>
-                            <button onclick="view_data_pemutihan_one(<?php echo $k->id;?>)" class='btn btn-xs btn-success'><i class='fa fa-eye'></i></button> 
-                            <button onclick="edit_data_pemutihan_one(<?php echo $k->id;?>)" class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> 
-                           <?php } ?>
+                            <?php } ?>
                             </td>
 
                         </tr>
@@ -561,6 +560,33 @@
                 <button type="button" class="btn btn-primary" onclick="save_push()">Push Data <i class="fa fa-upload"></i></button>
             </div>
             </form>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="modal_pemutihan">
+    <div class="modal-dialog">
+        <?php echo 
+        form_open_multipart('', array('id'=>'data_pemutihan'));
+        ?>
+        
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Data Koordinat</h4>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="simpan_edit_pemutihan()">Save changes</button>
+            </div>
+            <?php echo 
+            form_close();
+            ?>
         </div>
     </div>
 </div>
