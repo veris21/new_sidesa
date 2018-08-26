@@ -638,6 +638,11 @@ class Pertanahan_model extends CI_Model{
 
   //  ===============================================
 
+  public function update_titik_pemutihan($id, $update){
+    $this->db->where('id', $id);
+    return $this->db->update('koordinat_tengah', $update);    
+  }
+
   public function koordinat_tengah_all(){
     return $this->db->get('koordinat_tengah');
   }

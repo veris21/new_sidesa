@@ -37,6 +37,59 @@ class Pemutihan extends CI_Controller{
     }
   }
 
+  public function update_pemutihan_koordinat_tengah(){
+    if(isset($_FILES['patok_update'])){
+      $patok_update = time()."-".$_FILES['patok_update']['name'];
+      $config['upload_path'] = './assets/uploader/patok/'; //buat folder dengan nama assets di root folder
+      $config['allowed_types'] = 'png|jpg|jpeg';
+      $config['max_size'] = 10000;
+      $config['file_name'] = $patok;
+      $this->load->library('upload');
+      $this->upload->initialize($config);
+      if(! $this->upload->do_upload('patok') );
+      $id = strip_tags($this->input->post('id'));
+      $nik = strip_tags($this->input->post('nik'));
+      $lat = strip_tags($this->input->post('latitude'));
+      $lng = strip_tags($this->input->post('longitude'));
+      $verified = strip_tags($this->input->post('verified'));
+      $area = strip_tags($this->input->post('area'));
+      $status = strip_tags($this->input->post('status'));
+       $update = array(
+        'nik'=>$nik, 
+        'latitude'=>$lat,
+        'longitude'=>$lng,
+        'verified'=>$verified, 
+        'area'=>$area, 
+        'status'=>$status, 
+        'dokumentasi'=>$patok
+      );
+      $check = $this->pertanahan_model->update_titik_pemutihan($id, $update);
+      if($check){
+        echo json_encode(array("status" => TRUE));
+      }    
+    }else{
+      $id = strip_tags($this->input->post('id'));
+      $nik = strip_tags($this->input->post('nik'));
+      $lat = strip_tags($this->input->post('latitude'));
+      $lng = strip_tags($this->input->post('longitude'));
+      $verified = strip_tags($this->input->post('verified'));
+      $area = strip_tags($this->input->post('area'));
+      $status = strip_tags($this->input->post('status'));
+       $update = array(
+        'nik'=>$nik, 
+        'latitude'=>$lat,
+        'longitude'=>$lng,
+        'verified'=>$verified, 
+        'area'=>$area, 
+        'status'=>$status
+      );
+      $check = $this->pertanahan_model->update_titik_pemutihan($id, $update);
+      if($check){
+        echo json_encode(array("status" => TRUE));
+      }    
+    }
+  }
+
 
   public function verifikasi_pemutihan()
   { 

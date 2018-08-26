@@ -2335,38 +2335,6 @@ function verifikasi_tengah_one(){
   });
 }
 
-function edit_data_pemutihan_one(id) {
-  var url = baseUrl + 'get/pemutihan/tengah/' + id;
-  event.preventDefault();
-  swal({
-    title: 'Apa Anda Ingin Data Titik Tengah Pemutihan?' + id,
-    text: "Edit Data Titik Tengah",
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Iya, Edit Data!'
-  }, function isConfirm() {
-    $('#data_pemutihan')[0].reset();
-    $.ajax({
-      url: url,
-      type: "GET",
-      dataType: "JSON",
-      success: function (data) {
-        
-        $('#modal_pemutihan').modal('show');
-        $('.modal-title').text('Update Titik Pemutihan');
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
-      }
-    });
-  });
-}
-
-function simpan_edit_pemutihan(){
-  
-}
 // function reminder_open(){
 //   $('#reminder').show();
 // }

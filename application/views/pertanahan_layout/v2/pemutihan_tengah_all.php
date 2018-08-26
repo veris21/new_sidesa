@@ -34,16 +34,17 @@
                             <td align='center'> 
                             <?php   
                             $check = $this->datapenduduk_model->_get_data_nik($k->nik)->row_array();
-                            if($check['no_nik'] != $k->nik){
-                                $statusDDK = "<button class='btn btn-sm btn-flat btn-danger'>Nik tidak Terdaftar</button> ";
-                                echo $statusDDK;
-                            }else{
+                            if($check['no_nik'] == $k->nik){
                                 $status_lengkap = ($verified == 1 ? 
                                 "<button class='btn btn-sm btn-flat btn-success'>Data Lengkap</button> " : 
                                 "<button class='btn btn-sm btn-flat btn-warning'>Belum Lengkap</button> ");
                                 echo $status_lengkap;   
+                            }else{
+                                $statusDDK = "<button class='btn btn-sm btn-flat btn-danger'>Nik tidak Terdaftar</button> ";
+                                echo $statusDDK;
+
                             }              
-                                                    
+                                                     
                             ?>
                             </td>
                             <td align='center'>
@@ -142,7 +143,7 @@
                         <div class="form-group">
                         <label class="control-label col-sm-4" for="">Foto Patok</label>
                         <div class="col-sm-8" id="foto_patok">
-                            <input type="file" name="patok" class="form-control" >
+                            <input type="file" name="patok_update" class="form-control" >
                         </div>
                         </div>
                         <hr>
@@ -568,8 +569,7 @@
 
 <div class="modal fade" id="modal_pemutihan">
     <div class="modal-dialog">
-        <?php echo 
-        form_open_multipart('', array('id'=>'data_pemutihan'));
+        <?php echo form_open_multipart('#', array('id'=>'data_pemutihan'));
         ?>
         
         <div class="modal-content">
@@ -578,11 +578,36 @@
                 <h4 class="modal-title">Data Koordinat</h4>
             </div>
             <div class="modal-body">
-                
+                <div class="form-group">
+                    <label for="">ID Data Titik</label>
+                    <input type="text" name="id" class="form-control" id="">
+                </div>
+                <div id="foto-patok" class="form-group">
+                       <img src="" class=" col-sm-12 img img-rounded img-responsive" alt="FOTO Tempat">
+                </div>
+                <div class="form-group">
+                    <label for="">Lampiran Foto Titik</label>
+                    <input type="file" name="patok" class="form-control" id="">
+                </div>
+                <div class="form-group">
+                    <label for="">No Induk Kependudukan</label>
+                    <input type="text" name="nik" class="form-control" id="">
+                </div>
+                <div class="form-group">
+                    <label for="">Koordinat Latitude</label>
+                    <input type="text" name="latitude" class="form-control" id="">
+                </div>
+                <div class="form-group">
+                    <label for="">Koordinat Longitude</label>
+                    <input type="text" name="longitude" class="form-control" id="">
+                </div>
+                <input type="hidden" name="verified" value="">
+                <input type="hidden" name="area" value="">
+                <input type="hidden" name="status" value="">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="simpan_edit_pemutihan()">Save changes</button>
+                <button type="submit" class="btn btn-primary" onclick="simpan_edit_pemutihan()">Save changes</button>
             </div>
             <?php echo 
             form_close();
@@ -598,6 +623,8 @@
 
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry"></script>
 <script>
+var baseUrl = '<?php echo base_url(); ?>';
+
 var titik_tengah;
 var patok;
 var id;
@@ -610,6 +637,74 @@ var is_pemutihan;
 var bap_id;
 
 var table;
+
+
+
+function edit_data_pemutihan_one(id) {
+  var url = baseUrl + 'pemutihan/one/' + id;
+  event.preventDefault();
+  swal({
+    title: 'Apa Anda Ingin Data Titik Tengah Pemutihan?' + id,
+    text: "Edit Data Titik Tengah",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Iya, Edit Data!'
+  }, function isConfirm() {
+    $('#data_pemutihan')[0].reset();
+    $.ajax({
+      url: url,
+      type: "GET",
+      dataType: "JSON",
+      success: function (data) {
+        console.log(data);
+        $('[name="id"').val(id);
+        $('[name="nik"]').val(data.id);
+        $('#foto-patok img').attr('src', '<?php echo base_url();?>assets/uploader/patok/' + data.dokumentasi);
+        $('[name="nik"]').val(data.nik);
+        $('[name="latitude"]').val(data.latitude);
+        $('[name="longitude"]').val(data.longitude);
+        $('[name="verified"]').val(data.verified);
+        $('[name="area"]').val(data.area);
+        $('[name="status"]').val(data.status);
+
+        $('#modal_pemutihan').modal('show');
+        $('.modal-title').text('Update Titik Pemutihan');
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
+      } 
+    });
+  });
+}
+
+function simpan_edit_pemutihan(){
+    $('#data_pemutihan').submit(function (evt) {
+    evt.preventDefault();
+    var formData = new FormData($(this)[0]);
+    $.ajax({
+        url: '<?php echo base_url('pemutihan/update/titik_tengah'); ?>',
+        type: "POST",
+        data: formData,
+        async: true,
+        cache: true,
+        contentType: false,
+        enctype: 'multipart/form-data',
+        processData: false,
+        success: function (data) {
+            console.log(data);
+            swal('Selamat !', 'Berhasil Input Data Koordinat Ke Sistem!', 'success');
+            location.reload();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            swal('Astaga', 'Ade Nok Salah Mudel e...!', 'error');
+        }
+    });
+    
+  });
+}
+
 
 
 function view_data_pemutihan_one(id) {
@@ -718,17 +813,18 @@ function datapatok(link) {
         url: url + link,
         success : function (data) {
             if(data==null || data==''){
-                table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
-                table += "<tr><td colspan='3' align='center'>Data Patok Belum Ada</td></tr>";
+                table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td><td>#</td></tr></thead><tbody>';
+                table += "<tr><td colspan='4' align='center'>Data Patok Belum Ada</td></tr>";
                 table += '</tbody></table>';
             }else{
                 var no = 1;
-                table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td></tr></thead><tbody>';
+                table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr align="center"><td>No.</td><td>Latitude</td><td>Longitude</td><td>#</td></tr></thead><tbody>';
                for (let i = 0; i < data.length; i++) {
+                   const id = data[i]['id'];
                    const lat = data[i]['lat'];
                    const lng = data[i]['lng'];
                    patok.push(new google.maps.LatLng(parseFloat(lat),parseFloat(lng)));
-                   table += "<tr><td>"+no+"</td><td>"+lat+"</td><td>"+lng+"</td></tr>";                  
+                   table += "<tr align='center'><td>"+no+"</td><td>"+lat+"</td><td>"+lng+"</td><td><button class='btn btn-xs btn-danger' onclick='hapus_patok_pemutihan("+id+")'><i class='fa fa-trash'></i></td></tr>";                  
                    no++;
                }   
                table += '</tbody></table>';            
@@ -737,6 +833,33 @@ function datapatok(link) {
             $("div#tb").html(table);
         }
     });
+}
+
+function hapus_patok_pemutihan(id) {
+    // alert('Hapus Patok' + id);
+    event.preventDefault();
+  swal({
+    title: 'Apa Anda Ingin Menghapus Data Patok ?',
+    text: "Hapus Data Patok Secara Permanen",
+    type: 'error',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Iya, Hapus Patok!'
+  }, function isConfirm() {
+    $.ajax({
+      url: baseUrl + 'delete/koordinat/' + id,
+      type: "POST",
+      success: function (data) {
+        swal('Selamat !', 'Berhasil Menghapus Data Koordinat di Sistem!', 'success');
+        // location.reload();
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
+      }
+
+    });
+  });
 }
 
 function buka_input_patok_form(){
