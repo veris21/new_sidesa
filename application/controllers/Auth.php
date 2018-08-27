@@ -50,17 +50,17 @@ class Auth extends CI_Controller{
         $set = array(
             'error' => FALSE,
             'user'=> array(
-              'id'          =>$data['id'],
+              'userid'          =>$data['id'],
               'username'  =>$data['uid'],
               'password'  =>$data['pass'],
               'kodedesa'  =>$dataDesa['id'],
               'fullname'    =>$data['fullname'],
               'jabatan'     =>$data['jabatan'],
-              'desa_id'     =>$data['desa_id'],
-              'keterangan_jabatan' => $data['keterangan_jabatan'],
+              'desaid'     =>$data['desa_id'],
+              'keteranganjabatan' => $data['keterangan_jabatan'],
               'avatar'      =>$data['avatar'],
               'hp'          =>$data['hp'],
-              'last_login'  =>$data['time']
+              'lastlogin'  =>$data['time']
             )            
           );
           $this->session->set_flashdata(array('status'=>'aktif'));
