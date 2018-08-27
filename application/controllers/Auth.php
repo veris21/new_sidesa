@@ -70,11 +70,11 @@ class Auth extends CI_Controller{
           $this->output
           ->set_status_header(200)
           ->set_content_type('application/json', 'utf-8')
-          ->set_output(json_encode($set, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+          ->set_output(json_encode($set))
           ->_display();
           exit;
       }else {          
-        echo json_encode(array("status" => FALSE)); 
+        echo json_encode(array("status" => FALSE,'error' => TRUE,)); 
         exit;
       }
     }
