@@ -31,6 +31,10 @@ $route['setting/akun']              = 'auth/setting';
 $route['get/uid/(:any)']            = 'auth/_get_uid/$1';
 $route['auth']                      = 'auth/validate';
 
+
+// APIS REST AUTH
+
+$route['api/auth']                  = 'auth/rest_auth';
 /* -----------------------------------------------------------------------
                        PUBLIC ROUTE
  ----------------------------------------------------------------------- */

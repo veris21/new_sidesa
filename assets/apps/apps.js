@@ -315,6 +315,11 @@ $("#list_bap").DataTable({
   responsive: true,
 });
 
+$("#list_pemutihan").DataTable({
+  responsive: true,
+});
+
+
 $("#aset_desa").DataTable({
   responsive: true,
 });

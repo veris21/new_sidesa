@@ -384,9 +384,10 @@ class Pertanahan extends CI_Controller{
   }
 
   public function berita_acara(){
-    $data['title'] = TITLE.'List Berita Acara';
-    $data['bap_data'] = $this->pertanahan_model->get_bap_list()->result();
-    $data['main_content'] = PERTANAHAN.'list_berita_acara';
+    $data['title']          = TITLE.'List Berita Acara';
+    $data['bap_data']       = $this->pertanahan_model->get_bap_list()->result();
+    $data['list_pemutihan'] = $this->pertanahan_model->get_pemutihan_data()->result();
+    $data['main_content']   = PERTANAHAN.'list_berita_acara';
     $this->load->view('template', $data);
   }
 

