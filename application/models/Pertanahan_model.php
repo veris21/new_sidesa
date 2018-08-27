@@ -100,6 +100,10 @@ class Pertanahan_model extends CI_Model{
     return $this->db->get();
   }
 
+  public function get_pemutihan_data(){
+    return $this->db->get('data_pemutihan');    
+  }
+
 
   public function _get_bap_details($id){
     $query = "SELECT bap.id as id,
