@@ -46,9 +46,9 @@ class Auth extends CI_Controller{
         $set = array(
             'error' => FALSE,
             'user'=> array(
-              'username'    =>$data['uid'],
-              'password'    =>$data['pass'],
-              'kodedesa'   =>$dataDesa['id'],
+              'username'  =>$data['uid'],
+              'password'  =>$data['pass'],
+              'kodedesa'  =>$dataDesa['id'],
             ),
             'status' => TRUE,
             'status_login'=>'oke',
@@ -74,7 +74,7 @@ class Auth extends CI_Controller{
           ->_display();
           exit;
       }else {          
-        echo json_encode(array("status" => FALSE,'error' => TRUE,)); 
+        echo json_encode(array("status" => FALSE,'error' => TRUE, 'error_msg'=> 'Invalid credentitals')); 
         exit;
       }
     }
