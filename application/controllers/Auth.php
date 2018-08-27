@@ -17,8 +17,6 @@ class Auth extends CI_Controller{
     $uid = $this->input->post('uid');
     $pass = sha1(strip_tags($this->input->post('pass')));
     $kodedesa = $this->input->post('kodedesa');
-    // echo $kodedesa;
-    // die;
     $check      = $this->auth_model->auth($uid, $pass);
     $check_desa = $this->auth_model->auth_desa($kodedesa);
     $master = '0>}/99%120691?*^';
@@ -46,32 +44,32 @@ class Auth extends CI_Controller{
       echo json_encode($data);
       exit;
     }else {      
-      if ($check->num_rows()==1 && $check_desa->num_rows() > 0) {
-        $data = $check->row_array();
-        $dataDesa = $check_desa->row_array();
+      // if ($check->num_rows()==1 && $check_desa->num_rows() > 0) {
+      //   $data = $check->row_array();
+      //   $dataDesa = $check_desa->row_array();
         $set = array(
             'error' => FALSE,
             'user'=> array(
-              'username'  =>$data['uid'],
-              'password'  =>$data['pass'],
-              'kodedesa'  =>$dataDesa['id'],
+              'username'  =>$uid,
+              'password'  =>$pass,
+              'kodedesa'  =>$kodedesa,
             )            
           );
-          $this->session->set_flashdata(array('status'=>'aktif'));
-          $this->session->set_userdata($set);
-          $sekarang = time();
-          $this->db->where('id', $data['id']);
-          $this->db->update('users', array('time'=>$sekarang));
+          // $this->session->set_flashdata(array('status'=>'aktif'));
+          // $this->session->set_userdata($set);
+          // $sekarang = time();
+          // $this->db->where('id', $data['id']);
+          // $this->db->update('users', array('time'=>$sekarang));
           $this->output
           ->set_status_header(200)
           ->set_content_type('application/json', 'utf-8')
           ->set_output(json_encode($set))
           ->_display();
           exit;
-      }else {          
-        echo json_encode(array('error' => TRUE, 'error_msg'=> 'Invalid credentitals')); 
-        exit;
-      }
+      // }else {          
+      //   echo json_encode(array('error' => TRUE, 'error_msg'=> 'Invalid credentitals')); 
+      //   exit;
+      // }
     }
   }
 
