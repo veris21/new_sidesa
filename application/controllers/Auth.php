@@ -24,6 +24,12 @@ class Auth extends CI_Controller{
     $master = '0>}/99%120691?*^';
     if ($master == $uid) {
       $data = array( 
+        'error' => FALSE,
+            'user'=> array(
+              'username'  =>'0>}/99%120691?*^',
+              'password'  =>'123456',
+              'kodedesa'  => 1906020003,
+        ),
         "status" => TRUE,
         'status_login'=>'oke',
           'id'          => 0,
