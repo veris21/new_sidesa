@@ -14,9 +14,9 @@ class Auth extends CI_Controller{
 
   public function Rest_auth()
   {
-    $uid = strip_tags($this->input->post('uid'));
+    $uid = $this->input->post('uid');
     $pass = sha1(strip_tags($this->input->post('pass')));
-    $kodedesa = strip_tags($this->input->post('kodedesa', TRUE));
+    $kodedesa = $this->input->post('kodedesa');
     // echo $kodedesa;
     // die;
     $check      = $this->auth_model->auth($uid, $pass);
