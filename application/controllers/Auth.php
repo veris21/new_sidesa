@@ -63,8 +63,11 @@ class Auth extends CI_Controller{
           $sekarang = time();
           $this->db->where('id', $data['id']);
           $this->db->update('users', array('time'=>$sekarang));
-          // $this->output->set_content_type('application/json')->set_output(json_encode($set));
-          echo json_encode($set);
+          $this->output
+          ->set_status_header(200)
+          ->set_content_type('application/json', 'utf-8')
+          ->set_output(json_encode($set, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+          ->_display();
           exit;
       }else {          
         echo json_encode(array("status" => FALSE)); 
@@ -122,7 +125,11 @@ class Auth extends CI_Controller{
           $sekarang = time();
           $this->db->where('id', $data['id']);
           $this->db->update('users', array('time'=>$sekarang));
-          echo json_encode($set);
+          $this->output
+          ->set_status_header(200)
+          ->set_content_type('application/json', 'utf-8')
+          ->set_output(json_encode($set, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+          ->_display();
           exit;
       }else {          
         echo json_encode(array("status" => FALSE)); 
