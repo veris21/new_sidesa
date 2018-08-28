@@ -87,12 +87,13 @@ class Api extends CI_Controller {
        
     public function notifications($id)
     {
-        $data['status'] = TRUE;
+        $data['title']          = TITLE . 'Notifikasi List';
+        $data['status']         = ($this->arsip_model->get_notifikasi_user($id, 1)->result() !=null ? 200 : 404);
         $data['notifications'] = $this->notifikasi_model->get_notifikasi_user($id, 0)->result();
         $data['notifications_baca'] = $this->notifikasi_model->get_notifikasi_user($id, 1)->result();
         return $this->output
         ->set_status_header(200)
-        ->set_content_type('application/json', 'utf-8')
+        ->set_content_type('application/json')
         ->set_output(json_encode($data));
     }
     public function arsip_list_api(){
