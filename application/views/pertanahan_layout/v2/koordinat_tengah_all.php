@@ -124,7 +124,7 @@
             <?php 
             break;
                 default:
-                echo "<td align='center'> <button class='btn btn-md btn-danger disabled'> Tidak Memiliki Hak Akses </button> </td>";
+                echo "<td align='center'> <button class='btn btn-md btn-danger'>Restricted <i class='fa fa-ban'></i></button> </td>";
                 break;
             }
             echo "</td>";
