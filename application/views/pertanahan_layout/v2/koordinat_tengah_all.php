@@ -65,7 +65,19 @@
                 <div class="tab-pane active" id="list_koordinat_all">
         <?php 
         switch ($this->session->userdata('jabatan')) {
-            case 'ROOT' || 'MASTER' || 'PERTANAHAN' :
+            case 'ROOT' :
+        ?>
+        <hr/>
+        <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
+        <?php 
+         break;
+         case 'MASTER' :
+        ?>
+        <hr/>
+        <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
+        <?php 
+         break;
+         case 'PERTANAHAN' :
         ?>
         <hr/>
         <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
@@ -139,15 +151,36 @@
         </tbody>
         </table>
 
-                </div>
-                <!-- END -->
-                <!-- START TAB Kedua -->
-                <div class="tab-pane" id="list_koordinat_publik">
-
-                            <hr>
-                            <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
-                            <hr>
-                           <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_tengah">
+        </div>
+        <!-- END -->
+        <!-- START TAB Kedua -->
+        <div class="tab-pane" id="list_koordinat_publik">
+        <hr>
+        <?php 
+        switch ($this->session->userdata('jabatan')) {
+        case 'ROOT': 
+        ?>        
+        <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
+        <hr>
+        <?php 
+        break;
+        case 'MASTER': 
+        ?>        
+        <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
+        <hr>
+        <?php 
+        break;
+        case 'PERTANAHAN': 
+        ?>        
+        <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
+        <hr>
+        <?php 
+        break;
+        default:
+        break;
+        }
+        ?>
+        <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_tengah">
         <thead>
         <tr valign="center" align="center" style="font-weight:bolder;">
             <td>Nama/ NIK</td>
