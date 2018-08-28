@@ -161,9 +161,15 @@
                             <div id="data-link-input" hidden>
                             <button class="btn btn-warning btn-block" onclick="buka_push_form()">Push Data Link <i class="fa fa-input"></i></button>
                             </div>
+                            <hr>
+                            <div id="verifikasi-input" hidden>
+                                <button class="btn btn-primary btn-block" onclick="verifikasi_pemutihan()">Input Ke Master Pemutihan <i class="fa fa-upload"></i></button>
+                            </div>
+                            <hr>
                             <div id="patok-input" hidden>
                                 <button class="btn btn-success btn-block" onclick="buka_input_patok_form()">Input Data Patok Batas <i class="fa fa-input"></i></button>
                             </div>
+                            
                         </div>
                     </div>
                     <div class="row" id="warning" hidden>
@@ -188,7 +194,7 @@
             </div>
         </div>
     </div>
-</secttion>
+</section>
 
 
 <!-- Modal Input Data Penduduk Baru -->
@@ -619,6 +625,25 @@
 
 
 
+<div class="modal fade" id="verifikasi_pemutihan_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Verifikasi Data Pemutihan</h4>
+            </div>
+            <div class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" onclick="verifikasi_pemutihan()" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry"></script>
@@ -798,6 +823,12 @@ function view_data_pemutihan_status(idRef) {
                 }else{
                     $("#patok-input").show();
                 }
+                if(verified == 0){                    
+                    $("#verifikasi-input").show();
+                }else{
+                    $("#patok-input").hide();
+                    $("#verifikasi-input").hide();
+                }
                 $('[name="data_link_id"]').val(z.id); 
                 link = z.id;                
                 datapatok(link);
@@ -887,6 +918,16 @@ function save_push() {
     });
     
 }
+
+
+function verifikasi_pemutihan(){
+    $("#verifikasi_pemutihan_modal").modal('show');  
+}
+
+function save_verifikasi_pemutihan(){
+    alert("Simpan Data");
+}
+
 
 function input_patok_pemutihan() {
     $('#input_data_patok').submit(function (evt) {    
