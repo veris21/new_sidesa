@@ -88,7 +88,7 @@ class Api extends CI_Controller {
     public function notifications($id)
     {
         $data['title']          = TITLE . 'Notifikasi List';
-        $data['status']         = ($this->arsip_model->get_notifikasi_user($id, 1)->result() !=null ? 200 : 404);
+        // $data['status']         = ($this->arsip_model->get_notifikasi_user($id, 1)->result() !=null ? 200 : 404);
         $data['notifications'] = $this->notifikasi_model->get_notifikasi_user($id, 0)->result();
         $data['notifications_baca'] = $this->notifikasi_model->get_notifikasi_user($id, 1)->result();
         return $this->output
