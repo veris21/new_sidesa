@@ -33,8 +33,10 @@ $route['auth']                      = 'auth/validate';
 
 
 // APIS REST AUTH
+$route['api/auth']                  = 'api/rest_auth';
+$route['api/notifications/(:any)']  = 'api/notifications/$1';
+$route['api/arsip']                 = 'api/arsip_list_api';
 
-$route['api/auth']                  = 'auth/rest_auth';
 /* -----------------------------------------------------------------------
                        PUBLIC ROUTE
  ----------------------------------------------------------------------- */
@@ -176,7 +178,6 @@ $route['disposisi/post']                = 'disposisi/input';
 $route['disposisi/cetak/']              = 'disposisi/cetak/$1';
 
 $route['api/arsip/details/(:any)']      = 'arsip/arsip_detail_api/$1';
-$route['api/arsip/list']                = 'arsip/arsip_list_api';
 
 // API ARSIP
 
