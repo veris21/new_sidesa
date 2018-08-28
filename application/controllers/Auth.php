@@ -50,10 +50,10 @@ class Auth extends CI_Controller{
         $set = array(
             'error' => FALSE,
             'user'=> array(
-              'userid'          =>$data['id'],
-              'username'  =>$data['uid'],
-              'password'  =>$data['pass'],
-              'kodedesa'  =>$dataDesa['id'],
+              'userid'      =>$data['id'],
+              'username'    =>$data['uid'],
+              'password'    =>$data['pass'],
+              'kodedesa'    =>$dataDesa['id'],
               'fullname'    =>$data['fullname'],
               'jabatan'     =>$data['jabatan'],
               'desaid'     =>$data['desa_id'],
