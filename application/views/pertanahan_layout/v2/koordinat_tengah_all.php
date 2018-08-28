@@ -105,8 +105,26 @@
             <button onclick="delete_tengah_one(<?php echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
             <?php 
             break;
+            case 'MASTER':            
+            echo "<td align='center'>";
+            
+            // echo "<a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
+            
+            ?>
+            <button onclick="delete_tengah_one(<?php echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
+            <?php 
+            break;
+            case 'PERTANAHAN':            
+            echo "<td align='center'>";
+            
+            // echo "<a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
+            
+            ?>
+            <button onclick="delete_tengah_one(<?php echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
+            <?php 
+            break;
                 default:
-                echo "<td align='center'> <button class='btn btn-sm btn-block btn-danger disabled'> Tidak Memiliki Hak Akses </button> </td>";
+                echo "<td align='center'> <button class='btn btn-md btn-danger disabled'> Tidak Memiliki Hak Akses </button> </td>";
                 break;
             }
             echo "</td>";
