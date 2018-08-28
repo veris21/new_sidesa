@@ -17,7 +17,7 @@
         </h3>
     </div>
     <div class="box-body">
-        <div style="height: 480px;" id="map-canvas"></div>
+        <div style="height: 640px;" id="map-canvas"></div>
     </div>
 </div>
 
@@ -228,7 +228,7 @@
                         <input type="radio" name="verified" id="" value="0"> Belum di Verifikasi                      
                         </div>                        
                     </div> -->
-                    
+
                     <div class="form-group">
                         <label  class="control-label col-sm-4" for="">Status</label>
                         <div class="col-sm-8">
