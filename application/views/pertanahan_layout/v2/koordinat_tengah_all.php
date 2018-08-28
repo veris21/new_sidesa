@@ -221,13 +221,14 @@
                            <input type="text" name="area" class="form-control" id="">                        
                         </div>                        
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label  class="control-label col-sm-4" for="">Verified</label>
                         <div class="col-sm-8">
                         <input type="radio" name="verified" id="" value="1"> Telah di Verifikasi                      
                         <input type="radio" name="verified" id="" value="0"> Belum di Verifikasi                      
                         </div>                        
-                    </div>
+                    </div> -->
+                    
                     <div class="form-group">
                         <label  class="control-label col-sm-4" for="">Status</label>
                         <div class="col-sm-8">

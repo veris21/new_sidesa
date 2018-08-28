@@ -25,10 +25,14 @@ class Pemutihan extends CI_Controller{
       $lat = strip_tags($this->input->post('lat'));
       $lng = strip_tags($this->input->post('lng'));
       $area = strip_tags($this->input->post('area'));
-      $verified = strip_tags($this->input->post('verified'));
+      // $verified = strip_tags($this->input->post('verified'));
       $status = strip_tags($this->input->post('status'));
 
-      $post = array('nik'=>$nik, 'latitude'=>$lat,'longitude'=>$lng, 'area'=> $area, 'verified'=>$verified,'dokumentasi'=>$patok, 'status'=>$status);
+      $post = array('nik'=>$nik,
+       'latitude'=>$lat,
+       'longitude'=>$lng, 
+       'area'=> $area, 'verified'=>0,
+       'dokumentasi'=>$patok, 'status'=>$status);
      
       $check = $this->pertanahan_model->_post_titik_pemutihan($post);
       if($check){
@@ -51,14 +55,14 @@ class Pemutihan extends CI_Controller{
       $nik = strip_tags($this->input->post('nik'));
       $lat = strip_tags($this->input->post('latitude'));
       $lng = strip_tags($this->input->post('longitude'));
-      $verified = strip_tags($this->input->post('verified'));
+      // $verified = strip_tags($this->input->post('verified'));
       $area = strip_tags($this->input->post('area'));
       $status = strip_tags($this->input->post('status'));
        $update = array(
         'nik'=>$nik, 
         'latitude'=>$lat,
         'longitude'=>$lng,
-        'verified'=>$verified, 
+        'verified'=>0, 
         'area'=>$area, 
         'status'=>$status, 
         'dokumentasi'=>$patok
@@ -72,14 +76,14 @@ class Pemutihan extends CI_Controller{
       $nik = strip_tags($this->input->post('nik'));
       $lat = strip_tags($this->input->post('latitude'));
       $lng = strip_tags($this->input->post('longitude'));
-      $verified = strip_tags($this->input->post('verified'));
+      // $verified = strip_tags($this->input->post('verified'));
       $area = strip_tags($this->input->post('area'));
       $status = strip_tags($this->input->post('status'));
        $update = array(
         'nik'=>$nik, 
         'latitude'=>$lat,
         'longitude'=>$lng,
-        'verified'=>$verified, 
+        'verified'=>0, 
         'area'=>$area, 
         'status'=>$status
       );
