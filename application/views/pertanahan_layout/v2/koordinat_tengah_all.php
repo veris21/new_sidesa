@@ -136,7 +136,7 @@
             <?php 
             break;
                 default:
-                echo "<td align='center'> <button class='btn btn-md btn-danger'>Restricted <i class='fa fa-ban'></i></button> </td>";
+                echo "<td width='60' align='center'> <button class='btn btn-md btn-danger'>Restricted Access <i class='fa fa-ban'></i></button> </td>";
                 break;
             }
             echo "</td>";
