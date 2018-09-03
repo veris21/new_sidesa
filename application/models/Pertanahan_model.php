@@ -632,7 +632,8 @@ class Pertanahan_model extends CI_Model{
    }
 
    public function cari_aset_tanah_desa($key){
-     return $this->db->get_where('data_link', array('tanah_id'=>$key));
+     $this->db->like('tanah_id', $key);
+     return $this->db->get('data_link');
    }
    public function get_marker_all(){
      return $this->db->get('data_link');
