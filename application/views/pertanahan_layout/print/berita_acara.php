@@ -76,25 +76,25 @@
             <td>Alamat</td>
             <td colspan="3" align="left">: <?php echo $data['alamat'];?></td>
         </tr>
-        <!-- <tr>
+        <tr>
             <td colspan="4"></td>
-        </tr>         -->
+        </tr>        
         <tr >
             <td colspan="4">Dengan batas - batas sebagai berikut : </td>
         </tr>
         <tr>
             <td colspan="2">                
-                <p>- Utara berbatasan dengan <b><?php echo $data['utara'];?></b><br>
-                    - Timur berbatasan dengan <b><?php echo $data['timur'];?></b></p>
+                - Utara berbatasan dengan <b><?php echo $data['utara'];?></b><br>
+                    - Timur berbatasan dengan <b><?php echo $data['timur'];?></b>
             </td>
             <td colspan="2">                
-                <p>- Selatan berbatasan dengan <b><?php echo $data['selatan'];?></b><br>
-                    - Barat berbatasan dengan <b><?php echo $data['barat'];?></b></p>
+                - Selatan berbatasan dengan <b><?php echo $data['selatan'];?></b><br>
+                    - Barat berbatasan dengan <b><?php echo $data['barat'];?></b>
             </td>
         </tr>
         <tr>
             <td colspan="4">
-                <p style="padding-bottom:0;margin-bottom:0;">Berdasarkan hasil pemeriksaan atas tanah tersebut disimpulkan bahwa :</p>
+                <p>Berdasarkan hasil pemeriksaan atas tanah tersebut disimpulkan bahwa :</p>
             <ol>
                 <li>Memang benar tanah tersebut tidak dalam sengketa  (. . .)</li>
                 <li>Tanah tersebut tidak pernah diperjualbelika  (. . .)</li>
