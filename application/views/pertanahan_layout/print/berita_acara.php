@@ -76,11 +76,11 @@
             <td>Alamat</td>
             <td colspan="3" align="left">: <?php echo $data['alamat'];?></td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td colspan="4"></td>
-        </tr>        
+        </tr>         -->
         <tr >
-            <td colspan="4"><p style="padding-bottom:0;margin-bottom:0;">Dengan batas - batas sebagai berikut : </p></td>
+            <td colspan="4">Dengan batas - batas sebagai berikut : </td>
         </tr>
         <tr>
             <td colspan="2">                
@@ -103,8 +103,8 @@
                 <li>Tanah tersebut sudah dipasang tanda/patok batas  (. . .)</li>
                 <li>Tanah tersebut benar sudah dikelola  (. . .)</li>
             </ol>
-            <p style="text-align:justify;">Berita Acara ini dipergunakan untuk Pembuatan Surat Keterangan Tanah disertai Peta/Sketsa gambar lokasi <b><i>terlampir</i></b></p>
-            <p style="text-align:justify;">Demikianlah Berita Acara Pemeriksaan Lahan/Lokasi ini dibuat untuk diketahui dan dipergunakan seperlunya.</p>
+            <p style="text-align:justify;">Berita Acara ini dipergunakan untuk Pembuatan Surat Keterangan Tanah disertai Peta/Sketsa gambar lokasi  <b><i>Terlampir</i></b> 
+            <br> Demikianlah Berita Acara Pemeriksaan Lahan/Lokasi ini dibuat untuk diketahui dan dipergunakan seperlunya.</p>
             </td>
         </tr>
 </table> 
