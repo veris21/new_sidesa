@@ -26,7 +26,7 @@ class Stream extends CI_Controller{
 
   function get_pendidikan()
   {
-      $data['title']          = TITLE . 'Open Data Pertanahan Publik';
+      $data['title']          = 'Data Penduduk berdasar Kelompok Pendidikan';
       $data['main_content']   = UMUM.'v2/pertanahan';
       $this->load->view(UMUM. 'v2/template', $data);
   }
@@ -34,7 +34,7 @@ class Stream extends CI_Controller{
 // MAINTENANCE TEMPLATE
   function perbaikan()
   {
-      $data['title']          = TITLE . 'Open Data Pertanahan Publik';
+      $data['title']          = 'Mohon Maaf Sistem sedang dalam Perbaikan';
       $this->load->view(UMUM.'maintenance', $data);
   }
 
@@ -178,7 +178,7 @@ class Stream extends CI_Controller{
 
 
   public function grafik_public(){
-    $data['title']          = TITLE . 'Grafik Kependudukan';
+    $data['title']          = 'Grafik Kependudukan';
     // $data['main_content']   = UMUM.'v2/Belum_tersedia';
     $data['penduduk'] = $this->datapenduduk_model->_get_penduduk_group_sex();
     $data['laki'] = $this->datapenduduk_model->_get_penduduk_laki();
@@ -189,28 +189,28 @@ class Stream extends CI_Controller{
 
 public function data_fasilitas_umum()
 {
-  $data['title']          = TITLE . 'Open Data Fasilitas Umum Desa';
+  $data['title']          = 'Open Data Fasilitas Umum Desa';
   $data['main_content']   = UMUM.'v2/Belum_tersedia';
   $this->load->view(UMUM. 'v2/template', $data);
 }
 
 public function data_pertanian()
 {
-  $data['title']          = TITLE . 'Open Data Pertanian Desa';
+  $data['title']          = 'Data Pertanian Desa';
   $data['main_content']   = UMUM.'v2/Belum_tersedia';
   $this->load->view(UMUM. 'v2/template', $data);
 }
 
 public function data_kelompok_usaha()
 {
-  $data['title']          = TITLE . 'Open Data Kelompok Usaha Desa';
+  $data['title']          = 'Data Kelompok Usaha Desa';
   $data['main_content']   = UMUM.'v2/Belum_tersedia';
   $this->load->view(UMUM. 'v2/template', $data);
 }
 
 public function data_grafik_pertanian()
 {
-  $data['title']          = TITLE . 'Open Data Pertanian Desa';
+  $data['title']          = 'Data Pertanian Desa';
   $data['main_content']   = UMUM.'v2/Belum_tersedia';
   $this->load->view(UMUM. 'v2/template', $data);
 }

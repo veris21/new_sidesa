@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name="description" content="Aplikasi Manajemen Data Masyarakat Tingkat Desa yang di kembangkan oleh BUMDES Gantung Makmur Sejahtera dalam Naungan UNIT Usaha Bidang Pengembangan Teknologi Informasi, diharapkan aplikasi ini dapat membantu pemerintah tingkat desa untuk memanajemen data pertanahan masyarakat dan surat menyurat terkait untuk data desa dan pertanahan masyarakat yang lebih baik.">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <link href="<?php echo base_url().V2;?>libraries/slick/slick.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url().V2;?>libraries/slick/slick-theme.css" rel="stylesheet" type="text/css">
