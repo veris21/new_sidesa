@@ -11,9 +11,11 @@ class Arsip extends CI_Controller{
     //Codeigniter : Write Less Do More
   }
 
-  function arsip(){
+function arsip()
+  {
     $data['title']          = TITLE . 'Arsip Data';
     $data['arsip_masuk']    = $this->arsip_model->arsip_masuk()->result();
+    $data['arsip_keluar']   = $this->arsip_model->arsip_keluar()->result();
     $data['klasifikasi']    = $this->master_model->_get_klasifikasi_surat()->result();
     $data['main_content']   = ARSIP . 'arsip';
     $this->load->view('template', $data);

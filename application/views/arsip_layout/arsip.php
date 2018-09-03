@@ -26,20 +26,20 @@
             <table width="100%" class="table table-striped table-bordered table-hover" id="table_arsip_masuk">
                 <thead>
                 <tr valign="center" align="center">
-                    <td>Tanggal Terima</td>
-                    <td>Kode Klasifikasi</td>
-                    <td>Detail</td>          
-                    <td>Perihal </td>
-                    <td width='80'>Pilihan</td>
+                    <th>Tanggal Terima</th>
+                    <th>Kode Klasifikasi</th>
+                    <th>Detail</th>          
+                    <th>Perihal </th>
+                    <th width='80'>Pilihan</th>
                 </tr>
                 </thead>
                 <tfoot>
                 <tr valign="center" align="center">
-                    <td>Tanggal Terima</td>
-                    <td>Kode Klasifikasi</td>
-                    <td>Detail</td>          
-                    <td>Perihal </td>
-                    <td width='80'>Pilihan</td>
+                    <th>Tanggal Terima</th>
+                    <th>Kode Klasifikasi</th>
+                    <th>Detail</th>          
+                    <th>Perihal </th>
+                    <th width='80'>Pilihan</th>
                 </tr>
                 </tfoot>
                 <tbody>
@@ -78,35 +78,50 @@
                         
             <table width="100%" class="table table-striped table-bordered table-hover" id="table_arsip_keluar">
                 <thead>
-                <tr>
-                    <td>Tanggal Surat</td>
-                    <td>Klasifikasi Surat Keluar</td>
-                    <td>Tujuan Surat</td>
-                    <td>Keterangan</td>
-                    <td>Penginput/Penanda Tangan</td>
-                    <td>Status</td>
+                <tr align="center">
+                    <th>Tanggal Surat</th>
+                    <th>Klasifikasi Surat Keluar</th>
+                    <th>Tujuan Surat</th>
+                    <th>Perihal</th>
+                    <th>Penginput/Penanda Tangan</th>
+                    <th>Status</th>
                 </tr>
                 </thead>
                 <tfoot>
-                <tr>
-                    <td>Tanggal Surat</td>
-                    <td>Klasifikasi Surat Keluar</td>
-                    <td>Tujuan Surat</td>
-                    <td>Keterangan</td>
-                    <td>Penginput/Penanda Tangan</td>
-                    <td>Status</td>
+                <tr align="center">
+                    <th>Tanggal Surat</th>
+                    <th>Klasifikasi Surat Keluar</th>
+                    <th>Tujuan Surat</th>
+                    <th>Perihal</th>
+                    <th>Penginput/Penanda Tangan</th>
+                    <th>Status</th>
                 </tr>
                 </tfoot>
                 <tbody>
+                <?php 
+                foreach ($arsip_keluar as $keluar) {
+                  $status = ($keluar->status==1 ? '<button class="btn btn-sm btn-success"> Success <i class="fa fa-check"></i></button>' 
+                  : '<button class="btn btn-sm btn-warning"> pending <i class="fa fa-warning"></i></button>');              
+                  $link = ($keluar->type!=0 ? '<hr/><button class="btn btn-xs btn-warning"> Details <i class="fa fa-eye"></i></button>' 
+                  : '');              
+
+?>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?php echo $keluar->time_input; ?></td>
+                    <td align="center"><?php echo $keluar->kode . " : " .$keluar->klasifikasi; ?></td>
+                    <td><?php echo "Ditujukan Kepada : " .$keluar->kepada. "<br> Peruntukan Surat : <b>". $keluar->peruntukan ."</b>"; ?></td>
+                    <td align="center"><b><?php echo $keluar->perihal; ?></b></td>
+                    <td><?php echo $keluar->penanda_tangan; ?></td>
+                    <td align="center">
+                      <?php 
+                        echo $status;
+                        echo $link;
+                      ?>
+                     </td>
                 </tr>
-                
+                <?php 
+                 }
+                ?>
                 </tbody>                
                 </table>
 

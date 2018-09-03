@@ -52,6 +52,13 @@ class Arsip_model extends CI_Model{
     return $this->db->get();
   }
 
+  public function arsip_keluar(){
+    $this->db->select('*');
+    $this->db->from('arsip_keluar');
+    $this->db->join('klasifikasi_surat','klasifikasi_surat.id=arsip_keluar.klasifikasi_id');
+    return $this->db->get();
+  }
+
   public function get_arsip_one($id){
     $query = "SELECT 
     arsip.id as id,
