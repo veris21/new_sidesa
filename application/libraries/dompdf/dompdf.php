@@ -14,8 +14,8 @@
  * Display command line usage
  */
 function dompdf_usage() {
-  $default_paper_size = DOMPDF_DEFAULT_PAPER_SIZE;
-  // $default_paper_size = 'legal';
+  // $default_paper_size = DOMPDF_DEFAULT_PAPER_SIZE;
+  $default_paper_size = 'legal';
 
   echo <<<EOD
 

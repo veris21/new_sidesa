@@ -101,8 +101,14 @@
         </tr>
         <tr>
             <td colspan="4">
-                <p style="padding-bottom:0;margin-bottom:0;text-align:justify;">Adapun tanah tersebut dikuasai/diusahakan <b>Sejak Tahun <?php echo $data['tahun_kelola'];?> yang berasal dari Tanah Negara</b> hingga sekarang ini dan menurut sepengetahuan Kami berdasarkan Surat Pernyataan <i>sporadik</i> pemohon bahwa pada tanah tersebut tidak dalam sengketa ataupun dalam gugatan pihak lain dan tidak juga digadaikan/dalam suatu perkara pengadilan.</p>
+                <!-- <p style="padding-bottom:0;margin-bottom:0;text-align:justify;">Tanah tersebut dikuasai/diusahakan <b>Sejak Tahun <?php //echo $data['tahun_kelola'];?> yang berasal dari Tanah Negara</b> hingga sekarang ini dan menurut sepengetahuan Kami berdasarkan Surat Pernyataan <i>sporadik</i> pemohon bahwa pada tanah tersebut tidak dalam sengketa ataupun dalam gugatan pihak lain dan tidak juga digadaikan/dalam suatu perkara pengadilan.</p> -->
 
+                <!-- Line baru -->
+                <p style="padding-bottom:0;margin-bottom:0;text-align:justify;">Tanah tersebut dikuasai/diusahakan Sejak <b>Tahun <?php echo $data['tahun_kelola'];?> </b> hingga sekarang ini, dengan Riwayat Tanah sebagai berikut : di Usahakan sendiri diatas lahan Pemukiman untuk lahan <b><?php echo $data['peruntukan_tanah']; ?></b>.</p>
+               
+                <p style="padding-bottom:0;margin-bottom:0;text-align:justify;">Berdasarkan Surat Pernyataan pemohon bahwa, tanah tersebut tidak sedang dalam sengketa ataupun dalam gugatan pihak lain dan tidak pula tergadai ataupun dalam sitaan suatu perkara di Pengadilan.</p>
+                <!-- Batas Line Baru -->
+               
                 <p style="padding-bottom:0;margin-bottom:0;text-align:justify;">Surat Keterangan ini Kami buat agar yang bersangkutan dapat meningkatkan hak atas tanah serta dapat memenuhi ketentuan - ketentuan sebagai berikut :</p>
 
             <ol>

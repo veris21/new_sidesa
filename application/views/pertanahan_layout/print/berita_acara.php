@@ -103,9 +103,9 @@
                 <li>Tanah tersebut sudah dipasang tanda/patok batas  (. . .)</li>
                 <li>Tanah tersebut benar sudah dikelola  (. . .)</li>
             </ol>
-            <!-- <p style="text-align:justify;">Berita Acara ini dipergunakan untuk Pembuatan Surat Keterangan Tanah disertai Peta/Sketsa gambar lokasi <b><i>terlampir</i></b></p>
+            <p style="text-align:justify;">Berita Acara ini dipergunakan untuk Pembuatan Surat Keterangan Tanah disertai Peta/Sketsa gambar lokasi <b><i>terlampir</i></b></p>
             <p style="text-align:justify;">Demikianlah Berita Acara Pemeriksaan Lahan/Lokasi ini dibuat untuk diketahui dan dipergunakan seperlunya.</p>
-            </td> -->
+            </td>
         </tr>
 </table> 
 <table>
