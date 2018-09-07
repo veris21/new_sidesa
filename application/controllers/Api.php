@@ -6,8 +6,6 @@ class Api extends CI_Controller {
     public function __construct()
     {
       parent::__construct();
-    //   $this->load->helper('sms_helper');
-    //   $this->load->model('auth_model');
     }
 
     public function index()
@@ -15,7 +13,17 @@ class Api extends CI_Controller {
         
     }
 
-            
+
+    public function koordinat_per_desa($kode_desa)
+    {
+        $data['data']  = $this->pertanahan_model->get_koordinat_per_desa($kode_desa)->result();
+        $data['counts'] = $this->pertanahan_model->get_koordinat_per_desa($kode_desa)->num_rows();
+        $this->output
+        ->set_status_header(200)
+        ->set_content_type('application/json', 'utf-8')
+        ->set_output(json_encode($data));        
+    }
+    
     public function Rest_auth()
     {
         $uid = $this->input->post('username');

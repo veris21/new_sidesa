@@ -105,6 +105,12 @@ class Pertanahan_model extends CI_Model{
   }
 
 
+  public function get_koordinat_per_desa($kode_desa)
+  {
+    return $this->db->get_where('data_link', array('kode_desa'=> $kode_desa));
+  }
+
+
   public function _get_bap_details($id){
     $query = "SELECT bap.id as id,
       kabupaten.nama_kabupaten as nama_kabupaten, 

@@ -37,6 +37,9 @@ $route['api/auth']                  = 'api/rest_auth';
 $route['api/notifications/(:any)']  = 'api/notifications/$1';
 $route['api/arsip']                 = 'api/arsip_list_api';
 
+
+$route['api/koordinat/(:any)']      = 'api/koordinat_per_desa/$1';
+
 /* -----------------------------------------------------------------------
                        PUBLIC ROUTE
  ----------------------------------------------------------------------- */

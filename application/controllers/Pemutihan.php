@@ -104,9 +104,7 @@ class Pemutihan extends CI_Controller{
       $data['main_content']            =   PERTANAHAN.'v2/pemutihan_tengah_all';
       $this->load->view('template', $data);
   }
-
-  
-
+ 
   public function get_patok_status($id)
   {
     $tanah_id = $id;
@@ -139,7 +137,8 @@ class Pemutihan extends CI_Controller{
     $keterangan = "Penginputan Pemutihan Data Pertanahan oleh ".$user." Pada ".$waktu;
     $tanah_id = strip_tags($this->input->post('tanah_id'));
     $dokumentasi = strip_tags($this->input->post('dokumentasi'));
-    
+    $kode_desa = $this->session->userdata('kode_desa');
+
     $post = array(
       'is_normal'=>0,
       'lat'=>$lat,
@@ -147,6 +146,7 @@ class Pemutihan extends CI_Controller{
       'keterangan'=>$keterangan, 
       'tanah_id'=>$tanah_id,
       'foto_tanah'=>$dokumentasi, 
+      'kode_desa'=>$kode_desa,
       'status'=>1
     ); 
     $check = $this->pertanahan_model->_post_titik_marker($post);

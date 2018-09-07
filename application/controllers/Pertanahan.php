@@ -518,6 +518,7 @@ class Pertanahan extends CI_Controller{
       $tanah_id = strip_tags($this->input->post('tanah_id'));
       $status = strip_tags($this->input->post('status'));
       $nik = strip_tags($this->input->post('nik'));
+      $kode_desa = $this->session->userdata('kode_desa');
 
       $post = array(
         'lat'=>$lat,
@@ -525,7 +526,8 @@ class Pertanahan extends CI_Controller{
         'keterangan'=>$keterangan, 
         'tanah_id'=>$tanah_id,
         'foto_tanah'=>$patok, 
-        'status'=>$status
+        'status'=>$status,
+        'kode_desa'=>$kode_desa
       );
       // $postingKePublic = array(
       //   'nik'=>$nik,
