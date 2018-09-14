@@ -56,7 +56,7 @@
                 </div>
                 <div class="box-footer">
                 <div class="pull-right">
-                <button type="reset" class="btn btn-warning btn-flat btn-sm">Reset <i class="fa fa-ban"></i> </button>
+                <button type="reset" class="btn btn-warning btn-flat btn-sm" onclick="reset()" >Reset <i class="fa fa-ban"></i> </button>
                 <button type="button" class="btn btn-success btn-flat btn-sm" onclick="save_rtrw()">Posting Data <i class="fa fa-save"></i> </button>
                 </div>
                 </div>
@@ -314,6 +314,12 @@ function init_rtrw(){
 function input_rtrw(){
   $('#input_form').show();
   $('#input_form_button').hide();
+}
+
+function reset() {
+  $('#input_form').hide();
+  $('#input_form_button').show();
+  location.reload();
 }
 
 function save_rtrw(){
