@@ -736,6 +736,18 @@ class Pertanahan_model extends CI_Model{
   {
     return $this->db->insert('koordinat_batas_RTRW', $data);
   }
+
+  public function hapus_koordinat_rtrw($id)
+  {
+    $this->db->where('id', $id);
+    return $this->db->delete('koordinat_batas_RTRW');
+  }
+
+  // SERVERSIDE RENDERING PATOK BATAS / BIG DATA LOADING
+
+  
+
+
 }
 
 /* ======================================

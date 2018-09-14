@@ -93,9 +93,6 @@ $('#list_rtrw').DataTable({
   responsive: true
 });
 
-$('#list_rtrw_koordinat').DataTable({
-  responsive: true
-});
 
 $('#master_koordinat_verifikasi').DataTable({
   responsive: true

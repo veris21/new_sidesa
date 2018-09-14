@@ -50,13 +50,15 @@
                   <input type="text" name="dasar_hukum" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="">Keterang Lanjutan</label>
+                  <label for="">Keterangan Lanjutan</label>
                   <textarea name="keterangan" class="form-control" id="" cols="30" rows="10"></textarea>
                 </div>
                 </div>
                 <div class="box-footer">
-                <button type="reset" class="btn btn-warning btn-flat btn-sm"> <i class="fa fa-ban"></i> </button>
-                <button type="button" class="btn btn-success btn-flat btn-sm" onclick="save_rtrw()"> <i class="fa fa-save"></i> </button>
+                <div class="pull-right">
+                <button type="reset" class="btn btn-warning btn-flat btn-sm">Reset <i class="fa fa-ban"></i> </button>
+                <button type="button" class="btn btn-success btn-flat btn-sm" onclick="save_rtrw()">Posting Data <i class="fa fa-save"></i> </button>
+                </div>
                 </div>
                 </form>
               </div>

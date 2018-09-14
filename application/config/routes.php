@@ -330,6 +330,7 @@ $route['rtrw/save']                         = 'master/rtrw_post';
 $route['rtrw/details/(:num)']               = 'master/rtrw_details/$1';
 $route['rtrw/koordinat/(:num)']             = 'master/rtrw_koordinat/$1';
 $route['rtrw/koordinat/posting']            = 'master/rtrw_koordinat_post';
+$route['rtrw/hapus_koordinat/(:num)']       = 'master/rtrw_koordinat_hapus/$1';
 
 
 

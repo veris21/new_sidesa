@@ -462,16 +462,55 @@ class Master extends CI_Controller{
     $keterangan = strip_tags($this->input->post('keterangan'));
     $dasar_hukum = strip_tags($this->input->post('dasar_hukum'));
 
-    $data = array('kode_rtrw'=>$kode_rtrw,'keterangan'=>$keterangan,'dasar_hukum'=>$dasar_hukum);
+    $rand = str_pad(dechex(rand(0x000000, 0xFFFFFF)), 6, 0, STR_PAD_LEFT);
+    $color = '#' . $rand;
+    
+    $data = array('kode_rtrw'=>$kode_rtrw,'keterangan'=>$keterangan,'dasar_hukum'=>$dasar_hukum, 'color'=> $color);
     $check = $this->pertanahan_model->posting_rtrw($data);
     if($check){
       $this->output
       ->set_content_type('application/json')
       ->set_output(json_encode(array('status'=> TRUE)));
     }
-
-
   }
+
+  public function rtrw_koordinat_hapus($id)
+  {
+    $check = $this->pertanahan_model->hapus_koordinat_rtrw($id);
+    if($check){
+      $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode(array('status'=> TRUE)));
+    }
+  }
+
+
+
+  public function ajax_list($id)
+    {
+        $list = $this->patok_model->get_datatables($id);
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $patok) {
+            $no++;
+            $row = array();
+            $row[] = $no;
+            $row[] = $patok->lat;
+            $row[] = $patok->lng;
+            $row[] = "<button class='btn btn-flat btn-xs btn-warning' onclick='edit_rtrw_koordinat(".$patok->id.")'> <i class='fa fa-edit'></i></button>  <button class='btn btn-flat btn-xs btn-danger' onclick='hapus_rtrw_koordinat(".$patok->id.")'> <i class='fa fa-trash'></i></button>"; 
+            $data[] = $row;
+        }
+ 
+        $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->patok_model->count_all($id),
+                        "recordsFiltered" => $this->patok_model->count_filtered($id),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+    }
+
 /*------------------------------------------------------------------------------------------------*/
 /*----------------------------------------- RESET DATABASE ---------------------------------------*/
 /*-------------------------------   HANYA AKTIF SAAT DEVELOPMENT      ----------------------------*/

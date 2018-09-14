@@ -162,5 +162,6 @@ $autoload['model'] = array(
     'notifikasi_model',
     'pertanahan_model',
     'datapenduduk_model',
-    'chart_model'
+    'chart_model',
+    'patok_model'
   );
