@@ -884,6 +884,8 @@ function hapus_patok_pemutihan(id) {
       success: function (data) {
         swal('Selamat !', 'Berhasil Menghapus Data Koordinat di Sistem!', 'success');
         datapatok(link);
+        initialize();
+        // console.log("LINK : "+link);
         // location.reload();
       },
       error: function (jqXHR, textStatus, errorThrown) {

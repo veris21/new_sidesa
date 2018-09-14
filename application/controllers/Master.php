@@ -416,6 +416,62 @@ class Master extends CI_Controller{
 
 
 
+  // RTRW MASTER 
+  public function rtrw_details($id)
+  {
+    $data['title']          =  TITLE.'History Akses';
+    $data['main_content']   =  PERTANAHAN.'v2/rtrw';
+    $data['data']           = $this->pertanahan_model->get_master_rtrw_one($id)->row_array();
+    $this->load->view('template',$data);
+
+  }
+  public function rtrw_master()
+  {
+    $data = $this->pertanahan_model->get_master_rtrw()->result();
+    $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode($data));
+  }
+
+  public function rtrw_koordinat($id)
+  {
+    $data = $this->pertanahan_model->get_koordinat_rtrw($id)->result();
+    $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode($data));
+  }
+
+  public function rtrw_koordinat_post()
+  {
+    $id_batas = strip_tags($this->input->post('id_batas'));
+    $lat = strip_tags($this->input->post('lat'));
+    $lng = strip_tags($this->input->post('lng'));
+
+    $data = array('id_batas'=>$id_batas,'lat'=>$lat,'lng'=>$lng);
+    $check = $this->pertanahan_model->posting_koordinat_rtrw($data);
+    if($check){
+      $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode(array('status'=> TRUE)));
+    }
+
+  }
+
+  public function rtrw_post(){
+    $kode_rtrw = strip_tags($this->input->post('kode_rtrw'));
+    $keterangan = strip_tags($this->input->post('keterangan'));
+    $dasar_hukum = strip_tags($this->input->post('dasar_hukum'));
+
+    $data = array('kode_rtrw'=>$kode_rtrw,'keterangan'=>$keterangan,'dasar_hukum'=>$dasar_hukum);
+    $check = $this->pertanahan_model->posting_rtrw($data);
+    if($check){
+      $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode(array('status'=> TRUE)));
+    }
+
+
+  }
 /*------------------------------------------------------------------------------------------------*/
 /*----------------------------------------- RESET DATABASE ---------------------------------------*/
 /*-------------------------------   HANYA AKTIF SAAT DEVELOPMENT      ----------------------------*/

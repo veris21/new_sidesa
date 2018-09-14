@@ -323,6 +323,16 @@ $route['koordinat/tanah']                   = 'pertanahan/input_koordinat';
 $route['get/koordinat/tanah/(:any)']        = 'pertanahan/get_koordinat/$1';
 $route['update/koordinat']                  = 'pertanahan/update_koordinat';
 $route['delete/koordinat/(:any)']           = 'pertanahan/delete_koordinat/$1';
+
+
+$route['rtrw/get_master']                   = 'master/rtrw_master';
+$route['rtrw/save']                         = 'master/rtrw_post';
+$route['rtrw/details/(:num)']               = 'master/rtrw_details/$1';
+$route['rtrw/koordinat/(:num)']             = 'master/rtrw_koordinat/$1';
+$route['rtrw/koordinat/posting']            = 'master/rtrw_koordinat_post';
+
+
+
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
 // DATA KOORDINAT DIPUSH ke SKT

@@ -19,7 +19,47 @@
       <div class="box-body">
         <div class="row">
           <div class="col-md-7">
-              <div style="height:520px;" id="map-desa"></div>
+              <div style="height:480px;" id="map-desa"></div>
+              <hr>
+              <table width="100%" class="table table-striped table-bordered table-hover" id="list_rtrw">
+              <thead>
+              <tr>
+              <th>Kode Data</th>
+              <th>Keterangan</th>
+              <th>Dasar Penetapan</th>
+              <th>#</th>
+              </tr>
+              </thead>
+              <tbody id="tb_rtrw">        
+              </tbody>
+              </table>
+              <hr>
+              <button id="input_form_button" class="btn btn-primary btn-block" onclick="input_rtrw()">Input Master Batas</button>
+              <div class="box box-warning" id="input_form" hidden>
+                <?php echo form_open('', array('id'=>'form_rtrw')); ?>
+                <div class="box-header">
+                  <h5 class="box-title">Input Data Master Dasar Batas Administrasi Pertanahan</h5>
+                </div>
+                <div class="box-body">
+                <div class="form-group">
+                  <label for="">Kode RTRW</label>
+                  <input type="text" name="kode_rtrw" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="">Dasar Hukum</label>
+                  <input type="text" name="dasar_hukum" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="">Keterang Lanjutan</label>
+                  <textarea name="keterangan" class="form-control" id="" cols="30" rows="10"></textarea>
+                </div>
+                </div>
+                <div class="box-footer">
+                <button type="reset" class="btn btn-warning btn-flat btn-sm"> <i class="fa fa-ban"></i> </button>
+                <button type="button" class="btn btn-success btn-flat btn-sm" onclick="save_rtrw()"> <i class="fa fa-save"></i> </button>
+                </div>
+                </form>
+              </div>
           </div>
           <div class="col-md-5">
               <table width="100%" class="table table-striped table-bordered table-hover" id="list_aset">
@@ -175,6 +215,11 @@
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry"></script>
 <script>
 // var infowindow = null;
+
+// RTRW
+var table;
+
+
 var allTitik = [];
 // var marker = [];
 var map;
@@ -228,7 +273,67 @@ function initialize() {
   // fillColor: color,  
   // fillOpacity: 0.6
   // });
-  // map.data.loadGeoJson('<?php echo base_url().GEOJSON.$titik['json'];?>');
+  // map.data.loadGeoJson('<?php //echo base_url().GEOJSON.$titik['json'];?>');
+  init_rtrw();
 }
+
+function view_rtrw(id) {
+  
+}
+
+function init_rtrw(){
+  $.ajax({
+    url: '<?php echo base_url('rtrw/get_master');?>',
+    success : function (data) {      
+      // var obj = JSON.parse(data);
+      console.log(data);
+      if (data != null) {
+        for (let i = 0; i < data.length; i++) {
+            const id = data[i]['id'];
+            table += "<tr><td>"
+            +data[i]['kode_rtrw']+
+            "</td><td>"
+            +data[i]['keterangan']+
+            "</td><td>"
+            +data[i]['dasar_hukum']+
+            "</td><td align='center'><a class='btn btn-flat btn-xs btn-success' href='<?php echo base_url('rtrw/details/'); ?>"+id+"'><i class='fa fa-eye'></i></a></td></tr>";
+        }
+      } else {
+      table = "<tr><td colspan='4' align='center'>Data Belum Ada</td></tr>";
+      }
+      $("#tb_rtrw").html(table);      
+    }
+  });
+}
+
+
+
+
+function input_rtrw(){
+  $('#input_form').show();
+  $('#input_form_button').hide();
+}
+
+function save_rtrw(){
+  $.ajax({
+    url: '<?php echo base_url('rtrw/save');?>',
+    type : 'POST',
+    dataType: 'JSON',
+    data : $('#form_rtrw').serialize(),
+    success : function (data){
+      init_rtrw();
+      // $('[name="kode_rtrw"]').val('');
+      // $('[name="dasar_hukum"]').val('');
+      // $('[name="keterangan"]').val('');
+      $('#form_rtrw')[0].reset();
+      swal('Selamat !', 'Berhasil Menyimpan Data RTRW di Sistem!', 'success');
+     
+    }
+  });
+}
+
+
+
+
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>

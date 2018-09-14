@@ -711,6 +711,31 @@ class Pertanahan_model extends CI_Model{
       $this->db->insert('koordinat_tengah', $ins);
     }
   }
+
+  public function get_master_rtrw()
+  {
+    return $this->db->get('batas_RTRW');
+  }
+
+  public function get_master_rtrw_one($id)
+  {
+    return $this->db->get_where('batas_RTRW', array('id'=>$id));
+  }
+
+  public function get_koordinat_rtrw($id)
+  {
+    return $this->db->get_where('koordinat_batas_RTRW', array('id_batas'=>$id));
+  }
+
+  public function posting_rtrw($data)
+  {
+    return $this->db->insert('batas_RTRW', $data);
+  }
+
+  public function posting_koordinat_rtrw($data)
+  {
+    return $this->db->insert('koordinat_batas_RTRW', $data);
+  }
 }
 
 /* ======================================
