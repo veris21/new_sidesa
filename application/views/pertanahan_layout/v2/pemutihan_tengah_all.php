@@ -140,17 +140,17 @@
                             <input type="text" name="barat" class="form-control" >
                         </div>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                         <label class="control-label col-sm-4" for="">Foto Patok</label>
                         <div class="col-sm-8" id="foto_patok">
                             <input type="file" name="patok_update" class="form-control" >
                         </div>
-                        </div>
+                        </div> -->
                         <hr>
                         <div class="form-group">
                         <label class="control-label col-sm-4" for=""></label>
                         <div class="col-sm-8" id="button">
-                            <button  type="submit" class="btn btn-primary" onclick="input_patok_pemutihan()">Update Patok <i class="fa fa-upload"></i></button>
+                            <button type="button" class="btn btn-primary" onclick="input_patok_pemutihan()">Update Patok <i class="fa fa-upload"></i></button>
                         </div>
                         </div>
                     </div>
@@ -591,10 +591,10 @@
                 <div id="foto-patok" class="form-group">
                        <img src="" class=" col-sm-12 img img-rounded img-responsive" alt="FOTO Tempat">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="">Lampiran Foto Titik</label>
                     <input type="file" name="patok" class="form-control" id="">
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="">No Induk Kependudukan</label>
                     <input type="text" name="nik" class="form-control" id="">
@@ -930,20 +930,25 @@ function save_verifikasi_pemutihan(){
 
 
 function input_patok_pemutihan() {
-    $('#input_data_patok').submit(function (evt) {    
-    evt.preventDefault();
-    var formData = new FormData($(this)[0]);
-    var url = "<?php echo base_url('koordinat/tanah'); ?>";
+    // $('#input_data_patok').submit(function (evt) {    
+    // evt.preventDefault();
+    // var formData = new FormData($(this)[0]);
+    var url = "<?php echo base_url('pemutihan/titik_koordinat'); ?>";
     $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
-      async: false,
-      cache: false,
-      contentType: false,
-      enctype: 'multipart/form-data',
-      processData: false,
-      success: function (data) {        
+        url: url,
+        type: "POST",
+        dataType: "JSON",
+        data: $('#input_data_patok').serialize(),
+    //   data: formData,
+    //   async: false,
+    //   cache: false,
+    //   contentType: false,
+    //   enctype: 'multipart/form-data',
+    //   processData: false,
+      success: function (data) {    
+        console.log(data.data.id_data_link);  
+        initialize();   
+        datapatok(data.data.id_data_link);
         swal('Selamat !', 'Berhasil Input Data Koordinat Ke Sistem!', 'success');
         $('[name="lat"]').val('');
         $('[name="lng"]').val('');
@@ -952,13 +957,13 @@ function input_patok_pemutihan() {
         $('[name="selatan"]').val('');
         $('[name="timur"]').val('');
         $('[name="barat"]').val('');
-        location.reload();
+        // location.reload();
       },
       error: function (jqXHR, textStatus, errorThrown) {
         swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
       }
     });
-  });
+//   });
 }
 
 

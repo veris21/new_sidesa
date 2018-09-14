@@ -161,4 +161,44 @@ class Pemutihan extends CI_Controller{
     $this->output->set_content_type('application/json')->set_output(json_encode($patok));    
   }
 
+
+  // 
+  public function input_koordinat(){
+    // if(isset($_FILES['patok'])){
+    //   $patok = time()."-".$_FILES['patok']['name'];
+    //   $config['upload_path'] = './assets/uploader/patok/'; //buat folder dengan nama assets di root folder
+    //   $config['allowed_types'] = 'png|jpg|jpeg';
+    //   $config['max_size'] = 10000;
+    //   $config['file_name'] = $patok;
+    //   $this->load->library('upload');
+    //   $this->upload->initialize($config);
+    //   if(! $this->upload->do_upload('patok') );
+      $lat = strip_tags($this->input->post('lat'));
+      $lng = strip_tags($this->input->post('lng'));   
+      $data_link_id = strip_tags($this->input->post('data_link_id'));
+      $utara = strip_tags($this->input->post('utara'));
+      $selatan = strip_tags($this->input->post('selatan'));
+      $barat = strip_tags($this->input->post('barat'));
+      $timur = strip_tags($this->input->post('timur'));
+
+      $post = array(
+        // 'link_dokumentasi'=>$patok,
+        'lat'=>$lat,
+        'lng'=>$lng,
+        'utara'=>$utara,
+        'selatan'=>$selatan,
+        'timur'=>$timur,
+        'barat'=>$barat, 
+        'id_data_link'=>$data_link_id
+      );
+
+        $check = $this->pertanahan_model->_post_titik_polygon($post);
+        if($check){
+         echo $this->output->set_content_type('application/json')->set_output(json_encode(array("status" => TRUE, "data"=>$post)));    
+          // echo json_encode(array("status" => TRUE, "data"=>$post));
+        }
+    }
+    
+  // }
+
 }

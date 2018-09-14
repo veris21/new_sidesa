@@ -306,6 +306,8 @@ $route['api/titik_tengah/json']             = 'pertanahan/api_koordinat_tanah';
  
 $route['pemutihan/titik_tengah']            = 'pemutihan/pemutihan_koordinat_tengah';
 $route['pemutihan/update/titik_tengah']     = 'pemutihan/update_pemutihan_koordinat_tengah';
+$route['pemutihan/titik_koordinat']         = 'pemutihan/input_koordinat';
+
 
 $route['verifikasi/pemutihan']              = 'pemutihan/verifikasi_pemutihan';
 
