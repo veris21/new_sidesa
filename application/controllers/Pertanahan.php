@@ -901,6 +901,15 @@ public function delete_master_tengah($id){
 
 // API Controller
 
+public function semua_koordinat_adm(){
+  $data = $this->pertanahan_model->all_patok_adm()->result();
+  $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode($data));
+}
+
+
+
 public function api_koordinat_tanah(){
   $this->output
       ->set_content_type('application/json')

@@ -600,6 +600,14 @@ class Pertanahan_model extends CI_Model{
     // return $this->db->get('data_koordinat');
   }
 
+  public function all_patok_adm()
+  {
+    $query = "SELECT id_batas, lat, lng FROM koordinat_batas_RTRW";
+    return $this->db->query($query);
+    // return $this->db->get('data_koordinat');
+  }
+
+
   public function _get_data_link($id){
     return $this->db->get_where('data_link', array('tanah_id'=>$id));
   }

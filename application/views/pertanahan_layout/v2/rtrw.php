@@ -19,7 +19,7 @@
         </div>
         <div class="box-body">
             <div class="well">
-                <h1><?php  ?></h1>
+                <h5>Luas : &plusmn; <b id="luas">  </b></h5>
                 <dd>Dasar Hukum Penetapan</dd>
                 <dt><?php echo $data['dasar_hukum'];?></dt>
                 <br>
@@ -125,7 +125,11 @@ function init_koordinat() {
             fillColor:'<?php echo $data['color']; ?>',
             fillOpacity: 0.3,
         });
-        polygon.setMap(map);       
+        polygon.setMap(map);   
+        var luas = google.maps.geometry.spherical.computeArea(polygon.getPath());
+        var html = (luas / 10000).toLocaleString()+" m<sup>2</sup>";
+        $('#luas').html(html);
+        
     $('#list_rtrw_koordinat').DataTable({
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
@@ -170,6 +174,7 @@ function hapus_rtrw_koordinat(id) {
         swal('Selamat !', 'Berhasil Menghapus Data Koordinat di Sistem!', 'success');
         // initialize();
         init_koordinat();  
+        location.reload();
       },
       error: function (jqXHR, textStatus, errorThrown) {
         swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
@@ -179,6 +184,7 @@ function hapus_rtrw_koordinat(id) {
 }
 
 function save_koordinat_rtrw(){
+    event.preventDefault();
     $.ajax({
         url:'<?php echo base_url('rtrw/koordinat/posting'); ?>',
         type : 'POST',

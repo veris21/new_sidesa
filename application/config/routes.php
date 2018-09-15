@@ -73,6 +73,8 @@ $route['api/stream/marker/asset/(:any)']    = 'stream/get_asset_desa/$1';
 
 
 $route['api/tanah_all/polygon/json']            = 'pertanahan/all_polygon_json';
+$route['api/adm_all/polygon/json']              = 'pertanahan/semua_koordinat_adm';
+
 /* -----------------------------------------------------------------------
                        Validasi Check ROUTE
  ----------------------------------------------------------------------- */

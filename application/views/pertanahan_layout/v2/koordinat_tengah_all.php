@@ -306,7 +306,9 @@
 
 <script>
 var map;
+var color = '#'+Math.random().toString(16).substr(-6);
 var url = '<?php echo base_url(); ?>semua/koordinat';
+
 function initialize() {
 
 map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -315,10 +317,10 @@ map = new google.maps.Map(document.getElementById('map-canvas'), {
     mapTypeId: 'terrain',
     // mapTypeControl: false,
     // disableDefaultUI: true
-  });
+});
 
 // Array Polygon
-var destination = [];
+// var destination = [];
 <?php //$id = 1; $koor = $this->tanah_model->get_data_koordinat_all()->result(); ?>
 <?php //foreach ($koor as $koor) { ?>
 //     var datalist = '<?php //echo $koor->koordinat;?>';
@@ -331,7 +333,7 @@ var destination = [];
 //     }
 //     var color = '#'+Math.random().toString(16).substr(-6);
 //     var area = google.maps.geometry.spherical.computeArea(text);
-//     var contentString = '<b><?php echo $koor->keterangan;?></b><br><br>Luas :  '+(area).toFixed(2)+' meter<sup>2</sup>';
+//     var contentString = '<b><?php //echo $koor->keterangan;?></b><br><br>Luas :  '+(area).toFixed(2)+' meter<sup>2</sup>';
 //     polygon = new google.maps.Polygon({
 //         paths: [text],
 //         strokeColor:'#FF0000',
@@ -388,7 +390,6 @@ $.ajax({
         path.push(poly);
        });
     //    console.log(path);
-       var color = '#'+Math.random().toString(16).substr(-6);
        var polygon = new google.maps.Polygon({
           paths: path,
           strokeColor: '#000',
@@ -455,13 +456,52 @@ $.ajax({
        
         
 
+    $.ajax({
+        'url' : '<?php echo base_url('api/adm_all/polygon/json');?>',
+        'success': function (xData){
+            // console.log(xData);
+            var groupedByDataX = {};
+            // var destX = {};
+            for (var y in xData) {
+            var id = xData[y].id_batas;  
+            var latlng = new google.maps.LatLng(xData[y].lat, xData[y].lng);
+            if (!groupedByDataX[id]) {
+                groupedByDataX[id] = [];
+            }            
+            groupedByDataX[id].push(xData[y]);
+            } 
+            var data_adm = [];
+            var path_adm;
+            $.each(groupedByDataX, function(i, itemsy){
+            path_adm = [];
+                $.each(itemsy, function(x, dataeachy){
+                    var latlng = new google.maps.LatLng(parseFloat(dataeachy['lat']), parseFloat(dataeachy['lng']));
+                    data_adm.push(latlng);
+                });
+                // console.log("Data Adm : " +data_adm);
+                path_adm.push(data_adm);
+            });
+            console.log(path_adm);
+            var polygonAdm = new google.maps.Polygon({
+                paths: path_adm,
+                strokeColor: '#000',
+                strokeOpacity: 0.5,
+                strokeWeight: 1,
+                fillColor: color,
+                fillOpacity: 0.25
+                });
+            polygonAdm.setMap(map);
+        }
+    });
 
 
-// locations.push(new google.maps.LatLng(floatval(<?php echo $data->latitude;?>), floatval(<?php echo $data->longitude;?>)));
 
 
-
+// locations.push(new google.maps.LatLng(floatval(<?php //echo $data->latitude;?>), floatval(<?php echo $data->longitude;?>)));
 }
+
+
+
 google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
