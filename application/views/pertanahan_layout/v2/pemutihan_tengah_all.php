@@ -761,6 +761,7 @@ function view_data_pemutihan_one(id) {
                 verified = x.verified;        
                 is_pemutihan = x.is_pemutihan;
                 foto_patok = x.dokumentasi;
+                console.log("FOTO PATOK " + foto_patok);
                 $("#view_titik_tengah").text(view_titik_tengah);
                 // $("#nik").text(x.nik);
                 // $("#nama").text(x.nama);
