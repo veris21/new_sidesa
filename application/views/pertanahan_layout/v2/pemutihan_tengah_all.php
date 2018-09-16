@@ -659,7 +659,7 @@ var link;
 
 var verified;
 var is_pemutihan;
-var bap_id;
+var bap_id = '';
 
 var table;
 
@@ -733,6 +733,8 @@ function simpan_edit_pemutihan(){
 
 
 function view_data_pemutihan_one(id) {
+    // alert(id);
+    // die;
     patok = [];
     event.preventDefault();
     $('#data-show').hide();
@@ -741,41 +743,43 @@ function view_data_pemutihan_one(id) {
     $.ajax({
         'url' : url+id,
         'success' : function(x){
+            console.log(x);
             $('#loader').hide();
             if (x != null) {
                 titik_tengah = new google.maps.LatLng(parseFloat(x.latitude), parseFloat(x.longitude));
                 nik = x.nik;        
                 verified = x.verified;        
                 is_pemutihan = x.is_pemutihan;
-                bap_id = x.bap_id;
+                
+                if(x.bap_id!=null){
+                    bap_id = x.bap_id;
+                }else{
+                    bap_id = "P-"+x.id;
+                }
+                // console.log(bap_id);
                 initialize();
-                validasi_data(nik);         
+                validasi_data(nik, bap_id);         
                 $('#data-show').show();
             }
+            // console.log(nik);
             
         }
     });
 }
 
-function validasi_data(nik){
+function validasi_data(nik, bap_id){
     event.preventDefault();
     var url = '<?php echo base_url("pemutihan/validate_nik/") ?>';
     $("#nik").text('');
     $("#nama").text('');
     $("#alamat").text('');
     $("#status").text('');
-    
     $.ajax({
         url: url+nik,
         success : function(y){
-            if(y == null || y ==''){
-                $("#nik").text('');
-                $("#nama").text('');
-                $("#alamat").text('');
-                $("#status").text('');
-                $("#kelengkapan").hide();
-                $("#warning").show();
-            }else{            
+            console.log( "Validasi Data" );
+            console.log(y);
+            if(y!=''){                
                 $("#kelengkapan").show();
                 $("#warning").hide();
                 $("#nik").text(y.nik);
@@ -786,14 +790,23 @@ function validasi_data(nik){
                 $('[name="longitude"]').val(y.longitude);
                 $('[name="dokumentasi"]').val(y.dokumentasi);
                 $('[name="tanah_id"]').val("P-"+y.id);
-                if(is_pemutihan == 0 ){ 
+                // if(is_pemutihan == 0 ){ 
                     idRef = bap_id;
-                    view_data_pemutihan_status(idRef);
-                    // console.log("BAP id : " + bap_id);
-                 }else{ 
-                     idRef = "P-"+y.id ;
+                //     view_data_pemutihan_status(idRef);
+                //     console.log("BAP id : " + idRef);
+                //  }else{ 
+                //      idRef = "P-"+y.id ;
                      view_data_pemutihan_status(idRef);
-                 }
+                //      console.log(idRef);
+                //  }
+            }else{            
+                $("#nik").text('');
+                $("#nama").text('');
+                $("#alamat").text('');
+                $("#status").text('');
+                $("#kelengkapan").hide();
+                $("#warning").show();
+                
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {}        
@@ -843,6 +856,7 @@ function datapatok(link) {
     $.ajax({
         url: url + link,
         success : function (data) {
+            // console.log(data);
             if(data==null || data==''){
                 table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr><td>No.</td><td>Latitude</td><td>Longitude</td><td>#</td></tr></thead><tbody>';
                 table += "<tr><td colspan='4' align='center'>Data Patok Belum Ada</td></tr>";
