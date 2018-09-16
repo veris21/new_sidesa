@@ -24,7 +24,7 @@
             <div class="col-md-4">
                 <div class="small-box bg-aqua">
                     <div class="inner">
-                    <h3><?php //echo $pelayanan;?></h3>
+                    <h3><?php echo $total_koordinat;?></h3>
                     <p>Total Titik</p>
                     </div>
                     <div class="icon">
