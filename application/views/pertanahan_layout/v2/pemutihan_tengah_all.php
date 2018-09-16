@@ -1034,7 +1034,7 @@ function initialize() {
     var contentString = '<div id="content">'+
     '<div id="siteNotice">'+
     '</div>'+
-    '<h1 id="firstHeading" class="firstHeading">'+nik+'</h1>'+
+    '<h3 id="firstHeading" class="firstHeading">'+nik+'</h3>'+
     '<div id="bodyContent">'+    
     '<img class="img img-rounded img-responsive" style="max-width:480px" src="'+foto_patok+'" class="img" />'+
     '<hr/><p> LatLng : <b> '+view_titik_tengah+' </b></p>'+
