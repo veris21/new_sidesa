@@ -164,7 +164,7 @@
                             </div>
                             <hr>
                             <div id="verifikasi-input" hidden>
-                                <button class="btn btn-primary btn-block" onclick="verifikasi_pemutihan()">Input Ke Master Pemutihan <i class="fa fa-upload"></i></button>
+                                <!-- <button class="btn btn-primary btn-block" onclick="verifikasi_pemutihan()">Input Ke Master Pemutihan <i class="fa fa-upload"></i></button> -->
                             </div>
                             <hr>
                             <div id="patok-input" hidden>
@@ -859,10 +859,10 @@ function view_data_pemutihan_status(idRef) {
                     $("#patok-input").show();
                 }
                 if(verified == 0){                    
-                    $("#verifikasi-input").show();
+                    // $("#verifikasi-input").show();
                 }else{
                     $("#patok-input").hide();
-                    $("#verifikasi-input").hide();
+                    // $("#verifikasi-input").hide();
                 }
                 $('[name="data_link_id"]').val(z.id); 
                 link = z.id;                
