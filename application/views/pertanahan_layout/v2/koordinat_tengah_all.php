@@ -377,7 +377,7 @@ $.ajax({
         path.push(poly);
        });
     //    console.log(path);
-       color = '#'+Math.random().toString(16).substr(-6);
+       var color = '#'+Math.random().toString(16).substr(-6);
        var polygon = new google.maps.Polygon({
           paths: path,
           strokeColor: '#000',
