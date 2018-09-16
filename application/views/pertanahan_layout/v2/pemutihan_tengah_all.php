@@ -649,28 +649,28 @@
 
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry"></script>
 <script>
-const baseUrl = '<?php echo base_url(); ?>';
+var baseUrl = '<?php echo base_url(); ?>';
 
-const titik_tengah;
-const view_titik_tengah;
-const patok;
-const foto_patok;
-const id;
-const nik;
-const idRef;
-const link;
+var titik_tengah;
+var view_titik_tengah;
+var patok;
+var foto_patok;
+var id;
+var nik;
+var idRef;
+var link;
 
-const verified;
-const is_pemutihan;
-const bap_id = '';
+var verified;
+var is_pemutihan;
+var bap_id = '';
 
-const table;
+var table;
 
 
 
 
 function edit_data_pemutihan_one(id) {
-  const url = baseUrl + 'pemutihan/one/' + id;
+  var url = baseUrl + 'pemutihan/one/' + id;
   event.preventDefault();
   swal({
     title: 'Apa Anda Ingin Data Titik Tengah Pemutihan?' + id,
@@ -711,7 +711,7 @@ function edit_data_pemutihan_one(id) {
 function simpan_edit_pemutihan(){
     $('#data_pemutihan').submit(function (evt) {
     evt.preventDefault();
-    const formData = new FormData($(this)[0]);
+    var formData = new FormData($(this)[0]);
     $.ajax({
         url: '<?php echo base_url('pemutihan/update/titik_tengah'); ?>',
         type: "POST",
@@ -747,7 +747,7 @@ function view_data_pemutihan_one(id) {
     event.preventDefault();
     $('#data-show').hide();
     $('#loader').show();    
-    const url = "<?php echo base_url('pemutihan/one/');?>";
+    var url = "<?php echo base_url('pemutihan/one/');?>";
     $.ajax({
         'url' : url+id,
         'success' : function(x){
@@ -788,7 +788,7 @@ function view_data_pemutihan_one(id) {
 
 function validasi_data(nik, bap_id){
     event.preventDefault();
-    const url = '<?php echo base_url("pemutihan/validate_nik/") ?>';
+    var url = '<?php echo base_url("pemutihan/validate_nik/") ?>';
     $("#nik").text('');
     $("#nama").text('');
     $("#alamat").text('');
@@ -836,7 +836,7 @@ function validasi_data(nik, bap_id){
 
 function view_data_pemutihan_status(idRef) {
     event.preventDefault();
-    const url = "<?php echo base_url('get/status/pemutihan/');?>";    
+    var url = "<?php echo base_url('get/status/pemutihan/');?>";    
     $.ajax({
         'url' : url+idRef,
         'success' : function(z){       
@@ -874,7 +874,7 @@ function view_data_pemutihan_status(idRef) {
 
 function datapatok(link) {    
     event.preventDefault();
-    const url = '<?php echo base_url("get/patok/pemutihan/"); ?>';
+    var url = '<?php echo base_url("get/patok/pemutihan/"); ?>';
     $.ajax({
         url: url + link,
         success : function (data) {
@@ -884,12 +884,12 @@ function datapatok(link) {
                 table += "<tr><td colspan='4' align='center'>Data Patok Belum Ada</td></tr>";
                 table += '</tbody></table>';
             }else{
-                const no = 1;
+                var no = 1;
                 table = '<table width="100%" class="table table-striped table-bordered table-hover"><thead><tr align="center"><td>No.</td><td>Latitude</td><td>Longitude</td><td>#</td></tr></thead><tbody>';
                for (let i = 0; i < data.length; i++) {
-                   const id = data[i]['id'];
-                   const lat = data[i]['lat'];
-                   const lng = data[i]['lng'];
+                   var id = data[i]['id'];
+                   var lat = data[i]['lat'];
+                   var lng = data[i]['lng'];
                    patok.push(new google.maps.LatLng(parseFloat(lat),parseFloat(lng)));
                    table += "<tr align='center'><td>"+no+"</td><td>"+lat+"</td><td>"+lng+"</td><td><button class='btn btn-xs btn-danger' onclick='hapus_patok_pemutihan("+id+")'><i class='fa fa-trash'></i></td></tr>";                  
                    no++;
@@ -945,7 +945,7 @@ function buka_push_form()
 
 function save_push() {
     event.preventDefault();
-    const url = "<?php echo base_url('push/pemutihan'); ?>";
+    var url = "<?php echo base_url('push/pemutihan'); ?>";
     $.ajax({
         url:url,
         type: "POST",
@@ -971,8 +971,8 @@ function save_verifikasi_pemutihan(){
 function input_patok_pemutihan() {
     // $('#input_data_patok').submit(function (evt) {    
     // evt.preventDefault();
-    // const formData = new FormData($(this)[0]);
-    const url = "<?php echo base_url('pemutihan/titik_koordinat'); ?>";
+    // var formData = new FormData($(this)[0]);
+    var url = "<?php echo base_url('pemutihan/titik_koordinat'); ?>";
     $.ajax({
         url: url,
         type: "POST",
@@ -1007,7 +1007,7 @@ function input_patok_pemutihan() {
 
 
 function initialize() {
-   const map = new google.maps.Map(document.getElementById('map-view'), {
+   var map = new google.maps.Map(document.getElementById('map-view'), {
     zoom: 18,
     center: titik_tengah,
     mapTypeId: 'terrain',
@@ -1029,15 +1029,15 @@ function initialize() {
   });
 
     
-    const infowindow = new google.maps.InfoWindow({
+    var infowindow = new google.maps.InfoWindow({
           content: contentString
     });
-    const contentString = '<div id="content">'+
+    var contentString = '<div id="content">'+
     '<img src="'+foto_patok+'" class="img" />'+
     '</div>';
 
-    const mapIcon = 'https://si-desa.id/assets/house-icon.png';
-    const marker = new google.maps.Marker({
+    var mapIcon = 'https://si-desa.id/assets/house-icon.png';
+    var marker = new google.maps.Marker({
             position: titik_tengah,
             icon: mapIcon,
             map: map
@@ -1046,7 +1046,7 @@ function initialize() {
           infowindow.open(map, marker);
     });
 
-    const polygon = new google.maps.Polygon({
+    var polygon = new google.maps.Polygon({
         paths: patok,
         strokeColor:'#000000',
         strokeOpacity: 1,
