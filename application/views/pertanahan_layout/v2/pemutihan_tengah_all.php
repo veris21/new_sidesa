@@ -88,6 +88,7 @@
                             <tr><td>Nama Lengkap</td><td><b id="nama"></b></td></tr>
                             <tr><td>Alamat</td><td><b id="alamat"></b></td></tr>
                             <tr><td>Status Surat</td><td><b id="status"></b></td></tr>
+                            <tr><td>Koordinat Tanah</td><td> <b id="view_titik_tengah"></b> </td></tr>
                             </table>
                         </div>
                         <div class="col-md-6">
@@ -651,6 +652,7 @@
 var baseUrl = '<?php echo base_url(); ?>';
 
 var titik_tengah;
+var view_titik_tengah;
 var patok;
 var id;
 var nik;
@@ -748,9 +750,11 @@ function view_data_pemutihan_one(id) {
             $('#loader').hide();
             if (x != null) {
                 titik_tengah = new google.maps.LatLng(parseFloat(x.latitude), parseFloat(x.longitude));
+                view_titik_tengah = "( "+  x.latitude + ", " +x.longitude+" )";
                 nik = x.nik;        
                 verified = x.verified;        
                 is_pemutihan = x.is_pemutihan;
+                $("#view_titik_tengah").text(view_titik_tengah);
                 // $("#nik").text(x.nik);
                 // $("#nama").text(x.nama);
                 // $("#alamat").text(x.alamat);
