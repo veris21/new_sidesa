@@ -36,11 +36,11 @@
                             <td>
                             <?php 
                             $ip = $key->ip_address;
-                            $details = file_get_contents("http://api.hostip.info/country.php?ip=".$ip);
-                            // // $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+                            // $details = file_get_contents("http://api.hostip.info/country.php?ip=".$ip);
+                            $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
                             // $details = json_decode(file_get_contents('http://freegeoip.net/json/'.$ip));
-                            // echo $details->city; 
-                            echo $details;
+                            echo $details->city; 
+                            // echo $details;
                             ?>
                             </td>
                             <td align="center"><?php echo mdate('%d %M %Y - %h:%i %a',$key->timestamp); ?></td>                        

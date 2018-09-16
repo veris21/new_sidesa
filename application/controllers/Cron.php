@@ -10,6 +10,17 @@ class Cron extends CI_Controller{
     parent::__construct();
   }
 
+  public function reset_log()
+  {
+    $res = $this->master_model->reset_session();
+    if($res){
+      $file = dirname(__FILE__).'/schedulers/outputs_log.txt';
+      $data = "Reset Log Session Berhasil : ".date('d/m/y H:i:s') ."\n";
+      file_put_contents($file, $data, FILE_APPEND);
+      echo json_encode(array("status" => TRUE));
+    }
+  }
+
   function index()
   {
     // if($this->input->is_cli_request()){

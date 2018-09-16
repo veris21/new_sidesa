@@ -76,7 +76,7 @@ class Master_model extends CI_Model{
   }
 
   public function reset_session(){
-    // return $this->db->truncate('log_sessions');
+    return $this->db->truncate('log_sessions');
   }
 
   public function reset_notifikasi(){
