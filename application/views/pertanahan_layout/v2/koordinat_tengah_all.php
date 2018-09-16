@@ -307,6 +307,7 @@
 <script>
 var map;
 var color;
+var opacity;
 var url = '<?php echo base_url(); ?>semua/koordinat';
 
 function initialize() {
@@ -377,6 +378,7 @@ $.ajax({
         path.push(poly);
        });
        color = '#'+Math.random().toString(16).substr(-6);
+       opacity = 0.5;
        add_poly(path, color);
     }
 });
@@ -461,7 +463,8 @@ $.ajax({
                 path_adm.push(data_adm);
             });
             color = '#ff8000';
-            add_poly(path_adm, color)
+            opacity = 0.2;
+            add_poly(path_adm, color, opacity)
             // console.log(path_adm);
             // var polygonAdm = new google.maps.Polygon({
             //     paths: path_adm,
@@ -481,14 +484,14 @@ $.ajax({
 // locations.push(new google.maps.LatLng(floatval(<?php //echo $data->latitude;?>), floatval(<?php echo $data->longitude;?>)));
 }
 
-function add_poly(path, color){
+function add_poly(path, color, opacity){
     var polygon = new google.maps.Polygon({
           paths: path,
           strokeColor: '#000',
           strokeOpacity: 0.8,
           strokeWeight: 2,
           fillColor: color,
-          fillOpacity: 0.35
+          fillOpacity: opacity
         });
        polygon.setMap(map);
 }
