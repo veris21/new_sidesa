@@ -37,8 +37,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Visual Data Pertanahan</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -50,7 +50,6 @@
         <ul class="treeview-menu">
           <li><a href="<?php echo base_url().'pertanahan/berita_acara'; ?>"><i class="fa fa-circle-o"></i> Data BAP</a></li>
           <li><a href="<?php echo base_url().'pertanahan/surat_tanah'; ?>"><i class="fa fa-circle-o"></i> Data SKT Release</a></li>
-          <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
         </ul>
       </li>
         <?php
@@ -90,7 +89,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Visual Data Pertanahan</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li><li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -103,7 +103,6 @@
           <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>"><i class="fa fa-circle-o"></i> Data Permohonan</a></li>
           <li><a href="<?php echo base_url().'pertanahan/berita_acara'; ?>"><i class="fa fa-circle-o"></i> Data BAP</a></li>
           <li><a href="<?php echo base_url().'pertanahan/surat_tanah'; ?>"><i class="fa fa-circle-o"></i> Data SKT Release</a></li>
-          <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
         </ul>
       </li>
       <?php
@@ -142,7 +141,6 @@
             <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>"><i class="fa fa-circle-o"></i> Data Permohonan</a></li>
             <li><a href="<?php echo base_url().'pertanahan/berita_acara'; ?>"><i class="fa fa-circle-o"></i> Data BAP</a></li>
             <li><a href="<?php echo base_url().'pertanahan/surat_tanah'; ?>"><i class="fa fa-circle-o"></i> Data SKT Release</a></li>
-            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -152,7 +150,9 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Visual Data Pertanahan</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li><li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
+
           </ul>
         </li>
         <?php } ?>
@@ -210,7 +210,9 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Visual Data Pertanahan</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
+
           </ul>
         </li>
         <li class="treeview">
@@ -223,7 +225,6 @@
             <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>"><i class="fa fa-circle-o"></i> Data Permohonan</a></li>
             <li><a href="<?php echo base_url().'pertanahan/berita_acara'; ?>"><i class="fa fa-circle-o"></i> Data BAP</a></li>
             <li><a href="<?php echo base_url().'pertanahan/surat_tanah'; ?>"><i class="fa fa-circle-o"></i> Data SKT Release</a></li>
-            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
         </li>
         <?php
@@ -252,7 +253,9 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Visual Data Pertanahan</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
+
           </ul>
         </li>
         <?php
@@ -273,8 +276,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Visual Data Pertanahan</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
         </li>
         <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>">
@@ -349,10 +352,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-
-
-
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Visual Data Pertanahan</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
         </li>
         <li>
@@ -371,7 +372,6 @@
             <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>"><i class="fa fa-circle-o"></i> Data Permohonan</a></li>
             <li><a href="<?php echo base_url().'pertanahan/berita_acara'; ?>"><i class="fa fa-circle-o"></i> Data BAP</a></li>
             <li><a href="<?php echo base_url().'pertanahan/surat_tanah'; ?>"><i class="fa fa-circle-o"></i> Data SKT Release</a></li>
-            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
         </li>
         <!-- MASTER SISTEM -->
@@ -446,8 +446,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Tabel Koordinat</a></li>
-
+            <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Visual Data Pertanahan</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -460,7 +460,6 @@
             <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>"><i class="fa fa-circle-o"></i> Data Permohonan</a></li>
             <li><a href="<?php echo base_url().'pertanahan/berita_acara'; ?>"><i class="fa fa-circle-o"></i> Data BAP</a></li>
             <li><a href="<?php echo base_url().'pertanahan/surat_tanah'; ?>"><i class="fa fa-circle-o"></i> Data SKT Release</a></li>
-            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
         </li>
         <?php

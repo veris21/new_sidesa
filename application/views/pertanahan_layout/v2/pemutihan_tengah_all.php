@@ -9,6 +9,24 @@
 </ol>
 </section>
 <section class="content">
+    <div class="box box-danger">
+        <div class="box-header">
+            <h3 class="box-title">Details Pertanahan</h3>
+        </div>
+        <div class="box-body">
+            <div class="alert alert-warning alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h3><i class="icon fa fa-ban"></i> Pemberitahuan !</h3>
+                Sebelum Melakukan Edit Data Menggunakan jika data Salah, Silahkan Perbaiki <b><i>Koordinat ( Latitude dan Longitude ) terlebih dahulu !!! <i><b> Sebelum Menyimpan atau menyesuaikan Nomor Induk Kependudukan, Karena Sistem Akan Mengunci Menu Edit Koordinat Jika ditemukan Data Penduduk yang telah di sesuaikan (Proses Sinkronisasi ).
+            </div>
+        </div>
+        <div class="box-footer">
+            <div class="pull-right">
+            <button class="btn btn-md btn-flat btn-success btn-block" onclick="input_tengah_one()" >Input Data Titik Baru<i class="fa fa-plus"></i></button>
+            </div>
+        </div>
+    </div>
+    <hr/>
     <div class="row">
         <div class="col-md-5">
             <div class="box box-primary">
@@ -624,6 +642,76 @@
 </div>
 
 
+<!-- ============= [ Master Titik Baru ] ============= --> 
+
+<!-- Modal Input Data Penduduk Baru -->
+<div class="modal fade" id="modal_master_titik" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Input Data Titik Sebagai Master</h3>
+      </div>
+      <?php echo form_open_multipart('', array('id'=>'input_master_titik','class'=>'form-horizontal'));?>
+      <div class="modal-body form">
+                    
+                    <div class="form-group">
+                        <label  class="control-label col-sm-4" for="">No. NIK</label>
+                        <div class="col-sm-8">
+                           <input type="text" name="nik" class="form-control" id="">                        
+                        </div>                        
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label col-sm-4" for="">Latitude</label>
+                        <div class="col-sm-8">
+                           <input type="text" name="lat" class="form-control" id="">                        
+                        </div>                        
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label col-sm-4" for="">Longitude</label>
+                        <div class="col-sm-8">
+                           <input type="text" name="lng" class="form-control" id="">                        
+                        </div>                        
+                    </div>
+                    <div id="patok" class="form-group">
+                        <label  class="control-label col-sm-4" for="">Foto Titik / Tempat</label>
+                        <div class="col-sm-8">
+                            <input type="file" name="patok" class="form-control" id="">                        
+                        </div>                        
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label col-sm-4" for="">Area</label>
+                        <div class="col-sm-8">
+                           <input type="text" name="area" class="form-control" id="">                        
+                        </div>                        
+                    </div>
+                    <!-- <div class="form-group">
+                        <label  class="control-label col-sm-4" for="">Verified</label>
+                        <div class="col-sm-8">
+                        <input type="radio" name="verified" id="" value="1"> Telah di Verifikasi                      
+                        <input type="radio" name="verified" id="" value="0"> Belum di Verifikasi                      
+                        </div>                        
+                    </div> -->
+                    <div class="form-group">
+                        <label  class="control-label col-sm-4" for="">Status</label>
+                        <div class="col-sm-8">
+                        <input type="radio" name="status" id="" value="SURAT KETERANGAN" checked> SURAT KETERANGAN <br>
+                        <input type="radio" name="status" id="" value="BERSERTIFIKAT"> BERSERTIFIKAT <br>
+                                                   
+                        </div>                        
+                    </div>
+
+       <!--  -->
+       </div> 
+       <div class="modal-footer">
+         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+         <button type="submit" onclick="save_tengah_one()" class="btn btn-primary">Save</button>
+       </div>
+     </form>
+     </div> 
+   </div> 
+ </div>
+<!-- ================================================= -->
 
 
 <div class="modal fade" id="verifikasi_pemutihan_modal">
