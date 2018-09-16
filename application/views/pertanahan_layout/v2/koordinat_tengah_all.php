@@ -19,13 +19,43 @@
     <div class="box-body">
         <div class="row">
             <div class="col-md-8">
-                <div style="height: 480px;" id="map-canvas"></div>
+                <div style="height: 580px;" id="map-canvas"></div>
             </div>
             <div class="col-md-4">
-                <div class="small-box bg-aqua">
+                <!-- <div class="small-box bg-purple">
                     <div class="inner">
-                    <h3><?php echo $total_koordinat;?></h3>
+                    <h3><?php //echo //count($total_koordinat->result_array());?></h3>
                     <p>Total Titik</p>
+                    </div>
+                    <div class="icon">
+                    <i class="fa fa-map"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div> -->
+                <div class="small-box bg-maroon">
+                    <div class="inner">
+                    <h3><?php echo count($dataAll->result_array());?></h3>
+                    <p>Total Titik Koordinat</p>
+                    </div>
+                    <div class="icon">
+                    <i class="fa fa-map"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+                <!-- <div class="small-box bg-yellow">
+                    <div class="inner">
+                    <h3><?php //echo count($patok_all->result_array());?></h3>
+                    <p>Total Titik</p>
+                    </div>
+                    <div class="icon">
+                    <i class="fa fa-map"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div> -->
+                <div class="small-box bg-green">
+                    <div class="inner">
+                    <h3><?php echo count($data->result_array());?></h3>
+                    <p>Total Titik Matching DDK</p>
                     </div>
                     <div class="icon">
                     <i class="fa fa-map"></i>
@@ -118,7 +148,7 @@
         <tbody>
             <?php             
             if($dataAll!= '' || $dataAll !=null){
-            foreach ($dataAll as $semua) {
+            foreach ($dataAll->result() as $semua) {
             echo "<tr>";
             echo "<td>No NIK.".$semua->nik."</td>";
             echo "<td>".$semua->latitude."</td>";
@@ -213,7 +243,7 @@
         <?php             
             if($data!= '' || $data !=null){
 
-            foreach ($data as $koor) {
+            foreach ($data->result() as $koor) {
             echo "<tr>";
             echo "<td>a/n. : ".$koor->nama." <br> No NIK.".$koor->nik."</td>";
             echo "<td>".$koor->latitude."</td>";
