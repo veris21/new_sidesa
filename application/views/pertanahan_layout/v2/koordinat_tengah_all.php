@@ -487,8 +487,8 @@ $.ajax({
                 strokeColor: '#000',
                 strokeOpacity: 0.5,
                 strokeWeight: 1,
-                fillColor: color,
-                fillOpacity: 0.25
+                // fillColor: color,
+                // fillOpacity: 0.25
                 });
             polygonAdm.setMap(map);
         }
