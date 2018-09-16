@@ -21,6 +21,7 @@
                         <tr valign="center" align="center">
                             <td>UID Log</td>
                             <td>IP ADDRESS</td>
+                            <td>Location</td>
                             <td>Timestamp</td>                       
                             
                             <td>Status</td>
@@ -32,6 +33,13 @@
                         <tr valign="center">
                             <td><?php echo $key->id; ?></td>    
                             <td ><?php echo $key->ip_address; ?></td>                        
+                            <td>
+                            <?php 
+                            $ip = $key->ip_address;
+                            $details = json_decode(file_get_contents("http://ipinfo.io/{$ip}/json"));
+                            echo $details->city; 
+                            ?>
+                            </td>
                             <td align="center"><?php echo mdate('%d %M %Y - %h:%i %a',$key->timestamp); ?></td>                        
                             <td width="120" align="center">
                                 <button type="button" class="btn btn-xs btn-flat btn-warning" onclick="view_blob(<?php echo $key->timestamp; ?>)" ><i class="fa fa-eye"></i></button>
