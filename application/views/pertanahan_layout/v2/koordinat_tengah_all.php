@@ -376,17 +376,19 @@ $.ajax({
         // console.log(poly);
         path.push(poly);
        });
+       color = '#'+Math.random().toString(16).substr(-6);
+       add_poly(path, color);
     //    console.log(path);
-       var color = '#'+Math.random().toString(16).substr(-6);
-       var polygon = new google.maps.Polygon({
-          paths: path,
-          strokeColor: '#000',
-          strokeOpacity: 0.8,
-          strokeWeight: 2,
-          fillColor: color,
-          fillOpacity: 0.35
-        });
-       polygon.setMap(map);
+    //    color.push('#'+Math.random().toString(16).substr(-6));
+    //    var polygon = new google.maps.Polygon({
+    //       paths: path,
+    //       strokeColor: '#000',
+    //       strokeOpacity: 0.8,
+    //       strokeWeight: 2,
+    //       fillColor: color,
+    //       fillOpacity: 0.35
+    //     });
+    //    polygon.setMap(map);
     }
 });
 
@@ -488,6 +490,17 @@ $.ajax({
 // locations.push(new google.maps.LatLng(floatval(<?php //echo $data->latitude;?>), floatval(<?php echo $data->longitude;?>)));
 }
 
+function add_poly(path, color){
+    var polygon = new google.maps.Polygon({
+          paths: path,
+          strokeColor: '#000',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: color,
+          fillOpacity: 0.35
+        });
+       polygon.setMap(map);
+}
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
