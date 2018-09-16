@@ -440,7 +440,7 @@ class Master_model extends CI_Model{
 
   public function akses_history()
   {
-    return $this->db->get('log_sessions');    
+    return $this->db->get('log_sessions', 50, 50);    
   }
   // =========================================
   // =========================================
