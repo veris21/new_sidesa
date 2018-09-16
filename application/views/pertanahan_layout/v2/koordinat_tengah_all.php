@@ -463,7 +463,7 @@ $.ajax({
                 path_adm.push(data_adm);
             });
             color = '#ff8000';
-            opacity = 0.05;
+            opacity = 0.01;
             add_poly(path_adm, color, opacity)
             // console.log(path_adm);
             // var polygonAdm = new google.maps.Polygon({

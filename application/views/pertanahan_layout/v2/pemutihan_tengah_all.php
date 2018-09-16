@@ -737,6 +737,10 @@ function simpan_edit_pemutihan(){
 function view_data_pemutihan_one(id) {
     // alert(id);
     // die;
+    $("#nik").text('');
+    $("#nama").text('');
+    $("#alamat").text('');
+    $("#status").text('');
     patok = [];
     event.preventDefault();
     $('#data-show').hide();
@@ -791,7 +795,15 @@ function validasi_data(nik, bap_id){
         success : function(y){
             console.log( "Validasi Data" );
             console.log(y);
-            if(y!=''){                
+            if(y=='' || y==null){
+                // $("#nik").text('');
+                // $("#nama").text('');
+                // $("#alamat").text('');
+                // $("#status").text('');
+                $("#kelengkapan").hide();
+                $("#warning").show();                
+                
+            }else{          
                 $("#kelengkapan").show();
                 $("#warning").hide();
                 $("#nik").text(y.nik);
@@ -810,14 +822,8 @@ function validasi_data(nik, bap_id){
                 //      idRef = "P-"+y.id ;
                      view_data_pemutihan_status(idRef);
                 //      console.log(idRef);
-                //  }
-            }else{            
-                $("#nik").text('');
-                $("#nama").text('');
-                $("#alamat").text('');
-                $("#status").text('');
-                $("#kelengkapan").hide();
-                $("#warning").show();
+                //  }  
+                
                 
             }
         },
