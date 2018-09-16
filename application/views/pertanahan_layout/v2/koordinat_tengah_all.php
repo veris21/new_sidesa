@@ -306,7 +306,7 @@
 
 <script>
 var map;
-var color = '#'+Math.random().toString(16).substr(-6);
+var color;
 var url = '<?php echo base_url(); ?>semua/koordinat';
 
 function initialize() {
@@ -353,19 +353,6 @@ map = new google.maps.Map(document.getElementById('map-canvas'), {
 //   });
   <?php
   //}?>
-// var destinations = [
-//     [
-//         {lat: -2.977006, lng: 108.156042},
-//         {lat: -2.977520, lng: 108.156804},
-//         {lat: -2.976695, lng: 108.157716},
-//         {lat: -2.976202, lng: 108.156901}
-//     ],
-//     [
-//         {lat: -2.973920, lng: 108.154401},
-//         {lat: -2.973074, lng: 108.155281},
-//         {lat: -2.974467, lng: 108.156408},
-//         {lat: -2.975185, lng: 108.155657}
-//         ]];
 $.ajax({
     'url': '<?php echo base_url('api/tanah_all/polygon/json');?>',
     'success' : function(data){
@@ -390,6 +377,7 @@ $.ajax({
         path.push(poly);
        });
     //    console.log(path);
+       color = '#'+Math.random().toString(16).substr(-6);
        var polygon = new google.maps.Polygon({
           paths: path,
           strokeColor: '#000',
