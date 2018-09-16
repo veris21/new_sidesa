@@ -760,7 +760,7 @@ function view_data_pemutihan_one(id) {
                 nik = x.nik;        
                 verified = x.verified;        
                 is_pemutihan = x.is_pemutihan;
-                var foto_patok = "<?php echo base_url().PATOK;?>"+x.dokumentasi;
+                foto_patok = baseUrl+"assets/uploader/patok/"+x.dokumentasi;
                 console.log("FOTO PATOK " + foto_patok);
                 $("#view_titik_tengah").text(view_titik_tengah);
                 // $("#nik").text(x.nik);
