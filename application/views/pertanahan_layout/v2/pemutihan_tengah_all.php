@@ -1031,8 +1031,9 @@ function initialize() {
     
     
     var contentString = '<div id="content">'+
+    '<p>'+
     '<img src="'+foto_patok+'" class="img" />'+
-    '</div>';
+    '</p></div>';
     var infowindow = new google.maps.InfoWindow({
           content: contentString
     });
@@ -1045,6 +1046,7 @@ function initialize() {
     });
     marker.addListener('click', function() {
           infowindow.open(map, marker);
+          console.log(contentString);
     });
 
     var polygon = new google.maps.Polygon({
