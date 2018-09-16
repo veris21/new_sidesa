@@ -62,7 +62,7 @@
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-                <div class="box">
+                <div class="box box-warning">
                 <div class="box-header">
                     <h2 class="box-title">
                         Details Visuals

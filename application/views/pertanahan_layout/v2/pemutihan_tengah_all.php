@@ -654,6 +654,7 @@ var baseUrl = '<?php echo base_url(); ?>';
 var titik_tengah;
 var view_titik_tengah;
 var patok;
+var foto_patok;
 var id;
 var nik;
 var idRef;
@@ -664,6 +665,7 @@ var is_pemutihan;
 var bap_id = '';
 
 var table;
+
 
 
 
@@ -758,6 +760,7 @@ function view_data_pemutihan_one(id) {
                 nik = x.nik;        
                 verified = x.verified;        
                 is_pemutihan = x.is_pemutihan;
+                foto_patok = x.dokumentasi;
                 $("#view_titik_tengah").text(view_titik_tengah);
                 // $("#nik").text(x.nik);
                 // $("#nama").text(x.nama);
@@ -1025,11 +1028,22 @@ function initialize() {
           fullscreenControl: true
   });
 
+    
+    var infowindow = new google.maps.InfoWindow({
+          content: contentString
+    });
+    var contentString = '<div id="content"><img src="<?php echo base_url().PATOK;?>'+ 
+    foto_patok +'" class="img">'+
+    '</div>';
+
     const mapIcon = 'https://si-desa.id/assets/house-icon.png';
     const marker = new google.maps.Marker({
             position: titik_tengah,
             icon: mapIcon,
             map: map
+    });
+    marker.addListener('click', function() {
+          infowindow.open(map, marker);
     });
 
     var polygon = new google.maps.Polygon({
