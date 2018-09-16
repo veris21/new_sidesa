@@ -743,6 +743,7 @@ function view_data_pemutihan_one(id) {
     $.ajax({
         'url' : url+id,
         'success' : function(x){
+            console.log('DATA X :');
             console.log(x);
             $('#loader').hide();
             if (x != null) {
@@ -750,7 +751,14 @@ function view_data_pemutihan_one(id) {
                 nik = x.nik;        
                 verified = x.verified;        
                 is_pemutihan = x.is_pemutihan;
-                
+                // $("#nik").text(x.nik);
+                // $("#nama").text(x.nama);
+                // $("#alamat").text(x.alamat);
+                // $("#status").text(x.status);
+                $('[name="latitude"]').val(x.latitude);
+                $('[name="longitude"]').val(x.longitude);
+                $('[name="dokumentasi"]').val(x.dokumentasi);
+                $('[name="tanah_id"]').val(bap_id);
                 if(x.bap_id!=null){
                     bap_id = x.bap_id;
                 }else{
@@ -786,10 +794,10 @@ function validasi_data(nik, bap_id){
                 $("#nama").text(y.nama);
                 $("#alamat").text(y.alamat);
                 $("#status").text(y.status);
-                $('[name="latitude"]').val(y.latitude);
-                $('[name="longitude"]').val(y.longitude);
-                $('[name="dokumentasi"]').val(y.dokumentasi);
-                $('[name="tanah_id"]').val("P-"+y.id);
+                // $('[name="latitude"]').val(y.latitude);
+                // $('[name="longitude"]').val(y.longitude);
+                // $('[name="dokumentasi"]').val(y.dokumentasi);
+                // $('[name="tanah_id"]').val(bap_id);
                 // if(is_pemutihan == 0 ){ 
                     idRef = bap_id;
                 //     view_data_pemutihan_status(idRef);
@@ -852,6 +860,7 @@ function view_data_pemutihan_status(idRef) {
 }
 
 function datapatok(link) {    
+    event.preventDefault();
     var url = '<?php echo base_url("get/patok/pemutihan/"); ?>';
     $.ajax({
         url: url + link,
