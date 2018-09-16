@@ -756,11 +756,12 @@ function view_data_pemutihan_one(id) {
             $('#loader').hide();
             if (x != null) {
                 titik_tengah = new google.maps.LatLng(parseFloat(x.latitude), parseFloat(x.longitude));
-                view_titik_tengah = "( "+  x.latitude + ", " +x.longitude+" )";
+                view_titik_tengah =  x.latitude + ", " +x.longitude ;
                 nik = x.nik;        
                 verified = x.verified;        
                 is_pemutihan = x.is_pemutihan;
                 foto_patok = baseUrl+"assets/uploader/patok/"+x.dokumentasi;
+                
                 console.log("FOTO PATOK " + foto_patok);
                 $("#view_titik_tengah").text(view_titik_tengah);
                 // $("#nik").text(x.nik);
@@ -1031,9 +1032,14 @@ function initialize() {
     
     
     var contentString = '<div id="content">'+
-    '<p>'+
+    '<div id="siteNotice">'+
+    '</div>'+
+    '<h1 id="firstHeading" class="firstHeading">'+nik+'</h1>'+
+    '<div id="bodyContent">'+    
     '<img class="img img-rounded img-responsive" style="max-width:480px" src="'+foto_patok+'" class="img" />'+
-    '</p></div>';
+    '<hr/><p> LatLng : <b> '+view_titik_tengah+' </b></p>'+
+    '</div>'+
+    '</div>';
     var infowindow = new google.maps.InfoWindow({
           content: contentString
     });
