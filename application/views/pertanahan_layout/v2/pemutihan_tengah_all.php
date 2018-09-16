@@ -760,7 +760,7 @@ function view_data_pemutihan_one(id) {
                 nik = x.nik;        
                 verified = x.verified;        
                 is_pemutihan = x.is_pemutihan;
-                foto_patok = x.dokumentasi;
+                foto_patok = "<?php echo base_url().PATOK;?>"+x.dokumentasi;
                 console.log("FOTO PATOK " + foto_patok);
                 $("#view_titik_tengah").text(view_titik_tengah);
                 // $("#nik").text(x.nik);
@@ -777,7 +777,7 @@ function view_data_pemutihan_one(id) {
                     bap_id = "P-"+x.id;
                 }
                 // console.log(bap_id);
-                initialize();
+                initialize(foto_patok);
                 validasi_data(nik, bap_id);         
                 $('#data-show').show();
             }
@@ -896,7 +896,7 @@ function datapatok(link) {
                    no++;
                }   
                table += '</tbody></table>';            
-            initialize();            
+            initialize(foto_patok);            
             }
             $("div#tb").html(table);
         }
@@ -921,7 +921,7 @@ function hapus_patok_pemutihan(id) {
       success: function (data) {
         swal('Selamat !', 'Berhasil Menghapus Data Koordinat di Sistem!', 'success');
         datapatok(link);
-        initialize();
+        initialize(foto_patok);
         // console.log("LINK : "+link);
         // location.reload();
       },
@@ -987,7 +987,7 @@ function input_patok_pemutihan() {
     //   processData: false,
       success: function (data) {    
         console.log(data.data.id_data_link);  
-        initialize();   
+        initialize(foto_patok);   
         datapatok(data.data.id_data_link);
         swal('Selamat !', 'Berhasil Input Data Koordinat Ke Sistem!', 'success');
         $('[name="lat"]').val('');
@@ -1007,7 +1007,7 @@ function input_patok_pemutihan() {
 }
 
 
-function initialize() {
+function initialize(foto_patok) {
    var map = new google.maps.Map(document.getElementById('map-view'), {
     zoom: 18,
     center: titik_tengah,
@@ -1030,11 +1030,11 @@ function initialize() {
   });
 
     
-    var infowindow = new google.maps.InfoWindow({
+    const infowindow = new google.maps.InfoWindow({
           content: contentString
     });
-    var contentString = '<div id="content"><img src="<?php echo base_url().PATOK;?>'+ 
-    foto_patok +'" class="img">'+
+    const contentString = '<div id="content">'+
+    '<img src="'+foto_patok+'" class="img" />'+
     '</div>';
 
     const mapIcon = 'https://si-desa.id/assets/house-icon.png';
@@ -1047,7 +1047,7 @@ function initialize() {
           infowindow.open(map, marker);
     });
 
-    var polygon = new google.maps.Polygon({
+    const polygon = new google.maps.Polygon({
         paths: patok,
         strokeColor:'#000000',
         strokeOpacity: 1,
