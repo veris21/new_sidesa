@@ -55,12 +55,27 @@
                 <div class="small-box bg-green">
                     <div class="inner">
                     <h3><?php echo count($data->result_array());?></h3>
-                    <p>Total Titik Matching DDK</p>
+                    <p>Total Titik Sesuai DDK</p>
                     </div>
                     <div class="icon">
                     <i class="fa fa-map"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+                <div class="box">
+                <div class="box-header">
+                    <h2 class="box-title">
+                        Details Visuals
+                    </h2>
+                </div>
+                <div class="box-body">
+                    <p class="well">
+                        Untuk Melihat Detail Data Pertanahan dan Melakukan Input serta Perubahan anda harus memiliki akses Admin Pertanahan Atau Otentifikasi Login (OTP) terdaftar disistem.
+                    </p>
+                </div>
+                <div class="box-footer">
+                <button class="btn btn-lg btn-flat btn-success btn-block" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
+                </div>
                 </div>
             </div>
         </div>
@@ -68,6 +83,8 @@
     </div>
 </div>
 
+
+<!-- -->
 <div class="box box-info">
     <?php 
         switch ($this->session->userdata('jabatan')) {
@@ -94,10 +111,11 @@
     }
     ?>    
 </div>
+<!--
 <hr>
 <?php 
-    switch ($this->session->userdata('jabatan')) {
-    case 'ROOT' || 'MASTER' || 'PERTANAHAN' :
+    // switch ($this->session->userdata('jabatan')) {
+    // case 'ROOT' || 'MASTER' || 'PERTANAHAN' :
 ?>
 <div class="box box-success">
     <div class="box-body">
@@ -109,30 +127,30 @@
 
             <div class="tab-content">
                 <!-- START TAB Pertama -->
-                <div class="tab-pane active" id="list_koordinat_all">
+                <!-- <div class="tab-pane active" id="list_koordinat_all"> -->
         <?php 
-        switch ($this->session->userdata('jabatan')) {
-            case 'ROOT' :
+        // switch ($this->session->userdata('jabatan')) {
+        //     case 'ROOT' :
+        ?>
+        <!-- <hr/> 
+        <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
+        <?php 
+        //  break;
+        //  case 'MASTER' :
+        ?> 
+        <hr/>
+        <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
+        <?php 
+        //  break;
+        //  case 'PERTANAHAN' :
         ?>
         <hr/>
         <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
         <?php 
-         break;
-         case 'MASTER' :
-        ?>
-        <hr/>
-        <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
-        <?php 
-         break;
-         case 'PERTANAHAN' :
-        ?>
-        <hr/>
-        <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
-        <?php 
-         break;
-         default:
-         break;
-        }
+        //  break;
+        //  default:
+        //  break;
+        // }
         ?>
         <hr/>
         <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_tengah_all">
@@ -147,85 +165,85 @@
         </thead>
         <tbody>
             <?php             
-            if($dataAll!= '' || $dataAll !=null){
-            foreach ($dataAll->result() as $semua) {
-            echo "<tr>";
-            echo "<td>No NIK.".$semua->nik."</td>";
-            echo "<td>".$semua->latitude."</td>";
-            echo "<td>".$semua->longitude."</td>";
-            echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$semua->dokumentasi."' /></td>";
-            switch ($this->session->userdata('jabatan')) {
-                case 'ROOT':            
-            echo "<td align='center'>";
+            // if($dataAll!= '' || $dataAll !=null){
+            // foreach ($dataAll->result() as $semua) {
+            // echo "<tr>";
+            // echo "<td>No NIK.".$semua->nik."</td>";
+            // echo "<td>".$semua->latitude."</td>";
+            // echo "<td>".$semua->longitude."</td>";
+            // echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$semua->dokumentasi."' /></td>";
+            // switch ($this->session->userdata('jabatan')) {
+            //     case 'ROOT':            
+            // echo "<td align='center'>";
             
             // echo "<a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
             
             ?>
-            <button onclick="delete_tengah_one(<?php echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
+            <button onclick="delete_tengah_one(<?php //echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
             <?php 
-            break;
-            case 'MASTER':            
-            echo "<td align='center'>";
+            // break;
+            // case 'MASTER':            
+            // echo "<td align='center'>";
             
             // echo "<a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
             
             ?>
-            <button onclick="delete_tengah_one(<?php echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
+            <button onclick="delete_tengah_one(<?php //echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
             <?php 
-            break;
-            case 'PERTANAHAN':            
-            echo "<td align='center'>";
+            // break;
+            // case 'PERTANAHAN':            
+            // echo "<td align='center'>";
             
             // echo "<a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
             
             ?>
-            <button onclick="delete_tengah_one(<?php echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
+            <button onclick="delete_tengah_one(<?php //echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
             <?php 
-            break;
-                default:
-                echo "<td width='40' align='center'> <button class='btn btn-md btn-warning'>Access <i class='fa fa-ban'></i></button> </td>";
-                break;
-            }
-            echo "</td>";
-            echo "</tr>";
-            } 
-            }else{
-                echo "<tr>";
-                echo "<td colspan='6' align='center'><h3>Data Yang Matching Kosong !!</h3></td>";
-                echo "</tr>";
-            }
+            // break;
+            //     default:
+            //     echo "<td width='40' align='center'> <button class='btn btn-md btn-warning'>Access <i class='fa fa-ban'></i></button> </td>";
+            //     break;
+            // }
+            // echo "</td>";
+            // echo "</tr>";
+            // } 
+            // }else{
+            //     echo "<tr>";
+            //     echo "<td colspan='6' align='center'><h3>Data Yang Matching Kosong !!</h3></td>";
+            //     echo "</tr>";
+            // }
              ?>
         </tbody>
         </table>
 
         </div>
         <!-- END -->
-        <!-- START TAB Kedua -->
+        <!-- START TAB Kedua --
         <div class="tab-pane" id="list_koordinat_publik">
         <hr>
         <?php 
-        switch ($this->session->userdata('jabatan')) {
-        case 'ROOT': 
+        // switch ($this->session->userdata('jabatan')) {
+        // case 'ROOT': 
         ?>        
         <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
         <hr>
         <?php 
-        break;
-        case 'MASTER': 
+        // break;
+        // case 'MASTER': 
         ?>        
         <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
         <hr>
         <?php 
-        break;
-        case 'PERTANAHAN': 
+        // break;
+        // case 'PERTANAHAN': 
         ?>        
         <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
         <hr>
         <?php 
-        break;
-        default:
-        break;
-        }
+        // break;
+        // default:
+        // break;
+        // }
         ?>
         <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_tengah">
         <thead>
@@ -235,45 +253,45 @@
             <td>Longitude</td>
             <td>Dokumentasi</td>
 
-            <!-- <td>Action</td> -->
+            <!-- <td>Action</td> --
 
         </tr>
         </thead>
         <tbody>
         <?php             
-            if($data!= '' || $data !=null){
+            // if($data!= '' || $data !=null){
 
-            foreach ($data->result() as $koor) {
-            echo "<tr>";
-            echo "<td>a/n. : ".$koor->nama." <br> No NIK.".$koor->nik."</td>";
-            echo "<td>".$koor->latitude."</td>";
-            echo "<td>".$koor->longitude."</td>";
-            echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$koor->dokumentasi."' /></td>";
-            // echo "<td align='center'> <button onclick='v2_edit_koordinat_tengah()' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> <button onclick='v2_hapus_koordinat_tengah()' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> </td>";
-            echo "</tr>";
-            } 
+            // foreach ($data->result() as $koor) {
+            // echo "<tr>";
+            // echo "<td>a/n. : ".$koor->nama." <br> No NIK.".$koor->nik."</td>";
+            // echo "<td>".$koor->latitude."</td>";
+            // echo "<td>".$koor->longitude."</td>";
+            // echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$koor->dokumentasi."' /></td>";
+            // // echo "<td align='center'> <button onclick='v2_edit_koordinat_tengah()' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> <button onclick='v2_hapus_koordinat_tengah()' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> </td>";
+            // echo "</tr>";
+            // } 
 
 
-            }else{
-                echo "<tr>";
-                echo "<td colspan='6' align='center'><h3>Data Yang Matching Kosong !!</h3></td>";
-                echo "</tr>";
-            }
+            // }else{
+            //     echo "<tr>";
+            //     echo "<td colspan='6' align='center'><h3>Data Yang Matching Kosong !!</h3></td>";
+            //     echo "</tr>";
+            // }
              ?>
         </tbody>
         </table>                        
                     
                 </div>
                  <!-- END -->
-            </div>
+            <!-- </div>
         </div>
     </div>
 </div>
 
 
 <?php 
-    }
-?>
+    //}
+?> 
 </section>
 
 
