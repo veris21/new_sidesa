@@ -1032,7 +1032,7 @@ function initialize() {
     
     var contentString = '<div id="content">'+
     '<p>'+
-    '<img class="img img-rounded img-responsive" style="max-width:80px" src="'+foto_patok+'" class="img" />'+
+    '<img class="img img-rounded img-responsive" src="'+foto_patok+'" class="img" />'+
     '</p></div>';
     var infowindow = new google.maps.InfoWindow({
           content: contentString
