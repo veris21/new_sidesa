@@ -294,14 +294,14 @@
       <div class="form-group">
       <label class="control-label col-sm-4" for="">No. Kartu Keluarga</label>
               <div class="col-sm-8">
-                  <input type="number" name="no_kk" class="form-control" id="">
+                  <input type="text" name="no_kk" class="form-control" id="">
                </div>
       </div>
 
       <div class="form-group">
       <label class="control-label col-sm-4" for="">No. NIK</label>
               <div class="col-sm-8">
-                  <input type="number" name="no_nik" class="form-control" id="">
+                  <input type="text" name="no_nik" class="form-control" id="">
                </div>
       </div>
 
@@ -503,7 +503,7 @@
       <div class="form-group">
       <label class="control-label col-sm-4" for="">Jumlah Anggota Keluarga</label>
               <div class="col-sm-8">
-                  <input type="number" name="shdrt" class="form-control" id="">
+                  <input type="text" name="shdrt" class="form-control" id="">
                </div>
       </div>
 
@@ -757,7 +757,6 @@ var table;
 
 
 
-
 function edit_data_pemutihan_one(id) {
   var url = baseUrl + 'pemutihan/one/' + id;
   event.preventDefault();
@@ -826,8 +825,8 @@ function simpan_edit_pemutihan(){
 
 
 function view_data_pemutihan_one(id) {
-    // alert(id);
-    // die;
+    event.preventDefault();    
+    // $('#input_data_penduduk_baru')[0].reset();
     $("#nik").text('');
     $("#nama").text('');
     $("#alamat").text('');
@@ -840,8 +839,8 @@ function view_data_pemutihan_one(id) {
     $.ajax({
         'url' : url+id,
         'success' : function(x){
-            console.log('DATA X :');
-            console.log(x);
+            // console.log('DATA X :');
+            // console.log(x);
             $('#loader').hide();
             if (x != null) {
                 titik_tengah = new google.maps.LatLng(parseFloat(x.latitude), parseFloat(x.longitude));
@@ -850,9 +849,11 @@ function view_data_pemutihan_one(id) {
                 verified = x.verified;        
                 is_pemutihan = x.is_pemutihan;
                 foto_patok = baseUrl+"assets/uploader/patok/"+x.dokumentasi;
-                
-                console.log("FOTO PATOK " + foto_patok);
+                // console.log("FOTO PATOK " + foto_patok);
                 $("#view_titik_tengah").text(view_titik_tengah);
+               
+                $('[name="no_nik"]').val(x.nik);
+               
                 // $("#nik").text(x.nik);
                 // $("#nama").text(x.nama);
                 // $("#alamat").text(x.alamat);
@@ -886,8 +887,8 @@ function validasi_data(nik, bap_id){
     $.ajax({
         url: url+nik,
         success : function(y){
-            console.log( "Validasi Data" );
-            console.log(y);
+            // console.log( "Validasi Data" );
+            // console.log(y);
             if(y=='' || y==null){
                 // $("#nik").text('');
                 // $("#nama").text('');
