@@ -751,6 +751,16 @@ class Pertanahan_model extends CI_Model{
     return $this->db->delete('koordinat_batas_RTRW');
   }
 
+  
+  public function get_adm_poly()
+  {
+   return $this->db->get('batas_RTRW');
+  }
+
+  public function patok_adm_one($id)
+  {
+    return $this->db->get_where('koordinat_batas_RTRW', array('id'=>$id));
+  }
   // SERVERSIDE RENDERING PATOK BATAS / BIG DATA LOADING
 
   

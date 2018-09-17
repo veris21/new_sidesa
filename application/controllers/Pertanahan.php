@@ -903,13 +903,11 @@ public function delete_master_tengah($id){
 // API Controller
 
 public function semua_koordinat_adm(){
-  $data = $this->pertanahan_model->all_patok_adm()->result();
+  $data = $this->pertanahan_model->get_adm_poly()->result();
   $this->output
       ->set_content_type('application/json')
       ->set_output(json_encode($data));
 }
-
-
 
 public function api_koordinat_tanah(){
   $this->output
@@ -936,6 +934,21 @@ public function all_polygon_json()
 
   // }
 
+public function get_polygon_color($id)
+{
+  $data = $this->pertanahan_model->get_polygon_color($id)->row_array();
+  $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode($data['color'])); 
+}
+
+public function get_adm_polygon_one($id)
+{
+  $data = $this->pertanahan_model->get_koordinat_rtrw($id)->result();
+  $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode($data));
+}
 
 /* Pertanahan.php || Controller Handler Untuk Modul Pertanahan
 =========================================================
