@@ -861,7 +861,7 @@ function view_data_pemutihan_one(id) {
                 $('[name="latitude"]').val(x.latitude);
                 $('[name="longitude"]').val(x.longitude);
                 $('[name="dokumentasi"]').val(x.dokumentasi);
-                $('[name="tanah_id"]').val(bap_id);
+                $('[name="tanah_id"]').val(x.bap_id);
                 if(x.bap_id!=null){
                     bap_id = x.bap_id;
                 }else{
