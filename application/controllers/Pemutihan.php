@@ -194,7 +194,7 @@ class Pemutihan extends CI_Controller{
 
         $check = $this->pertanahan_model->_post_titik_polygon($post);
         if($check){
-         echo $this->output->set_content_type('application/json')->set_output(json_encode(array("status" => TRUE, "data"=>$post)));    
+         $this->output->set_content_type('application/json')->set_output(json_encode(array("status" => TRUE, "data"=>$post)));    
           // echo json_encode(array("status" => TRUE, "data"=>$post));
         }
     }
