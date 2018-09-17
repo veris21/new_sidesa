@@ -370,6 +370,7 @@
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY"></script>
 
 <script>
+var imgUrl = '<?php echo base_url('assets/uploader/patok/'); ?>';
 var map;
 var color;
 var opacity;
@@ -453,44 +454,48 @@ $.ajax({
 
 //   Array Marker
     var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var title ;
+    var contentString;
     $.ajax({
         'url': url,
         'success': function (data) {
             var markers = [];
             // console.log(data);
             for (let i = 0; i < data.length; i++) {
-                const latLng = new google.maps.LatLng(
+                var latLng = new google.maps.LatLng(
                     data[i]['latitude'],
                     data[i]['longitude']
                 );
-                const title = data[i]['nik'];
-                // const contentString = '<div id="content">'+
+                // title = data[i]['nik'];
+                
+                var contentString = '<div id="content">'+
+                '<p>KLIK</p>'+
                 // '<div id="siteNotice">'+
-                // '<p> No NIK. <b>'+ data[i]['nik'] +'</b>' +
+                // 'No NIK. <b>'+ data[i]['nik'] +'</b>' +
                 // '</div>'+
                 // '<h5 id="firstHeading" class="firstHeading">'+ data[i]['status']+'</h5>'+
                 // '<div id="bodyContent">'+
-                // '<img class="img img-thumbnail" width="90" src="<?php //echo base_url().PATOK;?>'+data[i]['dokumentasi']+ '" />'+
+                // '<img class="img img-thumbnail" width="90" src="'+imgUrl+data[i]['dokumentasi']+ '" />'+
                 
-                // '.</p>'+ 
                 // '<p> Latitude : '+ data[i]['latitude'] +' Longitude: '+ data[i]['longitude'] +' <br> Area : &plusmn; '+ data[i]['area'] +' m<sup>2</sup><br> Status Data : '+ data[i]['verified'] +'</p>'+           
                 // '</div>'+
-                // '</div>';
+                '</div>';
                 // var infowindow = new google.maps.InfoWindow({
-                //                     content: contentString
-                //                     });
-                const mapIcon = 'https://si-desa.id/assets/house-icon.png';
-                const marker = new google.maps.Marker({
+                //     content: contentString
+                // });
+                var mapIcon = 'https://si-desa.id/assets/house-icon.png';
+                var marker = new google.maps.Marker({
                         position: latLng,
-                        title: title,
+                        title: data[i]['nik'],
                         icon: mapIcon
-
                 });
                 // marker.addListener('click', function() {
                 //         infowindow.open(map, marker);
-                //     });
-                markers.push(marker);
+                //         // console.log(contentString);
+                //         // alert('Marker Klik' + data[i]['nik']);
+                // });
                 
+                markers.push(marker);                
             }       
             var markerCluster = new MarkerClusterer(map, markers,
                 {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}

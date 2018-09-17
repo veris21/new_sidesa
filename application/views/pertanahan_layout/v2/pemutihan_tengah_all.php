@@ -37,38 +37,39 @@
                 <table width="100%" class="table table-striped table-bordered table-hover" id="koordinat_tengah_all">
                     <thead>
                     <tr valign="center" align="center" style="font-weight:bolder;">
-                        <td>No. NIK</td>    
-                        <td>Status Dokumen</td>
+                        <td>Status Data</td>
+                        <td>No. NIK</td>                       
                         <td>Action</td>
                     </tr>
                     </thead>
                     <tbody>
                     <?php 
                     foreach ($list as $k) {
+                        ?>
+                         <tr>
+                        <?php
                          $verified = $k->verified;
+                         $check = $this->datapenduduk_model->_get_data_nik($k->nik)->row_array();
+                         if($check['no_nik'] == $k->nik){
+                            $status_lengkap = ($verified == 1 ? 
+                            "<button class='btn btn-xs btn-flat btn-success'>Data Lengkap</button> " : 
+                            "<button class='btn btn-xs btn-flat btn-warning'>Belum Lengkap</button> ");
+                            echo "<td align='center'>";
+                            echo $status_lengkap;
+                            echo "</td>
+                            <td align='center'>".$k->nik."/ <b>".$check['nama']."</b>
+                            </td>";   
+                        }else{
+                            $statusDDK = "<button class='btn btn-xs btn-flat btn-danger'>Nik tidak Terdaftar</button> ";
+                            echo "<td align='center'>";
+                            echo $statusDDK;
+                            echo "</td>
+                            <td align='center'>".$k->nik."
+                            </td>"; 
+                        }
                      ?>
-                        <tr>
-                            <td align='left'><?php echo $k->nik; ?></td>
-                            <td align='center'> 
-                            <?php   
-                            $check = $this->datapenduduk_model->_get_data_nik($k->nik)->row_array();
-                            if($check['no_nik'] == $k->nik){
-                                $status_lengkap = ($verified == 1 ? 
-                                "<button class='btn btn-sm btn-flat btn-success'>Data Lengkap</button> " : 
-                                "<button class='btn btn-sm btn-flat btn-warning'>Belum Lengkap</button> ");
-                                echo $status_lengkap;   
-                            }else{
-                                $statusDDK = "<button class='btn btn-sm btn-flat btn-danger'>Nik tidak Terdaftar</button> ";
-                                echo $statusDDK;
-
-                            }              
-                                                     
-                            ?>
-                            </td>
-                            <td align='center'>
-                            
+                            <td align="center">                            
                             <button onclick="view_data_pemutihan_one(<?php echo $k->id;?>)" class='btn btn-xs btn-success'><i class='fa fa-eye'></i></button> 
-                          
                             <?php if($check['no_nik'] != $k->nik){ ?>
                             <button onclick="edit_data_pemutihan_one(<?php echo $k->id;?>)" class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> 
                             <?php } ?>
@@ -1074,7 +1075,7 @@ function input_patok_pemutihan() {
     //   enctype: 'multipart/form-data',
     //   processData: false,
       success: function (data) {    
-        console.log(data.data.id_data_link);  
+        // console.log(data.data.id_data_link);  
         initialize();   
         datapatok(data.data.id_data_link);
         swal('Selamat !', 'Berhasil Input Data Koordinat Ke Sistem!', 'success');
@@ -1140,7 +1141,7 @@ function initialize() {
     });
     marker.addListener('click', function() {
           infowindow.open(map, marker);
-          console.log(contentString);
+        //   console.log(contentString);
     });
 
     var polygon = new google.maps.Polygon({
