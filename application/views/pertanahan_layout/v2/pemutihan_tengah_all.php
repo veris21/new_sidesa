@@ -861,7 +861,7 @@ function view_data_pemutihan_one(id) {
                 $('[name="latitude"]').val(x.latitude);
                 $('[name="longitude"]').val(x.longitude);
                 $('[name="dokumentasi"]').val(x.dokumentasi);
-                $('[name="tanah_id"]').val(x.bap_id);
+                // $('[name="tanah_id"]').val(x.id);
                 if(x.bap_id!=null){
                     bap_id = x.bap_id;
                 }else{
@@ -907,7 +907,7 @@ function validasi_data(nik, bap_id){
                 // $('[name="latitude"]').val(y.latitude);
                 // $('[name="longitude"]').val(y.longitude);
                 // $('[name="dokumentasi"]').val(y.dokumentasi);
-                // $('[name="tanah_id"]').val(bap_id);
+                $('[name="tanah_id"]').val(bap_id);
                 // if(is_pemutihan == 0 ){ 
                     idRef = bap_id;
                 //     view_data_pemutihan_status(idRef);
