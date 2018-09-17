@@ -10,7 +10,7 @@
 </section>
 <section class="content">
 
-<div class="box">
+<div class="box box-warning">
     <div class="box-header">
         <h3 class="box-title">
             Titik Peta Terekam Sistem
@@ -22,6 +22,17 @@
                 <div style="height: 580px;" id="map-canvas"></div>
             </div>
             <div class="col-md-4">
+
+            <div class="box box-success" id="data_details" hidden>
+                <div class="box-header">
+                    <h3 class="box-title">
+                        Details <b id="data_view"></b>
+                    </h3>
+                </div>
+                <div class="box-footer">
+                    <button onclick="close_details()" type="button" class="btn btn-flat btn-lg btn-block btn-warning" > Close </button>
+                </div>
+            </div>
                 <!-- <div class="small-box bg-purple">
                     <div class="inner">
                     <h3><?php //echo //count($total_koordinat->result_array());?></h3>
@@ -32,6 +43,7 @@
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div> -->
+            <div id="data_count">
                 <div class="small-box bg-maroon">
                     <div class="inner">
                     <h3><?php echo count($dataAll->result_array());?></h3>
@@ -62,12 +74,15 @@
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
+                
                 <div class="box box-warning">
+
                 <div class="box-header">
                     <h2 class="box-title">
                         Details Visuals
                     </h2>
                 </div>
+
                 <div class="box-body">
                     <p class="well">
                         Untuk Melihat Detail Data Pertanahan dan Melakukan Input serta Perubahan anda harus memiliki akses Admin Pertanahan Atau Otentifikasi Login (OTP) terdaftar disistem.
@@ -77,6 +92,9 @@
                 <button class="btn btn-lg btn-flat btn-success btn-block" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
                 </div>
                 </div>
+                <!--  -->
+                </div>
+                <!--  -->
             </div>
         </div>
         
@@ -490,11 +508,14 @@ $.ajax({
                         title: data[i]['nik'],
                         icon: mapIcon
                 });
-                // marker.addListener('click', function() {
-                //         infowindow.open(map, marker);
-                //         // console.log(contentString);
-                //         // alert('Marker Klik' + data[i]['nik']);
-                // });
+                marker.addListener('click', function() {
+                    // alert(data[i]['id']);
+                    show_details(data[i]['id']);
+                    
+                        // infowindow.open(map, marker);
+                        // // console.log(contentString);
+                        // // alert('Marker Klik' + data[i]['nik']);
+                });
                 
                 markers.push(marker);                
             }       
@@ -554,6 +575,17 @@ function add_poly(path, color, opacity){
        polygon.setMap(map);
 }
 
+
+function show_details(params) {
+    $('#data_view').text(params);
+    $("#data_count").hide();
+    $("#data_details").show();
+}
+
+function close_details(){
+    $("#data_count").show();
+    $("#data_details").hide();
+}
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
