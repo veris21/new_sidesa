@@ -31,8 +31,9 @@ class Pemutihan extends CI_Controller{
       $post = array('nik'=>$nik,
        'latitude'=>$lat,
        'longitude'=>$lng, 
-       'area'=> $area, 'verified'=>0,
-       'dokumentasi'=>$patok, 'status'=>$status);
+       'area'=> $area, 'verified'=> 0,
+       'is_pemutihan'=> 1,
+       'dokumentasi'=>$patok, 'status'=>$status); 
      
       $check = $this->pertanahan_model->_post_titik_pemutihan($post);
       if($check){

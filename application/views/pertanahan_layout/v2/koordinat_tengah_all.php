@@ -29,6 +29,10 @@
                         Details <b id="data_view"></b>
                     </h3>
                 </div>
+                <div class="box-body">
+                    <img src="<?php echo base_url('assets/no-img.jpg');?>" alt="detaiils" class="img img-rounded img-responsive img-details" />
+                    <hr/>
+                </div>
                 <div class="box-footer">
                     <button onclick="close_details()" type="button" class="btn btn-flat btn-lg btn-block btn-warning" > Close </button>
                 </div>
@@ -578,6 +582,8 @@ function add_poly(path, color, opacity){
 
 function show_details(params) {
     $('#data_view').text(params);
+    var imgDetails = '<?php echo base_url('assets/logo-beltim.png'); ?>';
+    $('.img-details').attr('src', imgDetails); 
     $("#data_count").hide();
     $("#data_details").show();
 }
