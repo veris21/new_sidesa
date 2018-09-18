@@ -37,6 +37,8 @@
                     <button onclick="close_details()" type="button" class="btn btn-flat btn-lg btn-block btn-warning" > Close </button>
                 </div>
             </div>
+
+            
                 <!-- <div class="small-box bg-purple">
                     <div class="inner">
                     <h3><?php //echo //count($total_koordinat->result_array());?></h3>
@@ -56,7 +58,7 @@
                     <div class="icon">
                     <i class="fa fa-map"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
                 </div>
                 <!-- <div class="small-box bg-yellow">
                     <div class="inner">
@@ -68,7 +70,7 @@
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div> -->
-                <div class="small-box bg-green">
+                <div class="small-box bg-aqua">
                     <div class="inner">
                     <h3><?php echo count($data->result_array());?></h3>
                     <p>Total Titik Sesuai DDK</p>
@@ -76,7 +78,18 @@
                     <div class="icon">
                     <i class="fa fa-map"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                    <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
+                </div>
+
+                 <div class="small-box bg-green">
+                    <div class="inner">
+                    <h3><?php echo count($dataV->result_array());?></h3>
+                    <p>Total Titik Verified</p>
+                    </div>
+                    <div class="icon">
+                    <i class="fa fa-map"></i>
+                    </div>
+                    <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
                 </div>
                 
                 <div class="box box-warning">
@@ -397,7 +410,7 @@ var imgUrl = '<?php echo base_url('assets/uploader/patok/'); ?>';
 var map;
 var color;
 var opacity;
-var url = '<?php echo base_url(); ?>semua/koordinat';
+var url = '<?php echo base_url(); ?>semua/koordinat/valid';
 var idx;
 var id_batas;
 function initialize() {
@@ -410,40 +423,6 @@ map = new google.maps.Map(document.getElementById('map-canvas'), {
     // disableDefaultUI: true
 });
 
-// Array Polygon
-// var destination = [];
-<?php //$id = 1; $koor = $this->tanah_model->get_data_koordinat_all()->result(); ?>
-<?php //foreach ($koor as $koor) { ?>
-//     var datalist = '<?php //echo $koor->koordinat;?>';
-//     var dataSplit = datalist.split(/\s/);
-//     var text = [];
-//     for (var i = 0; i < dataSplit.length; i++) {
-//       var arr = dataSplit[i].split(",");
-//       text.push(new google.maps.LatLng(parseFloat(arr[0]), parseFloat(arr[1])));
-//       console.log("lat :"+arr[0]+" Lng : "+arr[1]);
-//     }
-//     var color = '#'+Math.random().toString(16).substr(-6);
-//     var area = google.maps.geometry.spherical.computeArea(text);
-//     var contentString = '<b><?php //echo $koor->keterangan;?></b><br><br>Luas :  '+(area).toFixed(2)+' meter<sup>2</sup>';
-//     polygon = new google.maps.Polygon({
-//         paths: [text],
-//         strokeColor:'#FF0000',
-//         strokeOpacity: 0,
-//         strokeWeight: 2,
-//         fillColor:color,
-//         fillOpacity: 0.9,
-//         html: contentString
-//     });
-//     var text=[];
-//   polygon.setMap(map);
-//   infoWindow = new google.maps.InfoWindow();
-//   google.maps.event.addListener(polygon, 'click', function(e) {
-//     infoWindow.setContent(this.html);
-//     infoWindow.setPosition(e.latLng);
-//     infoWindow.open(map);
-//   });
-  <?php
-  //}?>
 $.ajax({
     'url': '<?php echo base_url('api/tanah_all/polygon/json');?>',
     'success' : function(data){
@@ -477,7 +456,6 @@ $.ajax({
 
 
 //   Array Marker
-    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     var title ;
     var contentString;
     $.ajax({
@@ -487,8 +465,8 @@ $.ajax({
             // console.log(data);
             for (let i = 0; i < data.length; i++) {
                 var latLng = new google.maps.LatLng(
-                    data[i]['latitude'],
-                    data[i]['longitude']
+                    data[i]['lat'],
+                    data[i]['lng']
                 );
                 // title = data[i]['nik'];
                 
@@ -501,25 +479,31 @@ $.ajax({
                 // '<div id="bodyContent">'+
                 // '<img class="img img-thumbnail" width="90" src="'+imgUrl+data[i]['dokumentasi']+ '" />'+
                 
-                // '<p> Latitude : '+ data[i]['latitude'] +' Longitude: '+ data[i]['longitude'] +' <br> Area : &plusmn; '+ data[i]['area'] +' m<sup>2</sup><br> Status Data : '+ data[i]['verified'] +'</p>'+           
+                // '<p> lat : '+ data[i]['lat'] +' lng: '+ data[i]['lng'] +' <br> Area : &plusmn; '+ data[i]['area'] +' m<sup>2</sup><br> Status Data : '+ data[i]['verified'] +'</p>'+           
                 // '</div>'+
                 '</div>';
                 // var infowindow = new google.maps.InfoWindow({
                 //     content: contentString
                 // });
-                var mapIcon = 'https://si-desa.id/assets/house-icon.png';
+                var mapIcon;
+                var string = data[i]['tanah_id'];
+                var tipe = string.split('-');
+                if(tipe[1]=='ASET'){
+                    var mapIcon = 'https://si-desa.id/assets/administration.png';
+                }else{
+                    var mapIcon = 'https://si-desa.id/assets/house-icon.png';
+                }
                 var marker = new google.maps.Marker({
                         position: latLng,
-                        title: data[i]['nik'],
                         icon: mapIcon
                 });
                 marker.addListener('click', function() {
                     // alert(data[i]['id']);
-                    show_details(data[i]['latitude'], data[i]['longitude']);
+                    show_details(data[i]['lat'], data[i]['lng']);
                     
                         // infowindow.open(map, marker);
                         // // console.log(contentString);
-                        // // alert('Marker Klik' + data[i]['nik']);
+                        // // alert('Marker Klik' + data[i]['keterangan']);
                 });
                 
                 markers.push(marker);                

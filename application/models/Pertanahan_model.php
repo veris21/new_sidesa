@@ -666,6 +666,11 @@ class Pertanahan_model extends CI_Model{
     return $this->db->get('koordinat_tengah');
   }
 
+  public function koordinat_tengah_valid(){
+    return $this->db->get('data_link');
+  }
+
+
   public function koordinat_tengah_one($id){
     return $this->db->get_where('koordinat_tengah', array('id'=>$id));
   }

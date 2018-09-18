@@ -76,7 +76,7 @@ $route['api/tanah_all/polygon/json']            = 'pertanahan/all_polygon_json';
 $route['api/adm_all/polygon/json']              = 'pertanahan/semua_koordinat_adm';
 $route['api/polygon/color/(:num)']              = 'pertanahan/get_polygon_color/$1';
 $route['api/polygon/one/(:num)']                = 'pertanahan/get_adm_polygon_one/$1';
-
+$route['api/get_details/pemilik/(:any)/(:any)'] = 'pertanahan/get_details_pemilik_one/$1/$2';
 /* -----------------------------------------------------------------------
                        Validasi Check ROUTE
  ----------------------------------------------------------------------- */
@@ -248,6 +248,8 @@ $route['permohonan/update']               = 'pertanahan/update_permohonan';
 
 
 $route['semua/koordinat']                 = 'pertanahan/semua_koordinat';
+$route['semua/koordinat/valid']           = 'pertanahan/semua_koordinat_valid';
+
 /* -----------------------------------------------------------------------
                        PRINT / CETAK PDF ROUTE
  ----------------------------------------------------------------------- */

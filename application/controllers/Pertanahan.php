@@ -885,7 +885,7 @@ class Pertanahan extends CI_Controller{
   }else{
       $data['title']                   =   TITLE.'Import Master Data';
       $data['main_content']            =   PERTANAHAN.'v2/koordinat_tengah_all';
-      // $data['total_koordinat']         =   $this->pertanahan_model->koordinat_tengah_all();
+      $data['dataV']                   =   $this->pertanahan_model->koordinat_tengah_valid();
       $data['dataAll']                 =   $this->pertanahan_model->koordinat_tengah_all();
       $data['patok_all']               =   $this->pertanahan_model->all_patok_group();
       $data['data']                    =   $this->pertanahan_model->koordinat_tengah_nik();
@@ -920,6 +920,14 @@ public function semua_koordinat(){
       ->set_content_type('application/json')
       ->set_output(json_encode($this->pertanahan_model->koordinat_tengah_all()->result()));
 }
+
+public function semua_koordinat_valid(){
+  $data = $this->pertanahan_model->koordinat_tengah_valid()->result();
+  $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode($data));
+}
+
 
 
 public function all_polygon_json()
