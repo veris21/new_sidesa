@@ -1051,7 +1051,7 @@ function hapus_titik_tengah(id) {
       type: "POST",
       success: function (data) {
         swal('Selamat !', 'Berhasil Menghapus Data Koordinat di Sistem!', 'success');
-        location.reload();
+        // location.reload();
       },
       error: function (jqXHR, textStatus, errorThrown) {
         swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
