@@ -314,11 +314,12 @@
 <?php 
     //}
 ?> 
+<!-- -->
 </section>
 
 
 
-<!-- Modal Input Data Penduduk Baru -->
+<!-- Modal Input Data Penduduk Baru --
 <div class="modal fade" id="modal_master_titik" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -359,13 +360,13 @@
                            <input type="text" name="area" class="form-control" id="">                        
                         </div>                        
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <label  class="control-label col-sm-4" for="">Verified</label>
                         <div class="col-sm-8">
                         <input type="radio" name="verified" id="" value="1"> Telah di Verifikasi                      
                         <input type="radio" name="verified" id="" value="0"> Belum di Verifikasi                      
                         </div>                        
-                    </div> -->
+                    </div>
                     <div class="form-group">
                         <label  class="control-label col-sm-4" for="">Status</label>
                         <div class="col-sm-8">
@@ -375,7 +376,7 @@
                         </div>                        
                     </div>
 
-       <!--  -->
+       <!--  --
        </div> 
        <div class="modal-footer">
          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -385,7 +386,7 @@
      </div> 
    </div> 
  </div>
- 
+ <!--  -->
 
 
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
@@ -466,9 +467,9 @@ $.ajax({
         // console.log(poly);
         path.push(poly);
        });
-       color = '#'+Math.random().toString(16).substr(-6);
-       opacity = 0.5;
-       add_poly(path, color);
+    //    color = '#'+Math.random().toString(16).substr(-6);
+    //    opacity = 0.5;
+       add_poly(path);
     }
 });
 
@@ -514,7 +515,7 @@ $.ajax({
                 });
                 marker.addListener('click', function() {
                     // alert(data[i]['id']);
-                    show_details(data[i]['id']);
+                    show_details(data[i]['latitude'], data[i]['longitude']);
                     
                         // infowindow.open(map, marker);
                         // // console.log(contentString);
@@ -537,7 +538,7 @@ $.ajax({
         'success': function (data){
             $.each(data, function (i, x) {
                 var id_batas = x.id;
-                console.log(x.color);
+                // console.log(x.color);
                 var color_adm = x.color;
                 $.ajax({
                     'url' : baseUrl+'api/polygon/one/'+id_batas,
@@ -567,25 +568,38 @@ function add_poly_adm(path_adm, color_adm){
        polygonAdm.setMap(map);
 }
 
-function add_poly(path, color, opacity){
+function add_poly(path){
     var polygon = new google.maps.Polygon({
           paths: path,
           strokeColor: '#000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.9,
           strokeWeight: 2,
-          fillColor: color,
-          fillOpacity: 0.9
+          fillColor: '#fff',
+          fillOpacity: 0.0
         });
        polygon.setMap(map);
 }
 
 
-function show_details(params) {
-    $('#data_view').text(params);
-    var imgDetails = '<?php echo base_url('assets/logo-beltim.png'); ?>';
-    $('.img-details').attr('src', imgDetails); 
+function show_details(lt,lg) {
+    event.preventDefault();
+    $('#data_view').text(lt +','+lg);
+    var imgDetails = 'no-img.jpg';
+    $('.img-details').attr('src', baseUrl+'assets/'+imgDetails); 
     $("#data_count").hide();
     $("#data_details").show();
+    $("#data_loading").show();
+    $("#data_details_view").hide();
+    
+    $.ajax({
+        url: '<?php echo base_url('api/get_details/pemilik/'); ?>'+lt+'/'+lg,
+        success: function( data){
+            console.log(data);
+            $("#data_loading").hide();
+            $("#data_details_view").show();
+        }
+    });
+   
 }
 
 function close_details(){

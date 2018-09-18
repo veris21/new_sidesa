@@ -950,6 +950,14 @@ public function get_adm_polygon_one($id)
       ->set_output(json_encode($data));
 }
 
+public function get_details_pemilik_one($lat, $lng)
+{
+  $data = array('lat'=>$lat, 'lng'=>$lng);
+  $this->output
+  ->set_content_type('application/json')
+  ->set_output(json_encode($data));
+}
+
 /* Pertanahan.php || Controller Handler Untuk Modul Pertanahan
 =========================================================
 |    @Author     |      Version     |     Changelog     |
