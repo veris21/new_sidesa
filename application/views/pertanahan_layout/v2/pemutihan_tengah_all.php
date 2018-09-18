@@ -1045,22 +1045,22 @@ function hapus_titik_tengah(id) {
     cancelButtonColor: '#d33',
     confirmButtonText: 'Iya, Hapus Data!'
   }, function isConfirm() {
-      alert('HAPUS : ' +id);
-    // $.ajax({
-    //   url: baseUrl + 'delete/titik_tengah/' + id,
-    //   type: "POST",
-    //   success: function (data) {
-    //     swal('Selamat !', 'Berhasil Menghapus Data Koordinat di Sistem!', 'success');
-    //     datapatok(link);
-    //     initialize();
-    //     // console.log("LINK : "+link);
-    //     // location.reload();
-    //   },
-    //   error: function (jqXHR, textStatus, errorThrown) {
-    //     swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
-    //   }
+    //   alert('HAPUS : ' +id);
+    $.ajax({
+      url: baseUrl + 'delete/titik_tengah/' + id,
+      type: "POST",
+      success: function (data) {
+        swal('Selamat !', 'Berhasil Menghapus Data Koordinat di Sistem!', 'success');
+        // datapatok(link);
+        // initialize();
+        // // console.log("LINK : "+link);
+        location.reload();
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
+      }
 
-    // });
+    });
   });
 }
 
