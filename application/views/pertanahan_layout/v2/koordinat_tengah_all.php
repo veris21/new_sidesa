@@ -559,11 +559,11 @@ $.ajax({
 function add_poly_adm(path_adm, color_adm){
     var polygonAdm = new google.maps.Polygon({
           paths: path_adm,
-          strokeColor: '#000',
+          strokeColor: color_adm,
           strokeOpacity: 0.9,
-          strokeWeight: 1,
+          strokeWeight: 2,
           fillColor: color_adm,
-          fillOpacity: 0.2
+          fillOpacity: 0.1
         });
        polygonAdm.setMap(map);
 }
