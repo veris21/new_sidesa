@@ -11,18 +11,25 @@
 <section class="content">
     <div class="box box-danger">
         <div class="box-header">
-            <h3 class="box-title">Details Pertanahan</h3>
+            <h3 class="box-title">Details Pertanahan <i class="fa fa-globe"></i></h3>
         </div>
         <div class="box-body">
+
             <div class="alert alert-warning alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                 <h3><i class="icon fa fa-ban"></i> Pemberitahuan !</h3>
                 Sebelum Melakukan Edit Data Menggunakan jika data Salah, Silahkan Perbaiki <b><i>Koordinat ( Latitude dan Longitude ) terlebih dahulu !!! <i><b> Sebelum Menyimpan atau menyesuaikan Nomor Induk Kependudukan, Karena Sistem Akan Mengunci Menu Edit Koordinat Jika ditemukan Data Penduduk yang telah di sesuaikan (Proses Sinkronisasi ).
             </div>
+            <div id="map_global" hidden>
+                <div  style="height: 520px;" id="map-view-total"></div>
+            </div>
+
         </div>
         <div class="box-footer">
             <div class="pull-right">
-            <button class="btn btn-md btn-flat btn-success btn-block" onclick="input_tengah_one()" >Input Data Titik Baru<i class="fa fa-plus"></i></button>
+            <button class="btn btn-md btn-flat btn-warning" onclick="tutup_peta()" >Tutup Peta  <i class="fa fa-ban"></i></button>
+            <button class="btn btn-md btn-flat btn-primary" onclick="buka_peta()" >Buka Peta Global  <i class="fa fa-map-o"></i></button>
+            <button class="btn btn-md btn-flat btn-success" onclick="input_tengah_one()" >Input Data Titik Baru  <i class="fa fa-plus"></i></button>
             </div>
         </div>
     </div>
@@ -735,7 +742,7 @@
 
 
 
-
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry"></script>
 <script>
 var baseUrl = '<?php echo base_url(); ?>';
@@ -755,7 +762,7 @@ var bap_id = '';
 
 var table;
 
-
+var map_total;
 
 function edit_data_pemutihan_one(id) {
   var url = baseUrl + 'pemutihan/one/' + id;
@@ -1097,6 +1104,148 @@ function input_patok_pemutihan() {
 }
 
 
+
+function initialize_map_total() {
+    map_total = new google.maps.Map(document.getElementById('map-view-total'), {
+    zoom: 10,
+    center: new google.maps.LatLng(-2.858830, 107.906900),
+    mapTypeId: 'terrain',
+    mapTypeControl: true,
+          mapTypeControlOptions: {
+              style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+              position: google.maps.ControlPosition.TOP_CENTER
+          },
+          zoomControl: true,
+          zoomControlOptions: {
+              position: google.maps.ControlPosition.RIGHT_CENTER
+          },
+          scaleControl: true,
+          streetViewControl: true,
+          streetViewControlOptions: {
+              position: google.maps.ControlPosition.LEFT_TOP
+          },
+          fullscreenControl: true
+  });
+
+
+$.ajax({
+    'url': '<?php echo base_url('api/tanah_all/polygon/json');?>',
+    'success' : function(data){
+        var groupedByData = {};
+        var dest = {};
+        for (var key in data) {
+            var id = data[key].id_data_link;  
+            // var latlng = new google.maps.LatLng(data[key].lat, data[key].lng);
+            if (!groupedByData[id]) {
+                groupedByData[id] = [];
+            }            
+            groupedByData[id].push(data[key]);
+        }        
+       var path = [];
+       $.each(groupedByData, function(i, items){
+        var poly = [];
+        $.each(items, function(x, dataeach){
+            var latlng = new google.maps.LatLng(parseFloat(dataeach['lat']), parseFloat(dataeach['lng']));
+            poly.push(latlng);
+        });
+        // console.log(poly);
+        path.push(poly);
+       });
+    //    color = '#'+Math.random().toString(16).substr(-6);
+    //    opacity = 0.5;
+       add_poly(path);
+    }
+});
+
+//   Array Marker
+    var title ;
+    var contentString;
+    $.ajax({
+        'url': '<?php echo base_url(); ?>semua/koordinat',
+        'success': function (data) {
+            var markers = [];
+            // console.log(data);
+            for (let i = 0; i < data.length; i++) {
+                var latLng = new google.maps.LatLng(
+                    data[i]['latitude'],
+                    data[i]['longitude']
+                );
+                var title = data[i]['nik'];
+                var mapIcon = 'https://si-desa.id/assets/house-icon.png';
+                var markerT = new google.maps.Marker({
+                        position: latLng,
+                        icon: mapIcon,
+                        title : title
+                });          
+                
+                markers.push(markerT);                
+            }       
+            var markerCluster = new MarkerClusterer(map_total, markers,
+                {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+            );
+            // var markerCluster = new MarkerClusterer(map, markers);
+    
+        }
+    });
+            // LOAD DATA BATAS ADMINISTRASI DESA
+    $.ajax({
+        'url' : '<?php echo base_url('api/adm_all/polygon/json');?>',
+        'success': function (data){
+            $.each(data, function (i, x) {
+                var id_batas = x.id;
+                // console.log(x.color);
+                var color_adm = x.color;
+                $.ajax({
+                    'url' : baseUrl+'api/polygon/one/'+id_batas,
+                    'success' : function (adm){
+                        var path_adm = [];
+                        $.each(adm, function(i, p){
+                            var latlong = new google.maps.LatLng(parseFloat(p.lat),parseFloat(p.lng));
+                            path_adm.push(latlong);
+                        });
+                        add_poly_adm(path_adm, color_adm);
+                    }
+                });
+            });
+        }
+    });
+}
+
+function add_poly_adm(path_adm, color_adm){
+    var polygonAdm = new google.maps.Polygon({
+          paths: path_adm,
+          strokeColor: color_adm,
+          strokeOpacity: 0.9,
+          strokeWeight: 2,
+          fillColor: color_adm,
+          fillOpacity: 0.1
+        });
+       polygonAdm.setMap(map_total);
+}
+
+function add_poly(path){
+    var polygon = new google.maps.Polygon({
+          paths: path,
+          strokeColor: '#000',
+          strokeOpacity: 0.9,
+          strokeWeight: 2,
+          fillColor: '#fff',
+          fillOpacity: 0.0
+        });
+       polygon.setMap(map_total);
+}
+
+
+function buka_peta() {
+    $('#map_global').show();
+    initialize_map_total();
+}
+
+function tutup_peta(){
+    $('#map_global').hide();
+}
+
+
 function initialize() {
    var map = new google.maps.Map(document.getElementById('map-view'), {
     zoom: 18,
@@ -1109,7 +1258,7 @@ function initialize() {
           },
           zoomControl: true,
           zoomControlOptions: {
-              position: google.maps.ControlPosition.LEFT_CENTER
+              position: google.maps.ControlPosition.RIGHT_CENTER
           },
           scaleControl: true,
           streetViewControl: true,

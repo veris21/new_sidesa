@@ -2195,7 +2195,7 @@ function ganti_password_one(id) {
     });
   });
 }
-  
+   
 function edit_user_one(id) {
   var url = baseUrl + 'user/get/otp/' + id;
   event.preventDefault();

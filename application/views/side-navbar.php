@@ -90,7 +90,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url().'koordinat'; ?>"><i class="fa fa-circle-o"></i> Visual Data Pertanahan</a></li>
-            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li><li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
+            <li><a href="<?php echo base_url().'pertanahan/aset_tanah_desa'; ?>"><i class="fa fa-circle-o"></i> Data Tanah Desa</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -188,8 +188,8 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url().'pertanahan/permohonan'; ?>"><i class="fa fa-circle-o"></i>Permohonan Data Pertanahan</a></li>
-            <li><a href="<?php echo base_url().'pertanahan/data'; ?>"><i class="fa fa-circle-o"></i> Cek Data Pertanahan</a></li>
+            <li><a href="<?php //echo base_url().'pertanahan/permohonan'; ?>"><i class="fa fa-circle-o"></i>Permohonan Data Pertanahan</a></li>
+            <li><a href="<?php //echo base_url().'pertanahan/data'; ?>"><i class="fa fa-circle-o"></i> Cek Data Pertanahan</a></li>
           </ul>
         </li> -->
         <?php
