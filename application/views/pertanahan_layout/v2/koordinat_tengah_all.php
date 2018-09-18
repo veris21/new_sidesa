@@ -77,7 +77,7 @@
                 </div>
 <?php 
 $akses = $this->session->userdata('jabatan');
- if($akses=='ROOT' || $akses == 'PERTANAHAN'){ ?>        
+ if($akses=='ROOT' || $akses == 'PERTANAHAN' || $akses=='MASTER'){ ?>        
                 <div class="box box-warning">
 
                 <div class="box-header">

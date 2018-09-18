@@ -80,6 +80,7 @@
                             <?php if($check['no_nik'] != $k->nik){ ?>
                             <button onclick="edit_data_pemutihan_one(<?php echo $k->id;?>)" class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> 
                             <?php } ?>
+                            <button onclick="hapus_titik_tengah(<?php echo $k->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
                             </td>
 
                         </tr>
@@ -1002,7 +1003,7 @@ function datapatok(link) {
 
 function hapus_patok_pemutihan(id) {
     // alert('Hapus Patok' + id);
-    event.preventDefault();
+  event.preventDefault();
   swal({
     title: 'Apa Anda Ingin Menghapus Data Patok ?',
     text: "Hapus Data Patok Secara Permanen",
@@ -1029,6 +1030,40 @@ function hapus_patok_pemutihan(id) {
     });
   });
 }
+
+
+
+function hapus_titik_tengah(id) {
+    // alert('Hapus Patok' + id);
+  event.preventDefault();
+  swal({
+    title: 'Apa Anda Ingin Menghapus Data Titik Tengah ?',
+    text: "Hapus Data Secara Permanen",
+    type: 'error',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Iya, Hapus Data!'
+  }, function isConfirm() {
+      alert('HAPUS : ' +id);
+    // $.ajax({
+    //   url: baseUrl + 'delete/titik_tengah/' + id,
+    //   type: "POST",
+    //   success: function (data) {
+    //     swal('Selamat !', 'Berhasil Menghapus Data Koordinat di Sistem!', 'success');
+    //     datapatok(link);
+    //     initialize();
+    //     // console.log("LINK : "+link);
+    //     // location.reload();
+    //   },
+    //   error: function (jqXHR, textStatus, errorThrown) {
+    //     swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
+    //   }
+
+    // });
+  });
+}
+
 
 function buka_input_patok_form(){
     $("#patok-input").hide();
