@@ -356,7 +356,7 @@ $route['geojson/input']                     = 'pertanahan/geojson_input';
 /* -----------------------------------------------------------------------
  ----------------------------------------------------------------------- */
  $route['user/get/otp/(:num)']              = 'master/user_get_otp/$1';
- $route['otp/check/(:any)']                 = 'master/otp_check/$1';
+ $route['otp/check']                        = 'master/otp_check';
 
 
  $route['update/password']                  = 'auth/update_password';

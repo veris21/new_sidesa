@@ -2264,12 +2264,6 @@ function save_setting_one() {
 
 }
 
-function validate_setting_pass() {
-
-}
-
-
-
 // PEMUTIHAN DATA================
 function input_tengah_one() {
   $('#input_master_titik')[0].reset();

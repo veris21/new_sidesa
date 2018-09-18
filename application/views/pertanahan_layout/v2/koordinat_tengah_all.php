@@ -42,18 +42,6 @@
                     <button onclick="close_details()" type="button" class="btn btn-flat btn-lg btn-block btn-warning" > Close </button>
                 </div>
             </div>
-
-            
-                <!-- <div class="small-box bg-purple">
-                    <div class="inner">
-                    <h3><?php //echo //count($total_koordinat->result_array());?></h3>
-                    <p>Total Titik</p>
-                    </div>
-                    <div class="icon">
-                    <i class="fa fa-map"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                </div> -->
             <div id="data_count">
                 <div class="small-box bg-maroon">
                     <div class="inner">
@@ -65,16 +53,7 @@
                     </div>
                     <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
                 </div>
-                <!-- <div class="small-box bg-yellow">
-                    <div class="inner">
-                    <h3><?php //echo count($patok_all->result_array());?></h3>
-                    <p>Total Titik</p>
-                    </div>
-                    <div class="icon">
-                    <i class="fa fa-map"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-                </div> -->
+
                 <div class="small-box bg-aqua">
                     <div class="inner">
                     <h3><?php echo count($data->result_array());?></h3>
@@ -281,7 +260,7 @@ $.ajax({
                 // console.log(x.color);
                 var color_adm = x.color;
                 $.ajax({
-                    'url' : p<?php echo base_url("i/polygon/one");?>''+id_batas,
+                    'url' : baseUrl+'api/polygon/one/'+id_batas,
                     'success' : function (adm){
                         var path_adm = [];
                         $.each(adm, function(i, p){
@@ -325,7 +304,7 @@ function show_details(lt,lg) {
     event.preventDefault();
     $('#data_view').text(lt +','+lg);
     var imgDetails = 'no-img.jpg';
-    $('.img-details').attr('src', s<?php echo base_url("sets/'+imgDet");?>'ils); 
+    $('.img-details').attr('src', baseUrl+'assets/'+imgDetails); 
     $("#data_count").hide();
     $("#data_details").show();
     $("#data_loading").show();
@@ -335,7 +314,7 @@ function show_details(lt,lg) {
         url: '<?php echo base_url('api/get_details/pemilik/'); ?>'+lt+'/'+lg,
         success: function( data){
             console.log(data);
-            $('.img-details').attr('src', s<?php echo base_url("sets/uploader");?>'patok/'+data.foto_tanah); 
+            $('.img-details').attr('src', baseUrl+'assets/uploader/patok/'+data.foto_tanah); 
             $("#data_loading").hide();
             $("#data_details_view").show();
         }
@@ -349,16 +328,29 @@ function close_details(){
 }
 
 function aktifkan_otp(id){
+    // console.log(id);
     event.preventDefault();
-    var otpUrl = '<?php echo base_url("user/get/otp/");?>' + id;
+    var otpUrl = '<?php echo base_url(); ?>'+ 'user/get/otp/' + id;
     $.ajax({
         url : otpUrl,
         success : function (otp){
-            console.log(otp);
+            // console.log(otp);
+            // verifikasi_tengah_one();
+        }
+    });        
+}
+
+function direct_to_master_menu(){
+    var otpCheck = '<?php echo base_url("otp/check"); ?>';
+    $.ajax({
+        url : otpCheck,
+        type: "POST",
+        dataType: "JSON",
+        data: $('#verifikasi_otp').serialize(),
+        success : function (params){
             verifikasi_tengah_one();
         }
     });
-        
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

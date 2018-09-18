@@ -25,7 +25,7 @@ class Master extends CI_Controller{
 
 
 
-  public function otp_check($uid){
+  public function otp_check(){
     
   }
 
