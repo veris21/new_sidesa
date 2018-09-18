@@ -96,7 +96,9 @@
                     </div>
                     <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
                 </div>
-                
+<?php 
+$akses = $this->session->userdata('jabatan');
+ if($akses=='ROOT' || $akses == 'PERTANAHAN'){ ?>        
                 <div class="box box-warning">
 
                 <div class="box-header">
@@ -110,10 +112,12 @@
                         Untuk Melihat Detail Data Pertanahan dan Melakukan Input serta Perubahan anda harus memiliki akses Admin Pertanahan Atau Otentifikasi Login (OTP) terdaftar disistem.
                     </p>
                 </div>
+
                 <div class="box-footer">
-                <button class="btn btn-lg btn-flat btn-success btn-block" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
+                    <button class="btn btn-lg btn-flat btn-success btn-block" onclick="<?php echo ($this->session->userdata('jabatan')=='MASTER' ? 'verifikasi_tengah_one()' : 'aktifkan_otp('.$this->session->userdata('id').')'); ?>" >Verifikasi Titik<i class="fa fa-plus"></i></button>
                 </div>
                 </div>
+<?php } ?>
                 <!--  -->
                 </div>
                 <!--  -->
@@ -151,260 +155,8 @@
     }
     ?>    
 </div>
-<!--
-<hr>
-<?php 
-    // switch ($this->session->userdata('jabatan')) {
-    // case 'ROOT' || 'MASTER' || 'PERTANAHAN' :
-?>
-<div class="box box-success">
-    <div class="box-body">
-        <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#list_koordinat_all" data-toggle="tab">Koordinat Terinput</a></li>
-                <li ><a href="#list_koordinat_publik" data-toggle="tab">koordinat tampil publik</a></li> 
-            </ul>
-
-            <div class="tab-content">
-                <!-- START TAB Pertama -->
-                <!-- <div class="tab-pane active" id="list_koordinat_all"> -->
-        <?php 
-        // switch ($this->session->userdata('jabatan')) {
-        //     case 'ROOT' :
-        ?>
-        <!-- <hr/> 
-        <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
-        <?php 
-        //  break;
-        //  case 'MASTER' :
-        ?> 
-        <hr/>
-        <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
-        <?php 
-        //  break;
-        //  case 'PERTANAHAN' :
-        ?>
-        <hr/>
-        <button class="btn btn-sm btn-flat btn-success" onclick="input_tengah_one()" >Input Titik <i class="fa fa-plus"></i></button>
-        <?php 
-        //  break;
-        //  default:
-        //  break;
-        // }
-        ?>
-        <hr/>
-        <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_tengah_all">
-        <thead>
-        <tr valign="center" align="center" style="font-weight:bolder;">
-            <td>No. NIK</td>
-            <td>Latitude</td>
-            <td>Longitude</td>
-            <td>Dokumentasi</td>
-            <td>Action</td>
-        </tr>
-        </thead>
-        <tbody>
-            <?php             
-            // if($dataAll!= '' || $dataAll !=null){
-            // foreach ($dataAll->result() as $semua) {
-            // echo "<tr>";
-            // echo "<td>No NIK.".$semua->nik."</td>";
-            // echo "<td>".$semua->latitude."</td>";
-            // echo "<td>".$semua->longitude."</td>";
-            // echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$semua->dokumentasi."' /></td>";
-            // switch ($this->session->userdata('jabatan')) {
-            //     case 'ROOT':            
-            // echo "<td align='center'>";
-            
-            // echo "<a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
-            
-            ?>
-            <button onclick="delete_tengah_one(<?php //echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
-            <?php 
-            // break;
-            // case 'MASTER':            
-            // echo "<td align='center'>";
-            
-            // echo "<a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
-            
-            ?>
-            <button onclick="delete_tengah_one(<?php //echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
-            <?php 
-            // break;
-            // case 'PERTANAHAN':            
-            // echo "<td align='center'>";
-            
-            // echo "<a href='".base_url('koordinat')."' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></a>";
-            
-            ?>
-            <button onclick="delete_tengah_one(<?php //echo $semua->id;?>)" class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> 
-            <?php 
-            // break;
-            //     default:
-            //     echo "<td width='40' align='center'> <button class='btn btn-md btn-warning'>Access <i class='fa fa-ban'></i></button> </td>";
-            //     break;
-            // }
-            // echo "</td>";
-            // echo "</tr>";
-            // } 
-            // }else{
-            //     echo "<tr>";
-            //     echo "<td colspan='6' align='center'><h3>Data Yang Matching Kosong !!</h3></td>";
-            //     echo "</tr>";
-            // }
-             ?>
-        </tbody>
-        </table>
-
-        </div>
-        <!-- END -->
-        <!-- START TAB Kedua --
-        <div class="tab-pane" id="list_koordinat_publik">
-        <hr>
-        <?php 
-        // switch ($this->session->userdata('jabatan')) {
-        // case 'ROOT': 
-        ?>        
-        <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
-        <hr>
-        <?php 
-        // break;
-        // case 'MASTER': 
-        ?>        
-        <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
-        <hr>
-        <?php 
-        // break;
-        // case 'PERTANAHAN': 
-        ?>        
-        <button class="btn btn-sm btn-flat btn-success" onclick="verifikasi_tengah_one()" >Verifikasi Titik<i class="fa fa-plus"></i></button>
-        <hr>
-        <?php 
-        // break;
-        // default:
-        // break;
-        // }
-        ?>
-        <table width="100%" class="table table-striped table-bordered table-hover" id="master_koordinat_tengah">
-        <thead>
-        <tr valign="center" align="center" style="font-weight:bolder;">
-            <td>Nama/ NIK</td>
-            <td>Latitude</td>
-            <td>Longitude</td>
-            <td>Dokumentasi</td>
-
-            <!-- <td>Action</td> --
-
-        </tr>
-        </thead>
-        <tbody>
-        <?php             
-            // if($data!= '' || $data !=null){
-
-            // foreach ($data->result() as $koor) {
-            // echo "<tr>";
-            // echo "<td>a/n. : ".$koor->nama." <br> No NIK.".$koor->nik."</td>";
-            // echo "<td>".$koor->latitude."</td>";
-            // echo "<td>".$koor->longitude."</td>";
-            // echo "<td align='center'><img width='70' class='img img-thumbnail img-rounded' src='".base_url().PATOK.$koor->dokumentasi."' /></td>";
-            // // echo "<td align='center'> <button onclick='v2_edit_koordinat_tengah()' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button> <button onclick='v2_hapus_koordinat_tengah()' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button> </td>";
-            // echo "</tr>";
-            // } 
-
-
-            // }else{
-            //     echo "<tr>";
-            //     echo "<td colspan='6' align='center'><h3>Data Yang Matching Kosong !!</h3></td>";
-            //     echo "</tr>";
-            // }
-             ?>
-        </tbody>
-        </table>                        
-                    
-                </div>
-                 <!-- END -->
-            <!-- </div>
-        </div>
-    </div>
-</div>
-
-
-<?php 
-    //}
-?> 
-<!-- -->
 </section>
 
-
-
-<!-- Modal Input Data Penduduk Baru --
-<div class="modal fade" id="modal_master_titik" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title">Input Data Titik Sebagai Master</h3>
-      </div>
-      <?php echo form_open_multipart('', array('id'=>'input_master_titik','class'=>'form-horizontal'));?>
-      <div class="modal-body form">
-                    
-                    <div class="form-group">
-                        <label  class="control-label col-sm-4" for="">No. NIK</label>
-                        <div class="col-sm-8">
-                           <input type="text" name="nik" class="form-control" id="">                        
-                        </div>                        
-                    </div>
-                    <div class="form-group">
-                        <label  class="control-label col-sm-4" for="">Latitude</label>
-                        <div class="col-sm-8">
-                           <input type="text" name="lat" class="form-control" id="">                        
-                        </div>                        
-                    </div>
-                    <div class="form-group">
-                        <label  class="control-label col-sm-4" for="">Longitude</label>
-                        <div class="col-sm-8">
-                           <input type="text" name="lng" class="form-control" id="">                        
-                        </div>                        
-                    </div>
-                    <div id="patok" class="form-group">
-                        <label  class="control-label col-sm-4" for="">Foto Titik / Tempat</label>
-                        <div class="col-sm-8">
-                            <input type="file" name="patok" class="form-control" id="">                        
-                        </div>                        
-                    </div>
-                    <div class="form-group">
-                        <label  class="control-label col-sm-4" for="">Area</label>
-                        <div class="col-sm-8">
-                           <input type="text" name="area" class="form-control" id="">                        
-                        </div>                        
-                    </div>
-                    <div class="form-group">
-                        <label  class="control-label col-sm-4" for="">Verified</label>
-                        <div class="col-sm-8">
-                        <input type="radio" name="verified" id="" value="1"> Telah di Verifikasi                      
-                        <input type="radio" name="verified" id="" value="0"> Belum di Verifikasi                      
-                        </div>                        
-                    </div>
-                    <div class="form-group">
-                        <label  class="control-label col-sm-4" for="">Status</label>
-                        <div class="col-sm-8">
-                        <input type="radio" name="status" id="" value="SURAT KETERANGAN" checked> SURAT KETERANGAN <br>
-                        <input type="radio" name="status" id="" value="BERSERTIFIKAT"> BERSERTIFIKAT <br>
-                                                   
-                        </div>                        
-                    </div>
-
-       <!--  --
-       </div> 
-       <div class="modal-footer">
-         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-         <button type="submit" onclick="save_tengah_one()" class="btn btn-primary">Save</button>
-       </div>
-     </form>
-     </div> 
-   </div> 
- </div>
- <!--  -->
 
 
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
@@ -520,8 +272,7 @@ $.ajax({
     
         }
     });
-       
-        
+            // LOAD DATA BATAS ADMINISTRASI DESA
     $.ajax({
         'url' : '<?php echo base_url('api/adm_all/polygon/json');?>',
         'success': function (data){
@@ -530,7 +281,7 @@ $.ajax({
                 // console.log(x.color);
                 var color_adm = x.color;
                 $.ajax({
-                    'url' : baseUrl+'api/polygon/one/'+id_batas,
+                    'url' : p<?php echo base_url("i/polygon/one");?>''+id_batas,
                     'success' : function (adm){
                         var path_adm = [];
                         $.each(adm, function(i, p){
@@ -574,7 +325,7 @@ function show_details(lt,lg) {
     event.preventDefault();
     $('#data_view').text(lt +','+lg);
     var imgDetails = 'no-img.jpg';
-    $('.img-details').attr('src', baseUrl+'assets/'+imgDetails); 
+    $('.img-details').attr('src', s<?php echo base_url("sets/'+imgDet");?>'ils); 
     $("#data_count").hide();
     $("#data_details").show();
     $("#data_loading").show();
@@ -584,7 +335,7 @@ function show_details(lt,lg) {
         url: '<?php echo base_url('api/get_details/pemilik/'); ?>'+lt+'/'+lg,
         success: function( data){
             console.log(data);
-            $('.img-details').attr('src', baseUrl+'assets/uploader/patok/'+data.foto_tanah); 
+            $('.img-details').attr('src', s<?php echo base_url("sets/uploader");?>'patok/'+data.foto_tanah); 
             $("#data_loading").hide();
             $("#data_details_view").show();
         }
@@ -595,6 +346,19 @@ function show_details(lt,lg) {
 function close_details(){
     $("#data_count").show();
     $("#data_details").hide();
+}
+
+function aktifkan_otp(id){
+    event.preventDefault();
+    var otpUrl = '<?php echo base_url("user/get/otp/");?>' + id;
+    $.ajax({
+        url : otpUrl,
+        success : function (otp){
+            console.log(otp);
+            verifikasi_tengah_one();
+        }
+    });
+        
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
