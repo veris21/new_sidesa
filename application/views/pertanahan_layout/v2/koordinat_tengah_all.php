@@ -30,8 +30,13 @@
                     </h3>
                 </div>
                 <div class="box-body">
-                    <img src="<?php echo base_url('assets/no-img.jpg');?>" alt="detaiils" class="img img-rounded img-responsive img-details" />
-                    <hr/>
+                <div id="data_loading" hidden>
+                    <img src="<?php echo base_url('assets/hamtaro-new.gif');?>" alt="detaiils" class="img img-rounded img-responsive img-details" />
+                </div>
+                <div id="data_details_view">
+                    <img src="#" alt="detaiils" class="img img-rounded img-responsive img-details" />
+                </div>
+                <hr/>                
                 </div>
                 <div class="box-footer">
                     <button onclick="close_details()" type="button" class="btn btn-flat btn-lg btn-block btn-warning" > Close </button>
@@ -579,6 +584,7 @@ function show_details(lt,lg) {
         url: '<?php echo base_url('api/get_details/pemilik/'); ?>'+lt+'/'+lg,
         success: function( data){
             console.log(data);
+            $('.img-details').attr('src', baseUrl+'assets/uploader/patok/'+data.foto_tanah); 
             $("#data_loading").hide();
             $("#data_details_view").show();
         }

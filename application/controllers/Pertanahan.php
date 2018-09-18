@@ -960,7 +960,7 @@ public function get_adm_polygon_one($id)
 
 public function get_details_pemilik_one($lat, $lng)
 {
-  $data = array('lat'=>$lat, 'lng'=>$lng);
+  $data = $this->pertanahan_model->get_data_latlng($lat, $lng)->row_array();
   $this->output
   ->set_content_type('application/json')
   ->set_output(json_encode($data));

@@ -670,6 +670,13 @@ class Pertanahan_model extends CI_Model{
     return $this->db->get('data_link');
   }
 
+  public function get_data_latlng($lat, $lng)
+  {
+    $this->db->where('lat', $lat);
+    $this->db->where('lng', $lng);
+    return $this->db->get('data_link');
+  }
+
 
   public function koordinat_tengah_one($id){
     return $this->db->get_where('koordinat_tengah', array('id'=>$id));
