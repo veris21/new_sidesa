@@ -149,8 +149,9 @@ var opacity;
 var url = '<?php echo base_url(); ?>semua/koordinat/valid';
 var idx;
 var id_batas;
-function initialize() {
+var infoWindow;
 
+function initialize() {
 map = new google.maps.Map(document.getElementById('map-canvas'), {
     zoom: 10,
     center: new google.maps.LatLng(-2.858830, 107.906900),
@@ -267,25 +268,41 @@ $.ajax({
                             var latlong = new google.maps.LatLng(parseFloat(p.lat),parseFloat(p.lng));
                             path_adm.push(latlong);
                         });
-                        add_poly_adm(path_adm, color_adm);
+                        add_poly_adm(path_adm, color_adm, id_batas);
                     }
                 });
             });
         }
     });
+
 }
 
-function add_poly_adm(path_adm, color_adm){
+function add_poly_adm(path_adm, color_adm, id_batas){
     var polygonAdm = new google.maps.Polygon({
           paths: path_adm,
           strokeColor: color_adm,
           strokeOpacity: 0.9,
           strokeWeight: 2,
           fillColor: color_adm,
-          fillOpacity: 0.1
+          fillOpacity: 0.1,
+          indexID : id_batas
         });
-       polygonAdm.setMap(map);
+       polygonAdm.setMap(map);   
+
+       polygonAdm.addListener('click', showArrays);
+       infoWindow = new google.maps.InfoWindow;
+      
 }
+
+// Read Get MAP PRopertirs
+function showArrays(event) {
+        var contentString = '<b>Geometry Data Properties</b><br>' +
+            'Clicked location: <b> Lat :  ' + event.latLng.lat() + ', Long : ' + event.latLng.lng()+'</b>';
+        infoWindow.setContent(contentString);
+        infoWindow.setPosition(event.latLng);
+        infoWindow.open(map);
+}
+
 
 function add_poly(path){
     var polygon = new google.maps.Polygon({
