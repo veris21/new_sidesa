@@ -297,7 +297,7 @@ function add_poly_adm(path_adm, color_adm, id_batas){
 // Read Get MAP PRopertirs
 function showArrays(event) {
         var contentString = '<b>Geometry Data Properties</b><br>' +
-            'Clicked location: <b> Lat :  ' + event.latLng.lat() + ', Long : ' + event.latLng.lng()+'</b>';
+            'Clicked location: <br> Lat :  <b>' + event.latLng.lat() + '</b><br>Lng : <b>' + event.latLng.lng()+'</b>';
         infoWindow.setContent(contentString);
         infoWindow.setPosition(event.latLng);
         infoWindow.open(map);
