@@ -147,16 +147,16 @@
                     <div class="box-body">
                     <div class="form-group">
                             <label for="">Nama Pemilik Akun</label>
-                            <input type="text" name="fullname" class="form-control">
+                            <input type="text" name="fullname" class="form-control"  disabled>
                             </div>
                             <div class="form-group">
                             <label for="">Jabatan</label>
-                            <input type="text" name="keterangan_jabatan" class="form-control">
+                            <input type="text" name="keterangan_jabatan" class="form-control "  disabled>
                             </div>
                             <input type="hidden" name="id" class="form-control">
                             <hr>
                             <div class="well form-group">
-                            <label for="">Jabatan</label>
+                            <label for="">KODE OTP <i>(One Time Password)</i></label>
                             <input type="text" class="form-control  input-lg" name="otp_code">
                             </div>
                             <hr>
@@ -167,7 +167,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="direct_to_master_menu()">Verifikasi Data <i class="fa fa-check"></i> </button>
+                <button type="button" class="btn btn-primary" onclick="push_to_verif()">Verifikasi Data <i class="fa fa-check"></i> </button>
             </div>
         </div>
         </form>
@@ -340,7 +340,7 @@ function show_details(lt,lg) {
     $.ajax({
         url: '<?php echo base_url('api/get_details/pemilik/'); ?>'+lt+'/'+lg,
         success: function( data){
-            console.log(data);
+            // console.log(data);
             $('.img-details').attr('src', baseUrl+'assets/uploader/patok/'+data.foto_tanah); 
             $("#data_loading").hide();
             $("#data_details_view").show();
@@ -361,10 +361,11 @@ function aktifkan_otp(id){
     $.ajax({
         url : otpUrl,
         success : function (otp){
-           console.log(otp);
+        //    console.log(otp);
+           var obj = JSON.parse(otp);
            // Set the date we're counting down to
             var countDownDate = new Date();
-            countDownDate.setMinutes(countDownDate.getMinutes() + 3);
+            countDownDate.setMinutes(countDownDate.getMinutes() + 1);
             // Update the count down every 1 second
             var x = setInterval(function() {
             // Get todays date and time
@@ -372,27 +373,40 @@ function aktifkan_otp(id){
             // Find the distance between now and the count down date
             var distance = countDownDate - now;
             // Time calculations for days, hours, minutes and seconds
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
             // Display the result in the element with id="demo"
-            $("#interval_otp").html("<h5>Belum Mendapat Kan SMS Kode OTP ? ( <b><i> "+ minutes + "m " + seconds + "s </i></b> )</h5>" );
+            $("#interval_otp").html("<h5>Belum Mendapat Kan SMS Kode OTP ? ( Tunggu <b><i> " + seconds + " </i></b> detik lagi untuk kirim ulang Kode OTP )</h5>" );
             // If the count down is finished, write some text 
             if (distance < 0) {
                 clearInterval(x);
-                $("#interval_otp").html("<h5>Belum Mendapat Kan SMS Kode OTP ? <button type='button' onclick='"+aktifkan_otp(id)+"'>Kirim Ulang Kode OTP </button></h5>");
+                $("#interval_otp").html("<h5>Belum Mendapat Kan SMS Kode OTP ? <button type='button' class='btn btn-flat btn-sm btn-success' onclick='generater_otp("+id+")'> Kirim Ulang Kode OTP </button> </h5>");
             }
             }, 1000);
            $('#modal_otp').modal('show');
-           $('[name="id"]').val(otp.id);
-           $('[name="fullname"]').val(otp.fullname);
-           $('[name="keterangan_jabatan"]').val(otp.keterangan_jabatan);
-
+           $('[name="id"]').val(obj['id']);
+           $('[name="fullname"]').val(obj['fullname']);
+           $('[name="keterangan_jabatan"]').val(obj['keterangan_jabatan']);
         }
     });        
 }
 
+function generater_otp(id){
+    event.preventDefault();
+    var generateUrl = '<?php echo base_url(); ?>'+ 'otp/generate/' + id;
+    $.ajax({
+        url : generateUrl,
+        success : function (data){
+            swal('Selamat !', 'Berhasil Mengirim SMS OTP !', 'success');
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+        swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
+        }
+    });
+}
 
-function direct_to_master_menu(){
+function push_to_verif(){
+    event.preventDefault();
+    console.log('Clicked');
     var otpCheck = '<?php echo base_url("otp/check"); ?>';
     $.ajax({
         url : otpCheck,
@@ -400,7 +414,11 @@ function direct_to_master_menu(){
         dataType: "JSON",
         data: $('#verifikasi_otp').serialize(),
         success : function (params){
-            verifikasi_tengah_one();
+           console.log(params);
+           verifikasi_tengah_one();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+        swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
         }
     });
 }

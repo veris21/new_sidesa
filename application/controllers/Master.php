@@ -23,17 +23,29 @@ class Master extends CI_Controller{
     }
   }
 
-
+  public function generate_otp($id){
+    $otp = rand(111111,999999);
+    $update = array('otp' => $otp);
+    $check = $this->auth_model->_generate_otp($id, $update);
+    $hp = $this->session->userdata('hp');
+    $pesan = "Ini Adalah Kode OTP (One Time Password) anda adalah  ".$otp."  (SiDesa ID) -- kode ini hanya berlaku 1 (satu kali)";
+    sms_notifikasi($hp, $pesan);
+    if($check){
+      $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode(array('status'=>TRUE)));
+    }
+  }
 
   public function otp_check(){
     $id = strip_tags($this->input->post('id'));
-    $otp = strip_tags($this->input->post('kode_otp'));
+    $otp = strip_tags($this->input->post('otp_code'));
     $checkOtp = $this->master_model->_get_user_id($id)->row_array();
-    ($checkOtp['otp']==$otp) ? $this->output
-    ->set_content_type('application/json')
-    ->set_output(json_encode(array('status'=>TRUE))) : $this->output
-    ->set_content_type('application/json')
-    ->set_output(json_encode(array('status'=>FALSE))) ;
+    if($checkOtp['otp'] == $otp){
+      $this->output
+      ->set_content_type('application/json')
+      ->set_output(json_encode(array('status'=>TRUE, 'otp_server'=>$checkOtp['otp'], 'otp_kirim'=>$otp)));
+    }    
   }
 
 
