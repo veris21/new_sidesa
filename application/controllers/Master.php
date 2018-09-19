@@ -26,7 +26,14 @@ class Master extends CI_Controller{
 
 
   public function otp_check(){
-    
+    $id = strip_tags($this->input->post('id'));
+    $otp = strip_tags($this->input->post('kode_otp'));
+    $checkOtp = $this->master_model->_get_user_id($id)->row_array();
+    ($checkOtp['otp']==$otp) ? $this->output
+    ->set_content_type('application/json')
+    ->set_output(json_encode(array('status'=>TRUE))) : $this->output
+    ->set_content_type('application/json')
+    ->set_output(json_encode(array('status'=>FALSE))) ;
   }
 
 

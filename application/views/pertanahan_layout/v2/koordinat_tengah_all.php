@@ -9,7 +9,6 @@
 </ol>
 </section>
 <section class="content">
-
 <div class="box box-warning">
     <div class="box-header">
         <h3 class="box-title">
@@ -22,7 +21,6 @@
                 <div style="height: 580px;" id="map-canvas"></div>
             </div>
             <div class="col-md-4">
-
             <div class="box box-success" id="data_details" hidden>
                 <div class="box-header">
                     <h3 class="box-title">
@@ -51,7 +49,6 @@
                     <div class="icon">
                     <i class="fa fa-map"></i>
                     </div>
-                    <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
                 </div>
 
                 <div class="small-box bg-aqua">
@@ -62,7 +59,6 @@
                     <div class="icon">
                     <i class="fa fa-map"></i>
                     </div>
-                    <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
                 </div>
 
                  <div class="small-box bg-green">
@@ -73,11 +69,10 @@
                     <div class="icon">
                     <i class="fa fa-map"></i>
                     </div>
-                    <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
                 </div>
 <?php 
-$akses = $this->session->userdata('jabatan');
- if($akses=='ROOT' || $akses == 'PERTANAHAN' || $akses=='MASTER'){ ?>        
+    $akses = $this->session->userdata('jabatan');
+    if($akses=='ROOT' || $akses == 'PERTANAHAN' || $akses=='MASTER'){ ?>        
                 <div class="box box-warning">
 
                 <div class="box-header">
@@ -96,7 +91,7 @@ $akses = $this->session->userdata('jabatan');
                     <button class="btn btn-lg btn-flat btn-success btn-block" onclick="<?php echo ($this->session->userdata('jabatan')=='MASTER' ? 'verifikasi_tengah_one()' : 'aktifkan_otp('.$this->session->userdata('id').')'); ?>" >Verifikasi Titik<i class="fa fa-plus"></i></button>
                 </div>
                 </div>
-<?php } ?>
+    <?php } ?>
                 <!--  -->
                 </div>
                 <!--  -->
@@ -107,7 +102,6 @@ $akses = $this->session->userdata('jabatan');
 </div>
 
 
-<!-- -->
 <div class="box box-info">
     <?php 
         switch ($this->session->userdata('jabatan')) {
@@ -138,10 +132,56 @@ $akses = $this->session->userdata('jabatan');
 
 
 
+<div class="modal fade" id="modal_otp">
+    <div class="modal-dialog">
+        <?php echo form_open('', array('id'=>'verifikasi_otp')); ?>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Verifikasi Data </h4>
+            </div>
+            <div class="modal-body">
+                <p class="well">Untuk Dapat Membuka Data Total Verifikasi Pertanahan  anda harus memiliki akun dan mendapatkan Kode <b><i>One Time Password ( OTP ) </i></b> yang dikirimkan langsung ke Nomor <i>Handphone</i> anda yang terdaftar </p>
+                <hr>
+                <div class="box box-warning">
+                    <div class="box-body">
+                    <div class="form-group">
+                            <label for="">Nama Pemilik Akun</label>
+                            <input type="text" name="fullname" class="form-control">
+                            </div>
+                            <div class="form-group">
+                            <label for="">Jabatan</label>
+                            <input type="text" name="keterangan_jabatan" class="form-control">
+                            </div>
+                            <input type="hidden" name="id" class="form-control">
+                            <hr>
+                            <div class="well form-group">
+                            <label for="">Jabatan</label>
+                            <input type="text" class="form-control  input-lg" name="otp_code">
+                            </div>
+                            <hr>
+                            <span id="interval_otp"></span>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="direct_to_master_menu()">Verifikasi Data <i class="fa fa-check"></i> </button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY"></script>
 
 <script>
+var now = new Date().getTime();
+var countDown;
 var imgUrl = '<?php echo base_url('assets/uploader/patok/'); ?>';
 var map;
 var color;
@@ -156,8 +196,6 @@ map = new google.maps.Map(document.getElementById('map-canvas'), {
     zoom: 10,
     center: new google.maps.LatLng(-2.858830, 107.906900),
     mapTypeId: 'terrain',
-    // mapTypeControl: false,
-    // disableDefaultUI: true
 });
 
 $.ajax({
@@ -167,7 +205,6 @@ $.ajax({
         var dest = {};
         for (var key in data) {
             var id = data[key].id_data_link;  
-            // var latlng = new google.maps.LatLng(data[key].lat, data[key].lng);
             if (!groupedByData[id]) {
                 groupedByData[id] = [];
             }            
@@ -180,11 +217,8 @@ $.ajax({
             var latlng = new google.maps.LatLng(parseFloat(dataeach['lat']), parseFloat(dataeach['lng']));
             poly.push(latlng);
         });
-        // console.log(poly);
         path.push(poly);
        });
-    //    color = '#'+Math.random().toString(16).substr(-6);
-    //    opacity = 0.5;
        add_poly(path);
     }
 });
@@ -205,23 +239,6 @@ $.ajax({
                     data[i]['lat'],
                     data[i]['lng']
                 );
-                // title = data[i]['nik'];
-                
-                var contentString = '<div id="content">'+
-                '<p>KLIK</p>'+
-                // '<div id="siteNotice">'+
-                // 'No NIK. <b>'+ data[i]['nik'] +'</b>' +
-                // '</div>'+
-                // '<h5 id="firstHeading" class="firstHeading">'+ data[i]['status']+'</h5>'+
-                // '<div id="bodyContent">'+
-                // '<img class="img img-thumbnail" width="90" src="'+imgUrl+data[i]['dokumentasi']+ '" />'+
-                
-                // '<p> lat : '+ data[i]['lat'] +' lng: '+ data[i]['lng'] +' <br> Area : &plusmn; '+ data[i]['area'] +' m<sup>2</sup><br> Status Data : '+ data[i]['verified'] +'</p>'+           
-                // '</div>'+
-                '</div>';
-                // var infowindow = new google.maps.InfoWindow({
-                //     content: contentString
-                // });
                 var mapIcon;
                 var string = data[i]['tanah_id'];
                 var tipe = string.split('-');
@@ -235,21 +252,14 @@ $.ajax({
                         icon: mapIcon
                 });
                 marker.addListener('click', function() {
-                    // alert(data[i]['id']);
                     show_details(data[i]['lat'], data[i]['lng']);
-                    
-                        // infowindow.open(map, marker);
-                        // // console.log(contentString);
-                        // // alert('Marker Klik' + data[i]['keterangan']);
                 });
                 
                 markers.push(marker);                
             }       
             var markerCluster = new MarkerClusterer(map, markers,
                 {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
-            );
-            // var markerCluster = new MarkerClusterer(map, markers);
-    
+            );    
         }
     });
             // LOAD DATA BATAS ADMINISTRASI DESA
@@ -345,17 +355,42 @@ function close_details(){
 }
 
 function aktifkan_otp(id){
-    // console.log(id);
     event.preventDefault();
+    $('[name="user_id"]').val('');
     var otpUrl = '<?php echo base_url(); ?>'+ 'user/get/otp/' + id;
     $.ajax({
         url : otpUrl,
         success : function (otp){
-            // console.log(otp);
-            // verifikasi_tengah_one();
+           console.log(otp);
+           // Set the date we're counting down to
+            var countDownDate = new Date();
+            countDownDate.setMinutes(countDownDate.getMinutes() + 3);
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+            // Get todays date and time
+            var now = new Date().getTime();
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+            // Time calculations for days, hours, minutes and seconds
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // Display the result in the element with id="demo"
+            $("#interval_otp").html("<h5>Belum Mendapat Kan SMS Kode OTP ? ( <b><i> "+ minutes + "m " + seconds + "s </i></b> )</h5>" );
+            // If the count down is finished, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                $("#interval_otp").html("<h5>Belum Mendapat Kan SMS Kode OTP ? <button type='button' onclick='"+aktifkan_otp(id)+"'>Kirim Ulang Kode OTP </button></h5>");
+            }
+            }, 1000);
+           $('#modal_otp').modal('show');
+           $('[name="id"]').val(otp.id);
+           $('[name="fullname"]').val(otp.fullname);
+           $('[name="keterangan_jabatan"]').val(otp.keterangan_jabatan);
+
         }
     });        
 }
+
 
 function direct_to_master_menu(){
     var otpCheck = '<?php echo base_url("otp/check"); ?>';
