@@ -69,7 +69,7 @@
         <tr>
             <td valign="top" align="center" width="30%" >
             <b>PATOK <?php echo $n;?></b><br>         
-            <img style="padding:2px;" width="150" src="<?php echo base_url().PATOK.$patok->link_dokumentasi;?>" alt="FOTO PATOK">
+            <img style="padding:2px;" width="340" src="<?php echo base_url().PATOK.$patok->link_dokumentasi;?>" alt="FOTO PATOK">
             </td>
             <td width="50%" colspan="2">            
                 <dd>  
