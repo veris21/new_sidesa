@@ -67,11 +67,11 @@
         <?php $n=1;
         foreach ($patok->result() as $patok) { ?>
         <tr>
-            <td valign="top" align="center" width="30%" >
+            <td valign="top" align="center" width="50%" >
             <b>PATOK <?php echo $n;?></b><br>         
             <img style="padding:2px;" width="240" src="<?php echo base_url().PATOK.$patok->link_dokumentasi;?>" alt="FOTO PATOK">
             </td>
-            <td width="50%" colspan="2">            
+            <td width="30%" colspan="2">            
                 <dd>  
                 Latitude : <?php echo $patok->lat; ?> <br>
                 Longitude : <?php echo $patok->lng; ?> 
