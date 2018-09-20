@@ -88,7 +88,8 @@
                 </div>
 
                 <div class="box-footer">
-                    <button class="btn btn-lg btn-flat btn-success btn-block" onclick="<?php echo ($this->session->userdata('jabatan')=='MASTER' ? 'verifikasi_tengah_one()' : 'aktifkan_otp('.$this->session->userdata('id').')'); ?>" >Verifikasi Titik<i class="fa fa-plus"></i></button>
+                    <button class="btn btn-lg btn-flat btn-success btn-block" onclick="<?php echo ($this->session->userdata('jabatan')=='MASTER' || $this->session->userdata('jabatan')=='ROOT' ? 'verifikasi_tengah_one()' : 'aktifkan_otp('.$this->session->userdata('id').')'); 
+                    ?>" >Verifikasi Titik<i class="fa fa-plus"></i></button>
                 </div>
                 </div>
     <?php } ?>
