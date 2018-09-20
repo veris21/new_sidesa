@@ -66,7 +66,7 @@
                 <center>
 								<h5>SURAT PENGANTAR KEPALA DUSUN</h5>
 <?php if(file_exists(SURATKADUS.$data['surat_kadus'])){ ?>
-                <img style="padding:4px;" width="340px"  src="<?php echo base_url().SURATKADUS.$data['surat_kadus']; ?>" alt="SURAT KADUS">
+                <img style="padding:4px;" width="640px"  src="<?php echo base_url().SURATKADUS.$data['surat_kadus']; ?>" alt="SURAT KADUS">
 <?php }else{ ?>
 <h5><i>Data Surat Pengantar Kosong</i></h5>
 <?php }?>
