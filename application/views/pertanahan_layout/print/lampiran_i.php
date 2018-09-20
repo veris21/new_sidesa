@@ -76,12 +76,12 @@
 				<tr>            
             <td valign="middle" colspan="4">
                 <center>
-								<h5>BUKTI PEMBAYARAN PBB</h5>
-<?php if(file_exists(PBB.$data['pbb'])){ ?>
-                <img style="padding:4px;" width="340px"  src="<?php echo base_url().PBB.$data['pbb']; ?>" alt="PEMBAYARAN PBB SCAN">
-<?php }else{ ?>
-<h5><i>Data Bukti Bayar Pajak Bumi dan Bangunan Kosong</i></h5>
-<?php }?>
+				<h5>BUKTI PEMBAYARAN PBB</h5>
+                <?php if(file_exists(PBB.$data['pbb'])){ ?>
+                                <img style="padding:4px;" width="340px"  src="<?php echo base_url().PBB.$data['pbb']; ?>" alt="PEMBAYARAN PBB SCAN">
+                <?php }else{ ?>
+                <h5><i>Data Bukti Bayar Pajak Bumi dan Bangunan Kosong</i></h5>
+                <?php }?>
                </center>
             </td>
         </tr>
