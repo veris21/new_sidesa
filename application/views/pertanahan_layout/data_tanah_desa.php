@@ -229,7 +229,7 @@ infowindow = new google.maps.InfoWindow({
 var baseIcon = '<?php echo base_url();?>assets/administration.png';
 function initialize() {
   map = new google.maps.Map(document.getElementById('map-desa'), {
-    zoom: 10,
+    zoom: 14,
     center: { lat: -2.974813, lng: 108.159151 },
     mapTypeId: 'terrain',
     // mapTypeControl: false,
