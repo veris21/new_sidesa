@@ -260,6 +260,28 @@ function edit_api(id) {
   });
 }
 
+
+function set_count_down(id){
+            var countDownDate = new Date();
+            countDownDate.setMinutes(countDownDate.getMinutes() + 1);
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+            // Get todays date and time
+            var now = new Date().getTime();
+            // Find the distance between now and the count down date
+            var waktu = countDownDate - now;
+            // Time calculations for days, hours, minutes and seconds
+            var seconds = Math.floor((waktu % (1000 * 60)) / 1000);
+            // Display the result in the element with id="demo"
+            $("#interval_otp").html("<h5>Belum Mendapat Kan SMS Kode OTP ? ( Tunggu <b><i> " + seconds + " </i></b> detik lagi untuk kirim ulang Kode OTP )</h5>" );
+            // If the count down is finished, write some text 
+            if (waktu < 0) {
+                clearInterval(x);
+                $("#interval_otp").html("<h5>Belum Mendapat Kan SMS Kode OTP ? <button type='button' class='btn btn-flat btn-sm btn-success' onclick='generater_otp("+id+")'> Kirim Ulang Kode OTP </button> </h5>");
+            }
+            }, 1000);
+}
+
 function save_data_api() {
   switch (api_method) {
     case 'add_api':

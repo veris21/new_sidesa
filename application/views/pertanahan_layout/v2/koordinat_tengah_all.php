@@ -364,24 +364,7 @@ function aktifkan_otp(id){
         //    console.log(otp);
            var obj = JSON.parse(otp);
            // Set the date we're counting down to
-            var countDownDate = new Date();
-            countDownDate.setMinutes(countDownDate.getMinutes() + 1);
-            // Update the count down every 1 second
-            var x = setInterval(function() {
-            // Get todays date and time
-            var now = new Date().getTime();
-            // Find the distance between now and the count down date
-            var distance = countDownDate - now;
-            // Time calculations for days, hours, minutes and seconds
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            // Display the result in the element with id="demo"
-            $("#interval_otp").html("<h5>Belum Mendapat Kan SMS Kode OTP ? ( Tunggu <b><i> " + seconds + " </i></b> detik lagi untuk kirim ulang Kode OTP )</h5>" );
-            // If the count down is finished, write some text 
-            if (distance < 0) {
-                clearInterval(x);
-                $("#interval_otp").html("<h5>Belum Mendapat Kan SMS Kode OTP ? <button type='button' class='btn btn-flat btn-sm btn-success' onclick='generater_otp("+id+")'> Kirim Ulang Kode OTP </button> </h5>");
-            }
-            }, 1000);
+           set_count_down(id);
            $('#modal_otp').modal('show');
            $('[name="id"]').val(obj['id']);
            $('[name="fullname"]').val(obj['fullname']);
@@ -396,7 +379,9 @@ function generater_otp(id){
     $.ajax({
         url : generateUrl,
         success : function (data){
+            set_count_down(id);
             swal('Selamat !', 'Berhasil Mengirim SMS OTP !', 'success');
+            
         },
         error: function (jqXHR, textStatus, errorThrown) {
         swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
@@ -414,7 +399,6 @@ function push_to_verif(){
         dataType: "JSON",
         data: $('#verifikasi_otp').serialize(),
         success : function (params){
-           console.log(params);
            verifikasi_tengah_one();
         },
         error: function (jqXHR, textStatus, errorThrown) {
