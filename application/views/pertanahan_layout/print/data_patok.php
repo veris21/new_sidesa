@@ -54,7 +54,7 @@
         <tr>
             <td colspan="4">
                 <center>
-                    <img width="360" src="<?php echo base_url().PATOK.$titik_tengah['foto_tanah'];?>" alt="FOTO SITUASI TANAH">
+                    <img width="420" src="<?php echo base_url().PATOK.$titik_tengah['foto_tanah'];?>" alt="FOTO SITUASI TANAH">
                 </center>
             </td>
         </tr>
@@ -69,9 +69,10 @@
         <tr>
             <td valign="top" align="center" width="50%" >
             <b>PATOK <?php echo $n;?></b><br>         
-            <img style="padding:2px;" width="320" src="<?php echo base_url().PATOK.$patok->link_dokumentasi;?>" alt="FOTO PATOK">
+            <img style="padding:2px;" width="280" src="<?php echo base_url().PATOK.$patok->link_dokumentasi;?>" alt="FOTO PATOK">
             </td>
-            <td width="30%" colspan="2">            
+            <td width="30%" colspan="2"> 
+                <dt>Koordinat Patok</dt>           
                 <dd>  
                 Latitude : <?php echo $patok->lat; ?> <br>
                 Longitude : <?php echo $patok->lng; ?> 
