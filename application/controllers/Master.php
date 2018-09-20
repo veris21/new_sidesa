@@ -15,7 +15,7 @@ class Master extends CI_Controller{
     $update = array('otp' => $otp);
     $check = $this->auth_model->_generate_otp($id, $update);
     $hp = $this->session->userdata('hp');
-    $pesan = "Ini Adalah Kode OTP (One Time Password) anda adalah  ".$otp."  (SiDesa ID) -- kode ini hanya berlaku 1 (satu kali)";
+    $pesan = $otp." adalah Kode OTP (One Time Password) anda. Jgn berikan kode Ini pada Siapapun /Kode Hanya Aktif Selama 5 Mnt=(SiDesaID)=";
     sms_notifikasi($hp, $pesan);
     if($check){
       $data = $this->master_model->_get_user_id($id)->row_array();
@@ -28,7 +28,7 @@ class Master extends CI_Controller{
     $update = array('otp' => $otp);
     $check = $this->auth_model->_generate_otp($id, $update);
     $hp = $this->session->userdata('hp');
-    $pesan = "Ini Adalah Kode OTP (One Time Password) anda adalah  ".$otp."  (SiDesa ID) -- kode ini hanya berlaku 1 (satu kali)";
+    $pesan = $otp." adalah Kode OTP (One Time Password) anda. Jgn berikan kode Ini pada Siapapun /Kode Hanya Aktif Selama 5 Mnt=(SiDesaID)=";
     sms_notifikasi($hp, $pesan);
     if($check){
       $this->output
