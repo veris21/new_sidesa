@@ -112,7 +112,7 @@ class Office extends CI_Controller{
     $this->load->library("Phpmailer_library","email");
     $this->phpmailer_library->load();
     $subject = 'Mencoba Mengirim Email';
-    $message = '<h1>Ini Adalah Email Percobaan</h1>';
+    $message = '<h1>Ini Adalah Email Percobaan dari '.base_url().'</h1>';
     $body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
