@@ -135,7 +135,7 @@ class Office extends CI_Controller{
     //$body = $this->email->full_html($subject, $message);
 
     $result = $this->email
-        ->from('juniard.studio@gmail.com')
+        ->from('juniart.studio@gmail.com')
         ->reply_to('veris.juniardi@gmail.com')    // Optional, an account where a human being reads.
         ->to('gantung.makmursejahtera@gmail.com')
         ->subject($subject)
