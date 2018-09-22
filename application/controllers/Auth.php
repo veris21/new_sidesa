@@ -8,6 +8,7 @@ class Auth extends CI_Controller{
   public function __construct()
   {
     parent::__construct();
+    $this->load->library('email');
     $this->load->helper('sms_helper');
     $this->load->model('auth_model');
   }

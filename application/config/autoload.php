@@ -69,7 +69,8 @@ $autoload['libraries'] = array(
   'ciqrcode',
   'pHPExcel',
   'google_url_api',
-  'pdfGenerator'
+  'pdfGenerator',
+  'MY_Email'
 );
 
 /*
@@ -109,7 +110,8 @@ $autoload['helper'] = array(
   'login_helper',
   'sms_helper',
   'waktu_helper',
-  'rand_helper'
+  'rand_helper',
+  'bot_helper'
 );
 
 /*
