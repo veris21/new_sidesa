@@ -359,6 +359,7 @@ function add_poly(path){
 
 function show_details(lt,lg) {
     event.preventDefault();
+    $('#legenda_peta').hide();
     $('#data_view').text(lt +','+lg);
     var imgDetails = 'no-img.jpg';
     $('.img-details').attr('src', baseUrl+'assets/'+imgDetails); 
