@@ -109,6 +109,7 @@ class Office extends CI_Controller{
 
   public function sendEmailTest()
   {
+    echo (extension_loaded('openssl')?'SSL loaded':'SSL not loaded')."\n";
     $this->load->library("Phpmailer_library","email");
     $this->phpmailer_library->load();
     $subject = 'Mencoba Mengirim Email';
