@@ -3,8 +3,8 @@
 $config['useragent']        = 'PHPMailer';              // Mail engine switcher: 'CodeIgniter' or 'PHPMailer'
 $config['protocol']         = 'smtp';                   // 'mail', 'sendmail', or 'smtp'
 $config['mailpath']         = '/usr/sbin/sendmail';
-// $config['smtp_host']        = 'smtp.gmail.com';
-$config['smtp_host']        = 'ssl://74.125.24.108';
+$config['smtp_host']        = 'smtp.gmail.com';
+// $config['smtp_host']        = 'ssl://74.125.24.108';
 $config['smtp_auth']        = true;                     // Whether to use SMTP authentication, boolean TRUE/FALSE. If this option is omited or if it is NULL, then SMTP authentication is used when both $config['smtp_user'] and $config['smtp_pass'] are non-empty strings.
 $config['smtp_user']        = 'id.sidesa@gmail.com';
 $config['smtp_pass']        = 'sidesagantungproject';
