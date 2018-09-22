@@ -70,7 +70,7 @@ $autoload['libraries'] = array(
   'pHPExcel',
   'google_url_api',
   'pdfGenerator',
-  'MY_Email'
+  'Phpmailer_library'
 );
 
 /*
