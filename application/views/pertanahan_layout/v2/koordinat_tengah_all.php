@@ -21,6 +21,26 @@
                 <div style="height: 580px;" id="map-canvas"></div>
             </div>
             <div class="col-md-4">
+            <!-- Data Detail Hidden / Show On Click Marker -->
+            <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group">
+                <button type="button" onclick="btnViewCount()" class="btn btn-md btn-block btn-primary"> Rangkuman Data </button>
+                </div>
+                <div class="btn-group" role="group">
+                <button type="button" onclick="btnLegenda()" class="btn btn-md btn-block btn-warning"> Legenda Peta </button>
+                </div>
+            </div>
+            <hr>
+            <div class="box box-success" id="legenda_peta" hidden>
+                <div class="box-header">
+                    <h3 class="box-title">
+                    Map Properties
+                    </h3>
+                </div>
+                <div class="box-body" id="legenda">
+                    
+                </div>
+            </div>
             <div class="box box-success" id="data_details" hidden>
                 <div class="box-header">
                     <h3 class="box-title">
@@ -40,7 +60,10 @@
                     <button onclick="close_details()" type="button" class="btn btn-flat btn-lg btn-block btn-warning" > Close </button>
                 </div>
             </div>
+            <!--  -->
+            <!-- Data Counter Default Seiing -->
             <div id="data_count">
+                <!--  -->
                 <div class="small-box bg-maroon">
                     <div class="inner">
                     <h3><?php echo count($dataAll->result_array());?></h3>
@@ -50,7 +73,7 @@
                     <i class="fa fa-map"></i>
                     </div>
                 </div>
-
+                <!--  -->
                 <div class="small-box bg-aqua">
                     <div class="inner">
                     <h3><?php echo count($data->result_array());?></h3>
@@ -60,7 +83,7 @@
                     <i class="fa fa-map"></i>
                     </div>
                 </div>
-
+                <!--  -->
                  <div class="small-box bg-green">
                     <div class="inner">
                     <h3><?php echo count($dataV->result_array());?></h3>
@@ -70,37 +93,36 @@
                     <i class="fa fa-map"></i>
                     </div>
                 </div>
-<?php 
-    $akses = $this->session->userdata('jabatan');
-    if($akses=='ROOT' || $akses == 'PERTANAHAN' || $akses=='MASTER'){ ?>        
-                <div class="box box-warning">
-
-                <div class="box-header">
-                    <h2 class="box-title">
-                        Details Visuals
-                    </h2>
-                </div>
-
-                <div class="box-body">
-                    <p class="well">
-                        Untuk Melihat Detail Data Pertanahan dan Melakukan Input serta Perubahan anda harus memiliki akses Admin Pertanahan Atau Otentifikasi Login (OTP) terdaftar disistem.
-                    </p>
-                </div>
-
-                <div class="box-footer">
-                    <button class="btn btn-lg btn-flat btn-success btn-block" onclick="<?php echo ($this->session->userdata('jabatan')=='MASTER' || $this->session->userdata('jabatan')=='ROOT' ? 'verifikasi_tengah_one()' : 'aktifkan_otp('.$this->session->userdata('id').')'); 
-                    ?>" >Verifikasi Titik<i class="fa fa-plus"></i></button>
-                </div>
-                </div>
-    <?php } ?>
                 <!--  -->
-                </div>
-                <!--  -->
-            </div>
-        </div>
-        
-    </div>
-</div>
+            <?php 
+                $akses = $this->session->userdata('jabatan');
+                if($akses=='ROOT' || $akses == 'PERTANAHAN' || $akses=='MASTER'){ ?>                           
+                            <div class="box box-warning"><!-- START BOX Verifikasi PROMPT -->
+
+                            <div class="box-header">
+                                <h2 class="box-title">
+                                    Details Visuals
+                                </h2>
+                            </div>
+
+                            <div class="box-body">
+                                <p class="well">
+                                    Untuk Melihat Detail Data Pertanahan dan Melakukan Input serta Perubahan anda harus memiliki akses Admin Pertanahan Atau Otentifikasi Login (OTP) terdaftar disistem.
+                                </p>
+                            </div>
+
+                            <div class="box-footer">
+                                <button class="btn btn-lg btn-flat btn-success btn-block" onclick="<?php echo ($this->session->userdata('jabatan')=='MASTER' || $this->session->userdata('jabatan')=='ROOT' ? 'verifikasi_tengah_one()' : 'aktifkan_otp('.$this->session->userdata('id').')'); 
+                                ?>" >Verifikasi Titik<i class="fa fa-plus"></i></button>
+                            </div>
+
+                            </div><!-- Ending BOX Verifikasi PROMPT -->
+                <?php } ?>
+                            </div> <!-- Close # DATA Counter -->
+                        </div> <!--  Clode MD 4-->
+                    </div> <!-- CLOSE ROW -->
+                </div> <!-- CLOSE BOx BODY -->
+            </div> <!-- CLOSE BOx Main -->
 
 
 <div class="box box-info">
@@ -129,6 +151,8 @@
     }
     ?>    
 </div>
+
+
 </section>
 
 
@@ -263,13 +287,14 @@ $.ajax({
             );    
         }
     });
-            // LOAD DATA BATAS ADMINISTRASI DESA
+    // LOAD DATA BATAS ADMINISTRASI DESA
     $.ajax({
         'url' : '<?php echo base_url('api/adm_all/polygon/json');?>',
         'success': function (data){
+            var legenda_list = '<ul class="list-group">';
             $.each(data, function (i, x) {
                 var id_batas = x.id;
-                // console.log(x.color);
+                legenda_list += '<li class="list-group-item" >'+(i+1)+'.  <button class="btn btn-flat btn-xs" style="color:#fff;background-color:'+x.color+'" > '+x.color+'</button>  '+ x.kode_rtrw + ' <button class="btn btn-xs btn-primary pull-right"><i class="fa fa-map-o"></i></button></li>';
                 var color_adm = x.color;
                 $.ajax({
                     'url' : baseUrl+'api/polygon/one/'+id_batas,
@@ -283,6 +308,10 @@ $.ajax({
                     }
                 });
             });
+            legenda_list += '</ul>';
+            $("#legenda").html(legenda_list); 
+            
+           
         }
     });
 
@@ -305,7 +334,7 @@ function add_poly_adm(path_adm, color_adm, id_batas){
       
 }
 
-// Read Get MAP PRopertirs
+// Read Get MAP Properties
 function showArrays(event) {
         var contentString = '<b>Geometry Data Properties</b><br>' +
             'Clicked location: <br> Lat :  <b>' + event.latLng.lat() + '</b><br>Lng : <b>' + event.latLng.lng()+'</b>';
@@ -390,8 +419,19 @@ function generater_otp(id){
     });
 }
 
+function btnViewCount(){
+    $('#legenda_peta').hide();
+    $("#data_details").hide();
+    $("#data_count").show();
+}
+
+function btnLegenda(){
+    $("#data_count").hide();
+    $("#data_details").hide();
+    $('#legenda_peta').show();
+}
+
 function push_to_verif(){
-    event.preventDefault();
     console.log('Clicked');
     var otpCheck = '<?php echo base_url("otp/check"); ?>';
     $.ajax({
