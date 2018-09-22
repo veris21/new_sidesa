@@ -203,7 +203,6 @@
 
 <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY"></script>
-
 <script>
 var now = new Date().getTime();
 var countDown;
@@ -291,7 +290,7 @@ $.ajax({
     $.ajax({
         'url' : '<?php echo base_url('api/adm_all/polygon/json');?>',
         'success': function (data){
-            var legenda_list = '<ul class="list-group">';
+            var legenda_list = '<ul id="legend-lage" class="list-group">';
             $.each(data, function (i, x) {
                 var id_batas = x.id;
                 legenda_list += '<li class="list-group-item" >'+(i+1)+'.  <button class="btn btn-flat btn-xs" style="color:#fff;background-color:'+x.color+'" > '+x.color+'</button>  '+ x.kode_rtrw + ' <button class="btn btn-xs btn-primary pull-right"><i class="fa fa-map-o"></i></button></li>';
@@ -448,6 +447,8 @@ function push_to_verif(){
         }
     });
 }
+
+// $('#paginating').paginathing();
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
