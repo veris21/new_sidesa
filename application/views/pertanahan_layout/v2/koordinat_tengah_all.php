@@ -356,7 +356,7 @@ function add_poly(path){
        polygon.setMap(map);
 }
 
-markerBatas(latlong){
+function markerBatas(latlong){
     var markerBTS = new google.maps.Marker({
           position: latlong,
     });
