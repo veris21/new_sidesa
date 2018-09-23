@@ -259,14 +259,14 @@ function initDraw() {
             drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
           },
         //   markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
-          circleOptions: {
-            fillColor: '#ffff00',
-            fillOpacity: 1,
-            strokeWeight: 5,
-            clickable: true,
-            editable: true,
-            zIndex: 1
-          }
+        //   circleOptions: {
+        //     fillColor: '#ffff00',
+        //     fillOpacity: 1,
+        //     strokeWeight: 5,
+        //     clickable: true,
+        //     editable: true,
+        //     zIndex: 1
+        //   }
         });
         google.maps.event.addListener(drawingManager, 'overlaycomplete', function(polygon) {
             var coordinatesArray = polygon.overlay.getPath().getArray();
