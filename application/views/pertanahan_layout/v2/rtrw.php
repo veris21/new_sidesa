@@ -256,9 +256,9 @@ function initDraw() {
           drawingControl: true,
           drawingControlOptions: {
             position: google.maps.ControlPosition.TOP_CENTER,
-            drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
+            drawingModes: ['marker', 'polygon', 'polyline']
           },
-        //   markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
+          markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
         //   circleOptions: {
         //     fillColor: '#ffff00',
         //     fillOpacity: 1,
@@ -270,6 +270,12 @@ function initDraw() {
         });
         google.maps.event.addListener(drawingManager, 'overlaycomplete', function(polygon) {
             var coordinatesArray = polygon.overlay.getPath().getArray();
+            var list_koor = '<li>';
+            $.each(coordinatesArray, function (i, data) {
+                list_koor += i;
+            });
+            list_koor += '</li>';
+            $('#list-koordinat').html(list_koor);
             console.log(coordinatesArray);
         });
     drawingManager.setMap(mapDraw);
