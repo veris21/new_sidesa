@@ -60,7 +60,7 @@
                     <a target="__blank" href='https://www.google.com/maps/search/?api=1&query="
                     <?php 
                     echo $titik->lat.",".$titik->lng;
-                    ?>' class="btn btn-sm btn-flat btn-warning"><i class="fa fa-eye"></i></a>
+                    ?>' class="btn btn-sm btn-flat btn-warning pull-right"><i class="fa fa-eye"></i></a>
                     <?php
                     echo " </ol><hr> ";
                     $no++;
