@@ -270,11 +270,10 @@ function initDraw() {
         });
         google.maps.event.addListener(drawingManager, 'overlaycomplete', function(polygon) {
             var coordinatesArray = polygon.overlay.getPath().getArray();
-            var list_koor = '<li>';
+            var list_koor;
             $.each(coordinatesArray, function (i, data) {
-                list_koor += data.toString();
+                list_koor += '<li>'+data.toString() + '</li>';
             });
-            list_koor += '</li>';
             $('#list-koordinat').html(list_koor);
             console.log(coordinatesArray);
         });
