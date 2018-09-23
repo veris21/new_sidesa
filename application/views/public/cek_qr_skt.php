@@ -56,9 +56,12 @@
                     $no = 1;
                     foreach($patok->result() as $titik){
                     echo "<ol>".$no." Lat : ".$titik->lat." Lng : ".$titik->lng;
-                    echo " <a target='__blank' href='https://www.google.com/maps/search/?api=1&query='";
-                    echo $titik->lat.",".$titik->lng."'";
-                    echo " class='btn btn-sm btn-flat btn-warning'><i class='fa fa-eye'></i></a>";
+                    ?>
+                    <a target="__blank" href='https://www.google.com/maps/search/?api=1&query="
+                    <?php 
+                    echo $titik->lat.",".$titik->lng;
+                    ?>' class="btn btn-sm btn-flat btn-warning"><i class="fa fa-eye"></i></a>
+                    <?php
                     echo " </ol><hr> ";
                     $no++;
                     }
