@@ -113,6 +113,7 @@
                 </div>
                 <div class="box-body">
                   <p>Untuk Menggambar Layer Data Silakan Lakukan Klik Koordinat Terpilih pada Gambar/Layout Peta, dan Sesuaikan Data yang dihasilkan di generator LatLong dibawah dengan Data Verifikasi yang diinginkan.</p>
+                  <ul id="list-koordinat"></ul>
                 </div>
               </div>
 
@@ -257,12 +258,12 @@ function initDraw() {
             position: google.maps.ControlPosition.TOP_CENTER,
             drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
           },
-          markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
+        //   markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
           circleOptions: {
             fillColor: '#ffff00',
             fillOpacity: 1,
             strokeWeight: 5,
-            clickable: false,
+            clickable: true,
             editable: true,
             zIndex: 1
           }
