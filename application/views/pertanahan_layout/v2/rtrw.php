@@ -99,7 +99,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">Mode Drawing Maps</h4>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -112,7 +112,7 @@
                   <h5 class="box-title"> Gambar Patok</h5>
                 </div>
                 <div class="box-body">
-                  <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+                  <p>Untuk Menggambar Layer Data Silakan Lakukan Klik Koordinat Terpilih pada Gambar/Layout Peta, dan Sesuaikan Data yang dihasilkan di generator LatLong dibawah dengan Data Verifikasi yang diinginkan.</p>
                 </div>
               </div>
 
