@@ -57,7 +57,7 @@
                     foreach($patok->result() as $titik){
                     echo "<ol>".$no." Lat : ".$titik->lat." Lng : ".$titik->lng;
                     ?>
-                    <a target="__blank" href='https://www.google.com/maps/search/?api=1&query="
+                    <a target="__blank" href='https://www.google.com/maps/search/?api=1&query=
                     <?php 
                     echo $titik->lat.",".$titik->lng;
                     ?>' class="btn btn-sm btn-flat btn-warning pull-right"><i class="fa fa-eye"></i></a>
