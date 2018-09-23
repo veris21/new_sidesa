@@ -75,8 +75,7 @@
                     <div id="googleMap" style="width:100%;height:800px;"></div>
                 </div> -->
                 <div class="box-footer">
-                <!-- <button class="btn btn-primary" onClick="tunjukkanPeta(<?php echo $koordinat['lat'].','.$koordinat['lng'] ?>)">Tampilkan Data Peta dan Lokasi</button> -->
-                <a target="__blank" href="https://www.google.com/maps/search/?api=1&query=<?php echo $koordinat['lat'].','.$koordinat['lng']; ?>" class="btn btn-primary">Tampilkan Data Peta dan Lokasi</a>
+                <a target="__blank" href="https://www.google.com/maps/search/?api=1&query=<?php echo $koordinat['lat'].','.$koordinat['lng']; ?>" class="btn btn-default btn-block">Tampilkan Lokasi Pada Peta</a>
                 </div>
             </div>
         </div>
