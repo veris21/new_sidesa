@@ -272,10 +272,10 @@ function initDraw() {
             var coordinatesArray = polygon.overlay.getPath().getArray();
             var list_koor = '<li>';
             $.each(coordinatesArray, function (i, data) {
-                list_koor += i;
+                list_koor += data;
             });
             list_koor += '</li>';
-            $('#list-koordinat').html(list_koor);
+            $('#list-koordinat').html(list_koor.toString());
             console.log(coordinatesArray);
         });
     drawingManager.setMap(mapDraw);
