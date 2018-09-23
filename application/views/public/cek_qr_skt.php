@@ -20,7 +20,7 @@
                     <li><?php echo $data['nama'];?></li>
                     <br>
                     <b>N I K </b>
-                    <li><?php echo $data['no_nik'];?></li>
+                    <li><?php echo substr_replace($data['no_nik'],'xxxxxx', -6 );?></li>
                     <br>
                     <b>Alamat Pemilik </b>
                     <li><?php echo $data['alamat'];?></li>
