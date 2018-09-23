@@ -268,6 +268,10 @@ function initDraw() {
             zIndex: 1
           }
         });
+        google.maps.event.addListener(drawingManager, 'overlaycomplete', function(polygon) {
+            var coordinatesArray = polygon.overlay.getPath().getArray();
+            console.log(coordinatesArray);
+        });
     drawingManager.setMap(mapDraw);
 }
 
