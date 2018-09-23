@@ -213,7 +213,6 @@
 </div>
 
 
-
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry"></script>
 <script>
 // var infowindow = null;
@@ -336,9 +335,6 @@ function save_rtrw(){
     }
   });
 }
-
-
-
 
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
