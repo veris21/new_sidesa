@@ -9,8 +9,6 @@
   </ol>
 </section>
 <section class="content">
-
-
 <div class="row">
     <div class="col-md-7">
     <div class="box box-warning">
@@ -66,6 +64,9 @@
             <div class="box-body">
             <div style="height:480px;" id="map-rtrw"></div>
             </div>
+            <div class="box-footer">
+            <button type="button" onclick="buka_mode_gambar()" class="btn btn-warning btn-flat push-right">Mode Gambar Titik <i class="fa fa-map-o"></i></button>
+            </div> 
         </div>
     </div>
     <div class="col-md-5">
@@ -91,7 +92,46 @@
 </section>
 
 
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry"></script>
+
+<!-- ============================= -->
+<div class="modal fade" id="draw-map-id">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-md-8">
+              <div style="height:480px;" id="map-draw"></div>
+            </div>
+            <div class="col-md-4">
+              <div class="box">
+                <div class="box-header">
+                  <h5 class="box-title"> Gambar Patok</h5>
+                </div>
+                <div class="box-body">
+                  <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson aesthetic. Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+                </div>
+              </div>
+
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============================= --> 
+
+
+
+
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry,drawing"></script>
 <script>
 var map;
 var table;
@@ -197,5 +237,41 @@ function save_koordinat_rtrw(){
         }
     });
 }
+
+
+function buka_mode_gambar(){
+  event.preventDefault();
+  initDraw();
+  $('#draw-map-id').modal('show');
+}
+
+function initDraw() {
+  var mapDraw = new google.maps.Map(document.getElementById('map-draw'), {
+      center: { lat: -2.974813, lng: 108.159151 },
+      zoom: 10
+  });
+  var drawingManager = new google.maps.drawing.DrawingManager({
+          drawingMode: google.maps.drawing.OverlayType.MARKER,
+          drawingControl: true,
+          drawingControlOptions: {
+            position: google.maps.ControlPosition.TOP_CENTER,
+            drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
+          },
+          markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
+          circleOptions: {
+            fillColor: '#ffff00',
+            fillOpacity: 1,
+            strokeWeight: 5,
+            clickable: false,
+            editable: true,
+            zIndex: 1
+          }
+        });
+    drawingManager.setMap(mapDraw);
+}
+
+
+
+
 google.maps.event.addDomListener(window, 'load', initialize);
 </script>
