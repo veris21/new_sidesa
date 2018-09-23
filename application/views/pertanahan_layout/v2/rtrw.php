@@ -252,21 +252,13 @@ function initDraw() {
       zoom: 10
   });
   var drawingManager = new google.maps.drawing.DrawingManager({
-          drawingMode: google.maps.drawing.OverlayType.MARKER,
+          drawingMode: google.maps.drawing.OverlayType.POLYGON,
           drawingControl: true,
           drawingControlOptions: {
             position: google.maps.ControlPosition.TOP_CENTER,
-            drawingModes: ['marker', 'polygon', 'polyline']
+            drawingModes: [ 'polygon', 'marker','polyline']
           },
           markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
-        //   circleOptions: {
-        //     fillColor: '#ffff00',
-        //     fillOpacity: 1,
-        //     strokeWeight: 5,
-        //     clickable: true,
-        //     editable: true,
-        //     zIndex: 1
-        //   }
         });
         google.maps.event.addListener(drawingManager, 'overlaycomplete', function(polygon) {
             var coordinatesArray = polygon.overlay.getPath().getArray();
@@ -275,7 +267,7 @@ function initDraw() {
                 list_koor += '<li class="list-group-item" >'+data.toString() + '</li>';
             });
             $('#list-koordinat').html(list_koor);
-            console.log(coordinatesArray);
+            // console.log(coordinatesArray);
         });
     drawingManager.setMap(mapDraw);
 }
