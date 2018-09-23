@@ -17,25 +17,25 @@
                 </div>
                 <div class="box-body">
                     <b>Nama </b>
-                    <li><?php echo $data['nama'];?></li>
+                    <li class="list-group-item"><?php echo $data['nama'];?></li>
                     <br>
                     <b>N I K </b>
-                    <li><?php echo substr_replace($data['no_nik'],'xxxxxx', -6 );?></li>
+                    <li class="list-group-item"><?php echo substr_replace($data['no_nik'],'xxxxxx', -6 );?></li>
                     <br>
                     <b>Alamat Pemilik </b>
-                    <li><?php echo $data['alamat'];?></li>
+                    <li class="list-group-item"><?php echo $data['alamat'];?></li>
                     <br>
                     <b>Lokasi Tanah </b>
-                    <li><?php echo $data['lokasi'].", Dusun ".$data['nama_dusun'].", Desa ".$data['nama_desa'].", Kecamatan ".$data['nama_kecamatan'];?></li>
+                    <li class="list-group-item"><?php echo $data['lokasi'].", Dusun ".$data['nama_dusun'].", Desa ".$data['nama_desa'].", Kecamatan ".$data['nama_kecamatan'];?></li>
                     <br>
                     <b>Status Surat </b>
-                    <li>Surat Keterangan <?php echo $type = ($data['type']==1?'Tanah':'Rekomendasi');?></li>
+                    <li class="list-group-item">Surat Keterangan <?php echo $type = ($data['type']==1?'Tanah':'Rekomendasi');?></li>
                     <br>
                     <b>Nomor Surat </b>
-                    <li><b><?php echo "181/".$data['id']."-".$type."/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);?></b></li>
+                    <li class="list-group-item"><b><?php echo "181/".$data['id']."-".$type."/KTD.".strtoupper($data['nama_desa'])."/".romawi(mdate("%m",$data['time']))."/".mdate("%Y",$data['time']);?></b></li>
                     <br>
                     <b>Tanggal Surat </b>
-                    <li><b><?php echo mdate("%d",$data['time'])." ".bulan(mdate("%m",$data['time']))." ".mdate("%Y",$data['time']);?></b></li>
+                    <li class="list-group-item"><b><?php echo mdate("%d",$data['time'])." ".bulan(mdate("%m",$data['time']))." ".mdate("%Y",$data['time']);?></b></li>
                     <br>
                 </div>
             </div>
