@@ -113,7 +113,7 @@
                 </div>
                 <div class="box-body">
                   <p>Untuk Menggambar Layer Data Silakan Lakukan Klik Koordinat Terpilih pada Gambar/Layout Peta, dan Sesuaikan Data yang dihasilkan di generator LatLong dibawah dengan Data Verifikasi yang diinginkan.</p>
-                  <ul id="list-koordinat"></ul>
+                  <div id="list-koordinat"></div>
                 </div>
               </div>
 
@@ -270,8 +270,9 @@ function initDraw() {
         });
         google.maps.event.addListener(drawingManager, 'overlaycomplete', function(polygon) {
             var coordinatesArray = polygon.overlay.getPath().getArray();
+            var list_koor = '<ul class="list-group">';
             $.each(coordinatesArray, function (i, data) {
-                var list_koor += '<li>'+data.toString() + '</li>';
+                list_koor += '<li class="list-group-item" >'+data.toString() + '</li>';
             });
             $('#list-koordinat').html(list_koor);
             console.log(coordinatesArray);
