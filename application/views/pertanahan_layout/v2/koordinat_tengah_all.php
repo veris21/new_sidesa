@@ -19,6 +19,11 @@
         <div class="row">
             <div class="col-md-8">
                 <div style="height: 580px;" id="map-canvas"></div>
+                <div class="box">
+                <div class="box-footer">
+                    <button type="button" class="btn btn-xs btn-flat btn-warning" onclick="hideMarkerBTS()">Hide Marking Batas <i class="fa fa-ban"></i></button>
+                </div>
+                </div>
             </div>
             <div class="col-md-4">
             <!-- Data Detail Hidden / Show On Click Marker -->
@@ -298,11 +303,13 @@ $.ajax({
                 $.ajax({
                     'url' : baseUrl+'api/polygon/one/'+id_batas,
                     'success' : function (adm){
+                        // console.log(adm);
                         var path_adm = [];
                         $.each(adm, function(i, p){
+                            // console.log(p);
                             var latlong = new google.maps.LatLng(parseFloat(p.lat),parseFloat(p.lng));
                             path_adm.push(latlong);
-                            markerBatas(latlong);
+                            // markerBatas(latlong, x.kode_rtrw);
                         });
                         add_poly_adm(path_adm, color_adm, id_batas);
                     }
@@ -355,15 +362,22 @@ function add_poly(path){
         });
        polygon.setMap(map);
 }
-
-function markerBatas(latlong){
-    var markerBTS = new google.maps.Marker({
+var markerBTS;
+function markerBatas(latlong, x){   
+          markerBTS = new google.maps.Marker({
           position: latlong,
+          icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
     });
-    markerBTS.addListener('click', function(e) {
-        alert(e.LatLng.getLat());
+    markerBTS.addListener('dblclick', function(e) {
+        alert(x);
     });
+    markerBTS.setMap(map);
 }
+
+function hideMarkerBTS() {
+    polygonAdm.setMap(null);   
+}
+
 
 function show_details(lt,lg) {
     event.preventDefault();
