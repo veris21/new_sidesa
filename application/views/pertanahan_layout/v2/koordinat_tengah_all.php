@@ -302,6 +302,7 @@ $.ajax({
                         $.each(adm, function(i, p){
                             var latlong = new google.maps.LatLng(parseFloat(p.lat),parseFloat(p.lng));
                             path_adm.push(latlong);
+                            markerBatas(latlong);
                         });
                         add_poly_adm(path_adm, color_adm, id_batas);
                     }
@@ -355,6 +356,14 @@ function add_poly(path){
        polygon.setMap(map);
 }
 
+markerBatas(latlong){
+    var markerBTS = new google.maps.Marker({
+          position: latlong,
+    });
+    markerBTS.addListener('click', function(e) {
+        alert(e.LatLng.getLat());
+    });
+}
 
 function show_details(lt,lg) {
     event.preventDefault();
