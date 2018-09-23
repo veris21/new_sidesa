@@ -50,8 +50,8 @@
                     <img width="100%" src="<?php echo base_url().POLYGON.$data['peta'];?>" alt="CANVAS PETA" class="img img-rounded">
                 </div>
                 <div class="box-footer">
-                <h5>Lokasi Koordinat Tanah <?php echo " Lat : ".$koordinat['lat'] ." Lng :  ". $koordinat['lng']; ?></h5>
-                <h5>Patok Tanah </h5>
+                <h5>Lokasi Koordinat Tanah : <br> <?php echo " Lat : ".$koordinat['lat'] ."<br> Lng :  ". $koordinat['lng']; ?></h5>
+                <h4>Patok Tanah </h4>
                 <?php
                     $no = 1;
                     foreach($patok->result() as $titik){
