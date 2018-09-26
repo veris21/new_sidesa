@@ -52,7 +52,7 @@ class Google_url extends CI_Controller {
         $this->google_url_api->enable_debug(FALSE);
         $url = BASE_URL.'validate/view/';
         $short_url = $this->google_url_api->shorten($url);        
-        $message = '#PERTANAHAN :  Kunjungi : '.$short_url;
+        $message = '#PERTANAHAN :  Kunjungi : '.$url.'/'.$short_url;
         $to = '082281469926';
         sms_notifikasi($to, $message);
         echo json_encode(array('to'=>$to, 'message'=>$message, 'url'=>$url, 'short_url'=>$short_url));
