@@ -5,7 +5,7 @@ class Google_url extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        // $this->load->library('google_url_api');
+        $this->load->library('google_url_api');
     }
 
     function index()
@@ -46,6 +46,16 @@ class Google_url extends CI_Controller {
         echo 'Date Created: ' . date("Y-m-d H:i:s", strtotime($analytics_url->created)) . "<br />";
         $this->_print($analytics_url);
 
+    }
+
+    function send_data_url(){
+        $this->google_url_api->enable_debug(FALSE);
+        $url = BASE_URL.'validate/view/';
+        $short_url = $this->google_url_api->shorten($url);        
+        $message = '#PERTANAHAN :  Kunjungi : '.$short_url;
+        $to = '082281469926';
+        sms_notifikasi($to, $message);
+        echo json_encode(array('to'=>$to, 'message'=>$message, 'url'=>$url, 'short_url'=>$short_url));
     }
 
     private function _dump($data)

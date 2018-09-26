@@ -11,6 +11,7 @@ class Pertanahan extends CI_Controller{
     // $this->load->library('html2pdf');
     $this->load->library('pdfgenerator');
     $this->load->model('auth_model');
+    $this->load->library('google_url_api');
   }
 
   function cari_skt($id){
@@ -229,19 +230,28 @@ class Pertanahan extends CI_Controller{
         'status_proses'=>0,
         'type_yang_disetujui'=>0
       );
-      $kepada_id = $kades['id'];
-      $jabatan = $kades['jabatan'];
-      $nama_desa = $kades['nama_desa'];
-      $message = 'NOTIFIKASI PERTANAHAN : Yth. '.$jabatan.' '.$nama_desa.' Permohonan SKT '.$pemohon.', Lokasi : '.$lokasi.', Luas : '.$luas.' meter persegi (SiDesa Sistem)';
-      $to = $kades['hp'];
-      sms_notifikasi($to, $message);
+      // $kepada_id = $kades['id'];
+      // $jabatan = $kades['jabatan'];
+      // $nama_desa = $kades['nama_desa'];
+      // $message = 'NOTIFIKASI PERTANAHAN : Yth. '.$jabatan.' '.$nama_desa.' Permohonan SKT '.$pemohon.', Lokasi : '.$lokasi.', Luas : '.$luas.' meter persegi (SiDesa Sistem)';
+      // $to = $kades['hp'];
+      // sms_notifikasi($to, $message);
       // ==========================
       // QRCODE GENERATE
       $params['data'] = base_url('permohonan/validasi/').$sekarang;
       $params['level'] = 'M';
-      $params['size'] = 10;
+      $params['size'] = 10; 
       $params['savename'] = './assets/uploader/qr_code/'.$sekarang.'.png';
       $this->ciqrcode->generate($params);
+      // +===============+
+      // $short_url = $this->google_url_api->shorten($params['data']);
+      $short_url = $params['data'];
+      $kepada_id = $kades['id'];
+      $jabatan = $kades['jabatan'];
+      $nama_desa = $kades['nama_desa'];
+      $message = '#PERTANAHAN : Yth. '.$jabatan.' '.$nama_desa.' Permohonan SKT '.$pemohon.', Lokasi : '.$lokasi.', Luas : '.$luas.' meter persegi (SiDesa Sistem) Kunjungi : '.$short_url;
+      $to = $kades['hp'];
+      sms_notifikasi($to, $message);
       // +===============+
       $link = "permohonan/".$sekarang;
       $posting = array(
