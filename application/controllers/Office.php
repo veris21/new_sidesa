@@ -109,39 +109,61 @@ class Office extends CI_Controller{
 
   public function sendEmailTest()
   {
-    echo (extension_loaded('openssl')?'SSL loaded':'SSL not loaded')."\n";
-    $this->load->library("Phpmailer_library","email");
-    $this->phpmailer_library->load();
-    $subject = 'Mencoba Mengirim Email';
-    $message = '<h1>Ini Adalah Email Percobaan dari '.base_url().'</h1>';
-    $body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=' . strtolower(config_item('charset')) . '" />
-        <title>' . html_escape($subject) . '</title>
-        <style type="text/css">
-            body {
-                font-family: Arial, Verdana, Helvetica, sans-serif;
-                font-size: 16px;
-            }
-        </style>
-    </head>
-    <body>
-    ' . $message . '
-    </body>
-    </html>';
-    $result = $this->email
-        ->from('id.sidesa@gmail.com','Sistem Si-desaID')
-        ->to('veris.juniardi@gmail.com')
-        ->subject($subject)
-        ->message($body)
-        ->send();
+    // echo (extension_loaded('openssl')?'SSL loaded':'SSL not loaded')."\n";
+    // $this->load->library("Phpmailer_library","email");
+    // $this->phpmailer_library->load();
+    // $subject = 'Mencoba Mengirim Email'; 
+    // $message = '<h1>Ini Adalah Email Percobaan dari '.base_url().'</h1>';
+    // $body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    // <html xmlns="http://www.w3.org/1999/xhtml">
+    // <head>
+    //     <meta http-equiv="Content-Type" content="text/html; charset=' . strtolower(config_item('charset')) . '" />
+    //     <title>' . html_escape($subject) . '</title>
+    //     <style type="text/css">
+    //         body {
+    //             font-family: Arial, Verdana, Helvetica, sans-serif;
+    //             font-size: 16px;
+    //         }
+    //     </style>
+    // </head>
+    // <body>
+    // ' . $message . '
+    // </body>
+    // </html>';
+    // $result = $this->email
+    //     ->from('id.sidesa@gmail.com','Sistem Si-desaID')
+    //     ->to('veris.juniardi@gmail.com')
+    //     ->subject($subject)
+    //     ->message($body)
+    //     ->send();
 
-    var_dump($result);
-    echo '<br />';
-    echo $this->email->print_debugger();
+    // var_dump($result);
+    // echo '<br />';
+    // echo $this->email->print_debugger();
 
-    exit;
+    // exit;
+
+        $email = 'veris.juniardi@gmail.com';
+        $role = 'PETUGAS PERTANAHAN Tk. Kecamatan';
+        $hp = '082281469926';
+        $token = randomString(32);
+        $url = $hp."-".$token.":".time();
+        $send = send_email_aktivasi($email,$token, $link, $nama,$role, $hp);
+        if ($send) {
+            $this->output
+                          ->set_status_header(200)
+                          ->set_content_type('application/json', 'utf-8')
+                          ->set_output(json_encode(array('status'=>$send), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+                          ->_display();
+                          exit;      
+        } else {
+            $this->output
+            ->set_status_header(401)
+            ->set_content_type('application/json', 'utf-8')
+            ->set_output(json_encode(array('status'=>FALSE,'message'=> 'Unauthorized'), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))
+            ->_display();
+            exit;
+        }
   }
   
 

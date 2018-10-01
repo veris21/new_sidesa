@@ -111,7 +111,8 @@ $autoload['helper'] = array(
   'sms_helper',
   'waktu_helper',
   'rand_helper',
-  'bot_helper'
+  'bot_helper',
+  'email_helper'
 );
 
 /*

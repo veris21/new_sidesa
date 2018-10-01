@@ -35,13 +35,12 @@ folder instead of downloading all of them to reduce the load. -->
 <!--  -->
 <link rel="stylesheet" href="<?php echo base_url().THEME; ?>plugins/select2/select2.min.css">
 <!-- bootstrap wysihtml5 - text editor --
-<link rel="stylesheet" href="<?php echo base_url().THEME; ?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+<link rel="stylesheet" href="<?php //echo base_url().THEME; ?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 <!--  -->
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url().THEME; ?>sweetalert.css">
 <script src="<?php echo base_url().THEME; ?>sweetalert.min.js"></script>
 <link rel="stylesheet" href="<?php echo base_url().THEME; ?>plugins/fancybox/jquery.fancybox.css">
-
 <link rel="stylesheet" href="<?php echo base_url().THEME; ?>plugins/fancybox/helpers/jquery.fancybox-buttons.css">
 <link rel="stylesheet" href="<?php echo base_url().THEME; ?>plugins/fancybox/helpers/jquery.fancybox-thumbs.css">
 
