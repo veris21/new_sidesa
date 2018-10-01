@@ -368,10 +368,6 @@ $route['geojson/input']                     = 'pertanahan/geojson_input';
  $route['update/password']                  = 'auth/update_password';
  $route['update/user']                      = 'auth/update_user';
 
-
-
-
-
  $route['bot']                              = 'bot/get_updates';
 /* ===================================================================== */
 /* -----------------------------------------------------------------------
@@ -382,3 +378,6 @@ $route['geojson/input']                     = 'pertanahan/geojson_input';
 |                           +6282281469926                                |
  ----------------------------------------------------------------------- */
 /* ===================================================================== */
+
+
+$route['terindak/login']                   = 'version-2/template/auth';
