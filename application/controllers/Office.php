@@ -109,9 +109,9 @@ class Office extends CI_Controller{
 
   public function sendEmailTest()
   {
-    // echo (extension_loaded('openssl')?'SSL loaded':'SSL not loaded')."\n";
-    // $this->load->library("Phpmailer_library","email");
-    // $this->phpmailer_library->load();
+    echo (extension_loaded('openssl')?'SSL loaded':'SSL not loaded')."\n";
+    $this->load->library("Phpmailer_library","email");
+    $this->phpmailer_library->load();
     // $subject = 'Mencoba Mengirim Email'; 
     // $message = '<h1>Ini Adalah Email Percobaan dari '.base_url().'</h1>';
     // $body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
