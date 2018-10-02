@@ -396,6 +396,7 @@
 </div>
 
 
+<script src="<?php echo base_url().THEME; ?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script>
  $('#master_penduduk').DataTable({
         "processing": true, //Feature control the processing indicator.
