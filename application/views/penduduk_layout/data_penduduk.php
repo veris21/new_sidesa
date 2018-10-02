@@ -54,25 +54,27 @@
             <td>#</td>
         </tr>
         </thead>
-        <tbody>
-            <?php foreach ($data->result() as $data) {
-            $tgl = explode("/", $data->tanggal_lahir);    
-            echo "<tr>";
-            echo "<td>".$data->no_nik."</td>";
-            echo "<td>".$data->no_kk."</td>";
-            echo "<td>".$data->nama."<br>(<i>".$data->shdk."</i>)</td>";
-            echo "<td>".$data->alamat."</td>";
-            echo "<td>".$data->tempat_lahir.", ".$tgl[1]."-".$tgl[0]."-".$tgl[2]."</td>";
-            echo "<td align='center' width='120'>"
-            .anchor('data_penduduk/details/'.$data->id,'<i class="fa fa-eye"></i>', array('class'=>'btn btn-success btn-xs')).
-            " <button onclick='edit_penduduk(".$data->id.")' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button>";
-            if ($this->session->userdata('jabatan')=='ROOT') {
-            echo "<button onclick='hapus_penduduk(".$data->id.")' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button>";
-            }
-            echo "</td>";
-            echo "</tr>";
-             } ?>
-        </tbody>
+        <!-- <tbody>
+            <?php 
+            // foreach ($data->result() as $data) {
+            // $tgl = explode("/", $data->tanggal_lahir);    
+            // echo "<tr>";
+            // echo "<td>".$data->no_nik."</td>";
+            // echo "<td>".$data->no_kk."</td>";
+            // echo "<td>".$data->nama."<br>(<i>".$data->shdk."</i>)</td>";
+            // echo "<td>".$data->alamat."</td>";
+            // echo "<td>".$data->tempat_lahir.", ".$tgl[1]."-".$tgl[0]."-".$tgl[2]."</td>";
+            // echo "<td align='center' width='120'>"
+            // .anchor('data_penduduk/details/'.$data->id,'<i class="fa fa-eye"></i>', array('class'=>'btn btn-success btn-xs')).
+            // " <button onclick='edit_penduduk(".$data->id.")' class='btn btn-xs btn-warning'><i class='fa fa-edit'></i></button>";
+            // if ($this->session->userdata('jabatan')=='ROOT') {
+            // echo "<button onclick='hapus_penduduk(".$data->id.")' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button>";
+            // }
+            // echo "</td>";
+            // echo "</tr>";
+            //  } 
+             ?> 
+        <!-- </tbody> -->
         </table>
     </div>
 </div>
@@ -392,3 +394,27 @@
     </div> 
   </div> 
 </div>
+
+
+<script>
+ $('#master_penduduk').DataTable({
+        "processing": true, //Feature control the processing indicator.
+        "serverSide": true, //Feature control DataTables' server-side processing mode.
+        "order": [], //Initial no order.
+         // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo base_url('datapenduduk/ajax_list/');?>",
+            "type": "POST"
+        },
+ 
+        //Set column definition initialisation properties.
+        "columnDefs": [
+        { 
+            "targets": [ 0 ], //first column / numbering column
+            "orderable": false, //set not orderable
+        },
+        ],
+        destroy: true,
+        responsive: true
+        });
+</script>

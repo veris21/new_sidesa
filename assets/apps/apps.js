@@ -374,12 +374,12 @@ $("#list_aset").DataTable({
   responsive: true,
 });
 
-$("#master_penduduk").DataTable({
-  responsive: true,
-  rowGroup: {
-    dataSrc: 'no_kk'
-  }
-});
+// $("#master_penduduk").DataTable({
+//   responsive: true,
+//   rowGroup: {
+//     dataSrc: 'no_kk'
+//   }
+// });
 
 $("#mutasi_penduduk").DataTable({
   responsive: true,

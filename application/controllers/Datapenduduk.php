@@ -10,6 +10,34 @@ class Datapenduduk extends CI_Controller {
         //Do your magic here
     }
 
+    public function ajax_list()
+    {
+        $id = $this->session->userdata('kode_desa');
+        $list = $this->penduduk_model->get_datatables($id);
+        $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $ddk) {
+            $no++;
+            $row = array();
+            $row[] = $ddk->no_nik;
+            $row[] = $ddk->no_kk;
+            $row[] = $ddk->nama;
+            $row[] = $ddk->alamat;
+            $row[] = $ddk->tempat_lahir.','.$ddk->tanggal_lahir;
+            $row[] = "<button class='btn btn-flat btn-xs btn-warning' onclick='edit_penduduk(".$ddk->id.")'> <i class='fa fa-edit'></i></button>  <button class='btn btn-flat btn-xs btn-danger' onclick='hapus_penduduk(".$ddk->id.")'> <i class='fa fa-trash'></i></button>"; 
+            $data[] = $row;
+        }
+ 
+        $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->penduduk_model->count_all($id),
+                        "recordsFiltered" => $this->penduduk_model->count_filtered($id),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+    }
+
     public function get_kabupaten($prov_id){
         $kec = $this->master_model->_get_regencies($prov_id);
         $data['hasil'] = [];
