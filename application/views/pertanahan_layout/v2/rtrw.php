@@ -264,8 +264,8 @@ function initDraw() {
             var coordinatesArray = polygon.overlay.getPath().getArray();
             var list_koor = '<ul class="list-group">';
             $.each(coordinatesArray, function (i, data) {
-                var lt = data.split(',');
-                list_koor += '<li class="list-group-item" >'+data.toString() + '</li>';
+                var string = data.toString().split(',');
+                list_koor += '<li class="list-group-item" >'+ string[0] + '</li>';
             });
             $('#list-koordinat').html(list_koor);
             console.log(coordinatesArray);
