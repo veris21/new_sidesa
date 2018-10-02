@@ -264,11 +264,13 @@ function initDraw() {
             var coordinatesArray = polygon.overlay.getPath().getArray();
             var list_koor = '<ul class="list-group">';
             $.each(coordinatesArray, function (i, data) {                
-
                 var string = data.toString();
                 var strF = string.substr(0, string.length-1); 
                 var strL =  strF.substr(1);
-                var ltlg = strL.split(',')
+                var ltlg = strL.split(',');
+                $('[name="lat"]').val(ltlg[0]);
+                $('[name="lng"]').val(ltlg[1]);
+                save_koordinat_rtrw();
                 list_koor += '<li class="list-group-item" > Lat : '+ ltlg[0] + ' Lng : '+ltlg[1]+'</li>';
             });
             $('#list-koordinat').html(list_koor);
