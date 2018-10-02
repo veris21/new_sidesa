@@ -265,10 +265,10 @@ function initDraw() {
             var list_koor = '<ul class="list-group">';
             $.each(coordinatesArray, function (i, data) {
                 var lt = data.split(',');
-                list_koor += '<li class="list-group-item" >'+lt[0]+ '</li>';
+                list_koor += '<li class="list-group-item" >'+lt+ '</li>';
             });
             $('#list-koordinat').html(list_koor);
-            // console.log(coordinatesArray);
+            console.log(coordinatesArray);
         });
     drawingManager.setMap(mapDraw);
 }
