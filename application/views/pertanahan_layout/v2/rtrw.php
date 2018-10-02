@@ -215,7 +215,7 @@ function hapus_rtrw_koordinat(id) {
         swal('Selamat !', 'Berhasil Menghapus Data Koordinat di Sistem!', 'success');
         // initialize();
         init_koordinat();  
-        location.reload();
+        // location.reload();
       },
       error: function (jqXHR, textStatus, errorThrown) {
         swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
