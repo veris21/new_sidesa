@@ -12,11 +12,12 @@ class Penduduk_model extends CI_Model{
     //Codeigniter : Write Less Do More
   }
 
-  public function _get_datatables_query($id)
+//   public function _get_datatables_query($id)
+  public function _get_datatables_query()
     {
          
         $this->db->from($this->table);
-        $this->db->where('desa', $id);
+        // $this->db->where('desa', $id);
         $i = 0;
      
         foreach ($this->column_search as $item) // loop column 
@@ -50,26 +51,31 @@ class Penduduk_model extends CI_Model{
         }
     }
  
-    function get_datatables($id)
+    // function get_datatables($id)
+    function get_datatables()
     {
-        $this->_get_datatables_query($id);
+        // $this->_get_datatables_query($id);
+        $this->_get_datatables_query();
         if($_POST['length'] != -1)
         $this->db->limit($_POST['length'], $_POST['start']);
         $query = $this->db->get();
         return $query->result();
     }
  
-    function count_filtered($id)
+    // function count_filtered($id)
+    function count_filtered()
     {
-        $this->_get_datatables_query($id);
+        // $this->_get_datatables_query($id);
+        $this->_get_datatables_query();
         $query = $this->db->get();
         return $query->num_rows();
     }
  
-    public function count_all($id)
+    // public function count_all($id)
+    public function count_all()
     {
         $this->db->from($this->table);
-        $this->db->where('desa', $id);
+        // $this->db->where('desa', $id);
         return $this->db->count_all_results();
     }
 }

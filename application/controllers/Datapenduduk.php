@@ -12,8 +12,9 @@ class Datapenduduk extends CI_Controller {
 
     public function ajax_list()
     {
-        $id = $this->session->userdata('kode_desa');
-        $list = $this->penduduk_model->get_datatables($id);
+        // $id = $this->session->userdata('kode_desa');
+        // $list = $this->penduduk_model->get_datatables($id);
+        $list = $this->penduduk_model->get_datatables();
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $ddk) {
@@ -28,12 +29,18 @@ class Datapenduduk extends CI_Controller {
             $data[] = $row;
         }
  
+        // $output = array(
+        //                 "draw" => $_POST['draw'],
+        //                 "recordsTotal" => $this->penduduk_model->count_all($id),
+        //                 "recordsFiltered" => $this->penduduk_model->count_filtered($id),
+        //                 "data" => $data,
+        //         );
         $output = array(
-                        "draw" => $_POST['draw'],
-                        "recordsTotal" => $this->penduduk_model->count_all($id),
-                        "recordsFiltered" => $this->penduduk_model->count_filtered($id),
-                        "data" => $data,
-                );
+                "draw" => $_POST['draw'],
+                "recordsTotal" => $this->penduduk_model->count_all(),
+                "recordsFiltered" => $this->penduduk_model->count_filtered(),
+                "data" => $data,
+        );
         //output to json format
         echo json_encode($output);
     }
