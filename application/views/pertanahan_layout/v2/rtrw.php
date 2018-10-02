@@ -265,7 +265,7 @@ function initDraw() {
             var list_koor = '<ul class="list-group">';
             $.each(coordinatesArray, function (i, data) {
                 var lt = data.split(',');
-                list_koor += '<li class="list-group-item" >'+lt+ '</li>';
+                list_koor += '<li class="list-group-item" >'+data.toString() + '</li>';
             });
             $('#list-koordinat').html(list_koor);
             console.log(coordinatesArray);
