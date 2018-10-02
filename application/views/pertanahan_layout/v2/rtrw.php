@@ -264,11 +264,16 @@ function initDraw() {
             var coordinatesArray = polygon.overlay.getPath().getArray();
             var list_koor = '<ul class="list-group">';
             $.each(coordinatesArray, function (i, data) {
-                var string = data.toString().split(',');
-                list_koor += '<li class="list-group-item" >'+ string[0] + '</li>';
+                
+
+                var string = data.toString();
+                var strF = string.substr(0, myString.length-1); 
+                var strL =  strF.substr(1);
+                var ltlg = strL.split(',')
+                list_koor += '<li class="list-group-item" > Lat : '+ ltlg[0] + ' Lng : '+ltlg[1]+'</li>';
             });
             $('#list-koordinat').html(list_koor);
-            console.log(coordinatesArray);
+            console.log(ltlg);
         });
     drawingManager.setMap(mapDraw);
 }
