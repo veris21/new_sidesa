@@ -480,11 +480,12 @@ class Master extends CI_Controller{
         foreach ($list as $rtrw) {
             $no++;
             $row = array();
-            $row[] = $no;
             $row[] = $rtrw->kode_rtrw;
             $row[] = $rtrw->keterangan;
             $row[] = $rtrw->dasar_hukum;
-            $row[] = "<a href='".base_url('rtrw/details/').$rtrw->id."' class='btn btn-flat btn-xs btn-success'><i class='fa fa-eye'></i></a>";
+            $row[] = "<a href='".base_url('rtrw/details/').$rtrw->id."' class='btn btn-flat btn-xs btn-success'><i class='fa fa-eye'></i></a>
+            <button type='button' class='btn btn-warning btn-flat btn-xs' onclick='edit_rtrw(".$rtrw->id.")'><i class='fa fa-edit'></i></button>
+            <button type='button' class='btn btn-danger btn-flat btn-xs' onclick='delete_rtrw(".$rtrw->id.")'><i class='fa fa-trash'></i></button>";
             $data[] = $row;
         }
  

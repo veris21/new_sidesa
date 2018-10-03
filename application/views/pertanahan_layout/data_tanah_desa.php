@@ -10,7 +10,7 @@
 </section>
 <section class="content">
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-7">
     <div class="box">
       <div class="box-body">
         <div style="height:480px;" id="map-desa"></div>
@@ -18,13 +18,25 @@
       </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-5">
             <div class="box">
               <div class="box-header">
-                <h4 class="box-title">Data Jalan</h4>
+                <h4 class="box-title"> <i class="fa fa-road"></i> Data Jalan</h4>
+                <div class="pull-right">
+                <button class="btn btn-flat btn-md btn-primary"> Input Data Jalan <i class="fa fa-plus"></i></button>
+                </div>
               </div>
               <div class="box-body">
-              
+              <table  width="100%" class="table table-striped table-bordered table-hover" id="list_jalan">
+              <thead>
+                <tr align="center">
+                  <th>Nama Jalan</th>
+                  <th>Lokasi</th>
+                  <th>Panjang (meter)</th>
+                  <th>#</th>
+                </tr>
+              </thead>
+              </table>
               </div>
             </div>
   </div>
@@ -36,12 +48,14 @@
               <div class="box">
               <div class="box-header">
                 <h3 class="box-title"><i class="fa fa-map"></i> Data Administrasi Desa</h3>
+                <div class="pull-right">
+                <button id="input_form_button" class="btn btn-primary btn-flat" onclick="input_rtrw()">Input Master Batas <i class="fa fa-plus"></i></button>
+                </div>
               </div>
               <div class="box-body">                       
               <table width="100%" class="table table-striped table-bordered table-hover" id="list_rtrw">
                 <thead>
                   <tr align="center">
-                    <th>No</th>
                     <th>Kode Data</th>
                     <th>Keterangan</th>
                     <th>Dasar Penetapan</th>
@@ -50,41 +64,15 @@
                 </thead>
               </table>
                 </div>
-              </div> 
-              <hr>
-              <button id="input_form_button" class="btn btn-primary btn-block" onclick="input_rtrw()">Input Master Batas</button>
-              <div class="box box-warning" id="input_form" hidden>
-                <?php echo form_open('', array('id'=>'form_rtrw')); ?>
-                <div class="box-header">
-                  <h5 class="box-title">Input Data Master Dasar Batas Administrasi Pertanahan</h5>
-                </div>
-                <div class="box-body">
-                <div class="form-group">
-                  <label for="">Kode RTRW</label>
-                  <input type="text" name="kode_rtrw" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="">Dasar Hukum</label>
-                  <input type="text" name="dasar_hukum" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="">Keterangan Lanjutan</label>
-                  <textarea name="keterangan" class="form-control" id="" cols="30" rows="10"></textarea>
-                </div>
-                </div>
-                <div class="box-footer">
-                <div class="pull-right">
-                <button type="reset" class="btn btn-warning btn-flat btn-sm" onclick="reset()" >Reset <i class="fa fa-ban"></i> </button>
-                <button type="button" class="btn btn-success btn-flat btn-sm" onclick="save_rtrw()">Posting Data <i class="fa fa-save"></i> </button>
-                </div>
-                </div>
-                </form>
-              </div>
+              </div>           
           </div>
           <div class="col-md-6">
               <div class="box box-warning">
               <div class="box-header">
-                <h4 class="box-title">Data Aset</h4>
+                <h4 class="box-title"><i class="fa fa-archive"></i> Data Aset</h4>
+                <div class="pull-right">
+                    <button onclick="input_aset()" class="btn btn-success btn-block btn-md">Input Aset <i class="fa fa-plus"></i></button>
+                  </div>
               </div>
               <div class="box-body">
               <table width="100%" class="table table-striped table-bordered table-hover" id="list_aset">
@@ -98,16 +86,57 @@
                   </thead>        
                 </table>
                 </div>
-                <div class="box-footer">
-                  <div class="pull-right">
-                    <button onclick="input_aset()" class="btn btn-success btn-block btn-md">Input Data Lokasi Aset Tanah <i class="fa fa-map-o"></i></button>
-                  </div>
-                </div>
               </div>
           </div>         
         </div>
 
 </section>
+
+
+
+
+<div class="modal fade" id="input_form" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <?php echo form_open('', array('id'=>'form_rtrw','class'=>'form-horizontal')); ?>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Data RTRW</h4>
+      </div>
+      <div class="modal-body form">
+        <!--  -->
+        <div class="form-group">
+        <label class="control-label col-sm-4" for="">Kode RTRW</label>
+        <div class="col-sm-8">
+          <input type="text" name="kode_rtrw" class="form-control">
+        </div>
+        </div>
+
+        <div class="form-group">
+        <label class="control-label col-sm-4"  for="">Dasar Hukum</label>
+        <div class="col-sm-8">
+            <input type="text" name="dasar_hukum" class="form-control">
+        </div>
+        </div>
+
+        <div class="form-group">
+        <label class="control-label col-sm-4"  for="">Keterangan</label>
+        <div class="col-sm-8">
+          <textarea name="keterangan" class="form-control" id="" cols="30" rows="10"></textarea>
+        </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+      <div class="pull-right">
+                <button type="button" class="btn btn-warning btn-flat btn-sm"  data-dismiss="modal" >Cancel <i class="fa fa-ban"></i> </button>
+                <button type="button" class="btn btn-success btn-flat btn-sm" onclick="save_rtrw()">Posting Data <i class="fa fa-save"></i> </button>
+       </div>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 
 <!--  -->
@@ -277,10 +306,27 @@ function initialize() {
   // map.data.loadGeoJson('<?php //echo base_url().GEOJSON.$titik['json'];?>');
   init_rtrw();
   init_aset();
+  init_jalan();
 }
 
 function view_rtrw(id) {
   
+}
+
+
+function edit_rtrw(id) {
+  alert('Edit RTRW : '+id);
+}
+
+function delete_rtrw(id) {
+  alert('Hapus RTRW : '+id);
+}
+
+
+function init_jalan() {
+  $('#list_jalan').DataTable({
+    responsive: true
+  });
 }
 
 function init_aset() {
@@ -331,15 +377,15 @@ function init_rtrw(){
 }
 
 function input_rtrw(){
-  $('#input_form').show();
-  $('#input_form_button').hide();
+  $('#input_form').modal('show');
+  // $('#input_form_button').hide();
 }
 
-function reset() {
-  $('#input_form').hide();
-  $('#input_form_button').show();
-  location.reload();
-}
+// function reset() {
+//   $('#input_form').hide();
+//   $('#input_form_button').show();
+//   location.reload();
+// }
 
 function save_rtrw(){
   $.ajax({
@@ -354,7 +400,7 @@ function save_rtrw(){
       // $('[name="keterangan"]').val('');
       $('#form_rtrw')[0].reset();
       swal('Selamat !', 'Berhasil Menyimpan Data RTRW di Sistem!', 'success');
-     
+      $('#input_form').modal('hide');
     }
   });
 }
