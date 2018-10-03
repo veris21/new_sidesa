@@ -10,29 +10,47 @@
 </section>
 <section class="content">
 <div class="row">
-  <div class="col-md-12">
-    
-    <div class="box box-info">
-      <div class="box-header">
-        <h3 class="box-title"><i class="fa fa-map"></i> Data Administrasi Desa</h3>
-      </div>
+  <div class="col-md-8">
+    <div class="box">
       <div class="box-body">
+        <div style="height:480px;" id="map-desa"></div>
+          <hr>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+            <div class="box">
+              <div class="box-header">
+                <h4 class="box-title">Data Jalan</h4>
+              </div>
+              <div class="box-body">
+              
+              </div>
+            </div>
+  </div>
+</div>
+
+
         <div class="row">
-          <div class="col-md-7">
-              <div style="height:480px;" id="map-desa"></div>
-              <hr>
+          <div class="col-md-6">    
+              <div class="box">
+              <div class="box-header">
+                <h3 class="box-title"><i class="fa fa-map"></i> Data Administrasi Desa</h3>
+              </div>
+              <div class="box-body">                       
               <table width="100%" class="table table-striped table-bordered table-hover" id="list_rtrw">
-              <thead>
-              <tr>
-              <th>Kode Data</th>
-              <th>Keterangan</th>
-              <th>Dasar Penetapan</th>
-              <th>#</th>
-              </tr>
-              </thead>
-              <tbody id="tb_rtrw">        
-              </tbody>
+                <thead>
+                  <tr align="center">
+                    <th>No</th>
+                    <th>Kode Data</th>
+                    <th>Keterangan</th>
+                    <th>Dasar Penetapan</th>
+                    <th>#</th>
+                  </tr>
+                </thead>
               </table>
+                </div>
+              </div> 
               <hr>
               <button id="input_form_button" class="btn btn-primary btn-block" onclick="input_rtrw()">Input Master Batas</button>
               <div class="box box-warning" id="input_form" hidden>
@@ -63,7 +81,12 @@
                 </form>
               </div>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-6">
+              <div class="box box-warning">
+              <div class="box-header">
+                <h4 class="box-title">Data Aset</h4>
+              </div>
+              <div class="box-body">
               <table width="100%" class="table table-striped table-bordered table-hover" id="list_aset">
                   <thead>
                     <tr>
@@ -73,40 +96,17 @@
                       <td>#</td>
                     </tr>                  
                   </thead>        
-                  <tbody>
-                    <?php         
-                    foreach ($aset as $aset) {
-                      echo "<tr>";
-                      echo "<td>".$aset->keterangan."</td>";
-                      echo "<td><img class='img img-rounded img-responsive main-img' width='120' src='".base_url().PATOK.$aset->foto_tanah."'></td>";
-                      echo "<td>Latitude : ".$aset->lat."<br> Longitude : ".$aset->lng." </td>";
-                      echo "<td align='center' width='70'>
-                      <a href='".base_url().'detail/aset/'.$aset->id."' class='btn btn-primary btn-xs'><i class='fa fa-eye'></i></a>
-                      <button onclick='edit_aset(".$aset->id.")' class='btn btn-warning btn-xs'><i class='fa fa-edit'></i></button>
-                      </td>";
-                      echo "</tr>";
-                    }
-                    ?>         
-                  </tbody>        
                 </table>
-          </div>
-        </div>
-      </div>
-      <div class="box-footer">
-              <div class="pull-right">
-                  <button onclick="input_aset()" class="btn btn-primary btn-sm">Input Data Lokasi Aset Tanah <i class="fa fa-map-o"></i></button>
+                </div>
+                <div class="box-footer">
+                  <div class="pull-right">
+                    <button onclick="input_aset()" class="btn btn-success btn-block btn-md">Input Data Lokasi Aset Tanah <i class="fa fa-map-o"></i></button>
+                  </div>
+                </div>
               </div>
-        <?php //if($titik!=null){
-              //echo "<h3 class='text-center'>Data JSON : ".anchor(GEOJSON.$titik['json'],$titik['json'],array('target'=>'__blank'))."</h3>";
-          //}else{ 
-            //echo "<h3 class='text-center'>Data Geo JSON Kosong</h3>";
-            ?>
-       <!-- <button onclick="add_geo()" class="btn btn-warning btn-block">Upload Data Desa (GeoJSON) <i class="fa fa-globe"></i></button> -->
-       <?php // } ?>
-      </div>
-    </div>
-  </div>
-</div>
+          </div>         
+        </div>
+
 </section>
 
 
@@ -215,6 +215,9 @@
 
 <script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDbCwhTP2mtDKcb2s8A-bzrwMVKGwK-keY&libraries=geometry"></script>
 <script>
+
+
+
 // var infowindow = null;
 // RTRW
 var table;
@@ -273,39 +276,59 @@ function initialize() {
   // });
   // map.data.loadGeoJson('<?php //echo base_url().GEOJSON.$titik['json'];?>');
   init_rtrw();
+  init_aset();
 }
 
 function view_rtrw(id) {
   
 }
 
-function init_rtrw(){
-  $.ajax({
-    url: '<?php echo base_url('rtrw/get_master');?>',
-    success : function (data) {      
-      // var obj = JSON.parse(data);
-      console.log(data);
-      if (data != null) {
-        for (let i = 0; i < data.length; i++) {
-            const id = data[i]['id'];
-            table += "<tr><td>"
-            +data[i]['kode_rtrw']+
-            "</td><td>"
-            +data[i]['keterangan']+
-            "</td><td>"
-            +data[i]['dasar_hukum']+
-            "</td><td align='center'><a class='btn btn-flat btn-xs btn-success' href='<?php echo base_url('rtrw/details/'); ?>"+id+"'><i class='fa fa-eye'></i></a></td></tr>";
-        }
-      } else {
-      table = "<tr><td colspan='4' align='center'>Data Belum Ada</td></tr>";
-      }
-      $("#tb_rtrw").html(table);      
-    }
-  });
+function init_aset() {
+  $('#list_aset').DataTable({
+        "processing": true, //Feature control the processing indicator.
+        "serverSide": true, //Feature control DataTables' server-side processing mode.
+        "order": [], //Initial no order.
+         // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo base_url('pertanahan/get_aset');?>",
+            "type": "POST"
+        },
+ 
+        //Set column definition initialisation properties.
+        "columnDefs": [
+        { 
+            "targets": [ 0 ], //first column / numbering column
+            "orderable": false, //set not orderable
+        },
+        ],
+        destroy: true,
+        responsive: true
+        });
 }
 
-
-
+function init_rtrw(){
+  // evt.preventDefault();
+  $('#list_rtrw').DataTable({
+        "processing": true, //Feature control the processing indicator.
+        "serverSide": true, //Feature control DataTables' server-side processing mode.
+        "order": [], //Initial no order.
+         // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo base_url('rtrw/get_master');?>",
+            "type": "POST"
+        },
+ 
+        //Set column definition initialisation properties.
+        "columnDefs": [
+        { 
+            "targets": [ 0 ], //first column / numbering column
+            "orderable": false, //set not orderable
+        },
+        ],
+        destroy: true,
+        responsive: true
+        });
+}
 
 function input_rtrw(){
   $('#input_form').show();

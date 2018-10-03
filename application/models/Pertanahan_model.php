@@ -9,6 +9,9 @@ class Pertanahan_model extends CI_Model{
     //Codeigniter : Write Less Do More
   }
 
+  // RTRW SERVER Renderer
+
+
   public function _get_data_petugas_pemeriksa($desa_id){
     $this->db->where('desa_id', $desa_id);
     $this->db->where('status', 1);

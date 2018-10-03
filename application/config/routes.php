@@ -233,6 +233,8 @@ $route['pertanahan/surat_tanah']          = 'pertanahan/list_skt';
 
 $route['pertanahan/aset_tanah_desa']      = 'pertanahan/tanah_desa_list';
 
+$route['pertanahan/get_aset']             = 'master/get_aset_desa';
+
 $route['permohonan/setuju']              = 'pertanahan/permohonan_setuju';
 
 $route['permohonan/input']                = 'pertanahan/permohonan_input';

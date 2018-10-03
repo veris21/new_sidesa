@@ -433,6 +433,34 @@ class Master extends CI_Controller{
     $this->load->view('template',$data);
   }
 
+  // ASET Desa
+  public function get_aset_desa()
+  {
+    $kode_desa = $this->session->userdata('kode_desa');
+    $id = $kode_desa."-ASET";
+    $list      =  $this->patok_model->get_aset($id);
+    $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $aset) {
+            $no++;
+            $row = array();
+            $row[] = $aset->keterangan;
+            $row[] = "<img class='img img-rounded img-responsive main-img' width='120' src='".base_url().PATOK.$aset->foto_tanah."' >";
+            $row[] = "Latitude : ".$aset->lat." <br> longitude : ".$aset->lng;
+            $row[] = "<a href='".base_url('detail/aset/').$aset->id."' class='btn btn-flat btn-xs btn-success'><i class='fa fa-eye'></i></a>
+            <button onclick='edit_aset(".$aset->id.")' class='btn btn-warning btn-xs'><i class='fa fa-edit'></i></button>";
+            $data[] = $row;
+        }
+ 
+        $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->patok_model->count_all_aset($id),
+                        "recordsFiltered" => $this->patok_model->count_filtered_aset($id),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+  }
 
 
   // RTRW MASTER 
@@ -446,10 +474,29 @@ class Master extends CI_Controller{
   }
   public function rtrw_master()
   {
-    $data = $this->pertanahan_model->get_master_rtrw()->result();
-    $this->output
-      ->set_content_type('application/json')
-      ->set_output(json_encode($data));
+    $list = $this->patok_model->get_datatables_rtrw();
+    $data = array();
+        $no = $_POST['start'];
+        foreach ($list as $rtrw) {
+            $no++;
+            $row = array();
+            $row[] = $no;
+            $row[] = $rtrw->kode_rtrw;
+            $row[] = $rtrw->keterangan;
+            $row[] = $rtrw->dasar_hukum;
+            $row[] = "<a href='".base_url('rtrw/details/').$rtrw->id."' class='btn btn-flat btn-xs btn-success'><i class='fa fa-eye'></i></a>";
+            $data[] = $row;
+        }
+ 
+        $output = array(
+                        "draw" => $_POST['draw'],
+                        "recordsTotal" => $this->patok_model->count_all_rtrw(),
+                        "recordsFiltered" => $this->patok_model->count_filtered_rtrw(),
+                        "data" => $data,
+                );
+        //output to json format
+        echo json_encode($output);
+
   }
 
   public function rtrw_koordinat($id)

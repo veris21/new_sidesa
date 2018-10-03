@@ -93,9 +93,9 @@ $('ul#legend-page').paginathing({
     perPage: 5,
 });
 
-$('#list_rtrw').DataTable({
-  responsive: true
-});
+// $('#list_rtrw').DataTable({
+//   responsive: true
+// });
 
 
 $('#master_koordinat_verifikasi').DataTable({
@@ -370,9 +370,9 @@ $('#list_history_system').DataTable({
   responsive: true,
 });
 
-$("#list_aset").DataTable({
-  responsive: true,
-});
+// $("#list_aset").DataTable({
+//   responsive: true,
+// });
 
 // $("#master_penduduk").DataTable({
 //   responsive: true,
