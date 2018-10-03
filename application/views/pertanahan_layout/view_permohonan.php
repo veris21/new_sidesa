@@ -142,6 +142,13 @@
                                 <?php
                                 }                                
                                 break;
+                            case 'MASTER':
+                                if($data['status_proses']==2){
+                                    ?>
+                                    <button onclick="pernyataan_input()" class="btn btn-lg btn-flat btn-success">Input Pernyataan <i class="fa fa-arrow-right"></i></button>          
+                                    <?php
+                                    }                                
+                                    break;    
                             case 'LAYANAN':
                             if($data['status_proses']==2){
                                     ?>
