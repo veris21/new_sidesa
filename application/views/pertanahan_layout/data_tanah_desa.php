@@ -23,7 +23,7 @@
               <div class="box-header">
                 <h4 class="box-title"> <i class="fa fa-road"></i> Data Jalan</h4>
                 <div class="pull-right">
-                <button class="btn btn-flat btn-md btn-primary"> Input Data Jalan <i class="fa fa-plus"></i></button>
+                <button class="btn btn-flat btn-md btn-primary" onclick="input_data_jalan()"> Input Data Jalan <i class="fa fa-plus"></i></button>
                 </div>
               </div>
               <div class="box-body">
@@ -91,6 +91,26 @@
         </div>
 
 </section>
+
+
+
+<div class="modal fade" id="form_jalan"  role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -260,7 +280,7 @@ infowindow = new google.maps.InfoWindow({
 var baseIcon = '<?php echo base_url();?>assets/administration.png';
 function initialize() {
   map = new google.maps.Map(document.getElementById('map-desa'), {
-    zoom: 13,
+    zoom: 10,
     center: { lat: -2.974813, lng: 108.159151 },
     mapTypeId: 'terrain',
     // mapTypeControl: false,
@@ -378,14 +398,11 @@ function init_rtrw(){
 
 function input_rtrw(){
   $('#input_form').modal('show');
-  // $('#input_form_button').hide();
 }
 
-// function reset() {
-//   $('#input_form').hide();
-//   $('#input_form_button').show();
-//   location.reload();
-// }
+function input_data_jalan(){
+  $('#form_jalan').modal('show');
+}
 
 function save_rtrw(){
   $.ajax({
