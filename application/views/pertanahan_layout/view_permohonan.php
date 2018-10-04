@@ -56,6 +56,12 @@
                         <img class="img img-responsive img-rounded hidden-xs hidden-sm" src="<?php echo base_url().QRCODE.$data['qr_link'];?>" alt="QR CODE">
                         </div>
                     </div>
+                    <?php if($this->session->userdata('jabatan')=='MASTER' || $this->session->userdata('jabatan')=='ROOT') { ?>
+                    <div class="pull-right">
+                    <button class="btn btn-success btn-flat btn-md btn-warning" onclick="edit_permohonan(<?php echo $data['time']; ?>)"> Perbaiki Data Permohonan <i class="fa fa-edit"></i></button>
+                    </div>
+                    <?php } ?>
+
                     <hr>
                     <dt>Lokasi yang dimohon</dt>
                     <dd><?php echo  $data['lokasi'];?></dd>
@@ -79,7 +85,6 @@
                     <dt>Status Tanah</dt>
                     <dd><?php echo  $data['status_tanah'];?></dd>
                     <br>
-                    
                 </div>
             </div>        
         </div>
@@ -210,9 +215,13 @@
                         <dt>Penandatanganan Pernyataan</dt>
                         <dd>Pernyataan dibuat pada <?php echo mdate("%d - %m - %Y", $pernyataan['time']);?></dd>
                         </div>
+                        <!-- ===== -->
+                        <?php if($this->session->userdata('jabatan')=='MASTER' || $this->session->userdata('jabatan')=='ROOT' || $this->session->userdata('jabatan')=='PERTANAHAN') { ?>
                         <div class="pull-right">
                             <button type="button" class="btn btn-warning btn-flat" onclick="edit_pernyataan(<?php echo $pernyataan['id']; ?>)"> Edit Data Saksi <i class="fa fa-edit"></i> </button>
                         </div>
+                        <?php } ?>
+                        <!-- ===== -->
                         </div>
                         <div class="col-md-3" align="center">
                         <img class="img img-responsive img-rounded hidden-xs hidden-sm" src="<?php echo base_url().QRCODE.$pernyataan['qr_link'];?>" alt="QR LINK">
@@ -529,6 +538,85 @@
 </div>
 
 <!-- ==== -->
+
+
+
+<div class="modal fade" id="update_data_pemohon"  role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <?php echo form_open_multipart('', array('id'=>'permohonan_update','class'=>'form-horizontal'));?>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Update Data Pemohon</h4>
+            </div>
+            <div class="modal-body form">
+                <div class="form-group">                    
+                    <label for="input-id" class="label-control col-sm-4">Lokasi</label>
+                    <div class="col-sm-8">
+                    <input type="text" class="form-control" name="lokasi">
+                    </div>
+                </div>
+                <div class="form-group">                    
+                    <label for="input-id" class="label-control col-sm-2">Status Tanah</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" name="status_tanah">
+                    </div>
+                    <label for="input-id" class="label-control col-sm-2">Tahun</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" name="tahun_kelola" maxlength="4">
+                    </div>
+                </div>
+
+                <div class="form-group">                    
+                    <label for="input-id" class="label-control col-sm-2">Peruntukan</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" name="peruntukan_tanah">
+                    </div>
+                    <label for="input-id" class="label-control col-sm-2">Luas(&plusmn;m<sup>2</sup>)</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" name="luas">
+                    </div>
+                </div>
+
+                 <div class="form-group">                    
+                    <label for="input-id" class="label-control col-sm-4">Kontak Pemohon</label>
+                    <div class="col-sm-8">
+                    <input type="text" class="form-control" name="hp">
+                    </div>
+                </div>
+               
+
+                 <div class="form-group">                    
+                    <label for="input-id" class="label-control col-sm-2">Utara</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" name="utara">
+                    </div>
+                    <label for="input-id" class="label-control col-sm-2">Selatan</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" name="selatan">
+                    </div>
+                </div>
+
+                 <div class="form-group">                    
+                    <label for="input-id" class="label-control col-sm-2">Timur</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" name="timur">
+                    </div>
+                    <label for="input-id" class="label-control col-sm-2">Barat</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" name="barat">
+                    </div>
+                </div>
+                <input type="hidden" name="id" >
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-warning" onclick="update_permohonan()">Save Update <i class="fa fa-save"></i></button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
 
 
 <!-- Modal Setuju Dan Pilihan Rekomedasi -->

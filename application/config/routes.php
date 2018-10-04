@@ -246,6 +246,7 @@ $route['pernyataan/get_saksi/(:num)']     = 'pertanahan/pernyataan_get/$1';
 $route['berita_acara/input']              = 'pertanahan/berita_acara_input';
 
 $route['permohonan/view/(:any)']          = 'pertanahan/permohonan_view/$1';
+
 $route['berita_acara/view/(:any)']        = 'pertanahan/berita_acara_view/$1';
 $route['surat_tanah/details/(:any)']      = 'pertanahan/skt_view_one/$1';
 

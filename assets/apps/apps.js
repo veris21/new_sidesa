@@ -1135,6 +1135,47 @@ function permohonan_setujui() {
   $('#modal_setuju').modal('show');
 }
 
+function edit_permohonan(id){
+  $.ajax({
+    url : baseUrl + 'permohonan/get/'+id,
+    type: "GET",
+    dataType: "JSON",
+    success : function(data){
+      var obj = data.results;
+      console.log(data.results);
+      $('[name="lokasi"]').val(obj.lokasi);
+      $('[name="luas"]').val(obj.luas);
+      $('[name="tahun_kelola"]').val(obj.tahun_kelola);
+      $('[name="peruntukan_tanah"]').val(obj.peruntukan_tanah);
+      $('[name="status_tanah"]').val(obj.status_tanah);
+      $('[name="hp"]').val(obj.hp);
+      $('[name="utara"]').val(obj.utara);
+      $('[name="selatan"]').val(obj.selatan);
+      $('[name="timur"]').val(obj.timur);
+      $('[name="barat"]').val(obj.barat);
+      $('[name="id"]').val(obj.id);
+      $('#update_data_pemohon').modal('show');
+    }
+  });
+  
+}
+
+function update_permohonan(){
+  $.ajax({
+    url: baseUrl +'permohonan/update',
+    type: 'POST',
+    dataType:'JSON',
+    data : $('#permohonan_update').serialize(),
+    success : function (data){
+      swal('Selamat !', 'Berhasil Menghapus data!', 'success');
+        location.reload();
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      swal('Astagapeer', 'Ade Nok Salah Mudel e...!', 'error');
+    }
+  });
+}
+
 function delete_permohonan(id) {
   event.preventDefault();
   var url = baseUrl + 'permohonan/delete/' + id;

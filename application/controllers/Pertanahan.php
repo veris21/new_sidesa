@@ -88,7 +88,7 @@ class Pertanahan extends CI_Controller{
     $status_tanah = strip_tags($this->input->post('status_tanah'));
     $peruntukan_tanah = strip_tags($this->input->post('peruntukan_tanah'));
     $tahun_kelola = strip_tags($this->input->post('tahun_kelola'));
-    $dusun_id = strip_tags($this->input->post('dusun_id'));
+    // $dusun_id = strip_tags($this->input->post('dusun_id'));
     $hp = strip_tags($this->input->post('hp'));
     $utara = strip_tags($this->input->post('utara'));
     $selatan = strip_tags($this->input->post('selatan'));
@@ -104,7 +104,6 @@ class Pertanahan extends CI_Controller{
         'selatan'=>$selatan,
         'barat'=>$barat,
         'timur'=>$timur,
-        'dusun_id'=>$dusun_id,
         'tahun_kelola'=>$tahun_kelola,
         'hp'=>$hp
       );
@@ -372,6 +371,11 @@ class Pertanahan extends CI_Controller{
     if($check){
       echo json_encode(array('status'=>TRUE));
     }
+  }
+
+  public function permohonan_json($id)
+  {
+    
   }
 
   public function permohonan_setuju(){
