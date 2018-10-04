@@ -331,6 +331,49 @@ class Pertanahan extends CI_Controller{
   }
 
 
+  public function pernyataan_get($id)
+  {
+    $data = $this->pertanahan_model->_get_pernyataan_edit($id)->row_array();
+    if ($data) {     
+     $this->output->set_content_type('application/json')->set_output(json_encode($data));
+    }
+  }
+
+  public function pernyataan_update()
+  {
+    $saksi1_nama      = strip_tags($this->input->post('saksi1_nama'));
+    $saksi1_alamat    = strip_tags($this->input->post('saksi1_alamat'));
+    $saksi1_pekerjaan = strip_tags($this->input->post('saksi1_pekerjaan'));
+    $saksi2_nama      = strip_tags($this->input->post('saksi2_nama'));
+    $saksi2_alamat    = strip_tags($this->input->post('saksi2_alamat'));
+    $saksi2_pekerjaan = strip_tags($this->input->post('saksi2_pekerjaan'));
+    $saksi3_nama      = strip_tags($this->input->post('saksi3_nama'));
+    $saksi3_alamat    = strip_tags($this->input->post('saksi3_alamat'));
+    $saksi3_pekerjaan = strip_tags($this->input->post('saksi3_pekerjaan'));
+    $saksi4_nama      = strip_tags($this->input->post('saksi4_nama'));
+    $saksi4_alamat    = strip_tags($this->input->post('saksi4_alamat'));
+    $saksi4_pekerjaan = strip_tags($this->input->post('saksi4_pekerjaan'));
+    $id = strip_tags($this->input->post('id'));
+    $update = array(
+        'saksi1_nama'=>$saksi1_nama,
+        'saksi1_alamat'=>$saksi1_alamat,
+        'saksi1_pekerjaan'=>$saksi1_pekerjaan,
+        'saksi2_nama'=>$saksi2_nama,
+        'saksi2_alamat'=>$saksi2_alamat,
+        'saksi2_pekerjaan'=>$saksi2_pekerjaan,
+        'saksi3_nama'=>$saksi3_nama,
+        'saksi3_alamat'=>$saksi3_alamat,
+        'saksi3_pekerjaan'=>$saksi3_pekerjaan,
+        'saksi4_nama'=>$saksi4_nama,
+        'saksi4_alamat'=>$saksi4_alamat,
+        'saksi4_pekerjaan'=>$saksi4_pekerjaan
+    );
+    $check = $this->pertanahan_model->_update_pernyataan($id, $update);
+    if($check){
+      echo json_encode(array('status'=>TRUE));
+    }
+  }
+
   public function permohonan_setuju(){
     $desa_id = $this->session->userdata('desa_id');
     $id = $this->input->post('id');

@@ -239,6 +239,10 @@ $route['permohonan/setuju']              = 'pertanahan/permohonan_setuju';
 
 $route['permohonan/input']                = 'pertanahan/permohonan_input';
 $route['pernyataan/input']                = 'pertanahan/pernyataan_input';
+$route['pernyataan/update']               = 'pertanahan/pernyataan_update';
+// 
+$route['pernyataan/get_saksi/(:num)']     = 'pertanahan/pernyataan_get/$1';
+// 
 $route['berita_acara/input']              = 'pertanahan/berita_acara_input';
 
 $route['permohonan/view/(:any)']          = 'pertanahan/permohonan_view/$1';

@@ -199,6 +199,7 @@
                 if($pernyataan!=''|| $pernyataan!=null){
                 ?>
                 <div class="box box-info">
+                    
                     <div class="box-body">
                         <div class="row">
                         <div class="col-md-9">
@@ -208,6 +209,9 @@
                         <br>
                         <dt>Penandatanganan Pernyataan</dt>
                         <dd>Pernyataan dibuat pada <?php echo mdate("%d - %m - %Y", $pernyataan['time']);?></dd>
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-warning btn-flat" onclick="edit_pernyataan(<?php echo $pernyataan['id']; ?>)"> Edit Data Saksi <i class="fa fa-edit"></i> </button>
                         </div>
                         </div>
                         <div class="col-md-3" align="center">
@@ -411,6 +415,8 @@
       </div>
       <?php echo form_open_multipart('', array('id'=>'pernyataan_input','class'=>'form-horizontal'));?>
       <div class="modal-body form">
+        
+          <input type="hidden" name="id" value="<?php echo ($pernyataan['id'] !=null ? $pernyataan['id'] : '');?>">
           <input type="hidden" name="permohonan_id" value="<?php echo $data['id'];?>">
             <div class="box box-success">
                 <div class="box-body"> 
@@ -575,3 +581,8 @@
   </div> 
 </div>
 
+<script>
+// edit_penyataan(){
+//     alert('Edit Pernyataan');
+// }
+</script>

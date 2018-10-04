@@ -575,9 +575,44 @@ function buat_disposisi() {
   $('#modal_disposisi').modal('show');
 }
 
+var pernyataan_method;
+
 function pernyataan_input() {
+  pernyataan_method = 'input_pernyataan';
   $('#pernyataan_input')[0].reset();
   $('#modal_pernyataan').modal('show');
+}
+
+function edit_pernyataan(id){
+  pernyataan_method = 'edit_pernyataan';
+  // $('#pernyataan_input')[0].reset();
+  $.ajax({
+    url: baseUrl + 'pernyataan/get_saksi/'+id,
+    dataType: 'JSON',
+    success : function(obj){
+      // var obj = JSON.parse(data);
+      console.log(obj);
+      $('[name="saksi1_nama"]').val(obj.saksi1_nama);
+      $('[name="saksi1_pekerjaan"]').val(obj.saksi1_pekerjaan);
+      $('[name="saksi1_alamat"]').val(obj.saksi1_alamat);
+
+      $('[name="saksi2_nama"]').val(obj.saksi2_nama);
+      $('[name="saksi2_pekerjaan"]').val(obj.saksi2_pekerjaan);
+      $('[name="saksi2_alamat"]').val(obj.saksi2_alamat);
+
+      $('[name="saksi3_nama"]').val(obj.saksi3_nama);
+      $('[name="saksi3_pekerjaan"]').val(obj.saksi3_pekerjaan);
+      $('[name="saksi3_alamat"]').val(obj.saksi3_alamat);
+
+      $('[name="saksi4_nama"]').val(obj.saksi4_nama);
+      $('[name="saksi4_pekerjaan"]').val(obj.saksi4_pekerjaan);
+      $('[name="saksi4_alamat"]').val(obj.saksi4_alamat);
+      $('#modal_pernyataan').modal('show');
+    },
+    error : function (err) {
+      alert(err);
+    }
+  });
 }
 
 function input_tim_verifikasi() {
@@ -1331,6 +1366,15 @@ function bap_save() {
 
 function pernyataan_save() {
   event.preventDefault();
+  // var url_p ;
+  switch (pernyataan_method) {
+    case 'edit_pernyataan':
+    var url_p = baseUrl + 'pernyataan/update';
+      break;
+    case 'input_pernyataan':
+    var url_p = baseUrl + 'pernyataan/input';
+      break;
+  }
   swal({
     title: 'Apa Anda Yakin?',
     text: "Data Pernyataan Akan di Input ke Sistem!",
@@ -1341,7 +1385,7 @@ function pernyataan_save() {
     confirmButtonText: 'Iya, Simpan!'
   }, function isConfirm() {
     $.ajax({
-      url: baseUrl + 'pernyataan/input',
+      url: url_p,
       type: "POST",
       data: $('#pernyataan_input').serialize(),
       dataType: "JSON",
