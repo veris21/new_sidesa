@@ -1156,8 +1156,7 @@ function edit_permohonan(id){
       $('[name="id"]').val(obj.id);
       $('#update_data_pemohon').modal('show');
     }
-  });
-  
+  });  
 }
 
 function update_permohonan(){
