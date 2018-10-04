@@ -143,11 +143,15 @@
                                 }                                
                                 break;
                             case 'MASTER':
-                                if($data['status_proses']==2){
+                            if($data['status_proses']==0){
+                                ?>
+                                <button onclick="permohonan_setujui()" class="btn btn-lg btn-flat btn-primary">Setujui <i class="fa fa-check"></i></button>     
+                            <?php 
+                            }elseif($data['status_proses']==2){
                                     ?>
                                     <button onclick="pernyataan_input()" class="btn btn-lg btn-flat btn-success">Input Pernyataan <i class="fa fa-arrow-right"></i></button>          
                                     <?php
-                                    }                                
+                                }                                
                                     break;    
                             case 'LAYANAN':
                             if($data['status_proses']==2){
@@ -259,7 +263,7 @@
                         if($pernyataan['status_proses']==1){
                         ?>
                         <?php
-                            if($id == $pejabat['sekdes_uid'] || $id == $pejabat['kasi_pemerintahan']){
+                            if($id == $pejabat['sekdes_uid'] || $id == $pejabat['kasi_pemerintahan'] || $this->session->userdata('jabatan') == 'MASTER'){
                         ?>
                         <?php if($check!=null || $check!=''){ ?> 
                         <button class="btn btn-success btn-flat btn-lg" onclick="setujui_verifikasi()">Setujui Proses B.A.P <i class="fa fa-check"></i></button>
