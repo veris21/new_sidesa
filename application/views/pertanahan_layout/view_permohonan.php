@@ -203,8 +203,7 @@
                 $pernyataan = $this->pertanahan_model->_get_pernyataan($id)->row_array();
                 if($pernyataan!=''|| $pernyataan!=null){
                 ?>
-                <div class="box box-info">
-                    
+                <div class="box box-info">                    
                     <div class="box-body">
                         <div class="row">
                         <div class="col-md-9">
