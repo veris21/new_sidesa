@@ -7,7 +7,6 @@ $config['smtp_host']        = 'smtp.gmail.com';
 // $config['smtp_host']        = 'ssl://74.125.24.108';
 $config['smtp_auth']        = true;                     // Whether to use SMTP authentication, boolean TRUE/FALSE. If this option is omited or if it is NULL, then SMTP authentication is used when both $config['smtp_user'] and $config['smtp_pass'] are non-empty strings.
 $config['smtp_user']        = 'id.sidesa@gmail.com';
-$config['smtp_pass']        = 'sidesagantungproject';
 $config['smtp_port']        = 587;                       // 587 or 465
 $config['smtp_timeout']     = 30;                       // (in seconds)
 $config['smtp_crypto']      = 'tls';                    // '' or 'tls' or 'ssl'
